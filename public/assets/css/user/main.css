@@ -1,0 +1,32 @@
+.parsley-errors-list{
+    padding-left: 0px;
+    margin-bottom: 0px;
+    text-align: left;
+
+} 
+
+.parsley-errors-list .parsley-required,
+.parsley-errors-list .parsley-pattern,
+.parsley-errors-list .parsley-type,
+.parsley-errors-list .parsley-minlength,
+.parsley-errors-list .parsley-maxlength,
+.parsley-errors-list .parsley-equalto,
+.parsley-errors-list .parsley-uniquemail,
+.parsley-errors-list .parsley-uniqueuserid,
+.parsley-errors-list .parsley-checkmail,
+.parsley-errors-list .parsley-min,
+.parsley-errors-list .parsley-max,
+.sform #emailerr,
+.sform #usernameerr,
+.sform #pincoderr,
+.sform #mobilerr,.sform #match_name_err{
+
+list-style: none;
+color: red;
+font-size: 14px;
+}
+
+.toast{
+
+	font-size: 14px !important;
+}
