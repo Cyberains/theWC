@@ -187,10 +187,9 @@
                                     <label for="sub_category_id">Select Category<span>*</span></label>
                                     <select class="form-control" type="text" name="sub_category_id" id="sub_category_id" value="{{ old('sub_category_id') }}" data-parsley-required data-parsley-required-message="Sub-Category is required.">
                                         <option value="">Select Sub-Category</option>
-                                        <option value="13">Sub Category Title</option>
-                                        {{--                                        @foreach($service as $servic)--}}
-                                        {{--                                            <option value="NoTag">NoTag</option>--}}
-                                        {{--                                        @endforeach--}}
+                                        @foreach($sub_category as $sub_cat)
+                                            <option id="selected-sub-category-id" value="{{ $sub_cat->id }}">{{ $sub_cat->title }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>

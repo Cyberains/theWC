@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Service;
+use App\Models\SubCategory;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -17,7 +18,8 @@ class ServiceController extends Controller
         $services = Service::select(\DB::raw('services.*'))->with(['getCategory','getSubCategory'])->paginate(25);
         $currentpage = $services->currentPage();
         $categories = Category::all();
-        return view('admin.services.index',compact(['services','currentpage','categories']));
+        $sub_category = SubCategory::all();
+        return view('admin.services.index',compact(['services','currentpage','categories','sub_category']));
     }
 
     public function create()
@@ -182,5 +184,23 @@ class ServiceController extends Controller
         Service::where('id', $request->id)->delete();
         Session::flash('message', 'Service deleted successfully.');
         return redirect()->route('admin.service');
+    }
+
+    function itemSearch(Request $request)
+    {
+        if($request->ajax())
+        {
+            $datas = $request->all();
+            $services=Service::where('title','LIKE','%'.$datas['query']."%")->paginate(25);
+            $categorycount=Service::where('title','LIKE','%'.$datas['query']."%")->count();
+            if($categorycount){
+                $currentpage = $services->currentPage();
+                return view('admin.services.paggination_services', compact(['services','currentpage']))->render();
+            }else{?>
+                <tr>
+                    <td colspan="4">No matching records found</td>
+                </tr>
+            <?php }
+        }
     }
 }
