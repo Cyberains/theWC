@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\PlanController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Professional\Auth\RegisterController;
 use App\Http\Controllers\Professional\DashboardController;
@@ -74,6 +75,18 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
         Route::get('service/import', [ServiceController::class,'import'])->name('import-service');
         Route::get('service/csv/sample', [ServiceController::class,'downloadCSVSample'])->name('download_csv_sample-service');
         Route::post('service/import/csv', [ServiceController::class,'importCSV'])->name('import_csv-service');
+
+        // Plans
+        Route::get('plan', [PlanController::class,'index'])->name('plan');
+        Route::get('plan/search', [PlanController::class,'itemSearch'])->name('search-plan');
+        Route::get('plan/create', [PlanController::class,'create'])->name('add-plan');
+        Route::post('plan/create', [PlanController::class,'store'])->name('add-plan');
+        Route::post('plan/edit', [PlanController::class,'edit'])->name('edit-plan');
+        Route::post('plan/update', [PlanController::class,'update'])->name('update-plan');
+        Route::get('plan/delete/{id}', [PlanController::class,'destroy'])->name('delete-plan');
+        Route::get('plan/import', [PlanController::class,'import'])->name('import-plan');
+        Route::get('plan/csv/sample', [PlanController::class,'downloadCSVSample'])->name('download_csv_sample-plan');
+        Route::post('plan/import/csv', [PlanController::class,'importCSV'])->name('import_csv-plan');
 
         // Brand
 		Route::get('brand', 'BrandController@index')->name('brand');

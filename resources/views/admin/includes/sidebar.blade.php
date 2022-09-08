@@ -111,46 +111,46 @@
 {{--  </li>--}}
 {{--  @endif--}}
 
-{{--  @if(Auth::user()->role=='admin')--}}
-{{--  <li class="c-sidebar-nav-item c-sidebar-nav-dropdown">--}}
-{{--    <a class="c-sidebar-nav-link " href="{{ route('admin.banners.index') }}">--}}
-{{--      <i class="c-sidebar-nav-icon fa fa-inbox"></i> Manage Banner</a>--}}
-{{--  </li>--}}
-{{--  @endif--}}
+  @if(Auth::user()->role=='admin')
+  <li class="c-sidebar-nav-item c-sidebar-nav-dropdown">
+    <a class="c-sidebar-nav-link " href="{{ route('admin.banners.index') }}">
+      <i class="c-sidebar-nav-icon fa fa-inbox"></i> Manage Banner</a>
+  </li>
+  @endif
 
 
-{{--  @if(Auth::user()->role=='admin')--}}
-{{--  <li class="c-sidebar-nav-item c-sidebar-nav-dropdown">--}}
-{{--    <a class="c-sidebar-nav-link " href="{{ route('admin.inquiry.index') }}">--}}
-{{--      <i class="c-sidebar-nav-icon fa fa-inbox"></i> Manage Inquiry</a>--}}
-{{--  </li>--}}
-{{--  @endif--}}
+  @if(Auth::user()->role=='admin')
+  <li class="c-sidebar-nav-item c-sidebar-nav-dropdown">
+    <a class="c-sidebar-nav-link " href="{{ route('admin.inquiry.index') }}">
+      <i class="c-sidebar-nav-icon fa fa-inbox"></i> Manage Inquiry</a>
+  </li>
+  @endif
 
 
-{{--  @if(Auth::user()->role=='admin')--}}
-{{--  <li class="c-sidebar-nav-item c-sidebar-nav-dropdown">--}}
-{{--    <a class="c-sidebar-nav-link c-sidebar-nav-dropdown-toggle" href="">--}}
-{{--      <i class="c-sidebar-nav-icon fa fa-inbox"></i>--}}
-{{--      Manage CMS</a>--}}
-{{--    <ul class="c-sidebar-nav-dropdown-items">--}}
-{{--      <li class="c-sidebar-nav-item">--}}
-{{--        <a class="c-sidebar-nav-link" href="{{ route('admin.cms.index',['type'=>'about_us']) }}">--}}
-{{--          <span class="c-sidebar-nav-icon"></span>About Us--}}
-{{--        </a>--}}
-{{--      </li>--}}
-{{--      <li class="c-sidebar-nav-item">--}}
-{{--        <a class="c-sidebar-nav-link" href="{{ route('admin.cms.index','privacy_policy') }}">--}}
-{{--          <span class="c-sidebar-nav-icon"></span>Privacy Policy--}}
-{{--        </a>--}}
-{{--      </li>--}}
-{{--      <li class="c-sidebar-nav-item">--}}
-{{--        <a class="c-sidebar-nav-link" href="{{ route('admin.cms.index','term_condition') }}">--}}
-{{--          <span class="c-sidebar-nav-icon"></span>Terms & Conditions--}}
-{{--        </a>--}}
-{{--      </li>--}}
-{{--    </ul>--}}
-{{--  </li>--}}
-{{--  @endif--}}
+  @if(Auth::user()->role=='admin')
+  <li class="c-sidebar-nav-item c-sidebar-nav-dropdown">
+    <a class="c-sidebar-nav-link c-sidebar-nav-dropdown-toggle" href="">
+      <i class="c-sidebar-nav-icon fa fa-inbox"></i>
+      Manage CMS</a>
+    <ul class="c-sidebar-nav-dropdown-items">
+      <li class="c-sidebar-nav-item">
+        <a class="c-sidebar-nav-link" href="{{ route('admin.cms.index',['type'=>'about_us']) }}">
+          <span class="c-sidebar-nav-icon"></span>About Us
+        </a>
+      </li>
+      <li class="c-sidebar-nav-item">
+        <a class="c-sidebar-nav-link" href="{{ route('admin.cms.index','privacy_policy') }}">
+          <span class="c-sidebar-nav-icon"></span>Privacy Policy
+        </a>
+      </li>
+      <li class="c-sidebar-nav-item">
+        <a class="c-sidebar-nav-link" href="{{ route('admin.cms.index','term_condition') }}">
+          <span class="c-sidebar-nav-icon"></span>Terms & Conditions
+        </a>
+      </li>
+    </ul>
+  </li>
+  @endif
   </ul>
   <button class="c-sidebar-minimizer c-class-toggler" type="button" data-target="_parent" data-class="c-sidebar-minimized"></button>
 </div>
