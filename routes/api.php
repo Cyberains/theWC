@@ -1,20 +1,13 @@
 <?php
 
+use App\Http\Controllers\Api\AddressController;
 use App\Http\Controllers\Api\BannerController;
-use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\Professional\BookingController;
 use App\Http\Controllers\Api\Professional\RatingController;
-use App\Http\Controllers\Api\RecommendationController;
 use App\Http\Controllers\Api\ReferenceController;
 use App\Http\Controllers\Api\ServiceController;
 use App\Http\Controllers\Api\UserController;
-use App\Http\Controllers\Api\WishListController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use const App\Http\Controllers\Api\CityController;
-use const App\Http\Controllers\Api\SubscriptionController;
-use const App\Http\Controllers\Api\TestimonialController;
-use const App\Http\Controllers\Api\UserSubscriptionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,10 +45,10 @@ Route::namespace('Api')->name('api.')->group(function(){
 		Route::post('resend/mobile_otp','UserController@resendMobileOTP');
 
 		//Address
-		Route::post('address','UserController@Address');
-		Route::post('address/store','UserController@AddressStore');
-		Route::post('address-update','UserController@AddressUpdate');
-		Route::post('address-delete','UserController@AddressDelete');
+//		Route::post('address','UserController@Address');
+//		Route::post('address/store','UserController@AddressStore');
+//		Route::post('address-update','UserController@AddressUpdate');
+//		Route::post('address-delete','UserController@AddressDelete');
 
 		//change password
 		Route::post('update-password','UserController@UpdatePassword');
@@ -173,6 +166,13 @@ Route::namespace('Api')->name('api.')->group(function(){
 
         // refer history Route
         Route::get('refer-history/',[ReferenceController::class,'referHistory']);
+
+        // Address
+        Route::post('address-add/',[AddressController::class,'addNewAddress']);
+        Route::get('address-get',[AddressController::class,'showAllAddress']);
+        Route::post('address-update',[AddressController::class,'storeAddress']);
+        Route::get('address-view',[AddressController::class,'addressView']);
+        Route::get('address-delete',[AddressController::class,'AddressDelete']);
     });
 });
 
