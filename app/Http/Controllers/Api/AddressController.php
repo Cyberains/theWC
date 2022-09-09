@@ -128,4 +128,30 @@ class AddressController extends Controller
             ]);
         }
     }
+
+    public function setDefault(Request $request): JsonResponse
+    {
+        $address = Address::where(['user_id'=>$request->user()->id,'id' => $request->id])->first();
+        $address->default = 1;
+        if($address->save()){
+            $addresses  = Address::where(['user_id'=>$request->user()->id])->where('id','!=',$request->id)->get();
+            foreach ($addresses as $addr){
+                $addre = Address::where(['id' => $addr->id])->first();
+                $addre->default = 0;
+                $addre->save();
+            }
+
+            return response()->json([
+                'status' => 200,
+                'data' => $address,
+                'message' => 'Successfully Done.'
+            ]);
+        }else{
+            return response()->json([
+                'status' => 404,
+                'data' => [],
+                'message' => 'Something went wrong try Again.'
+            ]);
+        }
+    }
 }

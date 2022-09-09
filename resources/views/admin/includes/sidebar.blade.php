@@ -111,10 +111,24 @@
 {{--  </li>--}}
 {{--  @endif--}}
 
+      @if(Auth::user()->role=='admin')
+          <li class="c-sidebar-nav-item c-sidebar-nav-dropdown">
+              <a class="c-sidebar-nav-link " href="{{ route('admin.plan') }}">
+                  <i class="c-sidebar-nav-icon fa fa-subway"></i> Manage Plan</a>
+          </li>
+      @endif
+
+      @if(Auth::user()->role=='admin')
+          <li class="c-sidebar-nav-item c-sidebar-nav-dropdown">
+              <a class="c-sidebar-nav-link " href="{{ route('admin.bookings') }}">
+                  <i class="c-sidebar-nav-icon fa fa-book"></i> Manage booking</a>
+          </li>
+      @endif
+
   @if(Auth::user()->role=='admin')
   <li class="c-sidebar-nav-item c-sidebar-nav-dropdown">
     <a class="c-sidebar-nav-link " href="{{ route('admin.banners.index') }}">
-      <i class="c-sidebar-nav-icon fa fa-inbox"></i> Manage Banner</a>
+      <i class="c-sidebar-nav-icon fa fa-bandcamp"></i> Manage Banner</a>
   </li>
   @endif
 

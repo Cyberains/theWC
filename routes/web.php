@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\BookingStatusController;
 use App\Http\Controllers\Admin\PlanController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Professional\Auth\RegisterController;
@@ -87,6 +88,10 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
         Route::get('plan/import', [PlanController::class,'import'])->name('import-plan');
         Route::get('plan/csv/sample', [PlanController::class,'downloadCSVSample'])->name('download_csv_sample-plan');
         Route::post('plan/import/csv', [PlanController::class,'importCSV'])->name('import_csv-plan');
+
+        // Plans
+        Route::get('bookings', [BookingStatusController::class,'index'])->name('bookings');
+        Route::get('bookings/search', [BookingStatusController::class,'itemSearch'])->name('search-bookings');
 
         // Brand
 		Route::get('brand', 'BrandController@index')->name('brand');

@@ -26,7 +26,7 @@ class BookingController extends Controller
         $data['service_name'] = $serviceDetail->title;
         $data['amount'] = $servicePrice;
 
-        if(razorpay($userName,$servicePrice) == 200){
+        if(razorpay() == 200){
             $this->service_assign_to_professionals($service_id,$user_id,$servicePrice);
             return response()->json([
                 'code' => 200,

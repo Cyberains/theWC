@@ -1,26 +1,24 @@
 @extends('admin.includes.main')
 @section('title')
-    
     <title>Purchase | Vendor Management</title>
-
 @endsection
 
 @section('btitle')
-    
+
     <li class="breadcrumb-item">Vendor Management</li>
 
 @endsection
 
 @section('btitle1')
-    
+
     <li class="breadcrumb-item">Purchase</li>
 
 @endsection
 
 @section('style')
-  
+
   <style type="text/css">
-    
+
     .chosen-container-single{
 
       width: 100% !important;
@@ -33,9 +31,9 @@
 
   <div class="container-fluid">
     <div class="fade-in">
-      
+
          <div class="row ">
-            <div class="col-xl-12 col-md-12 row">                            
+            <div class="col-xl-12 col-md-12 row">
             <div class="col-sm-7"></div>
                 <div class="col-sm-3">
                     <div class="form-group row">
@@ -48,8 +46,8 @@
                 <div class="col-sm-2">
                   <a href="{{ route('admin.create_purchase') }}" class="btn btn-sm btn-primary float-right mr-2" ><i class="fa fa-plus"></i>&nbspNew Purchase Order</a>
                 </div>
-            </div>                    
-        </div> 
+            </div>
+        </div>
 
         <div class="row bg-white mx-0 py-3 mt-2">
           <div class="col-md-12 table-responsive-sm">
@@ -76,9 +74,9 @@
               </table>
               <input type="hidden" name="hidden_page" id="hidden_page" value="1" />
           </div>
-         
-        </div>    
-     
+
+        </div>
+
       <!-- /.row-->
     </div>
   </div>
@@ -87,12 +85,11 @@
 
 @section('modal')
 
- 
+
 
 @endsection
 
 @section('script')
-  
   <script type="text/javascript">
 
         @if(Session::has('nmail'))
@@ -125,14 +122,14 @@
             let newTab = window.open();
             newTab.location.href = url;
 
-            setInterval(function(){ 
+            setInterval(function(){
 
               location.reload(true);
 
             }, 3000);
 
         @endif
-        
+
     $(document).ready(function(){
 
       $("#search").on('keyup', function() {
@@ -155,7 +152,7 @@
 
     $(document).on('click','.purchase-delete',function () {
 
-        var url = $(this).data('url'); 
+        var url = $(this).data('url');
         swal({
             title: "Are you sure?",
             text: "You want to delete this PO order!",

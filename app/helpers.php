@@ -489,9 +489,10 @@ function sendSms($mobile, $message, $tempid)
 	return $result;
 }
 
-function razorpay($userName,$amount)
+// $userName,$amount
+function razorpay()
 {
-    return "200";
+    return 200;
 }
 
 function generateOtp()

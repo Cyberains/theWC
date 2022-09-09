@@ -1,12 +1,12 @@
 @extends('admin.includes.main')
 @section('title')
-    <title>Subscriptions | Subscriptions Management</title>
+    <title>Bookings | Bookings Management</title>
 @endsection
 @section('btitle')
-    <li class="breadcrumb-item">Subscriptions Management</li>
+    <li class="breadcrumb-item">Bookings Management</li>
 @endsection
 @section('btitle1')
-    <li class="breadcrumb-item">Subscriptions</li>
+    <li class="breadcrumb-item">Bookings</li>
 @endsection
 @section('style')
     <style type="text/css">
@@ -34,9 +34,6 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-2">
-                        <button class="btn btn-sm btn-primary float-right" onclick="subscriptionAdd()"><i class="fa fa-plus"></i>&nbspAdd Subscription</button>
-                    </div>
                 </div>
             </div>
 
@@ -46,21 +43,16 @@
                         <thead>
                         <tr class="table-primary">
                             <th>Sr.No.</th>
-                            <th>Name</th>
-                            <th>Description</th>
-                            <th>Month</th>
-                            <th>Price</th>
-                            <th>Discount</th>
-                            <th>Final price</th>
-                            <th>Image</th>
-
-                            @if(Auth::user()->role == 'admin')
-                                <th>Action</th>
-                            @endif
+                            <th>Booking Id</th>
+                            <th>User Name</th>
+                            <th>Professional Name</th>
+                            <th>Service Name</th>
+                            <th>Amount</th>
+                            <th>Status</th>
                         </tr>
                         </thead>
                         <tbody id="searchresult">
-                        @include('admin.sub_plans.paggination_plans')
+                        @include('admin.booking.paggination_booking')
                         </tbody>
                     </table>
                     <input type="hidden" name="hidden_page" id="hidden_page" value="1" />
@@ -270,7 +262,7 @@
         function fetch_data(page, sort_type, sort_by, query)
         {
             $.ajax({
-                url:"plan/search?page="+page+"&sortby="+sort_by+"&sorttype="+sort_type+"&query="+query,
+                url:"bookings/search?page="+page+"&sortby="+sort_by+"&sorttype="+sort_type+"&query="+query,
                 success:function(data)
                 {
                     $('tbody').html('');
@@ -279,75 +271,5 @@
             })
         }
 
-        $(document).on('click','.category-delete',function () {
-            var url = $(this).data('url');
-            swal({
-                title: "Are you sure?",
-                text: "You want to delete this Subscription Plan.It will delete all data corresponding to this Subscription Plan",
-                icon: "warning",
-                buttons: [
-                    'No, cancel it!',
-                    'Yes, I am sure!'
-                ],
-                closeOnClickOutside: false,
-                dangerMode: true,
-            }).then(function(isConfirm){
-                if (isConfirm) {
-                    window.location.href=url;
-                }
-            });
-        });
-        function subscriptionAdd(){
-            let token = $('meta[name="csrf-token"]').attr('content');
-            let html ="";
-            $.ajax({
-                url:"{{ route('admin.add-plan') }}",
-                method:'GET',
-                data:{ _token:token },
-                success:function(data){
-                    let datas = $.parseJSON(data);
-                    if (datas) {
-                        $.each(datas, function(index, item) {
-                            html+='<option value="'+item.id+'">'+item.title+'</option>';
-                        });
-                        $('#add-subscription-modal #service').append(html);
-                        $('#add-subscription-modal').modal('show');
-                    }
-                }
-            });
-        }
-
-        function subscriptionEdit(id){
-            var token = $('meta[name="csrf-token"]').attr('content');
-            $.ajax({
-                url:"{{ route('admin.edit-plan') }}",
-                method:'POST',
-                data: {
-                    _token:token,
-                    id:id
-                },
-                success:function(data){
-                    if (data) {
-                        let datas = $.parseJSON(data);
-                        $('#id').val(datas.id);
-                        $('#plan-name').val(datas.name);
-                        $('#up-description').val(datas.description);
-                        $('#up-price').val(datas.price);
-                        $('#up-discount').val(datas.discount);
-
-                        $('#up-months').val(datas.months);
-
-                        // plan image
-                        if (datas.image != null) {
-                            $("#upload_plan_image").show();
-                            $("#upload_plan_image img").attr('src', "{{ asset('public/images/plans/') }}"+'/'+datas.image);
-                        }else{
-                            $("#upload_plan_image").hide();
-                        }
-                        $('#edit-subscription-modal').modal('show');
-                    }
-                }
-            });
-        }
     </script>
 @endsection

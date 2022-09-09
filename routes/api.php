@@ -173,6 +173,7 @@ Route::namespace('Api')->name('api.')->group(function(){
         Route::post('address-update',[AddressController::class,'storeAddress']);
         Route::get('address-view',[AddressController::class,'addressView']);
         Route::get('address-delete',[AddressController::class,'AddressDelete']);
+        Route::post('set-address-default',[AddressController::class,'setDefault']);
     });
 });
 

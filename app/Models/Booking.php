@@ -38,6 +38,11 @@ class Booking extends Model
         return $this->hasOne(User::class,'id','user_id');
     }
 
+    public function professional(): HasOne
+    {
+        return $this->hasOne(User::class,'id','professional_id');
+    }
+
     public function service(): HasOne
     {
         return $this->hasOne(Service::class,'id','service_id');
