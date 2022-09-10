@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\AddressController;
 use App\Http\Controllers\Api\BannerController;
+use App\Http\Controllers\Api\OfferOfTheDayController;
 use App\Http\Controllers\Api\Professional\BookingController;
 use App\Http\Controllers\Api\Professional\RatingController;
 use App\Http\Controllers\Api\ReferenceController;
@@ -134,6 +135,10 @@ Route::namespace('Api')->name('api.')->group(function(){
     // Banner
     Route::get('/banner',[BannerController::class,'getBanner']);
 
+    // Offer of the day
+    Route::get('offer-of-the-day',[OfferOfTheDayController::class,'offerOfTheDay']);
+    Route::post('offer-of-the-day-create',[OfferOfTheDayController::class,'create']);
+
     Route::middleware('auth:api')->group(function(){
 
         Route::post('logout/', 'UserController@logout');
@@ -172,7 +177,7 @@ Route::namespace('Api')->name('api.')->group(function(){
         Route::get('address-get',[AddressController::class,'showAllAddress']);
         Route::post('address-update',[AddressController::class,'storeAddress']);
         Route::get('address-view',[AddressController::class,'addressView']);
-        Route::get('address-delete',[AddressController::class,'AddressDelete']);
+        Route::post('address-delete',[AddressController::class,'AddressDelete']);
         Route::post('set-address-default',[AddressController::class,'setDefault']);
     });
 });
