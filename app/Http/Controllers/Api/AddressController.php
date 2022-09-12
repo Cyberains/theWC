@@ -31,7 +31,7 @@ class AddressController extends Controller
             'address_type' => $request->address_type,
             'mobile' => $request->mobile,
             'landmark' => $request->landmark,
-            'default' => '0'
+            'is_default' => '0'
         ];
 
         $address = Address::create($form_data);

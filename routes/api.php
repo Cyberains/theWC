@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\AddressController;
 use App\Http\Controllers\Api\BannerController;
+use App\Http\Controllers\Api\GiftVoucherController;
 use App\Http\Controllers\Api\OfferOfTheDayController;
 use App\Http\Controllers\Api\Professional\BookingController;
 use App\Http\Controllers\Api\Professional\RatingController;
@@ -182,6 +183,9 @@ Route::namespace('Api')->name('api.')->group(function(){
         Route::get('address-view',[AddressController::class,'addressView']);
         Route::post('address-delete',[AddressController::class,'AddressDelete']);
         Route::post('set-address-default',[AddressController::class,'setDefault']);
+
+        // Gift Voucher
+        Route::get('gift-voucher',[GiftVoucherController::class,'getVoucher']);
     });
 });
 
