@@ -9,4 +9,8 @@ class ReferralHistory extends Model
 {
     use HasFactory;
     protected $table = 'referral_history';
+
+    protected $fillable = [
+        'user_id','referred_user_id'
+    ];
 }

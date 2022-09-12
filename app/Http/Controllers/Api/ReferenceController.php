@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Refer;
 use App\Models\ReferralHistory;
+use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
@@ -90,6 +91,35 @@ class ReferenceController extends Controller
                 'code' => 422,
                 'status' => 0,
                 'message' => 'No Referral History data Exists.'
+            ]);
+        }
+    }
+
+    public function referGenerate(Request $request): JsonResponse
+    {
+        $request->validate([
+            'referred_code' => 'required',
+            'user_id' => 'required'
+        ]);
+
+        $referUserId = User::where(['refer_code'=>$request->referred_code])->first();
+        if (!empty($referUserId)) {
+            $ref = ReferralHistory::updateOrCreate([
+                'user_id' => $request->user_id,
+                'referred_user_id' => $referUserId->id
+            ]);
+            return response()->json([
+                'code' => 200,
+                'status' => 1,
+                'data' => $ref,
+                'message' => 'Referral Successfully Done.'
+            ]);
+        } else {
+            return response()->json([
+                'code' => 422,
+                'status' => 0,
+                'data' => [],
+                'message' => 'Plz Enter valid Referral Code.'
             ]);
         }
     }

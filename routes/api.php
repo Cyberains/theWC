@@ -139,6 +139,9 @@ Route::namespace('Api')->name('api.')->group(function(){
     Route::get('offer-of-the-day',[OfferOfTheDayController::class,'offerOfTheDay']);
     Route::post('offer-of-the-day-create',[OfferOfTheDayController::class,'create']);
 
+    // refer history Route
+    Route::post('refer-generate',[ReferenceController::class,'referGenerate']);
+
     Route::middleware('auth:api')->group(function(){
 
         Route::post('logout/', 'UserController@logout');
