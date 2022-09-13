@@ -9,6 +9,7 @@ use App\Http\Controllers\Api\Professional\RatingController;
 use App\Http\Controllers\Api\ReferenceController;
 use App\Http\Controllers\Api\ServiceController;
 use App\Http\Controllers\Api\UserController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*

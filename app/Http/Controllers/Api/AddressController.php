@@ -31,7 +31,6 @@ class AddressController extends Controller
             'address_type' => $request->address_type,
             'mobile' => $request->mobile,
             'landmark' => $request->landmark,
-            'is_default' => '0'
         ];
 
         $address = Address::create($form_data);
@@ -72,7 +71,7 @@ class AddressController extends Controller
             'state' => $request->state,
             'address_type' => $request->address_type,
             'mobile' => $request->mobile,
-            'landmark' => $request->landmark,
+            'landmark' => $request->landmark
         ];
         $address = Address::where('id', $request->id)->update($form_data);
 
@@ -132,25 +131,33 @@ class AddressController extends Controller
     public function setDefault(Request $request): JsonResponse
     {
         $address = Address::where(['user_id'=>$request->user()->id,'id' => $request->id])->first();
-        $address->default = 1;
-        if($address->save()){
-            $addresses  = Address::where(['user_id'=>$request->user()->id])->where('id','!=',$request->id)->get();
-            foreach ($addresses as $addr){
-                $addre = Address::where(['id' => $addr->id])->first();
-                $addre->default = 0;
-                $addre->save();
-            }
+        if($address != null){
+            $address->is_default = 1;
+            if($address->save()){
+                $addresses  = Address::where(['user_id'=>$request->user()->id])->where('id','!=',$request->id)->get();
+                foreach ($addresses as $addr){
+                    $addre = Address::where(['id' => $addr->id])->first();
+                    $addre->is_default = 0;
+                    $addre->save();
+                }
 
-            return response()->json([
-                'status' => 200,
-                'data' => $address,
-                'message' => 'Successfully Done.'
-            ]);
+                return response()->json([
+                    'status' => 200,
+                    'data' => $address,
+                    'message' => 'Successfully Done.'
+                ]);
+            }else{
+                return response()->json([
+                    'status' => 404,
+                    'data' => [],
+                    'message' => 'Something went wrong try Again.'
+                ]);
+            }
         }else{
             return response()->json([
                 'status' => 404,
                 'data' => [],
-                'message' => 'Something went wrong try Again.'
+                'message' => 'Plz enter right address.'
             ]);
         }
     }
