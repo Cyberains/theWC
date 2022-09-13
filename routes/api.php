@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\AddressController;
 use App\Http\Controllers\Api\BannerController;
+use App\Http\Controllers\Api\CouponController;
 use App\Http\Controllers\Api\GiftVoucherController;
 use App\Http\Controllers\Api\OfferOfTheDayController;
 use App\Http\Controllers\Api\Professional\BookingController;
@@ -143,6 +144,9 @@ Route::namespace('Api')->name('api.')->group(function(){
 
     // refer history Route
     Route::post('refer-generate',[ReferenceController::class,'referGenerate']);
+
+    // Coupon's
+    Route::get('coupons',[CouponController::class,'getCoupon']);
 
     Route::middleware('auth:api')->group(function(){
 

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateGiftVoucherTable extends Migration
+class CreateCouponCodeTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,13 @@ class CreateGiftVoucherTable extends Migration
      */
     public function up()
     {
-        Schema::create('gift_voucher', function (Blueprint $table) {
+        Schema::create('coupon_code', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('code')->unique();
-            $table->string('base_path');
-            $table->string('image')->nullable();
+            $table->string('coupon')->unique();
             $table->float('amount');
             $table->float('price_limit');
+            $table->dateTime('expire_date');
             $table->timestamps();
         });
     }
@@ -32,6 +31,6 @@ class CreateGiftVoucherTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('gift_voucher');
+        Schema::dropIfExists('coupon_code');
     }
 }
