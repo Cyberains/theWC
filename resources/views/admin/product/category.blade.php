@@ -115,15 +115,15 @@
               @csrf
               <div class="row " style="padding: 30px;">
 
-                  <div class="col-md-12">
-                      <div class="form-group">
-                          <label for="title">Service<span>*</span></label>
-                          <select class="form-control" name="service_id" id="service"  data-parsley-required
-                              data-parsley-required-message="service is required." >
-                            <option value=""></option>
-                          </select>
-                      </div>
-                  </div>
+{{--                  <div class="col-md-12">--}}
+{{--                      <div class="form-group">--}}
+{{--                          <label for="title">Service<span>*</span></label>--}}
+{{--                          <select class="form-control" name="service_id" id="service"  data-parsley-required--}}
+{{--                              data-parsley-required-message="service is required." >--}}
+{{--                            <option value=""></option>--}}
+{{--                          </select>--}}
+{{--                      </div>--}}
+{{--                  </div>--}}
                   <div class="col-md-12">
                       <div class="form-group">
                           <label for="title">Title<span>*</span></label>

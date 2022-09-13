@@ -49,7 +49,6 @@ class CategoryController extends Controller
     {
         $request->validate([
             'title' => 'required|unique:categories,title',
-            'service_id' => 'required|numeric',
             'category_image' => 'nullable|mimes:jpeg,png,jpg,gif|max:2048|dimensions:min_width=400,min_height=400',
         ]);
         if ($request->has('top_category')) {
@@ -72,7 +71,6 @@ class CategoryController extends Controller
             $imageName=null;
         }
             $category=new Category ();
-            $category->brand_id=$request->service_id;
             $category->title=$request->title;
             $category->image=$imageName;
             $category->description=$request->description;
