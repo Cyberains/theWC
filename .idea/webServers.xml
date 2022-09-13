@@ -5,7 +5,7 @@
       <webServer id="5a873157-2731-48ea-8f04-0e24d0b1414f" name="thewomancompany" url="thewomenscompany.in">
         <fileTransfer rootFolder="/var/www/html" accessType="SFTP" host="216.48.184.192" port="22" sshConfigId="42f6419f-928b-4db9-b221-9f0f6b9235d4" sshConfig="thewomancompany">
           <advancedOptions>
-            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" isUseRsync="true" />
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
           </advancedOptions>
         </fileTransfer>
       </webServer>

@@ -31,7 +31,7 @@ class RegisterController extends Controller
 
         $user = User::where(['mobile' => $request->mobile])->first();
 
-        if($user->count() > 0){
+        if($user != null){
             Alert::success('Mobile Number Already Used.', '');
             return view('professional.auth.register');
         }else{

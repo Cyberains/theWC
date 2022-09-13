@@ -196,7 +196,7 @@ class CustomerController extends Controller
     public function destroy($id)
     {
         User::find($id)->delete();
-        Session::flash('message', 'Customer deleted successfully.');
+        Session::flash('message', 'User deleted successfully.');
         return redirect()->route('admin.customer');
     }
 

@@ -97,14 +97,14 @@
               <a title="Active" style="@if($customer->is_active == 0)
 
                                       display:none;transition: 0.5s;
-                                                    
+
                                       @endif">
                 <i class="fa fa-toggle-on active-toggle-on" onclick="activeinactivetoggle(0,{{ $customer->id }})"></i>&nbsp</a>
 
               <a title="Inactive" style="@if($customer->is_active == 1)
 
                                   display:none;transition: 0.5s;
-                                
+
                                 @endif">
                 <i class="fa fa-toggle-off active-toggle-off" onclick="activeinactivetoggle(1,{{ $customer->id }})"></i>&nbsp</a>
 
@@ -148,8 +148,7 @@
                 <select class="form-control" type="text" name="role" id="role" value="{{ old('role') }}" data-parsley-required data-parsley-required-message="Role is required.">
                   <option value="">Enter Role</option>
                   <option value="user">User</option>
-                  <option value="vendor">Vendor</option>
-                  <option value="seller">Seller</option>
+                  <option value="Professional">Professional</option>
                 </select>
               </div>
             </div>
@@ -221,9 +220,9 @@
     $('.customer-delete').click(function() {
 
       var url = $(this).data('url');
-      swal({
+      swal.fire({
         title: "Are you sure?",
-        text: "You want to delete this Customer!",
+        text: "You want to delete this User!",
         icon: "warning",
         buttons: [
           'No, cancel it!',
