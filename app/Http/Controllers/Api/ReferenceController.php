@@ -69,7 +69,7 @@ class ReferenceController extends Controller
 
     public function referHistory(Request $request): JsonResponse
     {
-        $referrals = ReferralHistory::where(['user_id'=>$request->user()->id])->get();
+        $referrals = ReferralHistory::with('referredUser')->where(['user_id'=>$request->user()->id])->get();
 
         $su = 0;
         foreach ($referrals as $item){

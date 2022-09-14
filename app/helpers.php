@@ -13,6 +13,11 @@ function getProfessionalsRating($professional_id){
     return $rating ?? 0;
 }
 
+function getUserNumber($user_id){
+    $mobile = \App\Models\User::where('referred_user_id',$user_id)->first(['mobile']);
+    return $mobile ?? 0;
+}
+
 function get_mrp($mrp_price)
 {
 

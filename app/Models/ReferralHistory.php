@@ -13,4 +13,8 @@ class ReferralHistory extends Model
     protected $fillable = [
         'user_id','referred_user_id'
     ];
+
+    public function referredUser(){
+        return $this->hasOne(User::class,'id','referred_user_id')->select(['id','mobile']);
+    }
 }
