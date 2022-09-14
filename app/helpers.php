@@ -7,6 +7,12 @@ use App\Models\GSTRate;
 use App\Models\Address;
 use Illuminate\Http\JsonResponse;
 
+
+function getProfessionalsRating($professional_id){
+    $rating = \App\Models\Rating\Professional::where('professional_id',$professional_id)->avg('rating');
+    return $rating ?? 0;
+}
+
 function get_mrp($mrp_price)
 {
 

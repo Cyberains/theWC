@@ -402,7 +402,10 @@ class UserController extends Controller
 
     public function profile(Request $request): JsonResponse
     {
-        $user = User::where('id',$request->user()->id)->first();
+        $user = User::with(['getDefaultAddress'])->where('id',$request->user()->id)->first();
+        if($request->user()->role == 'Professional'){
+            $user['rating'] = getProfessionalsRating($user->id);
+        }
         return response()->json([
             'code' => 200,
             'status' => 1,
