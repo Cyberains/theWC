@@ -10,5 +10,6 @@ yarn-error.log
 .env
 /public/images
 /vendor
+/var
 
 

@@ -175,8 +175,10 @@ Route::namespace('Api')->name('api.')->group(function(){
         Route::post('service-booking',[BookingController::class,'booking']);
         Route::get('booking-history',[BookingController::class,'bookingHistory']);
 
-        // Rating : service done by professionals
+        // Rating
         Route::post('service-rating',[RatingController::class,'serviceRating']);
+        Route::post('professional-rating',[RatingController::class,'professionalRating']);
+        Route::post('app-rating',[RatingController::class,'appRating']);
 
         // refer history Route
         Route::get('refer-history/',[ReferenceController::class,'referHistory']);
