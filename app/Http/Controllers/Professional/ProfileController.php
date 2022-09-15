@@ -15,6 +15,9 @@ class ProfileController extends Controller
         $user = User::where(['id' => $request->user()->id])->first([
             'name','email','role','mobile','experience','qualification','working_location','upload_photo'
         ]);
+        $user['rating'] = getProfessionalsRating($request->user()->id);
+//        echo '<pre>';
+//        print_r($user);die();
         return view('professional.profile.profile',compact(['user']));
     }
 

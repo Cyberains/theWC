@@ -428,6 +428,6 @@ Route::namespace('Professional')->prefix('professional')->name('professional.')-
         Route::get('service-history/search', [ServiceHistoryController::class,'itemSearch'])->name('search-service-history');
 
         // Professional Rating
-        Route::get('service-rating',[ServiceRatingController::class,'serviceRating'])->name('service-rating');
+        Route::get('professional-rating',[\App\Http\Controllers\Professional\RatingController::class,'professionalRating'])->name('professional-rating');
     });
 });

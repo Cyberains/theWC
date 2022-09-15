@@ -34,13 +34,18 @@
                         </h6>
                         <p class="proile-rating">RANKINGS :
                             <span>
-                                <td>
-                                    <span class="fa fa-star" style="color: orange"></span>
-                                    <span class="fa fa-star" style="color: orange"></span>
-                                    <span class="fa fa-star" style="color: orange"></span>
-                                    <span class="fa fa-star" style="color: orange"></span>
-                                    <span class="fa fa-star"></span>
-                                </td>
+                                @foreach(range(1,5) as $i)
+                                    @if($user->rating >0)
+                                        @if($user->rating >0.5)
+                                            <span class="fa fa-star" style="color: orange"></span>
+                                        @else
+                                            <span class="fa fa-star-half-o" style="color: orange"></span>
+                                        @endif
+                                    @else
+                                        <span class="fa  fa-star-o" style="color: orange"></span>
+                                    @endif
+                                        <?php $user->rating--; ?>
+                                @endforeach
                             </span>
                         </p>
                         <ul class="nav nav-tabs" id="myTab" role="tablist">

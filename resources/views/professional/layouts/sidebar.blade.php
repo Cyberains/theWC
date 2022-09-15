@@ -15,7 +15,7 @@
         <li class="c-sidebar-nav-item c-sidebar-nav-dropdown"><a class="c-sidebar-nav-link c-sidebar-nav-dropdown-toggle" href="#">
             <i class="c-sidebar-nav-icon fa fa-users"></i>Information</a>
           <ul class="c-sidebar-nav-dropdown-items">
-            <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="{{ route('professional.service-rating') }}"><span class="c-sidebar-nav-icon"></span>Services Ratings</a></li>
+            <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="{{ route('professional.professional-rating') }}"><span class="c-sidebar-nav-icon"></span>Ratings</a></li>
           </ul>
         </li>
     @endif

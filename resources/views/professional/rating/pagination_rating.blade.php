@@ -3,46 +3,20 @@
         <tr>
             <td>{{ (($current_page-1)*25)+$loop->iteration }}</td>
             <td>{{ $rating->getUser->name }}</td>
-            <td>{{ $rating->getService->title }}</td>
-            @if($rating->rating == 5 )
-                <span class="fa fa-star" style="color: orange"></span>
-                <span class="fa fa-star" style="color: orange"></span>
-                <span class="fa fa-star" style="color: orange"></span>
-                <span class="fa fa-star" style="color: orange"></span>
-                <span class="fa fa-star" style="color: orange"></span>
-            @elseif($rating->rating == 4)
-                <td>
-                    <span class="fa fa-star" style="color: orange"></span>
-                    <span class="fa fa-star" style="color: orange"></span>
-                    <span class="fa fa-star" style="color: orange"></span>
-                    <span class="fa fa-star" style="color: orange"></span>
-                    <span class="fa fa-star"></span>
-                </td>
-            @elseif($rating->rating == 3)
-                <td>
-                    <span class="fa fa-star" style="color: orange"></span>
-                    <span class="fa fa-star" style="color: orange"></span>
-                    <span class="fa fa-star" style="color: orange"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                </td>
-            @elseif($rating->rating == 2)
-                <td>
-                    <span class="fa fa-star" style="color: orange"></span>
-                    <span class="fa fa-star" style="color: orange"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                </td>
-            @elseif($rating->rating == 1)
-                <td>
-                    <span class="fa fa-star" style="color: orange"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                </td>
-            @endif
+            <td>
+                @foreach(range(1,5) as $i)
+                    @if($rating->rating >0)
+                        @if($rating->rating >0.5)
+                            <span class="fa fa-star" style="color: orange"></span>
+                        @else
+                            <span class="fa fa-star-half-o" style="color: orange"></span>
+                        @endif
+                    @else
+                        <span class="fa  fa-star-o" style="color: orange"></span>
+                    @endif
+                        <?php $rating->rating--; ?>
+                @endforeach
+            </td>
             <td>{{ $rating->comment }}</td>
             <td>{{ $rating->created_at->diffForHumans() }}</td>
         </tr>
