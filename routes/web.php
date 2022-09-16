@@ -427,7 +427,19 @@ Route::namespace('Professional')->prefix('professional')->name('professional.')-
         Route::get('service-history',[ServiceHistoryController::class,'serviceHistory'])->name('service-history');
         Route::get('service-history/search', [ServiceHistoryController::class,'itemSearch'])->name('search-service-history');
 
+        //Route::get('service-history-done',[ServiceHistoryController::class,'serviceHistoryDone'])->name('service-history-done');
+
         // Professional Rating
         Route::get('professional-rating',[\App\Http\Controllers\Professional\RatingController::class,'professionalRating'])->name('professional-rating');
     });
 });
+
+
+//public function serviceHistoryDone(Request $request){
+//    $service_history_done = Booking::with(['user','service'])
+//        ->where(['professional_id'=>$request->user()->id])
+//        ->orderBy('created_at','DESC')
+//        ->paginate(15);
+//    $current_page_done = $service_history_done->currentPage();
+//    return view('professional.service.service_history',compact(['service_history_done','current_page_done']));
+//}

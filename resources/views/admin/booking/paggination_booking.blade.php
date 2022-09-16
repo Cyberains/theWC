@@ -6,7 +6,11 @@
             <td>{{ (($currentpage-1)*25)+$loop->iteration }}</td>
             <td>{{ $booking->bookingId }}</td>
             <td>{{ $booking->user->name }}</td>
-            <td>{{ $booking->professional->name }}</td>
+            @if(@@$booking->professional->name == null)
+                <td style="background-color: #9f191f">{{ @@$booking->professional->name }}</td>
+            @elseif(@@$booking->professional->name != null)
+                <td>{{ @@$booking->professional->name }}</td>
+            @endif
             <td>{{ $booking->service->title }}</td>
             <td>{{ $booking->amount }} ₹</td>
             <td>{{ $booking->status }}</td>

@@ -13,6 +13,11 @@ function getProfessionalsRating($professional_id){
     return $rating ?? 0;
 }
 
+function getProfessionalFreeStatus($professional_id){
+    $user = \App\Models\User::where('id',$professional_id)->first();
+    return $user->is_free == 0 ? true : false;
+}
+
 function getUserNumber($user_id){
     $mobile = \App\Models\User::where('referred_user_id',$user_id)->first(['mobile']);
     return $mobile ?? 0;
