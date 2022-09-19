@@ -18,6 +18,11 @@ function getProfessionalFreeStatus($professional_id){
     return $user->is_free == 0 ? true : false;
 }
 
+function getAllBookingStatusDone($professional_id){
+    $book = \App\Models\Booking::whereIn('status',['processing','pending'])->where('professional_id',$professional_id)->count();
+    return $book;
+}
+
 function getUserNumber($user_id){
     $mobile = \App\Models\User::where('referred_user_id',$user_id)->first(['mobile']);
     return $mobile ?? 0;

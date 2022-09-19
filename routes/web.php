@@ -427,7 +427,7 @@ Route::namespace('Professional')->prefix('professional')->name('professional.')-
         Route::get('service-history',[ServiceHistoryController::class,'serviceHistory'])->name('service-history');
         Route::get('service-history/search', [ServiceHistoryController::class,'itemSearch'])->name('search-service-history');
 
-        //Route::get('service-history-done',[ServiceHistoryController::class,'serviceHistoryDone'])->name('service-history-done');
+        Route::get('service-status-up',[ServiceHistoryController::class,'updateStatus'])->name('service-status-up');
 
         // Professional Rating
         Route::get('professional-rating',[\App\Http\Controllers\Professional\RatingController::class,'professionalRating'])->name('professional-rating');
