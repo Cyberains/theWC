@@ -12,12 +12,10 @@ use RealRashid\SweetAlert\Facades\Alert;
 class ProfileController extends Controller
 {
     public function profile(Request $request){
-        $user = User::where(['id' => $request->user()->id])->first([
-            'name','email','role','mobile','experience','qualification','working_location','upload_photo'
-        ]);
+        $user = User::with(['getDefaultAddress'])->where(['id' => $request->user()->id])->first();
         $user['rating'] = getProfessionalsRating($request->user()->id);
-//        echo '<pre>';
-//        print_r($user);die();
+        $addr = $user['getDefaultAddress'];
+        $user['def_address'] = @@$addr['house_no'] .' '. @@$addr['area'] .' '. @@$addr['city'].' '. @@$addr['state'].' '. @@$addr['zipcode'];
         return view('professional.profile.profile',compact(['user']));
     }
 

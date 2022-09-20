@@ -21,6 +21,7 @@ class CreateBookingsTable extends Migration
             $table->unsignedBigInteger('professional_id');
             $table->float('amount');
             $table->enum('status',['pending','processing','done','failed']);
+            $table->unsignedBigInteger('user_service_address_id');
             $table->timestamps();
         });
     }

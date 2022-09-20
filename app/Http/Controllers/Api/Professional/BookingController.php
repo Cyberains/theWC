@@ -15,6 +15,7 @@ class BookingController extends Controller
     {
         $service_id = $request->service_id;
         $user_id = $request->user()->id;
+        $address_id = $request->address_id;
 
         $serviceDetail =  Service::where(['id' => $service_id])->first();
         $userDetail = User::where('id',$user_id)->first();
@@ -27,7 +28,7 @@ class BookingController extends Controller
         $data['amount'] = $servicePrice;
 
         if(razorpay() == 200){
-            $this->service_assign_to_professionals($service_id,$user_id,$servicePrice);
+            $this->service_assign_to_professionals($service_id,$user_id,$servicePrice,$address_id);
             return response()->json([
                 'code' => 200,
                 'status' => 1,
@@ -56,72 +57,80 @@ class BookingController extends Controller
         }
     }
 
-    private function service_assign_to_professionals($service_id,$user_id,$servicePrice){
+    private function service_assign_to_professionals($service_id,$user_id,$servicePrice,$address_id){
         $findProfessionals = User::where(['role' => 'Professional','is_active' => 1])->orderBy('paid_role','DESC')->get();
         foreach ($findProfessionals as $professional){
-            if($professional->paid_role == 1 && getProfessionalsRating($professional->id) >= 3 && getProfessionalFreeStatus($professional->id) === true){
-                Booking::create([
-                    'user_id' => $user_id,
-                    'service_id' => $service_id,
-                    'amount' => $servicePrice,
-                    'professional_id' => $professional->id
-                ]);
-                break;
-            }
-           elseif ($professional->paid_role == 1 && getProfessionalsRating($professional->id) >= 2 && getProfessionalFreeStatus($professional->id) === true){
-                Booking::create([
-                    'user_id' => $user_id,
-                    'service_id' => $service_id,
-                    'amount' => $servicePrice,
-                    'professional_id' => $professional->id
-                ]);
-                break;
-            }
-           elseif ($professional->paid_role == 1 && getProfessionalFreeStatus($professional->id) === true){
-                Booking::create([
-                    'user_id' => $user_id,
-                    'service_id' => $service_id,
-                    'amount' => $servicePrice,
-                    'professional_id' => $professional->id
-                ]);
-                break;
-           }
-            elseif ($professional->paid_role == 0 && getProfessionalsRating($professional->id) >= 3 && getProfessionalFreeStatus($professional->id) === true){
-                Booking::create([
-                    'user_id' => $user_id,
-                    'service_id' => $service_id,
-                    'amount' => $servicePrice,
-                    'professional_id' => $professional->id
-                ]);
-                break;
-            }
-            elseif ($professional->paid_role == 0 && getProfessionalsRating($professional->id) >= 2 && getProfessionalFreeStatus($professional->id) === true){
-                Booking::create([
-                    'user_id' => $user_id,
-                    'service_id' => $service_id,
-                    'amount' => $servicePrice,
-                    'professional_id' => $professional->id
-                ]);
-                break;
-            }
-            elseif ($professional->paid_role == 0 && getProfessionalFreeStatus($professional->id) === true){
-                Booking::create([
-                    'user_id' => $user_id,
-                    'service_id' => $service_id,
-                    'amount' => $servicePrice,
-                    'professional_id' => $professional->id
-                ]);
-                break;
-            }
-            elseif (getProfessionalFreeStatus($professional->id) === false){
-                Booking::create([
-                    'user_id' => $user_id,
-                    'service_id' => $service_id,
-                    'amount' => $servicePrice
-                ]);
-                break;
+            if(getDistanceBtwUserAndProfessional($address_id,$professional->id) <= 10){
+                if($professional->paid_role == 1 && getProfessionalsRating($professional->id) >= 3 && getProfessionalFreeStatus($professional->id) === true){
+                    Booking::create([
+                        'user_id' => $user_id,
+                        'service_id' => $service_id,
+                        'amount' => $servicePrice,
+                        'professional_id' => $professional->id,
+                        'user_service_address_id' => $address_id
+                    ]);
+                    break;
+                }
+                elseif ($professional->paid_role == 1 && getProfessionalsRating($professional->id) >= 2 && getProfessionalFreeStatus($professional->id) === true){
+                    Booking::create([
+                        'user_id' => $user_id,
+                        'service_id' => $service_id,
+                        'amount' => $servicePrice,
+                        'professional_id' => $professional->id,
+                        'user_service_address_id' => $address_id
+                    ]);
+                    break;
+                }
+                elseif ($professional->paid_role == 1 && getProfessionalFreeStatus($professional->id) === true){
+                    Booking::create([
+                        'user_id' => $user_id,
+                        'service_id' => $service_id,
+                        'amount' => $servicePrice,
+                        'professional_id' => $professional->id,
+                        'user_service_address_id' => $address_id
+                    ]);
+                    break;
+                }
+                elseif ($professional->paid_role == 0 && getProfessionalsRating($professional->id) >= 3 && getProfessionalFreeStatus($professional->id) === true){
+                    Booking::create([
+                        'user_id' => $user_id,
+                        'service_id' => $service_id,
+                        'amount' => $servicePrice,
+                        'professional_id' => $professional->id,
+                        'user_service_address_id' => $address_id
+                    ]);
+                    break;
+                }
+                elseif ($professional->paid_role == 0 && getProfessionalsRating($professional->id) >= 2 && getProfessionalFreeStatus($professional->id) === true){
+                    Booking::create([
+                        'user_id' => $user_id,
+                        'service_id' => $service_id,
+                        'amount' => $servicePrice,
+                        'professional_id' => $professional->id,
+                        'user_service_address_id' => $address_id
+                    ]);
+                    break;
+                }
+                elseif ($professional->paid_role == 0 && getProfessionalFreeStatus($professional->id) === true){
+                    Booking::create([
+                        'user_id' => $user_id,
+                        'service_id' => $service_id,
+                        'amount' => $servicePrice,
+                        'professional_id' => $professional->id,
+                        'user_service_address_id' => $address_id
+                    ]);
+                    break;
+                }
+                elseif (getProfessionalFreeStatus($professional->id) === false){
+                    Booking::create([
+                        'user_id' => $user_id,
+                        'service_id' => $service_id,
+                        'amount' => $servicePrice,
+                        'user_service_address_id' => $address_id
+                    ]);
+                    break;
+                }
             }
         }
-
     }
 }

@@ -27,6 +27,8 @@ class CreateAddressesTable extends Migration
             $table->string('state')->nullable();
             $table->string('country')->nullable();
             $table->string('address_type')->nullable();
+            $table->string('latitude')->nullable();
+            $table->string('longitude')->nullable();
             $table->boolean('is_default')->default(0);
             $table->boolean('is_active')->default(1);
             $table->timestamps();

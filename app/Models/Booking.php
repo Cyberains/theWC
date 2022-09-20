@@ -15,7 +15,8 @@ class Booking extends Model
         'user_id',
         'service_id',
         'amount',
-        'professional_id'
+        'professional_id',
+        'user_service_address_id'
     ];
 
     protected static function boot()

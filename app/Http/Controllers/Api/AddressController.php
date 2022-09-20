@@ -31,6 +31,8 @@ class AddressController extends Controller
             'address_type' => $request->address_type,
             'mobile' => $request->mobile,
             'landmark' => $request->landmark,
+            'latitude' => $request->latitude,
+            'longitude' => $request->longitude
         ];
 
         $address = Address::create($form_data);
@@ -71,7 +73,9 @@ class AddressController extends Controller
             'state' => $request->state,
             'address_type' => $request->address_type,
             'mobile' => $request->mobile,
-            'landmark' => $request->landmark
+            'landmark' => $request->landmark,
+            'latitude' => $request->latitude,
+            'longitude' => $request->longitude
         ];
         $address = Address::where('id', $request->id)->update($form_data);
 

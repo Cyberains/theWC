@@ -55,6 +55,6 @@ class User extends Authenticatable
 
     public  function getDefaultAddress()
     {
-        return $this->hasMany('App\Models\Address','user_id','id')->where('is_default',1);
+        return $this->hasOne('App\Models\Address','user_id','id')->where('is_default',1);
     }
 }
