@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Booking;
+use App\Models\User;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class BookingStatusController extends Controller
 {
@@ -30,6 +32,17 @@ class BookingStatusController extends Controller
                     <td colspan="4">No matching records found</td>
                 </tr>
             <?php }
+        }
+    }
+
+    public function assignProfessional(Request $request){
+        $booking = Booking::where(['bookingId'=>$request->booking_id])->first();
+        $booking->professional_id = $request->professional_id;
+        if($booking->save()){
+            $user = User::where('id',$request->professional_id)->first();
+            $user->is_free = 1;
+            $user->save();
+            return redirect()->route('admin.bookings');
         }
     }
 }

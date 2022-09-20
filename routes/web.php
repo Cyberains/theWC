@@ -92,6 +92,7 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
         // Plans
         Route::get('bookings', [BookingStatusController::class,'index'])->name('bookings');
         Route::get('bookings/search', [BookingStatusController::class,'itemSearch'])->name('search-bookings');
+        Route::post('/assign-prof',[BookingStatusController::class,'assignProfessional'])->name('assign-prof');
 
         // Brand
 		Route::get('brand', 'BrandController@index')->name('brand');

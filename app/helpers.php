@@ -5,8 +5,13 @@ use App\Models\Product;
 use App\Models\ProductExpiry;
 use App\Models\GSTRate;
 use App\Models\Address;
+use App\Models\User;
 use Illuminate\Http\JsonResponse;
 
+
+function getAllPaidProfessionals(){
+     return User::where(['role'=>'Professional','paid_role' => 1])->get();
+}
 
 function getProfessionalsRating($professional_id){
     $rating = \App\Models\Rating\Professional::where('professional_id',$professional_id)->avg('rating');
