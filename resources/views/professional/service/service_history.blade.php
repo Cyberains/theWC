@@ -52,6 +52,7 @@
                             <th>Amount</th>
                             <th>Status</th>
                             <th>Time</th>
+                            <th>Action</th>
                         </tr>
                         </thead>
                         <tbody id="searchresult">
@@ -59,6 +60,68 @@
                         </tbody>
                     </table>
                     <input type="hidden" name="hidden_page" id="hidden_page" value="1" />
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection
+
+@section('modal')
+    <div class="modal fade" id="view-user-location-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog modal-lg" role="document" style="max-width: 600px;">
+            <div class="modal-content">
+                <div class="modal-header py-3">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h3 class="text-center">Client location</h3>
+
+                    <div id="map"></div>
+
+                    <form class="sform form" method="post" action="{{ route('admin.update-city') }}">
+                        @csrf
+                        <input type="text" name="id" value="" id="id" hidden="hidden">
+                        <div class="row " style="padding: 30px;">
+                            <div class="col-md-12">
+                                <div class="form-group ">
+                                    <input type="checkbox" id="location-status">
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <button  type="submit" class="btn btn-primary" style="float: right;">Save</button>
+                                    <button type="button" class="btn btn-danger" style="float: right;margin-right: 10px;" data-dismiss="modal">X</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="view-booking-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog modal-lg" role="document" style="max-width: 600px;">
+            <div class="modal-content">
+                <div class="modal-header py-3">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h3 class="text-center">Booking Details</h3>
+                    <div class="row " style="padding: 30px;">
+                        <p id="getBookingId"></p>
+
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <button type="button" class="btn btn-danger" style="float: right;margin-right: 10px;" data-dismiss="modal">X</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -102,6 +165,30 @@
                     $('tbody').html(data);
                 }
             })
+        }
+    </script>
+    <script>
+        function viewMap() {
+            $('#view-user-location-modal').modal('show');
+        }
+
+        function viewBooking(id) {
+            let token = $('meta[name="csrf-token"]').attr('content');
+            $.ajax({
+                url:"{{ route('professional.service-view') }}",
+                method:'GET',
+                data: {
+                    _token:token,
+                    id:id
+                },
+                success:function(data){
+                    if (data) {
+                        let datas = $.parseJSON(data);
+                        $('#getBookingId').text(datas.bookingId);
+                        $('#view-booking-modal').modal('show');
+                    }
+                }
+            });
         }
     </script>
 @endsection

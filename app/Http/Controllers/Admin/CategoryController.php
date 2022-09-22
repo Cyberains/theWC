@@ -23,7 +23,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categorydata = Category::select(\DB::raw('categories.*, brands.title as service'))->leftJoin('brands','brands.id','=','categories.brand_id')->paginate(25);
+        $categorydata = Category::select(\DB::raw('categories.*'))->paginate(25);
         $currentpage = $categorydata->currentPage();
         return view('admin.product.category',compact(['categorydata','currentpage']));
     }

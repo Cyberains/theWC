@@ -8,6 +8,7 @@ use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Cms;
 use App\Models\Contact;
+use App\Models\Service;
 use App\Models\WhyChooseUs;
 use App\Models\WorldCity;
 use Illuminate\Http\Request;
@@ -24,16 +25,13 @@ class HomeController extends Controller
             ->orderBy('id', 'desc')
             ->get();
 
-        $service = Brand::select('brands.id', 'brands.title', 'brands.image')
-            ->leftJoin('categories', 'brands.id', 'categories.brand_id')
-            ->whereNotNull('categories.brand_id')
-            ->orderBy('id', 'desc')
-            ->get();
+//        $service = Service::select('brands.id', 'brands.title', 'brands.image')
+//            ->leftJoin('categories', 'brands.id', 'categories.brand_id')
+//            ->whereNotNull('categories.brand_id')
+//            ->orderBy('id', 'desc')
+//            ->get();
 
         $category = Category::select('categories.id', 'categories.title', 'categories.image')
-            ->leftJoin('products', 'categories.id', '=', 'products.category_id')
-            ->whereNotNull('products.category_id')
-            ->groupBy('products.category_id')
             ->orderBy('categories.id', 'desc')
             ->get();
 
@@ -42,7 +40,7 @@ class HomeController extends Controller
             ->orderBy('id', 'desc')
             ->get();
 
-        return view('spa.index', compact('banners', 'service', 'whychoous', 'category'));
+        return view('spa.index', compact('banners', 'whychoous', 'category'));
     }
 
 

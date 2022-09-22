@@ -75,14 +75,12 @@
             <h2>Our Professionals Services For You</h2>
         </div>
         <div class="row service_load">
-            @if($service->count())
-            @foreach($service as $item)
+            @if($category->count())
+            @foreach($category as $item)
             <div class="col-lg-3 col-sm-3 text-center ">
                 <div class="single-offer">
-                    <a href="{{route('spa.services.category',$item->id)}}">
-                        <img src="{{asset('public/images/brand/'.$item->image)}}" height="60" width="60" style="border-radius:100%">
-                        <h3>{{$item->title}}</h3>
-                    </a>
+                    <img src="{{asset('/public/images/category/'.$item->image)}}" height="60" width="60" style="border-radius:100%">
+                    <h3>{{$item->title}}</h3>
                 </div>
             </div>
             @endforeach
@@ -331,7 +329,7 @@
                     <a href="{{route('spa.services.category')}}` + "/" + item.id + `">
                     <img src="public/images/brand/` + item.image + `" height="60" width="60" style="border-radius:100%">
                         <h3>` + item.title + `</h3>
-                        
+
                     </a>
                 </div>
             </div>`;

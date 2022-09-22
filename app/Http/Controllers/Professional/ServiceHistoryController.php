@@ -67,4 +67,9 @@ class ServiceHistoryController extends Controller
             return redirect()->back();
         }
     }
+
+    public function view(Request $request){
+        $booking = Booking::with(['user','service','bookingAddress'])->where(['id' => $request->id])->first();
+        echo $booking;
+    }
 }
