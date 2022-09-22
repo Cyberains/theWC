@@ -196,6 +196,13 @@
 
                             <div class="col-md-12">
                                 <div class="form-group">
+                                    <label for="price">Description</label>
+                                    <textarea class="form-control" type="text" name="description" placeholder="Enter Description" id="editor"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="form-group">
                                     <button  type="submit" name="student-submit" class="btn btn-primary" style="float: right;">Save</button>
                                     <button type="button" class="btn btn-danger" style="float: right;margin-right: 10px;" data-dismiss="modal">Close</button>
                                 </div>
@@ -277,6 +284,13 @@
                                         <option value="New">New</option>
                                         <option value="Exclusive">Exclusive</option>
                                     </select>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="price">Description</label>
+                                    <textarea class="form-control" type="text" name="description" placeholder="Enter Description" id="editor up-service-description"></textarea>
                                 </div>
                             </div>
 
@@ -370,6 +384,8 @@
                         });
                         $('#add-service-modal #service').append(html);
                         $('#add-service-modal').modal('show');
+                        console.log(datas.description);
+                        console.log('1111111111111111111111111111');
                     }
                 }
             });
@@ -413,7 +429,7 @@
                         $('#up-price').val(datas.price);
                         $('#up-discount').val(datas.discount);
                         $('#up-tag').val(datas.tag);
-
+                        $('#up-service-description').val(datas.description);
                         $('#edit-service-modal').modal('show');
                     }
                 }

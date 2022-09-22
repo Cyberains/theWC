@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\BookingStatusController;
 use App\Http\Controllers\Admin\PlanController;
 use App\Http\Controllers\Admin\ServiceController;
+use App\Http\Controllers\Lead\LeadController;
 use App\Http\Controllers\Professional\Auth\RegisterController;
 use App\Http\Controllers\Professional\DashboardController;
 use App\Http\Controllers\Professional\ProfileController;
@@ -23,6 +24,11 @@ use const App\Http\Controllers\Admin\CityController;
 */
 
 Auth::routes();
+
+
+Route::get('/lead',[LeadController::class,'index'])->name('get-lead');
+Route::post('/lead',[LeadController::class,'store'])->name('post-lead');
+Route::get('/lead-mail',[LeadController::class,'getMails'])->name('lead-mail');
 
 Route::get('events', function () {
 

@@ -107,7 +107,7 @@
                   </div>
                   <div class="col-md-12">
                     <div class="form-group">
-                        <label for="title">Title<span>*</span></label>
+                        <label for="title">Title of the SubCategory<span>*</span></label>
                         <input class="form-control" type="text" name="title" id="title"
                         value="{{ old('title') }}" placeholder="Enter SubCategory Title"  data-parsley-required
                             data-parsley-required-message="SubCategory Name is required.">
@@ -125,7 +125,7 @@
 
                   <div class="col-md-12">
                       <div class="form-group">
-                          <label for="price">Description</label>
+                          <label for="price">Description of the SubCategory</label>
                           <textarea class="form-control" type="text" name="description" id="description" placeholder="Enter Description"></textarea>
                       </div>
                   </div>
@@ -187,7 +187,7 @@
 
                   <div class="col-md-12">
                       <div class="form-group ">
-                          <label for="title">Title<span>*</span></label>
+                          <label for="title">Title of the SubCategory<span>*</span></label>
                           <input class="form-control" type="text" name="title" id="edit_subcategory_name"
                           value="" placeholder="Enter SubCategory Title">
                       </div>
@@ -195,7 +195,7 @@
 
                   <div class="col-md-12">
                       <div class="form-group">
-                          <label for="price">Description</label>
+                          <label for="price">Description of the SubCategory</label>
                           <textarea class="form-control" type="text" name="description" placeholder="Enter Description" id="edit_subcategory_description"></textarea>
                       </div>
                   </div>

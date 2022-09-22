@@ -130,7 +130,7 @@ class SubCategoryController extends Controller
 
         $update->title = $request->title;
         $update->description = $request->description;
-        $update->image = $imageName;
+        $update->image = $imageName ?? $update->image;
         $update->save();
 
         Session::flash('message', 'SubCategory updated successfully.');
