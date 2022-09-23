@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Api\Professional;
 
 use App\Http\Controllers\Controller;
-use App\Models\Booking;
+use App\Models\Booking\Booking;
+use App\Models\Booking\BookingService;
+use App\Models\Booking\BookingServicePayment;
 use App\Models\Service;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
@@ -11,28 +13,56 @@ use Illuminate\Http\Request;
 
 class BookingController extends Controller
 {
-    public function booking(Request $request)
+    public function bookingService(Request $request)
     {
         $service_id = $request->service_id;
-        $user_id = $request->user()->id;
-        $address_id = $request->address_id;
 
-        $serviceDetail =  Service::where(['id' => $service_id])->first();
-        $userDetail = User::where('id',$user_id)->first();
+        $form_booking = [
+            'user_id' => $request->user()->id,
+            'status' => 'pending',
+            'user_service_address_id' => $request->address_id,
+            'time_slot' => $request->time_slot,
+            'date_slot' => $request->date_slot
+        ];
+        $booking = Booking::create($form_booking);
 
-        $servicePrice = $serviceDetail->discounted_price;
-        $userName = $userDetail->name;
+        $services =  Service::whereIn('id',$service_id)->get();
+        $servicesAmount =  Service::whereIn('id',$service_id)->sum('discounted_price');
 
-        $data['name'] = $userName;
-        $data['service_name'] = $serviceDetail->title;
-        $data['amount'] = $servicePrice;
-
-        if(razorpay() == 200){
-            $this->service_assign_to_professionals($service_id,$user_id,$servicePrice,$address_id);
+        foreach ($services as $service){
+            BookingService::create([
+                'booking_id' => $booking->bookingId,
+                'service_id' => $service->id,
+                'mrp' => $service->price,
+                'discount'=> $service->discount,
+                'price' => $service->discounted_price
+            ]);
+        }
+        if($booking){
             return response()->json([
                 'code' => 200,
                 'status' => 1,
-                'data' => $data,
+                'data' => $booking,
+                'totalAmount' => $servicesAmount,
+                'message' => 'Now go on Payment Page.',
+            ]);
+        }
+    }
+
+    public function bookingPayment(Request $request){
+        $form_data = [
+            'booking_id' => $request->booking_id,
+            'payment_id' => $request->payment_id,
+            'payment_status' => $request->payment_status,
+            'settlement_date' => $request->settlement_date,
+            'settlement_status' => $request->settlement_status,
+        ];
+        $booking = BookingServicePayment::create($form_data);
+        if($booking){
+            return response()->json([
+                'code' => 200,
+                'status' => 1,
+                'data' => $booking,
                 'message' => 'Booking Done.',
             ]);
         }

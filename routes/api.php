@@ -172,7 +172,8 @@ Route::namespace('Api')->name('api.')->group(function(){
 //        Route::get('professionalProfile',[UserController::class,'professionalProfile']);
 
         // Booking
-        Route::post('service-booking',[BookingController::class,'booking']);
+        Route::post('service-booking',[BookingController::class,'bookingService']);
+        Route::post('service-payment',[BookingController::class,'bookingPayment']);
         Route::get('booking-history',[BookingController::class,'bookingHistory']);
 
         // Rating

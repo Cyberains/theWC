@@ -1,21 +1,20 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Booking;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Service;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Booking extends Model
 {
-    use HasFactory;
-
     protected $fillable = [
         'user_id',
         'service_id',
-        'amount',
         'professional_id',
-        'user_service_address_id'
+        'user_service_address_id',
+        'time_slot'
     ];
 
     protected static function boot()
@@ -35,22 +34,22 @@ class Booking extends Model
 
     public function user(): HasOne
     {
-        return $this->hasOne(User::class,'id','user_id');
+        return $this->hasOne(User::class, 'id', 'user_id');
     }
 
     public function professional(): HasOne
     {
-        return $this->hasOne(User::class,'id','professional_id');
+        return $this->hasOne(User::class, 'id', 'professional_id');
     }
 
     public function service(): HasOne
     {
-        return $this->hasOne(Service::class,'id','service_id');
+        return $this->hasOne(Service::class, 'id', 'service_id');
     }
 
     public function bookingAddress(): HasOne
     {
-        return $this->hasOne(Address::class,'id','user_service_address_id');
+        return $this->hasOne(Address::class, 'id', 'user_service_address_id');
     }
 
 }
