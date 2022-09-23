@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Lead;
 
 use App\Http\Controllers\Controller;
 use App\Models\Lead;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class LeadController extends Controller
@@ -34,10 +35,16 @@ class LeadController extends Controller
         }
     }
 
-    public function getMails(){
-        $mail = Lead::all();
-        if($mail->count() >= 1){
-            return view('lead.mail_index',['mail' => $mail]);
-        }
+    public function getMailsPage(){
+        return view('lead.mail_index');
+    }
+
+    public function getMails(): JsonResponse
+    {
+        $mail = Lead::where('created_at', '>=', date('Y-m-d').' 00:00:00');
+        return response()->json([
+            'status' => 200,
+            'data' => $mail
+        ]);
     }
 }

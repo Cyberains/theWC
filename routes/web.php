@@ -28,6 +28,7 @@ Auth::routes();
 
 Route::get('/lead',[LeadController::class,'index'])->name('get-lead');
 Route::post('/lead',[LeadController::class,'store'])->name('post-lead');
+Route::get('/lead-mail-page',[LeadController::class,'getMailsPage'])->name('lead-mail-page');
 Route::get('/lead-mail',[LeadController::class,'getMails'])->name('lead-mail');
 
 Route::get('events', function () {

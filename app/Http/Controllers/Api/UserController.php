@@ -427,9 +427,8 @@ class UserController extends Controller
             $image_base64 = base64_decode($image_parts[1]);
 
             $file1 = public_path('images/users/'.uniqid().'.'.$image_type);
-            $str_arr = preg_split ("/\//", $file1,4);
-            $file = 'https://'.$str_arr[3];
-
+            $str_arr = preg_split ("/\//", $file1,5);
+            $file = 'https://thewomenscompany.in/'.$str_arr[4];
             file_put_contents($file1, $image_base64);
         }
         else{
