@@ -35,13 +35,4 @@
             </li>
       @endif
     </ul>
-    <div class="c-subheader px-3">
-      <!-- Breadcrumb-->
-      <ol class="breadcrumb border-0 m-0">
-        @yield('btitle')
-        @yield('btitle1')
-        @yield('btitle2')
-        <!-- Breadcrumb Menu-->
-      </ol>
-    </div>
 </header>

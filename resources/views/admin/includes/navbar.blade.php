@@ -10,7 +10,7 @@
       <li class="c-header-nav-item d-md-down-none mx-2"><a class="c-header-nav-link" href="#">
           <i class="c-icon fa fa-bell"></i></a>
       </li>
-      
+
       <li class="c-header-nav-item d-md-down-none mx-2"><a class="c-header-nav-link" href="#">
           <i class="c-icon fa fa-envelope"></i></a>
       </li>
@@ -24,28 +24,17 @@
           <div class="dropdown-header bg-light py-2"><strong>Settings</strong></div>
           <a class="dropdown-item" href="#">
             <i class="c-icon mr-2 fa fa-user"></i> Profile</a>
-
             <a class="dropdown-item" href="{{ route('logout') }}"
-                       onclick="event.preventDefault();
-                                     document.getElementById('logout-form').submit();">
-            
-              <i class="c-icon mr-2 fa fa-sign-out"></i>{{ __('Logout') }}</a>
-
+               onclick="event.preventDefault();
+               document.getElementById('logout-form').submit();">
+                <i class="c-icon mr-2 fa fa-sign-out"></i>{{ __('Logout') }}
+            </a>
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                        @csrf
-                    </form>
-            
+                @csrf
+            </form>
+
         </div>
       </li>
       @endif
     </ul>
-    <div class="c-subheader px-3">
-      <!-- Breadcrumb-->
-      <ol class="breadcrumb border-0 m-0">
-        @yield('btitle')
-        @yield('btitle1')
-        @yield('btitle2')
-        <!-- Breadcrumb Menu-->
-      </ol>
-    </div>
 </header>
