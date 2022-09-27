@@ -7,7 +7,7 @@
             <td>{{ $service->title }}</td>
             <td><img src="{{ asset('public/images/services/'.$service->service_image) }}" height="30px"></td>
             <td><img src="{{ asset('public/images/services/'.$service->service_product_image) }}" height="30px"></td>
-            <td>{{ $service->service_time }} Hours</td>
+            <td>{{ $service->service_time }}</td>
             <td>{{ $service->price }} ₹</td>
             <td>{{ $service->discount }} ₹</td>
             <td>{{ $service->discounted_price }} ₹</td>

@@ -62,6 +62,11 @@ function getAllBookingStatusDone($professional_id){
     return $book;
 }
 
+
+function getServiceAmountByBookingId($booking_id){
+    return \App\Models\Booking\BookingService::where('booking_id',$booking_id)->sum('price');
+}
+
 function getUserNumber($user_id){
     $mobile = \App\Models\User::where('referred_user_id',$user_id)->first(['mobile']);
     return $mobile ?? 0;

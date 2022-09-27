@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Professional;
 
 use App\Http\Controllers\Controller;
-use App\Models\Booking;
+use App\Models\Booking\Booking;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -12,7 +12,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 class ServiceHistoryController extends Controller
 {
     public function serviceHistory(Request $request){
-        $service_history = Booking::with(['user','service'])->where(['professional_id'=>$request->user()->id])
+        $service_history = Booking::with(['user'])->where(['professional_id'=>$request->user()->id])
 
             ->orderBy('created_at','DESC')
             ->paginate(15);
@@ -22,11 +22,10 @@ class ServiceHistoryController extends Controller
 
     function itemSearch(Request $request)
     {
-
         if($request->ajax())
         {
             $datas = $request->all();
-            $service_history=Booking::with(['user','service'])
+            $service_history=Booking::with(['user'])
                 ->where(['professional_id'=>$request->user()->id])
                 ->where('bookingId','LIKE','%'.$datas['query']."%")
                 ->paginate(15);
@@ -69,7 +68,25 @@ class ServiceHistoryController extends Controller
     }
 
     public function view(Request $request){
-        $booking = Booking::with(['user','service','bookingAddress'])->where(['id' => $request->id])->first();
+        $booking = Booking::with(['user','bookingAddress'])->where(['id' => $request->id])->first();
         echo $booking;
+    }
+
+
+    public function serviceDone(Request $request){
+        $service_done = Booking::with(['user'])->where(['professional_id'=>$request->user()->id,'status' => 'done'])
+            ->orderBy('created_at','DESC')
+            ->paginate(15);
+
+        $current_page = $service_done->currentPage();
+        return view('professional.service.service_done',compact(['service_done','current_page']));
+    }
+
+    public function servicePending(Request $request){
+        $service_pending = Booking::with(['user'])->where(['professional_id'=>$request->user()->id,'status' => 'pending'])
+            ->orderBy('created_at','DESC')
+            ->paginate(15);
+        $current_page = $service_pending->currentPage();
+        return view('professional.service.service_pending',compact(['service_pending','current_page']));
     }
 }

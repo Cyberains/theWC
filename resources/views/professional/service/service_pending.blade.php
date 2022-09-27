@@ -1,13 +1,8 @@
 @extends('professional.layouts.main')
 @section('title')
-    <title>Service | Service History</title>
+    <title>Service | Service Pending</title>
 @endsection
-@section('btitle')
-    <li class="breadcrumb-item">Service History</li>
-@endsection
-@section('btitle1')
-    <li class="breadcrumb-item">Services</li>
-@endsection
+
 @section('style')
     <style type="text/css">
         .table .active-color {
@@ -54,7 +49,7 @@
                         </tr>
                         </thead>
                         <tbody id="searchresult">
-                        @include('professional.service.pagination_service_history')
+                        @include('professional.service.pagination_service_pending')
                         </tbody>
                     </table>
                     <input type="hidden" name="hidden_page" id="hidden_page" value="1" />

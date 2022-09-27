@@ -7,8 +7,8 @@ use Illuminate\Http\Request;
 
 class BannerController extends Controller
 {
-    protected $img_width = 1349;
-    protected $img_height = 650;
+    protected $img_width = 1024;
+    protected $img_height = 400;
 
     public function getIndex(Request $request)
     {

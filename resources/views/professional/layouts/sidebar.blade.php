@@ -9,12 +9,7 @@
                 <i class="c-sidebar-nav-icon fa fa-home"></i>Dashboard
             </a>
         </li>
-{{--        <li class="c-sidebar-nav-item">--}}
-{{--            <a class="c-sidebar-nav-link"--}}
-{{--               href="{{ route('professional.service-history') }}">--}}
-{{--                <i class="c-sidebar-nav-icon fa fa-wrench"></i>Service History--}}
-{{--            </a>--}}
-{{--        </li>--}}
+
         @if(Auth::user()->role=='Professional')
             <li class="c-sidebar-nav-item c-sidebar-nav-dropdown">
                 <a class="c-sidebar-nav-link c-sidebar-nav-dropdown-toggle" href="#">
@@ -23,17 +18,28 @@
                 <ul class="c-sidebar-nav-dropdown-items">
                     <li class="c-sidebar-nav-item">
                         <a class="c-sidebar-nav-link"
-                           href="{{ route('professional.professional-rating') }}">
-                            <i class="c-sidebar-nav-icon fa fa-eercast"></i>Ratings
-                        </a>
-                        <a class="c-sidebar-nav-link"
                            href="{{ route('professional.service-history') }}">
                             <i class="c-sidebar-nav-icon fa fa-eercast"></i>All Service
+                        </a>
+                        <a class="c-sidebar-nav-link"
+                           href="{{ route('professional.service-pending') }}">
+                            <i class="c-sidebar-nav-icon fa fa-eercast"></i>Pending Service
+                        </a>
+                        <a class="c-sidebar-nav-link"
+                           href="{{ route('professional.service-done') }}">
+                            <i class="c-sidebar-nav-icon fa fa-eercast"></i>Done Service
                         </a>
                     </li>
                 </ul>
             </li>
         @endif
+
+        <li class="c-sidebar-nav-item">
+            <a class="c-sidebar-nav-link"
+               href="{{ route('professional.professional-rating') }}">
+                <i class="c-sidebar-nav-icon fa fa-star"></i>Ratings
+            </a>
+        </li>
   </ul>
   <button class="c-sidebar-minimizer c-class-toggler" type="button" data-target="_parent" data-class="c-sidebar-minimized"></button>
 </div>

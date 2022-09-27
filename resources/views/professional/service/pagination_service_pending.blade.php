@@ -1,5 +1,5 @@
-@if(!empty($service_history))
-    @foreach ($service_history as $service)
+@if(!empty($service_pending))
+    @foreach ($service_pending as $service)
         <tr>
             <td>{{ (($current_page-1)*25)+$loop->iteration }}</td>
             <td>{{ $service->bookingId }}</td>
@@ -10,9 +10,10 @@
             <td>
                 <div class="btn-group">
                     @if($service->status == 'done')
-                        <div class="btn btn-success">
-                            Done
-                        </div>
+                        <button type="button" class="btn btn-success">{{ $service->status }}</button>
+                        <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="sr-only">Toggle Dropdown</span>
+                        </button>
                     @elseif($service->status == 'processing')
                         <button type="button" class="btn btn-secondary">{{ $service->status }}</button>
                         <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -44,7 +45,7 @@
     <td colspan="6" align="center">
         <div class="col-md-12">
             <div class="float-right" id='paggination'>
-                {{ $service_history->links('vendor.pagination.bootstrap-4') }}
+                {{ $service_pending->links('vendor.pagination.bootstrap-4') }}
             </div>
         </div>
     </td>

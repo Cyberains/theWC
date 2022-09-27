@@ -2,9 +2,11 @@
 
 namespace App\Models\Booking;
 
+use App\Models\Address;
 use App\Models\Service;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Booking extends Model
@@ -41,11 +43,6 @@ class Booking extends Model
     public function professional(): HasOne
     {
         return $this->hasOne(User::class, 'id', 'professional_id');
-    }
-
-    public function service(): HasOne
-    {
-        return $this->hasOne(Service::class, 'id', 'service_id');
     }
 
     public function bookingAddress(): HasOne
