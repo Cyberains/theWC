@@ -46,7 +46,6 @@
                             <th>Booking Id</th>
                             <th>User Name</th>
                             <th>Professional Name</th>
-                            <th>Service Name</th>
                             <th>Amount</th>
                             <th>Status</th>
                         </tr>

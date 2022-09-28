@@ -22,8 +22,7 @@
             @elseif(@@$booking->professional->name != null)
                 <td>{{ @@$booking->professional->name }}</td>
             @endif
-            <td>{{ $booking->service->title }}</td>
-            <td>{{ $booking->amount }} ₹</td>
+            <td>{{ getServiceAmountByBookingId($booking->bookingId) }} ₹</td>
             <td>{{ $booking->status }}</td>
         </tr>
 
