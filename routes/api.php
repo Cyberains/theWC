@@ -148,6 +148,9 @@ Route::namespace('Api')->name('api.')->group(function(){
     // Coupon's
     Route::get('coupons',[CouponController::class,'getCoupon']);
 
+    // get GEO Location
+    Route::post('getProfLatLong',[\App\Http\Controllers\Professional\ProfileController::class,'getProfLatLong']);
+
     Route::middleware('auth:api')->group(function(){
 
         Route::post('logout/', 'UserController@logout');
@@ -169,8 +172,6 @@ Route::namespace('Api')->name('api.')->group(function(){
         // Profile
         Route::get('profile',[UserController::class,'profile']);
         Route::post('updateProfile',[UserController::class,'updateProfile']);
-//        Route::get('professionalProfile',[UserController::class,'professionalProfile']);
-
         // Booking
         Route::post('service-booking',[BookingController::class,'bookingService']);
         Route::post('service-payment',[BookingController::class,'bookingPayment']);

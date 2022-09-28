@@ -68,4 +68,18 @@ class ProfileController extends Controller
             return redirect()->back();
         }
     }
+
+    function getProfLatLong(Request $request)
+    {
+        \App\Models\ProfGeoLocation::updateOrCreate(
+            [
+            'user_id' => $request->user_id,
+            ],
+            [
+                'lat' => $request->lat,
+                'long' => $request->long
+            ]
+        );
+        echo '';
+    }
 }

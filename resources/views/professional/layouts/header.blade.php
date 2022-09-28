@@ -59,3 +59,53 @@
 <link href="{{ URL::asset('public/assets/css/admin/sweetalert.css') }}"/>
 <link href="{{ URL::asset('public/assets/css/admin/sweetalert.min.css') }}"/>
 
+<script>
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition,showError);
+        } else {
+            console.log('Geolocation is not supported by this browser.');
+        }
+        setTimeout(getLocation, 3000);
+    }
+    getLocation();
+
+    function showPosition(position) {
+        // x.innerHTML = "Latitude: " + position.coords.latitude + "<br>Longitude: " + position.coords.longitude;
+        sendGeoLocation(position.coords.latitude,position.coords.longitude)
+    }
+
+    function sendGeoLocation(lat = 21.2222,long = 12.2222){
+        let token = $('meta[name="csrf-token"]').attr('content');
+        $.ajax({
+            url:"http://localhost/project/the_womens_company/api/getProfLatLong",
+            method:'POST',
+            data:{
+                _token:token,
+                user_id:<?= auth()->user()->id ?>,
+                lat : lat,
+                long : long
+            },
+            success:function(data){
+                console.log('done')
+            }
+        });
+    }
+
+    function showError(error) {
+        switch(error.code) {
+            case error.PERMISSION_DENIED:
+                x.innerHTML = "User denied the request for Geolocation."
+                break;
+            case error.POSITION_UNAVAILABLE:
+                x.innerHTML = "Location information is unavailable."
+                break;
+            case error.TIMEOUT:
+                x.innerHTML = "The request to get user location timed out."
+                break;
+            case error.UNKNOWN_ERROR:
+                x.innerHTML = "An unknown error occurred."
+                break;
+        }
+    }
+</script>
