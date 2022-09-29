@@ -10,6 +10,6 @@ class ProfGeoLocation extends Model
     use HasFactory;
     protected $table = 'prof_geo_location';
     protected $fillable = [
-        'user_id','lat','long'
+        'user_id','latitude','longitude'
     ];
 }

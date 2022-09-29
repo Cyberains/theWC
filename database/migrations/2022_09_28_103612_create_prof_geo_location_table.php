@@ -16,8 +16,8 @@ class CreateProfGeoLocationTable extends Migration
         Schema::create('prof_geo_location', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->string('lat');
-            $table->string('long');
+            $table->string('latitude');
+            $table->string('longitude');
             $table->timestamps();
         });
     }

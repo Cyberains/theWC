@@ -10,6 +10,24 @@ use Illuminate\Http\JsonResponse;
 
 
 
+function getDistanceBtwUserAndProfessional($user_service_address_id,$professional_id): float
+{
+    $address = Address::where('id',$user_service_address_id)->first(['latitude', 'longitude']);
+
+    $address_prof_lat_long = \App\Models\ProfGeoLocation::where('user_id',$professional_id)->first(['latitude', 'longitude']);
+
+    if(!$address_prof_lat_long){
+        $address_prof_lat_long = Address::where(['user_id'=>$professional_id,'is_default' => 1])->first(['latitude', 'longitude']);
+    }
+    // latitude and longitude of Two Points
+    $latitudeFrom = $address_prof_lat_long->latitude ;
+    $longitudeFrom = $address_prof_lat_long->longitude;
+    $latitudeTo = $address->latitude;
+    $longitudeTo = $address->longitude;
+
+//    print_r(two_points_on_earth( $latitudeFrom, $longitudeFrom, $latitudeTo,  $longitudeTo));die();
+    return two_points_on_earth( $latitudeFrom, $longitudeFrom, $latitudeTo,  $longitudeTo);
+}
 
 function two_points_on_earth($latitudeFrom, $longitudeFrom, $latitudeTo,  $longitudeTo): float
 {
@@ -25,22 +43,6 @@ function two_points_on_earth($latitudeFrom, $longitudeFrom, $latitudeTo,  $longi
     $radius = 3958.756;
     return number_format((float)($res * $radius), 2, '.', '');
 }
-
-
-
-
-function getDistanceBtwUserAndProfessional($user_service_address_id,$professional_id): float
-{
-    $address = Address::where('id',$user_service_address_id)->first(['latitude', 'longitude']);
-    $address_prof = Address::where(['user_id'=>$professional_id,'is_default' => 1])->first(['latitude', 'longitude']);
-    // latitude and longitude of Two Points
-    $latitudeFrom = $address_prof->latitude ;
-    $longitudeFrom = $address_prof->longitude;
-    $latitudeTo = $address->latitude;
-    $longitudeTo = $address->longitude;
-    return two_points_on_earth( $latitudeFrom, $longitudeFrom, $latitudeTo,  $longitudeTo);
-}
-
 
 
 function getAllPaidProfessionals(){

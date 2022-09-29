@@ -19,15 +19,15 @@
                     <li class="c-sidebar-nav-item">
                         <a class="c-sidebar-nav-link"
                            href="{{ route('professional.service-history') }}">
-                            <i class="c-sidebar-nav-icon fa fa-eercast"></i>All Service
+                            All Service
                         </a>
                         <a class="c-sidebar-nav-link"
                            href="{{ route('professional.service-pending') }}">
-                            <i class="c-sidebar-nav-icon fa fa-eercast"></i>Pending Service
+                            Pending Service
                         </a>
                         <a class="c-sidebar-nav-link"
                            href="{{ route('professional.service-done') }}">
-                            <i class="c-sidebar-nav-icon fa fa-eercast"></i>Done Service
+                            Done Service
                         </a>
                     </li>
                 </ul>

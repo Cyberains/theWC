@@ -84,6 +84,11 @@ class BookingController extends Controller
             $booking = BookingServicePayment::create($form_data);
             if($request->payment_status == 'done'){
                 $booking['professional'] = $this->service_assign_to_professionals($request->booking_id);
+                if($booking['professional']){
+                    User::where('id',$booking['professional'])->update([
+                        'is_free' => 1
+                    ]);
+                }
             }
             DB::commit();
             if($booking){
@@ -124,60 +129,59 @@ class BookingController extends Controller
     }
 
     private function service_assign_to_professionals($booking_id){
-//        $booking_detail = Booking::where(['bookingId' => $booking_id])->first();
+        $booking_detail = Booking::where(['bookingId' => $booking_id])->first();
         $findProfessionals = User::where(['role' => 'Professional','is_active' => 1])->orderBy('paid_role','DESC')->get();
         foreach ($findProfessionals as $professional){
-            if($professional->paid_role == 1 && getProfessionalsRating($professional->id) >= 3 && getProfessionalFreeStatus($professional->id) === true){
-                $ass = Booking::where('bookingId', $booking_id)->firstOrFail();
-                $ass->professional_id = $professional->id;
-                if($ass->save()){
-                    return $professional->id;
+            if(getDistanceBtwUserAndProfessional($booking_detail->user_service_address_id,$professional->id) <= 2170){
+                if($professional->paid_role == 1 && getProfessionalsRating($professional->id) >= 3 && getProfessionalFreeStatus($professional->id) === true){
+                    $ass = Booking::where('bookingId', $booking_id)->firstOrFail();
+                    $ass->professional_id = $professional->id;
+                    if($ass->save()){
+                        return $professional->id;
+                    }
+                    break;
                 }
-                break;
-            }
-            elseif ($professional->paid_role == 1 && getProfessionalsRating($professional->id) >= 2 && getProfessionalFreeStatus($professional->id) === true){
-                $ass = Booking::where('bookingId', $booking_id)->firstOrFail();
-                $ass->professional_id = $professional->id;
-                if($ass->save()){
-                    return $professional->id;
+                elseif ($professional->paid_role == 1 && getProfessionalsRating($professional->id) >= 2 && getProfessionalFreeStatus($professional->id) === true){
+                    $ass = Booking::where('bookingId', $booking_id)->firstOrFail();
+                    $ass->professional_id = $professional->id;
+                    if($ass->save()){
+                        return $professional->id;
+                    }
+                    break;
                 }
-                break;
-            }
-            elseif ($professional->paid_role == 1 && getProfessionalFreeStatus($professional->id) === true){
-                $ass = Booking::where('bookingId', $booking_id)->firstOrFail();
-                $ass->professional_id = $professional->id;
-                if($ass->save()){
-                    return $professional->id;
+                elseif ($professional->paid_role == 1 && getProfessionalFreeStatus($professional->id) === true){
+                    $ass = Booking::where('bookingId', $booking_id)->firstOrFail();
+                    $ass->professional_id = $professional->id;
+                    if($ass->save()){
+                        return $professional->id;
+                    }
+                    break;
                 }
-                break;
-            }
-            elseif ($professional->paid_role == 0 && getProfessionalsRating($professional->id) >= 3 && getProfessionalFreeStatus($professional->id) === true){
-                $ass = Booking::where('bookingId', $booking_id)->firstOrFail();
-                $ass->professional_id = $professional->id;
-                if($ass->save()){
-                    return $professional->id;
+                elseif ($professional->paid_role == 0 && getProfessionalsRating($professional->id) >= 3 && getProfessionalFreeStatus($professional->id) === true){
+                    $ass = Booking::where('bookingId', $booking_id)->firstOrFail();
+                    $ass->professional_id = $professional->id;
+                    if($ass->save()){
+                        return $professional->id;
+                    }
+                    break;
                 }
-                break;
-            }
-            elseif ($professional->paid_role == 0 && getProfessionalsRating($professional->id) >= 2 && getProfessionalFreeStatus($professional->id) === true){
-                $ass = Booking::where('bookingId', $booking_id)->firstOrFail();
-                $ass->professional_id = $professional->id;
-                if($ass->save()){
-                    return $professional->id;
+                elseif ($professional->paid_role == 0 && getProfessionalsRating($professional->id) >= 2 && getProfessionalFreeStatus($professional->id) === true){
+                    $ass = Booking::where('bookingId', $booking_id)->firstOrFail();
+                    $ass->professional_id = $professional->id;
+                    if($ass->save()){
+                        return $professional->id;
+                    }
+                    break;
                 }
-                break;
-            }
-            elseif ($professional->paid_role == 0 && getProfessionalFreeStatus($professional->id) === true){
-                $ass = Booking::where('bookingId', $booking_id)->firstOrFail();
-                $ass->professional_id = $professional->id;
-                if($ass->save()){
-                    return $professional->id;
+                elseif ($professional->paid_role == 0 && getProfessionalFreeStatus($professional->id) === true){
+                    $ass = Booking::where('bookingId', $booking_id)->firstOrFail();
+                    $ass->professional_id = $professional->id;
+                    if($ass->save()){
+                        return $professional->id;
+                    }
+                    break;
                 }
-                break;
             }
-//            if(getDistanceBtwUserAndProfessional($booking_detail->user_service_address_id,$professional->id) <= 10){
-//
-//            }
         }
     }
 }
