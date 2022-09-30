@@ -1,345 +1,358 @@
 @extends("spa.main.master")
 @section('content')
-<section class="mt-5">
-    <div id="myCarousel" class="carousel slide" data-ride="carousel">
-        <!-- Wrapper for slides -->
-        <div class="carousel-inner">
-            @if($banners->count())
-            @foreach($banners as $key=>$item)
-            <div class="item {{$key==0?'active':''}}">
-                <img src="{{imageBasePath($item->image)}}" alt="Los Angeles" style="width:100%; height:500px">
-                <div class="carousel-caption">
-                    <h3>Los Angeles</h3>
-                    <p>LA is always so much fun!</p>
+    <div class="preloader">
+        <div class="loader">
+            <div class="ytp-spinner">
+                <div class="ytp-spinner-container">
+                    <div class="ytp-spinner-rotator">
+                        <div class="ytp-spinner-left">
+                            <div class="ytp-spinner-circle"></div>
+                        </div>
+                        <div class="ytp-spinner-right">
+                            <div class="ytp-spinner-circle"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            @endforeach
-            @endif
         </div>
-        <!-- Left and right controls -->
-        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-            <span class="glyphicon glyphicon-chevron-left"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="right carousel-control" href="#myCarousel" data-slide="next">
-            <span class="glyphicon glyphicon-chevron-right"></span>
-            <span class="sr-only">Next</span>
-        </a>
     </div>
-</section>
 
-<section class="py-2" style="background: #395098;">
-    <div class="row">
-        <div class="col-lg-12 card-margin">
-            <div class="card search-form">
-                <div class="card-body p-0">
-                    <form id="search-form">
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="row no-gutters">
-                                    <div class="col-lg-3 col-md-3 col-sm-12 p-auto ">
-                                        <select class="form-control select2" id="exampleFormControlSelect1">
-                                            <option value=""></option>
-                                            @if($city->count())
-                                            @foreach($city as $item)
-                                            <option value="{{$item->id}}">{{$item->name}}</option>
-                                            @endforeach
-                                            @endif
+    <header class="intro parallax-window" data-parallax="scroll" data-speed="0.5" data-image-src="{{ url('public/assets/spa/images/img/img-bg.png') }}"
+            style="background-image: url('public/assets/spa/images/img/img-bg.png');"
+    >
+        <div class="intro-body">
+            <div class="container">
+                <div class="row justify-content-center pt-5">
+                    <div class="col-md-8 mt-120">
+                        <h1 class="brand-heading text-capitalize font-pacifico mt-125 color-light animated" data-animation="fadeInUp" data-animation-delay="100">
+                            The <span class="color-blue rotate mr10">Women's Company. </span> Lorem Ipsum!
+                        </h1>
+                        <p class="intro-text mt25 color-gray animated" data-animation="fadeInUp" data-animation-delay="200" style="color: #fff;">
+                            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                            <br> items <b>Lorem Ipsum has been the industry's.</b>
+                        </p>
 
-                                        </select>
-                                    </div>
-                                    <div class="col-lg-8 col-md-6 col-sm-12 p-0">
-                                        <input type="text" placeholder="Search..." class="form-control" id="search" name="search">
-                                    </div>
-                                    <div class="col-lg-1 col-md-3 col-sm-12 p-0">
-                                        <button type="submit" class="btn btn-base">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search">
-                                                <circle cx="11" cy="11" r="8"></circle>
-                                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                                            </svg>
-                                        </button>
-                                    </div>
+                        <h5 class="brand-heading brand-sub-heading font-pacifico color-light">It is a long established fact that a reader .</h5>
+                    </div>
+                </div>
+            </div>
+
+            <div class="intro-direction">
+                <a href="#how-it-works">
+                    <div class="mouse-icon">
+                        <div class="wheel"></div>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+    </header>
+    <div class="overlay-right"></div>
+    <section id="about" class="about-area">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xl-12 col-lg-8">
+                    <div class="about-image text-center wow fadeInUp" data-wow-duration="1.5s" data-wow-offset="100">
+                        <h4 class="size">GET US ON!</h4>
+                            <img style="width:15%;" src="{{ url('public/assets/spa/images/icon/google play store button 1.jpg') }}" alt="services">
+                            <img style="width:15%;" src="{{ url('public/assets/spa/images/icon/app_play_store_button1.png') }}" alt="services">
+                    </div>
+                    <div class="section-title text-center mt-30 pb-40">
+                        <h4 class="title wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="0.6s" style="font-family: cardo;">Most hassle-free offline & online store with best delivery system.</h4>
+                        <p class="text wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="1s">Early Basket main aim is to reach earliest at your Doorstep to provide all your Grocery Needs.</p>
+                    </div> <!-- section title -->
+                </div>
+            </div> <!-- row -->
+
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="single-about d-sm-flex mt-30 wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="1.2s">
+                        <div class="about-icon">
+                            <!-- <img src="images/icon-1.png" alt="Icon"> -->
+                            <img src="{{ url('public/assets/spa/images/icon/001-groceries.png') }}" alt="Icon">
+                        </div>
+                        <div class="about-content media-body">
+                            <h4 class="about-title">
+                                Availability of Variety Goods</h4>
+                            <p class="text">We maintain a large variety of all the goods and thus, help customers in the selection of best goods.</p>
+                        </div>
+                    </div> <!-- single about -->
+                </div>
+                <div class="col-lg-6">
+                    <div class="single-about d-sm-flex mt-30 wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="1.4s">
+                        <div class="about-icon">
+                            <img src="{{ url('public/assets/spa/images/icon/002-supermarket.png') }}" alt="Icon">
+                        </div>
+                        <div class="about-content media-body">
+                            <h4 class="about-title">Availability of Standard Goods</h4>
+                            <p class="text">We deal only in standard goods. We believe that customers should pay the right amount for the right goods and their quantity with best quality .</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="single-about d-sm-flex mt-30 wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="1.6s">
+                        <div class="about-icon">
+                            <img src="{{ url('public/assets/spa/images/icon/004-money.png') }}" alt="Icon">
+                        </div>
+                        <div class="about-content media-body">
+                            <h4 class="about-title"> Freedom of Selection</h4>
+                            <p class="text">Customers enjoy full freedom of selection . As we don't keep any boundaries,  customers can select goods of their own choice.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="single-about d-sm-flex mt-30 wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="1.8s">
+                        <div class="about-icon">
+                            <img src="{{ url('public/assets/spa/images/icon/005-discount.png') }}" alt="Icon">
+                        </div>
+                        <div class="about-content media-body">
+                            <h4 class="about-title">Lower Prices</h4>
+                            <p class="text"> Prices of goods are generally kept low at Early Basket. Thus, this is suitable for all kind of consumers.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonial" class="testimonial-area">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="section-title text-center pb-20">
+                        <h3 class="title">Services</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="row testimonial-active">
+                        <div class="col-lg-4">
+                            <div class="single-testimonial mt-30 mb-30 text-center">
+                                <div class="testimonial-image">
+                                    <img src="{{ url('public/assets/spa/images/author-3.jpg') }}" alt="Author">
+                                </div>
+                                <div class="testimonial-content">
+                                    <h6 class="author-name">Isabela Moreira</h6>
                                 </div>
                             </div>
                         </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- Start What We Offer Area -->
-<section class="offer-area offer-area-two pt-100 pb-70 " id="service_section" style="background-color: #f8f8f8;">
-    <div class="container">
-        <div class="section-title">
-            <h2>Our Professionals Services For You</h2>
-        </div>
-        <div class="row service_load">
-            @if($category->count())
-            @foreach($category as $item)
-            <div class="col-lg-3 col-sm-3 text-center ">
-                <div class="single-offer">
-                    <img src="{{asset('/public/images/category/'.$item->image)}}" height="60" width="60" style="border-radius:100%">
-                    <h3>{{$item->title}}</h3>
-                </div>
-            </div>
-            @endforeach
-            @endif
-        </div>
-    </div>
-    <div class="offer-shape">
-        <img src="{{asset('public/assets/spa/images/shape/1.png')}}" alt="Image">
-        <img src="{{asset('public/assets/spa/images/shape/2.png')}}" alt="Image">
-        <img src="{{asset('public/assets/spa/images/shape/3.png')}}" alt="Image">
-        <img src="{{asset('public/assets/spa/images/shape/4.png')}}" alt="Image">
-        <img src="{{asset('public/assets/spa/images/shape/5.png')}}" alt="Image">
-        <img src="{{asset('public/assets/spa/images/shape/5.png')}}" alt="Image">
-        <img src="{{asset('public/assets/spa/images/shape/6.png')}}" alt="Image">
-    </div>
-</section>
+                        <div class="col-lg-3">
+                            <div class="single-testimonial mt-30 mb-30 text-center">
+                                <div class="testimonial-image">
+                                    <img src="{{ url('public/assets/spa/images/author-1.jpg') }}" alt="Author">
+                                </div>
+                                <div class="testimonial-content">
+                                    <h6 class="author-name">Fiona</h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="single-testimonial mt-30 mb-30 text-center">
+                                <div class="testimonial-image">
+                                    <img src="{{ url('public/assets/spa/images/author-2.jpg') }}" alt="Author">
+                                </div>
+                                <div class="testimonial-content">
+                                    <h6 class="author-name">Elon Musk</h6>
+                                </div>
+                            </div>
+                        </div>
 
-<section class="news-area pt-100 pb-70 mt-10">
-    <div class="container">
-        <div class="section-title">
-            <h2>Why Choose Us</h2>
-        </div>
-        <div class="row">
-            @if($whychoous->count())
-            @foreach($whychoous as $item)
-            <div class="col-lg-4 col-md-6 offset-md-3 offset-lg-0">
-                <div class="single-news">
-                    <div class="blog-img">
-                        <a href="news-details.html">
-                            <img src="{{imageBasePath($item->image)}}" alt="Image">
-                        </a>
-                        <div class="dates">
-                            <span>{{date_format($item->created_at,"Y-M")}}</span>
+                        <div class="col-lg-3">
+                            <div class="single-testimonial mt-30 mb-30 text-center">
+                                <div class="testimonial-image">
+                                    <img src="{{ url('public/assets/spa/images/author-2.jpg') }}" alt="Author">
+                                </div>
+                                <div class="testimonial-content">
+                                    <h6 class="author-name">Elon Musk</h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="single-testimonial mt-30 mb-30 text-center">
+                                <div class="testimonial-image">
+                                    <img src="{{ url('public/assets/spa/images/author-4.jpg') }}" alt="Author">
+                                </div>
+                                <div class="testimonial-content">
+                                    <h6 class="author-name">Fajar Siddiq</h6>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="news-content-wrap">
+                </div>
+            </div>
+        </div>
+    </section>
 
-                        <a href="news-details.html">
-                            <h3>{{$item->heading}} </h3>
-                        </a>
-                        <p> {{$item->description}}</p>
-                        <a class="read-more" href="news-details.html"> Read More
-                            <i class="bx bx-plus"></i>
-                        </a>
+    <div id="how-it-works" class="pt75">
+        <div class="container">
+            <div class="row mb-4">
+
+                <!-- title start -->
+                <div class="col-md-12 text-center mt-3">
+                    <h1 class="font-size-normal">
+                        <small>How it works</small><br>
+                        Select it &nbsp;<i class="fa fa-circle" style="font-size:6px;vertical-align: middle;"></i> &nbsp;Add it&nbsp; <i class="fa fa-circle" style="font-size:6px;vertical-align: middle;"></i> &nbsp;Get it
+                        <small class="heading heading-solid center-block"></small>
+                    </h1>
+                </div>
+                <!-- title end -->
+            </div>
+
+            <div class="row mt50">
+
+                <!-- item one start -->
+                <div class="col-md-4 col-sm-6 col-xs-6 animated fadeInLeft visible" data-animation="fadeInLeft" data-animation-delay="100">
+                    <div class="content-box content-box-icon-o-circle content-box-center">
+                        <span class="icon-wallet color-blue"></span>
+                        <img src="{{ url('public/assets/spa/images/icon/select_icon.png') }}" alt="Girl in a jacket" width="55" height="55">
+                        <h5 class="pt-13">Select it</h5>
+                        <p class="font ml-2 mr-2">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+
+                    </div>
+                </div>
+                <!-- item one end -->
+
+                <!-- item two start -->
+                <div class="col-md-4 col-sm-6 col-xs-6 animated fadeInLeft visible" data-animation="fadeInLeft" data-animation-delay="200">
+                    <div class="content-box content-box-icon-o-circle content-box-center">
+                        <span class="icon-browser color-blue"></span>
+                        <img src="{{ url('public/assets/spa/images/icon/add_icon.png') }}" alt="Girl in a jacket" width="55" height="55">
+
+                        <h5 class="pt-13">Add it</h5>
+                        <p class="font ml-2 mr-2">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+
+                    </div>
+                </div>
+                <!-- item two end -->
+
+                <!-- item three start -->
+                <div class="col-md-4 col-sm-6 col-xs-6 animated fadeInRight visible" data-animation="fadeInRight" data-animation-delay="300">
+                    <div class="content-box content-box-icon-o-circle content-box-center">
+                        <span class="icon-bike color-blue"></span>
+                        <div class="circle">
+                            <img src="{{ url('public/assets/spa/images/icon/get_icon.png') }}" alt="Girl in a jacket" width="55" height="55">
+                        </div>
+
+                        <h5 class="pt-13">Get it</h5>
+                        <p class="font ml-2 mr-2">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+
+                    </div>
+                </div>
+                <!-- item three end -->
+
+            </div>
+        </div>
+    </div>
+
+    <section id="call-action" class="call-action-area">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-5">
+                        <div class="call-action-content mt-45">
+                            <h3 class="action-title">Get latest updates!</h3>
+                            <p class="text">We never spam your email</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-7">
+                        <div class="call-action-form mt-50">
+                            <form action="#">
+                                <input type="text" placeholder="Enter your email">
+                                <div class="action-btn rounded-buttons">
+                                    <a href="#"><button class="main-btn rounded-three">subscribe</button></a>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
-            @endforeach
-            @endif
-        </div>
-        <img src="{{imageBasePath('59938652127799855191657019584.jpeg')}}" style="height:300px;width:100%">
-    </div>
-</section>
-<!-- End What We Offer Area -->
-<!-- End Case Area -->
-<section class="case-area case-area-five pb-100">
-    <div class="container">
-        <div class="section-title">
-            <h2>Beuty</h2>
-        </div>
-        <div class="row text-center">
-            @if($category->isNotEmpty())
-            @foreach($category as $item)
-            <div class="col-sm-3">
-                <img src="{{ asset('public/images/category/'.$item->image) }}" alt="Image" style="height:100px">
-                <a class="link-icon" href="#"><i class="bx bx-plus"></i></a>
-                <h3>
-                    <a href="{{route('spa.services.products',['category_id'=>$item->id])}}">
-                        {{$item->title}}
-                    </a>
-                </h3>
-            </div>
-            @endforeach
-            @endif
-        </div>
-    </div>
-</section>
-<!-- End Case Area -->
-<section class="offer-area-two pt-100 pb-70">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="app_left_cont">
-                    <h2>Download via SMS</h2>
-                    <p>Get a link via SMS to install the app. Fill your number down here.</p>
-                    <div class="get_app_form">
-                        <span class="country_code">+91</span>
-                        <input type="number" maxlength="10" value="">
-                        <button class="btn btn-danger" disabled="">Send</button>
+        </section>
+
+    <section id="contact" class="contact-area">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-6">
+                        <div class="section-title text-center pb-20">
+                            <h3 class="title">Get in touch</h3>
+                            <!-- <p class="text">Stop wasting time and money designing and managing a website that doesn’t get results. Happiness guaranteed!</p> -->
+                        </div> <!-- section title -->
                     </div>
-
-                    <div class="download_app">
-                        <a href="https://play.google.com/store/apps/details?id=yesmadamservices.app.com.yesmadamservices&amp;hl=en?utm_source=yesmadam-website" class="google_play" target="_blank">
-                            <img src="{{asset('public/assets/spa/images/goggle.png')}}" alt="" loading="lazy"></a>
-                        <a href="https://apps.apple.com/in/app/yesmadam-at-home-salon/id1352802457" class="apple_play" target="_blank">
-                            <img src="{{asset('public/assets/spa/images/app.svg')}}" alt="" loading="lazy"></a>
+                </div> <!-- row -->
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="contact-two mt-50 wow fadeIn" data-wow-duration="1.5s" data-wow-delay="0.2s">
+                            <h4 class="contact-title">CONTACT US</h4>
+                            <!-- <p class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam unde repellendus delectus facilis quia consequatur maxime perferendis! Sequi, modi consequatur.</p> -->
+                            <ul class="contact-info">
+                                <li><i class="lni-money-location"></i> Visit : F-256 , 1st Floor , B-Block , Ansal API ,
+                                    Palam Corporate Plaza, Palam Vihar Gurgaon (HR), 122017</li>
+                                <li><i class="lni-phone-handset"></i><a href="tel:9643824343" style="color: #000;"> +91 9643-82-4343</a></li>
+                                <!-- <li><i class="lni-envelope"></i> support@earlybasket.com</li> -->
+                            </ul>
+                        </div> <!-- contact two -->
                     </div>
-                </div>
-            </div>
-            <div class="col-sm-6">
-                <img src="{{imageBasePath('90912837840048096901657019502.jpeg')}}" alt="yesmadam" loading="lazy">
-            </div>
-        </div>
-    </div>
-</section>
-<!-- Start FAQ Area -->
+                    <div class="col-lg-6">
+                        <div class="contact-form form-style-one mt-35 wow fadeIn" data-wow-duration="1.5s" data-wow-delay="0.5s">
+                            <form  id="contact-form" action="index.php" method="post">
+                                <div class="form-input mt-15">
+                                    <label>Name</label>
+                                    <div class="input-items default">
+                                        <input type="text" placeholder="Name" name="name">
+                                        <i class="lni-user"></i>
+                                    </div>
+                                </div> <!-- form input -->
+                                <div class="form-input mt-15">
+                                    <label>Email</label>
+                                    <div class="input-items default">
+                                        <input type="email" placeholder="Email" name="email">
+                                        <i class="lni-envelope"></i>
+                                    </div>
+                                </div> <!-- form input -->
+                                <div class="form-input mt-15">
+                                    <label>Phone</label>
+                                    <div class="input-items default">
+                                        <input type="tel" placeholder="Phone" name="telNo">
+                                        <i class="lni-phone-handset"></i>
+                                    </div>
+                                </div> <!-- form input -->
+                                <div class="form-input mt-15">
+                                    <label>Message</label>
+                                    <div class="input-items default">
+                                        <textarea placeholder="Message" name="message"></textarea>
+                                        <i class="lni-pencil-alt"></i>
+                                    </div>
+                                </div> <!-- form input -->
+                                <p class="form-message"></p>
+                                <div class="form-input rounded-buttons mt-20">
+                                    <button type="submit" name="btn" class="main-btn rounded-three">Submit</button>
+                                </div> <!-- form input -->
+                            </form>
+                        </div> <!-- contact form -->
+                    </div>
+                </div> <!-- row -->
+            </div> <!-- container -->
+        </section>
 
-<section class="faq-area ptb-100">
-    <div class="container">
-        <div class="section-title">
-            <span>FAQ,s</span>
-            <h2>Frequently Asked Questions</h2>
-        </div>
-        <div class="row align-items-center">
-            <div class="col-lg-6">
-                <div class="faq-accordion">
-                    <ul class="accordion">
-
-                        <li class="accordion-item">
-                            <a class="accordion-title" href="javascript:void(0)">
-                                <i class='bx bx-chevron-down'></i>
-                                Research Is What Makes An Effective Business Plan?
-                            </a>
-
-                            <div class="accordion-content">
-                                <p>Lorem, ipsum dolor sit amet How do you Startup? consectetur adipisicing elit. Accusamus ipsa error, excepturi, obcaecati aliquid veniam blanditiis quas voluptates maxime unde, iste minima repellat dolores dolor perferendis facilis. How do you Startup? dolores ipsum dolor sit amet How do you Startup.</p>
-                            </div>
-                        </li>
-
-                        <li class="accordion-item">
-                            <a class="accordion-title" href="javascript:void(0)">
-                                <i class='bx bx-chevron-down'></i>
-                                How Achieving Small Business Success?
-                            </a>
-
-                            <div class="accordion-content">
-                                <p>Lorem, ipsum dolor sit amet How do you Startup? consectetur adipisicing elit. Accusamus ipsa error, excepturi, obcaecati aliquid veniam blanditiis quas voluptates maxime unde, iste minima repellat dolores dolor perferendis facilis. How do you Startup? dolores ipsum dolor sit amet How do you Startup.</p>
-                            </div>
-                        </li>
-
-                        <li class="accordion-item">
-                            <a class="accordion-title" href="javascript:void(0)">
-                                <i class='bx bx-chevron-down'></i>
-                                Why Business Planing Is Important?
-                            </a>
-
-                            <div class="accordion-content">
-                                <p>Lorem, ipsum dolor sit amet How do you Startup? consectetur adipisicing elit. Accusamus ipsa error, excepturi, obcaecati aliquid veniam blanditiis quas voluptates maxime unde, iste minima repellat dolores dolor perferendis facilis. How do you Startup? dolores ipsum dolor sit amet How do you Startup.</p>
-                            </div>
-                        </li>
-
-                        <li class="accordion-item">
-                            <a class="accordion-title" href="javascript:void(0)">
-                                <i class='bx bx-chevron-down'></i>
-                                How Do You Startup?
-                            </a>
-
-                            <div class="accordion-content">
-                                <p>Lorem, ipsum dolor sit amet How do you Startup? consectetur adipisicing elit. Accusamus ipsa error, excepturi, obcaecati aliquid veniam blanditiis quas voluptates maxime unde, iste minima repellat dolores dolor perferendis facilis. How do you Startup? dolores ipsum dolor sit amet How do you Startup.</p>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="faq-accordion">
-                    <ul class="accordion">
-                        <li class="accordion-item">
-                            <a class="accordion-title" href="javascript:void(0)">
-                                <i class='bx bx-chevron-down'></i>
-                                Research Is What Makes An Effective Business Plan?
-                            </a>
-
-                            <div class="accordion-content">
-                                <p>Lorem, ipsum dolor sit amet How do you Startup? consectetur adipisicing elit. Accusamus ipsa error, excepturi, obcaecati aliquid veniam blanditiis quas voluptates maxime unde, iste minima repellat dolores dolor perferendis facilis. How do you Startup? dolores ipsum dolor sit amet How do you Startup.</p>
-                            </div>
-                        </li>
-
-                        <li class="accordion-item">
-                            <a class="accordion-title" href="javascript:void(0)">
-                                <i class='bx bx-chevron-down'></i>
-                                How Achieving Small Business Success?
-                            </a>
-
-                            <div class="accordion-content">
-                                <p>Lorem, ipsum dolor sit amet How do you Startup? consectetur adipisicing elit. Accusamus ipsa error, excepturi, obcaecati aliquid veniam blanditiis quas voluptates maxime unde, iste minima repellat dolores dolor perferendis facilis. How do you Startup? dolores ipsum dolor sit amet How do you Startup.</p>
-                            </div>
-                        </li>
-
-                        <li class="accordion-item">
-                            <a class="accordion-title" href="javascript:void(0)">
-                                <i class='bx bx-chevron-down'></i>
-                                Why Business Planing Is Important?
-                            </a>
-
-                            <div class="accordion-content">
-                                <p>Lorem, ipsum dolor sit amet How do you Startup? consectetur adipisicing elit. Accusamus ipsa error, excepturi, obcaecati aliquid veniam blanditiis quas voluptates maxime unde, iste minima repellat dolores dolor perferendis facilis. How do you Startup? dolores ipsum dolor sit amet How do you Startup.</p>
-                            </div>
-                        </li>
-
-                        <li class="accordion-item">
-                            <a class="accordion-title" href="javascript:void(0)">
-                                <i class='bx bx-chevron-down'></i>
-                                How Do You Startup?
-                            </a>
-
-                            <div class="accordion-content">
-                                <p>Lorem, ipsum dolor sit amet How do you Startup? consectetur adipisicing elit. Accusamus ipsa error, excepturi, obcaecati aliquid veniam blanditiis quas voluptates maxime unde, iste minima repellat dolores dolor perferendis facilis. How do you Startup? dolores ipsum dolor sit amet How do you Startup.</p>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-@endsection
-
-@section('script')
-<script type="text/javascript">
-    $('.select2').select2({
-        placeholder: "select"
-    });
-    $(document).on('change', '#exampleFormControlSelect1', function(e) {
-        e.preventDefault();
-        var city_id = $(this).val();
-        let loader = $('.message_box');
-
-        $.ajax({
-            type: 'GET',
-            dataType: 'json',
-            url: "{{ route('spa.services.city')}}" + '/' + city_id,
-            processData: false,
-            contentType: false,
-            beforeSend: () => {
-                loader.html(`{!! transLang('loader_message') !!}`).removeClass('alert alert-success').addClass('alert-info');
-            },
-            error: (jqXHR, exception) => {
-                loader.html(formatErrorMessage(jqXHR, exception)).removeClass('alert-info').addClass('alert-danger');
-            },
-            success: response => {
-                var html = '';
-                $.each(response, function(index, item) {
-                    html += `<div class="col-lg-3 col-sm-3 text-center ">
-                <div class="single-offer">
-                    <a href="{{route('spa.services.category')}}` + "/" + item.id + `">
-                    <img src="public/images/brand/` + item.image + `" height="60" width="60" style="border-radius:100%">
-                        <h3>` + item.title + `</h3>
-
-                    </a>
-                </div>
-            </div>`;
-                });
-                $('#service_section .service_load').html(html);
-            }
-        });
-    });
-</script>
 @endsection
 </body>
-
+    <script src="{{ url('public/assets/spa/js/vendor/modernizr-3.6.0.min.js') }}"></script>
+    <script src="{{ url('public/assets/spa/js/vendor/jquery-1.12.4.min.js') }}"></script>
+    <!--====== Bootstrap js ======-->
+    <script src="{{ url('public/assets/spa/js/bootstrap.min.js') }}"></script>
+    <script src="{{ url('public/assets/spa/js/popper.min.js') }}"></script>
+    <!--====== Slick js ======-->
+    <script src="{{ url('public/assets/spa/js/slick.min.js') }}"></script>
+    <!--====== Isotope js ======-->
+    <script src="{{ url('public/assets/spa/js/isotope.pkgd.min.js') }}"></script>
+    <!--====== Images Loaded js ======-->
+    <script src="{{ url('public/assets/spa/js/imagesloaded.pkgd.min.js') }}"></script>
+    <!--====== Magnific Popup js ======-->
+    <script src="{{ url('public/assets/spa/js/jquery.magnific-popup.min.js') }}"></script>
+    <!--====== Scrolling js ======-->
+    <script src="{{ url('public/assets/spa/js/scrolling-nav.js') }}"></script>
+    <script src="{{ url('public/assets/spa/js/jquery.easing.min.js') }}"></script>
+    <!--====== wow js ======-->
+    <script src="{{ url('public/assets/spa/js/wow.min.js') }}"></script>
+    <!--====== Main js ======-->
+    <script src="{{ url('public/assets/spa/js/main.js') }}"></script>
 </html>

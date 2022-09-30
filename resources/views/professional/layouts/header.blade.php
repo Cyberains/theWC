@@ -59,6 +59,12 @@
 <link href="{{ URL::asset('public/assets/css/admin/sweetalert.css') }}"/>
 <link href="{{ URL::asset('public/assets/css/admin/sweetalert.min.css') }}"/>
 
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+<!-- Font Awesome -->
+<link href="{{ URL::asset('public/assets/plugins/fontawesome-free/css/all.min.css') }}"/>
+<!-- Theme style -->
+<link href="{{ URL::asset('public/dist/css/adminlte.min.css') }}"/>
+
 <script>
     function getLocation() {
         if (navigator.geolocation) {

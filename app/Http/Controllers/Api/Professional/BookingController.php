@@ -64,6 +64,11 @@ class BookingController extends Controller
 
     public function bookingPayment(Request $request)
     {
+        $request->validate([
+            'booking_id' => 'required',
+            'payment_id' => 'required',
+            'payment_status' => 'required'
+        ]);
         $check_booking =  BookingServicePayment::where(['booking_id' => $request->booking_id,'payment_status' => 'done'])->first(['booking_id','payment_id','payment_status']);
         if($check_booking){
             return response()->json([

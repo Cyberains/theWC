@@ -188,5 +188,8 @@
     <orderEntry type="library" name="vue" level="application" />
     <orderEntry type="library" name="toastr.js" level="application" />
     <orderEntry type="library" name="responsive.bootstrap4" level="application" />
+    <orderEntry type="library" name="bootstrap" level="application" />
+    <orderEntry type="library" name="bootstrap-icons" level="application" />
+    <orderEntry type="library" name="boxicons" level="application" />
   </component>
 </module>
