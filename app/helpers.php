@@ -69,6 +69,11 @@ function getServiceAmountByBookingId($booking_id){
     return \App\Models\Booking\BookingService::where('booking_id',$booking_id)->sum('price');
 }
 
+function bookingAddressFormatting($address): string
+{
+    return $address->house_no . ' ' . $address->area .' '. $address->landmark . ' ' . $address->mobile . ' ' . $address->zipcode . ' ' . $address->city . ' ' . $address->state ;
+}
+
 function getUserNumber($user_id){
     $mobile = \App\Models\User::where('referred_user_id',$user_id)->first(['mobile']);
     return $mobile ?? 0;

@@ -5,6 +5,7 @@
         <tr>
             <td>{{ (($currentpage-1)*25)+$loop->iteration }}</td>
             <td>{{ $booking->bookingId }}</td>
+            <td>{{ bookingAddressFormatting($booking->bookingAddress) }}</td>
             <td>{{ $booking->user->name }}</td>
             @if(@@$booking->professional->name == null)
                 <td style="background-color: #9f191f">

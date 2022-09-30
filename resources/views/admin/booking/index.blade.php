@@ -44,6 +44,7 @@
                         <tr class="table-primary">
                             <th>Sr.No.</th>
                             <th>Booking Id</th>
+                            <th>Booking Address</th>
                             <th>User Name</th>
                             <th>Professional Name</th>
                             <th>Amount</th>
