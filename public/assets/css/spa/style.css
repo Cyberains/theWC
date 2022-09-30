@@ -605,7 +605,7 @@ p {
   background: -webkit-linear-gradient(left, #43cae9 0%, #38f9d7 100%);
   background: -o-linear-gradient(left, #43cae9 0%, #38f9d7 100%);
   background: linear-gradient(to right, #060741 0%, #38f9d7 100%);
-  padding: 10px 0;
+  padding: 0 0px;
   position: absolute;
   top: 0;
   left: 0;
@@ -693,7 +693,7 @@ p {
           font-size: 16px;
           line-height: 24px;
           font-weight: 700;
-          padding: 11px 16px;
+          padding: 4px 16px;
           color: #fff;
           text-transform: uppercase;
           position: relative;
