@@ -17,36 +17,42 @@
         </div>
     </div>
 
-    <header class="intro parallax-window" data-parallax="scroll" data-speed="0.5" data-image-src="{{ url('public/assets/spa/images/img/img-bg.png') }}"
-            style="background-image: url('public/assets/spa/images/img/img-bg.png');"
-    >
-        <div class="intro-body">
-            <div class="container">
-                <div class="row justify-content-center pt-5">
-                    <div class="col-md-8 mt-120">
-                        <h1 class="brand-heading text-capitalize font-pacifico mt-125 color-light animated" data-animation="fadeInUp" data-animation-delay="100">
-                            The <span class="color-blue rotate mr10">Women's Company. </span> Lorem Ipsum!
-                        </h1>
-                        <p class="intro-text mt25 color-gray animated" data-animation="fadeInUp" data-animation-delay="200" style="color: #fff;">
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                            <br> items <b>Lorem Ipsum has been the industry's.</b>
-                        </p>
+    <div id="home" class="slider-area">
+        <div class="bd-example">
+            <div id="carouselOne" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#carouselOne" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselOne" data-slide-to="1"></li>
+                    <li data-target="#carouselOne" data-slide-to="2"></li>
+                </ol>
 
-                        <h5 class="brand-heading brand-sub-heading font-pacifico color-light">It is a long established fact that a reader .</h5>
+                <div class="carousel-inner">
+                    <div class="carousel-item  active">
+                        <img class="d-block w-100" width="1349px;" height="347px;" src="{{ url('public/assets/spa/images/slider/slide-01.jpeg') }}">
+                    </div>
+
+
+                    <div class="carousel-item">
+                        <img class="d-block w-100" height="347px;" src="{{ url('public/assets/spa/images/slider/slide-02.jpeg') }}">
+                    </div>
+
+
+                    <div class="carousel-item">
+                        <img class="d-block w-100" height="347px;" src="{{ url('public/assets/spa/images/slider/slide-03.jpeg') }}">
                     </div>
                 </div>
-            </div>
 
-            <div class="intro-direction">
-                <a href="#how-it-works">
-                    <div class="mouse-icon">
-                        <div class="wheel"></div>
-                    </div>
+                <a class="carousel-control-prev" href="#carouselOne" role="button" data-slide="prev">
+                    <i class="lni-arrow-left-circle"></i>
+                </a>
+
+                <a class="carousel-control-next" href="#carouselOne" role="button" data-slide="next">
+                    <i class="lni-arrow-right-circle"></i>
                 </a>
             </div>
-
         </div>
-    </header>
+    </div>
+
     <div class="overlay-right"></div>
     <section id="about" class="about-area">
         <div class="container">
@@ -59,7 +65,7 @@
                     </div>
                     <div class="section-title text-center mt-30 pb-40">
                         <h4 class="title wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="0.6s" style="font-family: cardo;">Most hassle-free offline & online store with best delivery system.</h4>
-                        <p class="text wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="1s">Early Basket main aim is to reach earliest at your Doorstep to provide all your Grocery Needs.</p>
+                        <p class="text wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="1s">The Woman Company main aim is to reach earliest at your Doorstep to provide all your Grocery Needs.</p>
                     </div> <!-- section title -->
                 </div>
             </div> <!-- row -->
@@ -107,7 +113,7 @@
                         </div>
                         <div class="about-content media-body">
                             <h4 class="about-title">Lower Prices</h4>
-                            <p class="text"> Prices of goods are generally kept low at Early Basket. Thus, this is suitable for all kind of consumers.</p>
+                            <p class="text"> Prices of goods are generally kept low at The Woman Company. Thus, this is suitable for all kind of consumers.</p>
                         </div>
                     </div>
                 </div>
@@ -134,6 +140,47 @@
                                 </div>
                                 <div class="testimonial-content">
                                     <h6 class="author-name">Isabela Moreira</h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="single-testimonial mt-30 mb-30 text-center">
+                                <div class="testimonial-image">
+                                    <img src="{{ url('public/assets/spa/images/author-1.jpg') }}" alt="Author">
+                                </div>
+                                <div class="testimonial-content">
+                                    <h6 class="author-name">Fiona</h6>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3">
+                            <div class="single-testimonial mt-30 mb-30 text-center">
+                                <div class="testimonial-image">
+                                    <img src="{{ url('public/assets/spa/images/author-1.jpg') }}" alt="Author">
+                                </div>
+                                <div class="testimonial-content">
+                                    <h6 class="author-name">Fiona</h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="single-testimonial mt-30 mb-30 text-center">
+                                <div class="testimonial-image">
+                                    <img src="{{ url('public/assets/spa/images/author-1.jpg') }}" alt="Author">
+                                </div>
+                                <div class="testimonial-content">
+                                    <h6 class="author-name">Fiona</h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="single-testimonial mt-30 mb-30 text-center">
+                                <div class="testimonial-image">
+                                    <img src="{{ url('public/assets/spa/images/author-1.jpg') }}" alt="Author">
+                                </div>
+                                <div class="testimonial-content">
+                                    <h6 class="author-name">Fiona</h6>
                                 </div>
                             </div>
                         </div>
@@ -246,26 +293,26 @@
     </div>
 
     <section id="call-action" class="call-action-area">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-5">
-                        <div class="call-action-content mt-45">
-                            <h3 class="action-title">Get latest updates!</h3>
-                            <p class="text">We never spam your email</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-7">
-                        <div class="call-action-form mt-50">
-                            <form action="#">
-                                <input type="text" placeholder="Enter your email">
-                                <div class="action-btn rounded-buttons">
-                                    <a href="#"><button class="main-btn rounded-three">subscribe</button></a>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
+{{--            <div class="container">--}}
+{{--                <div class="row align-items-center">--}}
+{{--                    <div class="col-lg-5">--}}
+{{--                        <div class="call-action-content mt-45">--}}
+{{--                            <h3 class="action-title">Get latest updates!</h3>--}}
+{{--                            <p class="text">We never spam your email</p>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <div class="col-lg-7">--}}
+{{--                        <div class="call-action-form mt-50">--}}
+{{--                            <form action="#">--}}
+{{--                                <input type="text" placeholder="Enter your email">--}}
+{{--                                <div class="action-btn rounded-buttons">--}}
+{{--                                    <a href="#"><button class="main-btn rounded-three">subscribe</button></a>--}}
+{{--                                </div>--}}
+{{--                            </form>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
         </section>
 
     <section id="contact" class="contact-area">
@@ -334,25 +381,3 @@
         </section>
 
 @endsection
-</body>
-    <script src="{{ url('public/assets/spa/js/vendor/modernizr-3.6.0.min.js') }}"></script>
-    <script src="{{ url('public/assets/spa/js/vendor/jquery-1.12.4.min.js') }}"></script>
-    <!--====== Bootstrap js ======-->
-    <script src="{{ url('public/assets/spa/js/bootstrap.min.js') }}"></script>
-    <script src="{{ url('public/assets/spa/js/popper.min.js') }}"></script>
-    <!--====== Slick js ======-->
-    <script src="{{ url('public/assets/spa/js/slick.min.js') }}"></script>
-    <!--====== Isotope js ======-->
-    <script src="{{ url('public/assets/spa/js/isotope.pkgd.min.js') }}"></script>
-    <!--====== Images Loaded js ======-->
-    <script src="{{ url('public/assets/spa/js/imagesloaded.pkgd.min.js') }}"></script>
-    <!--====== Magnific Popup js ======-->
-    <script src="{{ url('public/assets/spa/js/jquery.magnific-popup.min.js') }}"></script>
-    <!--====== Scrolling js ======-->
-    <script src="{{ url('public/assets/spa/js/scrolling-nav.js') }}"></script>
-    <script src="{{ url('public/assets/spa/js/jquery.easing.min.js') }}"></script>
-    <!--====== wow js ======-->
-    <script src="{{ url('public/assets/spa/js/wow.min.js') }}"></script>
-    <!--====== Main js ======-->
-    <script src="{{ url('public/assets/spa/js/main.js') }}"></script>
-</html>

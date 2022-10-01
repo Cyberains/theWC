@@ -111,26 +111,3 @@
         </div>
     </section>
 @endsection
-
-</body>
-<script src="{{ url('public/assets/spa/js/vendor/modernizr-3.6.0.min.js') }}"></script>
-<script src="{{ url('public/assets/spa/js/vendor/jquery-1.12.4.min.js') }}"></script>
-<!--====== Bootstrap js ======-->
-<script src="{{ url('public/assets/spa/js/bootstrap.min.js') }}"></script>
-<script src="{{ url('public/assets/spa/js/popper.min.js') }}"></script>
-<!--====== Slick js ======-->
-<script src="{{ url('public/assets/spa/js/slick.min.js') }}"></script>
-<!--====== Isotope js ======-->
-<script src="{{ url('public/assets/spa/js/isotope.pkgd.min.js') }}"></script>
-<!--====== Images Loaded js ======-->
-<script src="{{ url('public/assets/spa/js/imagesloaded.pkgd.min.js') }}"></script>
-<!--====== Magnific Popup js ======-->
-<script src="{{ url('public/assets/spa/js/jquery.magnific-popup.min.js') }}"></script>
-<!--====== Scrolling js ======-->
-<script src="{{ url('public/assets/spa/js/scrolling-nav.js') }}"></script>
-<script src="{{ url('public/assets/spa/js/jquery.easing.min.js') }}"></script>
-<!--====== wow js ======-->
-<script src="{{ url('public/assets/spa/js/wow.min.js') }}"></script>
-<!--====== Main js ======-->
-<script src="{{ url('public/assets/spa/js/main.js') }}"></script>
-</html>

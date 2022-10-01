@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api\Professional;
 
+use App\Http\Controllers\Api\CartController;
 use App\Http\Controllers\Controller;
 use App\Models\Booking\Booking;
 use App\Models\Booking\BookingService;
@@ -14,12 +15,27 @@ use Illuminate\Support\Facades\DB;
 
 class BookingController extends Controller
 {
+    /**
+     * @param CartController $cartController
+     */
+    public function __construct(CartController $cartController)
+    {
+        $this->cartController = $cartController;
+    }
+
     public function bookingService(Request $request)
     {
         DB::beginTransaction();
         try
         {
             $service_id = explode(",", $request->service_id);
+            $servicesAmount =  Service::whereIn('id',$service_id)->sum('discounted_price');
+            if($servicesAmount < 500){
+                return response()->json([
+                    'message' => 'for Booking Service need to add at list 500$',
+                ]);
+            }
+
             $form_booking = [
                 'user_id' => $request->user()->id,
                 'status' => 'pending',
@@ -29,7 +45,6 @@ class BookingController extends Controller
             ];
             $booking = Booking::create($form_booking);
             $services =  Service::whereIn('id',$service_id)->get();
-            $servicesAmount =  Service::whereIn('id',$service_id)->sum('discounted_price');
 
             foreach ($services as $service){
                 BookingService::create([
@@ -67,7 +82,8 @@ class BookingController extends Controller
         $request->validate([
             'booking_id' => 'required',
             'payment_id' => 'required',
-            'payment_status' => 'required'
+            'payment_status' => 'required',
+            'service_id' => 'required'
         ]);
         $check_booking =  BookingServicePayment::where(['booking_id' => $request->booking_id,'payment_status' => 'done'])->first(['booking_id','payment_id','payment_status']);
         if($check_booking){
@@ -94,6 +110,7 @@ class BookingController extends Controller
                         'is_free' => 1
                     ]);
                 }
+                $this->cartController->RemoveCartListAfterPayment($request->service_id);
             }
             DB::commit();
             if($booking){
@@ -116,13 +133,15 @@ class BookingController extends Controller
 
     public function bookingHistory(Request $request): JsonResponse
     {
-        $bookings = Booking::where(['user_id'=>$request->user()->id])->get();
-        if($bookings->count() > 0){
+        $bookingsIds = Booking::where(['user_id'=>$request->user()->id])->pluck('bookingId');
+        $paymentDoneBookingIds = BookingServicePayment::whereIn('booking_id',$bookingsIds)->where('payment_status','done')->pluck('booking_id');
+        $bookings['completed'] = Booking::with(['professional','bookingAddress','getAllBookedServicesList','getAllBookedServicesPayment'])->whereIn('bookingId',$paymentDoneBookingIds)->get();
+        if($bookings['completed']->count() > 0){
             return response()->json([
                 'code' => 200,
                 'status' => 1,
                 'data' => $bookings,
-                'message' => 'Booking History.',
+                'message' => 'Completed Booking History.',
             ]);
         }else{
             return response()->json([

@@ -50,4 +50,14 @@ class Booking extends Model
         return $this->hasOne(Address::class, 'id', 'user_service_address_id');
     }
 
+    public function getAllBookedServicesList(): HasMany
+    {
+        return $this->hasMany(BookingService::class, 'booking_id', 'bookingId');
+    }
+
+    public function getAllBookedServicesPayment(): HasOne
+    {
+        return $this->hasOne(BookingServicePayment::class, 'booking_id', 'bookingId');
+    }
+
 }

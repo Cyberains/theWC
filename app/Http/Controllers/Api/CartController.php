@@ -90,6 +90,28 @@ class CartController extends Controller
         }
     }
 
+    public function RemoveCartListAfterPayment($service_id): JsonResponse
+    {
+        $service_ids = explode(",", $service_id);
+        $cartdata = Cart::whereIn('service_id',$service_ids)->get();
+        if ($cartdata != null) {
+            foreach ($cartdata as $cart){
+                $cart->delete();
+            }
+            return response()->json([
+                'code'=>200,
+                'message'=>'Cart successfully Cleared.'
+            ]);
+
+        }else{
+            return response()->json([
+                'code'=>422,
+                'status'=>0,
+                'message'=>'No Cart Data Exists.'
+            ]);
+        }
+    }
+
     function getCart(Request $request): JsonResponse
     {
         $cart = Cart::with(['getProduct','getService'])->where('user_id',$request->user()->id)->get();
