@@ -35,11 +35,12 @@
                     <div class="footer-link">
                         <h6 class="footer-title">Contact Us</h6>
                         <ul>
-                                <p class="text-footer"><i class="fa fa-map-signs fw pr-1"></i> Visit : F-256 , 1st Floor , B-Block , Ansal API , Palam Corporate Plaza, Palam Vihar Gurgaon (HR), 122017</p>
+                                <p class="text-footer"><i class="fa fa-map-signs fw pr-1"></i>Visit : F-256 , 1st Floor , B-Block , Ansal
+                                <br> API , Palam Corporate Plaza, Palam Vihar<br> Gurgaon (HR), 122017</p>
                                 <li class="text-justify"><i class="fa fa-phone pr-1"></i><a href="tel:8860014004">    Call Now (+91) 88-6001-4004</a></li>
                                 <li>
                                     <i class="fa fa-phone pr-1"></i><a href="tel:0124-427-8955">  Phone No : 0124-427-8955</a></li>
-                                <li><i class="fa fa-envelope pr-1"></i><a href="mailto:partner@thewomenscompany.in" target="_blank"> partner@thewomenscompany.in</a></li>
+                                <li><i class="fa fa-envelope pr-1"></i><a href="mailto:partner@thewomenscompany.in" target="_blank"> partner@thewomenscompany.com</a></li>
                             </ul>
                     </div>
                 </div>

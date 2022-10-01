@@ -62,6 +62,7 @@
                         <h4 class="size">GET US ON!</h4>
                             <img style="width:15%;" src="{{ url('public/assets/spa/images/icon/google play store button 1.jpg') }}" alt="services">
                             <img style="width:15%;" src="{{ url('public/assets/spa/images/icon/app_play_store_button1.png') }}" alt="services">
+                            <span class="text-fill blink-soft">Comming Soon...</span>
                     </div>
                     <div class="section-title text-center mt-30 pb-40">
                         <h4 class="title wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="0.6s" style="font-family: cardo;">Most hassle-free offline & online store with best delivery system.</h4>
@@ -133,7 +134,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="row testimonial-active">
-                        <div class="col-lg-4">
+                        <div class="col-lg-3">
                             <div class="single-testimonial mt-30 mb-30 text-center">
                                 <div class="testimonial-image">
                                     <img src="{{ url('public/assets/spa/images/author-3.jpg') }}" alt="Author">

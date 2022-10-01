@@ -671,7 +671,7 @@ p {
     font-size: 16px;
     line-height: 24px;
     font-weight: 700;
-    padding: 11px 16px;
+    padding: 11px 16px 1px;
     color: #fff;
     text-transform: uppercase;
     position: relative;
@@ -2922,3 +2922,28 @@ li:hover {
                     }
                 }
             }
+/*After Live change css*/
+.navbar-area{
+    padding: 0 0px!important;
+  }
+  
+  @media (max-width: 767px){
+    .navbar-area .navbar .navbar-nav .nav-item a {
+        color: #000;
+      }
+    }
+    .text-fill {
+     color: #904795;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 2.5;
+        font-family: sans-serif;
+    }
+    .blink-soft {
+      animation: blinker 1.5s linear infinite;
+    }
+    @keyframes blinker {
+      50% {
+        opacity: 0;
+      }
+    }

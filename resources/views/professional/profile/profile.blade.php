@@ -18,9 +18,9 @@
         .nav-link .active{
             background-color: #924795!important;
         }
-        .nav-pills .nav-link {
+        /* .nav-pills .nav-link {
             color: #fff!important;
-        }
+        } */
         /*add profile*/
 
         .heading {
@@ -173,9 +173,7 @@
                                     <span class="tag tag-warning">PHP</span>
                                     <span class="tag tag-primary">Node.js</span>
                                 </p>
-                                <hr>
-                                <strong><i class="far fa-file-alt mr-1"></i> Notes</strong>
-                                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque.</p>
+                               
                             </div>
                         </div>
                     </div>
@@ -256,7 +254,219 @@
                                 </div>
                             </div>
                         </div>
+                        <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target=".bd-example-modal-lg">update</button>
                     </div>
+
+                    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+
+    <div class="modal-content">
+        <div class="modal-header">
+        <h5 class="modal-title ml-auto" id="exampleModalLabel" style="color:#904795;">Update Your Details</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="col-md-12">
+                <div class="card">
+                  <div class="card-header p-2">
+                    <ul class="nav nav-pills">
+                      <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Personal</a></li>
+                      <li class="nav-item"><a class="nav-link pinks" href="#timeline" data-toggle="tab">Address</a></li>
+                      <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Skills</a></li>
+                    </ul>
+                  </div>
+                  <div class="card-body">
+                    <div class="tab-content">
+                      <div class="tab-pane active" id="activity">
+
+                        <form class="form-horizontal">
+                          <div class="form-group row">
+                            <label for="inputName" class="col-sm-2 col-form-label disabled">Name</label>
+                            <div class="col-sm-10">
+                              <input type="text" class="form-control" id="inputName" name="name" placeholder="Name" required>
+                            </div>
+                          </div>
+                          <div class="form-group row">
+                            <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
+                            <div class="col-sm-10">
+                              <input type="email" class="form-control" id="inputEmail" name="email" placeholder="Email" required>
+                            </div>
+                          </div>
+
+                          <div class="form-group row">
+                            <label for="inputExperience" class="col-sm-2 col-form-label">Personal Address</label>
+                            <div class="col-sm-10">
+                              <textarea class="form-control" id="inputExperience" placeholder="Personal Address"></textarea>
+                            </div>
+                          </div>
+                          <div class="form-group row">
+                            <label for="inputExperience" class="col-sm-2 col-form-label">Experience</label>
+                            <div class="col-sm-10">
+                               <input type="text" class="form-control" id="inputExperience" name="exp" placeholder="Experience" required>
+                            </div>
+                          </div>
+                          <div class="form-group row">
+                            <label for="inputQuli" class="col-sm-2 col-form-label">Qualification</label>
+                            <div class="col-sm-10">
+                              <input type="text" class="form-control" id="inputquli" name="quali" placeholder="Qualification" required>
+                            </div>
+                          </div>
+                            <div class="form-group row">
+                            <label for="inputPhone" class="col-sm-2 col-form-label">Phone</label>
+                            <div class="col-sm-10">
+                              <input type="text" class="form-control" id="phone" name="name" placeholder="Phone" required>
+                            </div>
+                          </div>
+                             <div class="form-group row">
+                            <label for="inputPhone" class="col-sm-2 col-form-label">Date of Birth </label>
+                            <div class="col-sm-10">
+                              <input type="date" id="birthday" name="birthday" required>
+                              <!-- <input type="text" class="form-control" id="phone" name="name" placeholder="Name"> -->
+                            </div>
+                          </div>
+                          <!-- <div class="form-group row">
+                            <div class="offset-sm-2 col-sm-10">
+                              <div class="checkbox">
+                                <label>
+                                  <input type="checkbox"> I agree to the <a href="#">terms and conditions</a>
+                                </label>
+                              </div>
+                            </div>
+                          </div> -->
+                          <div class="form-group row">
+                            <div class="offset-sm-2 col-sm-10">
+                              <button type="submit" class="btn btn-primary badge-pill" style="width:80px">Submit</button>
+                            </div>
+                          </div>
+                        </form>
+
+                      </div>
+
+                      <div class="tab-pane" id="timeline">
+
+                        <form class="form-horizontal">
+                          <div class="form-group row">
+                            <label for="inputName" class="col-sm-2 col-form-label">House No</label>
+                            <div class="col-sm-10">
+                              <input type="text" class="form-control" id="inputName" name="house_no" placeholder="House number" required>
+                            </div>
+                          </div>
+                          <div class="form-group row">
+                            <label for="inputArea" class="col-sm-2 col-form-label">Area</label>
+                            <div class="col-sm-10">
+                              <input type="text" class="form-control" id="inputEmail" name="area" placeholder="Area" required>
+                            </div>
+                          </div>
+                          <div class="form-group row">
+                            <label for="inputName2" class="col-sm-2 col-form-label">Landmark</label>
+                            <div class="col-sm-10">
+                              <input type="text" class="form-control" id="inputName2" name="land_mark" placeholder="Landmark" required>
+                            </div>
+                          </div>
+                          <div class="form-group row">
+                            <label for="inputExperience" class="col-sm-2 col-form-label">Phone</label>
+                            <div class="col-sm-10">
+                               <input type="text" class="form-control" id="phone" name="name" placeholder="Phone" required>
+                            </div>
+                          </div>
+                           <div class="form-group row">
+                            <label for="inputExperience" class="col-sm-2 col-form-label">City</label>
+                            <div class="col-sm-10">
+                               <input type="text" class="form-control" id="city" name="city" placeholder="City" required>
+                            </div>
+                          </div>
+                            <div class="form-group row">
+                            <label for="inputExperience" class="col-sm-2 col-form-label">Pin Code</label>
+                            <div class="col-sm-10">
+                               <input type="text" class="form-control" id="pincode" name="pin_code" placeholder="Pin code" required>
+                            </div>
+                          </div>
+                           <div class="form-group row">
+                            <label for="exampleFormControlSelect1" class="col-sm-2 col-form-label">State*</label>
+                             <div class="col-sm-10">
+                            <select class="form-control" id="exampleFormControlSelect1">
+                              <option>Up</option>
+                              <option>Delhi</option>
+                              <option>Haryana</option>
+                            </select>
+                          </div>
+                          </div>
+                          <div class="form-group row">
+                            <label for="inputSkills" class="col-sm-2 col-form-label">Address Type</label>
+                            <div class="col-sm-10 pt-2">
+                              <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input" required>
+                                <label class="custom-control-label" for="customRadioInline1">Home</label>
+                              </div>
+                              <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input" required>
+                                <label class="custom-control-label" for="customRadioInline2">Work</label>
+                              </div>
+                            </div>
+
+                          </div>
+                          <div class="form-group row">
+                            <div class="offset-sm-2 col-sm-10">
+                              <button type="submit" class="btn btn-primary badge-pill" style="width:80px">Submit</button>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+
+                      <div class="tab-pane" id="settings">
+                      <div class="card-body">
+
+<h5>Custom Color Variants</h5>
+<div class="row">
+  <div class="col-12 col-sm-6">
+    <div class="form-group">
+      <label>Minimal </label>
+      <select class="form-control select2 select2-danger select2-hidden-accessible" data-dropdown-css-class="select2-danger" style="width: 100%;" data-select2-id="12" tabindex="-1" aria-hidden="true">
+        <option selected="selected" data-select2-id="14">Alabama</option>
+        <option>Alaska</option>
+        <option>California</option>
+        <option>Delaware</option>
+        <option>Tennessee</option>
+        <option>Texas</option>
+        <option>Washington</option>
+      </select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="13" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-f8dk-container"><span class="select2-selection__rendered" id="select2-f8dk-container" role="textbox" aria-readonly="true" title="Alabama">Alabama</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+    </div>
+
+  </div>
+
+  <div class="col-12 col-sm-6">
+    <div class="form-group">
+      <label>Multiple </label>
+      <div class="select2-purple">
+        <select class="select2 select2-hidden-accessible" multiple="" data-placeholder="Select a State" data-dropdown-css-class="select2-purple" style="width: 100%;" data-select2-id="15" tabindex="-1" aria-hidden="true">
+          <option>Alabama</option>
+          <option>Alaska</option>
+          <option>California</option>
+          <option>Delaware</option>
+          <option>Tennessee</option>
+          <option>Texas</option>
+          <option>Washington</option>
+        </select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="16" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--multiple" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="-1" aria-disabled="false"><ul class="select2-selection__rendered"><li class="select2-search select2-search--inline"><input class="select2-search__field" type="search" tabindex="0" autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false" role="searchbox" aria-autocomplete="list" placeholder="Select a State" style="width: 492.5px;"></li></ul></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+</div>
+                      </div>
+
+                    </div>
+
+                  </div>
+                </div>
+
+              </div>
+    </div>
+  </div>
+</div>
                 </div>
             </div>
         </section>
@@ -364,6 +574,7 @@
 @endsection
 
 @section('style')
+
     <style>
         .emp-profile{
             padding: 3%;
@@ -459,6 +670,141 @@
 @endsection
 
 @section('script')
+      <!-- Bootstrap 4 -->
+      <script src="https://adminlte.io/themes/v3/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Select2 -->
+<script src="https://adminlte.io/themes/v3/plugins/select2/js/select2.full.min.js"></script>
+</body>
+    <!-- Page specific script -->
+    <script>
+  $(function () {
+    //Initialize Select2 Elements
+    $('.select2').select2()
+
+    //Initialize Select2 Elements
+    $('.select2bs4').select2({
+      theme: 'bootstrap4'
+    })
+
+    //Datemask dd/mm/yyyy
+    $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
+    //Datemask2 mm/dd/yyyy
+    $('#datemask2').inputmask('mm/dd/yyyy', { 'placeholder': 'mm/dd/yyyy' })
+    //Money Euro
+    $('[data-mask]').inputmask()
+
+    //Date picker
+    $('#reservationdate').datetimepicker({
+        format: 'L'
+    });
+
+    //Date and time picker
+    $('#reservationdatetime').datetimepicker({ icons: { time: 'far fa-clock' } });
+
+    //Date range picker
+    $('#reservation').daterangepicker()
+    //Date range picker with time picker
+    $('#reservationtime').daterangepicker({
+      timePicker: true,
+      timePickerIncrement: 30,
+      locale: {
+        format: 'MM/DD/YYYY hh:mm A'
+      }
+    })
+    //Date range as a button
+    $('#daterange-btn').daterangepicker(
+      {
+        ranges   : {
+          'Today'       : [moment(), moment()],
+          'Yesterday'   : [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+          'Last 7 Days' : [moment().subtract(6, 'days'), moment()],
+          'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+          'This Month'  : [moment().startOf('month'), moment().endOf('month')],
+          'Last Month'  : [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+        },
+        startDate: moment().subtract(29, 'days'),
+        endDate  : moment()
+      },
+      function (start, end) {
+        $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
+      }
+    )
+
+    //Timepicker
+    $('#timepicker').datetimepicker({
+      format: 'LT'
+    })
+
+    //Bootstrap Duallistbox
+    $('.duallistbox').bootstrapDualListbox()
+
+    //Colorpicker
+    $('.my-colorpicker1').colorpicker()
+    //color picker with addon
+    $('.my-colorpicker2').colorpicker()
+
+    $('.my-colorpicker2').on('colorpickerChange', function(event) {
+      $('.my-colorpicker2 .fa-square').css('color', event.color.toString());
+    })
+  })
+  // BS-Stepper Init
+  document.addEventListener('DOMContentLoaded', function () {
+    window.stepper = new Stepper(document.querySelector('.bs-stepper'))
+  })
+
+  // DropzoneJS Demo Code Start
+  Dropzone.autoDiscover = false
+
+  // Get the template HTML and remove it from the doumenthe template HTML and remove it from the doument
+  var previewNode = document.querySelector("#template")
+  previewNode.id = ""
+  var previewTemplate = previewNode.parentNode.innerHTML
+  previewNode.parentNode.removeChild(previewNode)
+
+  var myDropzone = new Dropzone(document.body, { // Make the whole body a dropzone
+    url: "/target-url", // Set the url
+    thumbnailWidth: 80,
+    thumbnailHeight: 80,
+    parallelUploads: 20,
+    previewTemplate: previewTemplate,
+    autoQueue: false, // Make sure the files aren't queued until manually added
+    previewsContainer: "#previews", // Define the container to display the previews
+    clickable: ".fileinput-button" // Define the element that should be used as click trigger to select files.
+  })
+
+  myDropzone.on("addedfile", function(file) {
+    // Hookup the start button
+    file.previewElement.querySelector(".start").onclick = function() { myDropzone.enqueueFile(file) }
+  })
+
+  // Update the total progress bar
+  myDropzone.on("totaluploadprogress", function(progress) {
+    document.querySelector("#total-progress .progress-bar").style.width = progress + "%"
+  })
+
+  myDropzone.on("sending", function(file) {
+    // Show the total progress bar when upload starts
+    document.querySelector("#total-progress").style.opacity = "1"
+    // And disable the start button
+    file.previewElement.querySelector(".start").setAttribute("disabled", "disabled")
+  })
+
+  // Hide the total progress bar when nothing's uploading anymore
+  myDropzone.on("queuecomplete", function(progress) {
+    document.querySelector("#total-progress").style.opacity = "0"
+  })
+
+  // Setup the buttons for all transfers
+  // The "add files" button doesn't need to be setup because the config
+  // `clickable` has already been specified.
+  document.querySelector("#actions .start").onclick = function() {
+    myDropzone.enqueueFiles(myDropzone.getFilesWithStatus(Dropzone.ADDED))
+  }
+  document.querySelector("#actions .cancel").onclick = function() {
+    myDropzone.removeAllFiles(true)
+  }
+  // DropzoneJS Demo Code End
+</script>
     <script type="text/javascript">
 
         function Edit(){
