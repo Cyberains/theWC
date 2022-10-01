@@ -12,7 +12,6 @@
     <title>The Woman Company </title>
     <link rel="stylesheet" href="{{ URL::asset('public/assets/spa/css/bootstrap.min.css')}}">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="{{ URL::asset('public/assets/spa/css/et-line-font.css')}}">
     <link rel="shortcut icon" href="{{ URL::asset('public/assets/spa/images/img/favicon-1.PNG')}}" type="image/png">
     <link rel="stylesheet" href="{{ URL::asset('public/assets/spa/css/LineIcons.css')}}">
     <link rel="stylesheet" href="{{ URL::asset('public/assets/spa/css/magnific-popup.css')}}">
