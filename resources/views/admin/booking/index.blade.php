@@ -48,7 +48,8 @@
                             <th>User Name</th>
                             <th>Professional Name</th>
                             <th>Amount</th>
-                            <th>Status</th>
+                            <th>Service Status</th>
+                            <th>Payment Status</th>
                         </tr>
                         </thead>
                         <tbody id="searchresult">

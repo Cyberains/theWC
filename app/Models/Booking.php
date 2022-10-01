@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Booking\BookingServicePayment;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
@@ -51,6 +52,11 @@ class Booking extends Model
     public function bookingAddress(): HasOne
     {
         return $this->hasOne(Address::class,'id','user_service_address_id');
+    }
+
+    public function servicePaymentStatus(): HasOne
+    {
+        return $this->hasOne(BookingServicePayment::class,'booking_id','bookingId');
     }
 
 }

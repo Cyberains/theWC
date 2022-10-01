@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Booking;
+use App\Models\Booking\BookingServicePayment;
 use App\Models\User;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -11,7 +12,11 @@ use RealRashid\SweetAlert\Facades\Alert;
 class BookingStatusController extends Controller
 {
     public function index(Request $request){
-        $bookings = Booking::select(\DB::raw('bookings.*'))->with(['user','service','professional'])->paginate(25);
+
+        $paymentDoneBookingIds = BookingServicePayment::where('payment_status','done')->pluck('booking_id');
+        $bookings = Booking::select(\DB::raw('bookings.*'))->with(['user','service','professional','servicePaymentStatus'])
+            ->whereIn('bookingId',$paymentDoneBookingIds)
+            ->paginate(25);
         $currentpage = $bookings->currentPage();
         return view('admin.booking.index',compact(['bookings','currentpage']));
     }
@@ -20,10 +25,11 @@ class BookingStatusController extends Controller
         if($request->ajax())
         {
             $datas = $request->all();
+            $paymentDoneBookingIds = BookingServicePayment::where('payment_status','done')->pluck('booking_id');
             $bookings=Booking::where('bookingId','LIKE','%'.$datas['query']."%")
-                ->orWhere('status','LIKE','%'.$datas['query']."%")->paginate(25);
+                ->orWhere('status','LIKE','%'.$datas['query']."%")->whereIn('bookingId',$paymentDoneBookingIds)->paginate(25);
             $categorycount=Booking::where('bookingId','LIKE','%'.$datas['query']."%")
-                ->orWhere('status','LIKE','%'.$datas['query']."%")->count();
+                ->orWhere('status','LIKE','%'.$datas['query']."%")->whereIn('bookingId',$paymentDoneBookingIds)->count();
             if($categorycount){
                 $currentpage = $bookings->currentPage();
                 return view('admin.booking.paggination_booking', compact(['bookings','currentpage']))->render();

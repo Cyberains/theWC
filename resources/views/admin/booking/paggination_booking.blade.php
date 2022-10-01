@@ -25,6 +25,7 @@
             @endif
             <td>{{ getServiceAmountByBookingId($booking->bookingId) }} ₹</td>
             <td>{{ $booking->status }}</td>
+            <td>{{ $booking->servicePaymentStatus->payment_status }}</td>
         </tr>
 
     @endforeach
