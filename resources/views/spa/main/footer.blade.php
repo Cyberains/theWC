@@ -40,7 +40,7 @@
                                 <li class="text-justify"><i class="fa fa-phone pr-1"></i><a href="tel:8860014004">    Call Now (+91) 88-6001-4004</a></li>
                                 <li class="text-justify">
                                     <i class="fa fa-phone pr-1"></i><a href="tel:0124-427-8955">  Phone No : 0124-427-8955</a></li>
-                                <li><i class="fa fa-envelope pr-1"></i><a href="mailto:partner@thewomenscompany.in" target="_blank"> partner@thewomenscompany.com</a></li>
+                                <li><i class="fa fa-envelope pr-1"></i><a href="mailto:support@thewomenscompany.in" target="_blank"> support@thewomenscompany.in</a></li>
                             </ul>
                     </div>
                 </div>

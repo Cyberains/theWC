@@ -3,9 +3,9 @@
 @extends("spa.main.master")
 @section('style')
 <style>
-.carousel {
+/* .carousel {
     padding: 76px 0px 0px 0px!important;
-}
+} */
 
 </style>
 @endsection
@@ -26,41 +26,6 @@
             </div>
         </div>
     </div>
-<!--            
-                <div id="carouselOne" class="carousel slide" data-ride="carousel">
-                    <ol class="carousel-indicators">
-                        <li data-target="#carouselOne" data-slide-to="0" class="active"></li>
-                        <li data-target="#carouselOne" data-slide-to="1"></li>
-                        <li data-target="#carouselOne" data-slide-to="2"></li>
-                    </ol>
-
-                    <div class="carousel-inner">
-                        <div class="carousel-item  active">
-                           <img class="d-block w-100" width="1349px;" height="347px;" src="{{ url('public/assets/spa/images/slider/slide-02.jpeg') }}">
-                        </div> 
-
-                      
-                       <div class="carousel-item">
-                         <img class="d-block w-100" height="347px;" src="{{ url('public/assets/spa/images/slider/slide-02.jpeg') }}">
-                       </div> 
-                       
-
-                       <div class="carousel-item">
-                          <img class="d-block w-100" height="347px;" src="{{ url('public/assets/spa/images/slider/slide-02.jpeg') }}">
-                       </div> 
-                    </div> 
-
-                    <a class="carousel-control-prev" href="#carouselOne" role="button" data-slide="prev">
-                        <i class="lni-arrow-left-circle"></i>
-                    </a>
-
-                    <a class="carousel-control-next" href="#carouselOne" role="button" data-slide="next">
-                        <i class="lni-arrow-right-circle"></i>
-                    </a>
-                </div>
-           
-        </div> -->
-  
 
   <div class="overlay-right"></div>
     <section id="about" class="about-area">
@@ -70,7 +35,7 @@
                     <div class="about-image text-center wow fadeInUp" data-wow-duration="1.5s" data-wow-offset="100">
                         <h4 class="size">GET US ON!</h4>
                             <img style="width:15%;" src="{{ url('public/assets/spa/images/icon/google play store button 1.jpg') }}" alt="services">
-                            <img style="width:15%;" src="{{ url('public/assets/spa/images/icon/app_play_store_button1.png') }}" alt="services">
+                            <img style="width:15%;" src="{{ url('public/assets/spa/images/icon/app_play_store_button1.png') }}" alt="services"><br>
                             <span class="text-fill blink-soft">Comming Soon...</span>
                     </div>
                     <div class="section-title text-center mt-30 pb-40">
@@ -88,7 +53,7 @@
                     <div class="single-about d-sm-flex mt-30 wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="1.2s">
                         <div class="about-icon">
                             <!-- <img src="images/icon-1.png" alt="Icon"> -->
-                            <img src="{{ url('public/assets/spa/images/icon/001-groceries.png') }}" alt="Icon">
+                            <img src="{{ url('public/assets/spa/images/icon/availability.png') }}" alt="Icon">
                         </div>
                         <div class="about-content media-body">
                             <h4 class="about-title">Max service time availability</h4>
@@ -101,7 +66,7 @@
                 <div class="col-lg-6">
                     <div class="single-about d-sm-flex mt-30 wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="1.4s">
                         <div class="about-icon">
-                            <img src="{{ url('public/assets/spa/images/icon/002-supermarket.png') }}" alt="Icon">
+                            <img src="{{ url('public/assets/spa/images/icon/experience.png') }}" alt="Icon">
                         </div>
                         <div class="about-content media-body">
                             <h4 class="about-title">Experience and verified professionals.</h4>
@@ -112,7 +77,7 @@
                 <div class="col-lg-6">
                     <div class="single-about d-sm-flex mt-30 wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="1.6s">
                         <div class="about-icon">
-                            <img src="{{ url('public/assets/spa/images/icon/004-money.png') }}" alt="Icon">
+                            <img src="{{ url('public/assets/spa/images/icon/booking.png') }}" alt="Icon">
                         </div>
                         <div class="about-content media-body">
                             <h4 class="about-title"> Hassel free booking process.</h4>
@@ -123,7 +88,7 @@
                 <div class="col-lg-6">
                     <div class="single-about d-sm-flex mt-30 wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="1.8s">
                         <div class="about-icon">
-                            <img src="{{ url('public/assets/spa/images/icon/005-discount.png') }}" alt="Icon">
+                            <img src="{{ url('public/assets/spa/images/icon/affordable.png') }}" alt="Icon">
                         </div>
                         <div class="about-content media-body">
                             <h4 class="about-title">Affordable pricing.</h4>
