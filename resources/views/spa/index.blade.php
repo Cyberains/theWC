@@ -1,4 +1,14 @@
+
+
 @extends("spa.main.master")
+@section('style')
+<style>
+.carousel {
+    padding: 76px 0px 0px 0px!important;
+}
+
+</style>
+@endsection
 @section('content')
     <div class="preloader">
         <div class="loader">
@@ -16,44 +26,43 @@
             </div>
         </div>
     </div>
+<!--            
+                <div id="carouselOne" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#carouselOne" data-slide-to="0" class="active"></li>
+                        <li data-target="#carouselOne" data-slide-to="1"></li>
+                        <li data-target="#carouselOne" data-slide-to="2"></li>
+                    </ol>
 
-    <div id="home" class="slider-area">
-        <div class="bd-example">
-            <div id="carouselOne" class="carousel slide" data-ride="carousel">
-                <ol class="carousel-indicators">
-                    <li data-target="#carouselOne" data-slide-to="0" class="active"></li>
-                    <li data-target="#carouselOne" data-slide-to="1"></li>
-                    <li data-target="#carouselOne" data-slide-to="2"></li>
-                </ol>
+                    <div class="carousel-inner">
+                        <div class="carousel-item  active">
+                           <img class="d-block w-100" width="1349px;" height="347px;" src="{{ url('public/assets/spa/images/slider/slide-02.jpeg') }}">
+                        </div> 
 
-                <div class="carousel-inner">
-                    <div class="carousel-item  active">
-                        <img class="d-block w-100" width="1349px;" height="347px;" src="{{ url('public/assets/spa/images/slider/slide-01.jpeg') }}">
-                    </div>
+                      
+                       <div class="carousel-item">
+                         <img class="d-block w-100" height="347px;" src="{{ url('public/assets/spa/images/slider/slide-02.jpeg') }}">
+                       </div> 
+                       
 
+                       <div class="carousel-item">
+                          <img class="d-block w-100" height="347px;" src="{{ url('public/assets/spa/images/slider/slide-02.jpeg') }}">
+                       </div> 
+                    </div> 
 
-                    <div class="carousel-item">
-                        <img class="d-block w-100" height="347px;" src="{{ url('public/assets/spa/images/slider/slide-02.jpeg') }}">
-                    </div>
+                    <a class="carousel-control-prev" href="#carouselOne" role="button" data-slide="prev">
+                        <i class="lni-arrow-left-circle"></i>
+                    </a>
 
-
-                    <div class="carousel-item">
-                        <img class="d-block w-100" height="347px;" src="{{ url('public/assets/spa/images/slider/slide-03.jpeg') }}">
-                    </div>
+                    <a class="carousel-control-next" href="#carouselOne" role="button" data-slide="next">
+                        <i class="lni-arrow-right-circle"></i>
+                    </a>
                 </div>
+           
+        </div> -->
+  
 
-                <a class="carousel-control-prev" href="#carouselOne" role="button" data-slide="prev">
-                    <i class="lni-arrow-left-circle"></i>
-                </a>
-
-                <a class="carousel-control-next" href="#carouselOne" role="button" data-slide="next">
-                    <i class="lni-arrow-right-circle"></i>
-                </a>
-            </div>
-        </div>
-    </div>
-
-    <div class="overlay-right"></div>
+  <div class="overlay-right"></div>
     <section id="about" class="about-area">
         <div class="container">
             <div class="row justify-content-center">

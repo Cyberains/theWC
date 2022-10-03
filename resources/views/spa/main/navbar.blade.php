@@ -1,4 +1,4 @@
-<section class="header-area">
+<section class="header-area bg-section">
     <div class="navbar-area">
         <div class="container-fluid">
             <div class="row">
@@ -31,6 +31,9 @@
                                 <li class="nav-item">
                                     <a class="page-scroll" href="#contact">CONTACT</a>
                                 </li>
+                                <li class="nav-item">
+                                    <a class="page-scroll" href="#">Login</a>
+                                </li>
                             </ul>
                         </div>
                     </nav> <!-- navbar -->
@@ -38,4 +41,41 @@
             </div> <!-- row -->
         </div> <!-- container -->
     </div> <!-- navbar area -->
-</section>
+
+
+<div id="home" class="slider-area">
+            <div class="bd-example">
+                <div id="carouselOne" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#carouselOne" data-slide-to="0" class="active"></li>
+                        <li data-target="#carouselOne" data-slide-to="1"></li>
+                        <li data-target="#carouselOne" data-slide-to="2"></li>
+                    </ol>
+
+                    <div class="carousel-inner">
+                        <div class="carousel-item  active">
+                           <img class="d-block w-100" width="1349px;" height="347px;" src="{{ url('public/assets/spa/images/slider/slide-01.jpeg') }}">
+                        </div> 
+
+                      
+                       <div class="carousel-item">
+                         <img class="d-block w-100" height="347px;" src="{{ url('public/assets/spa/images/slider/slide-02.jpeg') }}">
+                       </div> 
+                       
+
+                       <div class="carousel-item">
+                          <img class="d-block w-100" height="347px;" src="{{ url('public/assets/spa/images/slider/slide-03.jpeg') }}">
+                       </div> 
+                    </div> 
+
+                    <a class="carousel-control-prev" href="#carouselOne" role="button" data-slide="prev">
+                        <i class="lni-arrow-left-circle"></i>
+                    </a>
+
+                    <a class="carousel-control-next" href="#carouselOne" role="button" data-slide="next">
+                        <i class="lni-arrow-right-circle"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>

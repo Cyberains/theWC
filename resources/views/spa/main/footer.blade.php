@@ -6,7 +6,7 @@
                     <div class="footer-link">
                         <h6 class="footer-title">About</h6>
                         <p class="text-justify pt-3">
-                            Shop on the go and buy groceries, fresh fruits & vegetables, cosmetics, Dairy Products and baby care products at Early Basket. We get it all delivered at your doorstep within hours & you can Shop direct from our stores. You not only save time but also money with our best prices and offers.
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
                         </p>
                     </div>
                 </div>
@@ -38,7 +38,7 @@
                                 <p class="text-footer"><i class="fa fa-map-signs fw pr-1"></i>Visit : F-256 , 1st Floor , B-Block , Ansal
                                 <br> API , Palam Corporate Plaza, Palam Vihar<br> Gurgaon (HR), 122017</p>
                                 <li class="text-justify"><i class="fa fa-phone pr-1"></i><a href="tel:8860014004">    Call Now (+91) 88-6001-4004</a></li>
-                                <li>
+                                <li class="text-justify">
                                     <i class="fa fa-phone pr-1"></i><a href="tel:0124-427-8955">  Phone No : 0124-427-8955</a></li>
                                 <li><i class="fa fa-envelope pr-1"></i><a href="mailto:partner@thewomenscompany.in" target="_blank"> partner@thewomenscompany.com</a></li>
                             </ul>

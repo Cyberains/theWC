@@ -687,7 +687,9 @@ p {
         padding: 10px 0;
         display: block;
         border: 0;
-        margin: 0; } }
+        margin: 0;
+        color: #000;
+     } }
 @media (max-width: 767px) {
     .navbar-area .navbar .navbar-nav .nav-item a {
         padding: 10px 0;
@@ -1146,7 +1148,7 @@ p {
         font-size: 50px; } }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
     .slider-area .bd-example .carousel .carousel-control-prev, .slider-area .bd-example .carousel .carousel-control-next {
-        left: 30px;
+        left: 0px;
         font-size: 50px; } }
 @media (max-width: 767px) {
     .slider-area .bd-example .carousel .carousel-control-prev, .slider-area .bd-example .carousel .carousel-control-next {
@@ -2947,3 +2949,27 @@ li:hover {
         opacity: 0;
       }
     }
+
+    .bg-section{
+        padding-top: 8.5rem;
+    background-size: 100%;
+    object-fit: cover;
+    }
+ @media (max-width: 767px) {
+    .bg-section{
+    width: 100%;
+    padding-top: 7rem;
+    object-fit: fill;
+    /* margin-right: 1.3rem; */
+    margin-left: -1.6rem;
+        }
+ }
+ @media only screen and (min-width: 576px) and (max-width: px) {
+    .bg-section{
+    width: 100%;
+    padding-top: 7rem;
+    object-fit: fill;
+    /* margin-right: 1.3rem; */
+    margin-left: -1.6rem;
+        }
+ }
