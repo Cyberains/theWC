@@ -3,9 +3,9 @@
         <tr>
             <td>{{ (($current_page-1)*25)+$loop->iteration }}</td>
             <td>{{ $service->bookingId }}</td>
-            <td>{{ $service->user->name }}</td>
-            <td>{{ $service->user->mobile }}</td>
-            <td>{{ $service->user->email }}</td>
+            <td>{{ @$service->user->name }}</td>
+            <td>{{ @$service->user->mobile }}</td>
+            <td>{{ @$service->user->email }}</td>
             <td>{{ getServiceAmountByBookingId($service->bookingId) }}</td>
             <td>
                 <div class="btn-group btn btn-success">

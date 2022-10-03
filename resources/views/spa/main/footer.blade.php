@@ -4,10 +4,9 @@
             <div class="row">
                 <div class="col-lg-3 col-sm-6">
                     <div class="footer-link">
-                        <h6 class="footer-title">About</h6>
-                        <p class="text-justify pt-3">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                        </p>
+                        <a class="navbar-brand" href="/">
+                            <img src="{{ url('public/assets/spa/images/img/800x300-done2.png') }}" alt="Logo">
+                        </a>
                     </div>
                 </div>
                 <div class="col-lg-3 col-sm-6 margin-left">
@@ -40,7 +39,7 @@
                                 <li class="text-justify"><i class="fa fa-phone pr-1"></i><a href="tel:8860014004">    Call Now (+91) 88-6001-4004</a></li>
                                 <li class="text-justify">
                                     <i class="fa fa-phone pr-1"></i><a href="tel:0124-427-8955">  Phone No : 0124-427-8955</a></li>
-                                <li><i class="fa fa-envelope pr-1"></i><a href="mailto:partner@thewomenscompany.in" target="_blank"> partner@thewomenscompany.com</a></li>
+                                <li><i class="fa fa-envelope pr-1"></i><a href="mailto:partner@thewomenscompany.in" target="_blank"> support@thewomenscompany.in</a></li>
                             </ul>
                     </div>
                 </div>

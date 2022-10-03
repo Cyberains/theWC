@@ -20,27 +20,8 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $banners = Banner::select('image')
-            ->where('status', 1)
-            ->orderBy('id', 'desc')
-            ->get();
-
-//        $service = Service::select('brands.id', 'brands.title', 'brands.image')
-//            ->leftJoin('categories', 'brands.id', 'categories.brand_id')
-//            ->whereNotNull('categories.brand_id')
-//            ->orderBy('id', 'desc')
-//            ->get();
-
-        $category = Category::select('categories.id', 'categories.title', 'categories.image')
-            ->orderBy('categories.id', 'desc')
-            ->get();
-
-
-        $whychoous = WhyChooseUs::select('id', 'heading', 'description', 'image', 'created_at')
-            ->orderBy('id', 'desc')
-            ->get();
-
-        return view('spa.index', compact('banners', 'whychoous', 'category'));
+        $categories = Category::all();
+        return view('spa.index', compact('categories'));
     }
 
 
