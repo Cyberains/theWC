@@ -65,8 +65,11 @@
                             <span class="text-fill blink-soft">Comming Soon...</span>
                     </div>
                     <div class="section-title text-center mt-30 pb-40">
-                        <h4 class="title wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="0.6s" style="font-family: cardo;">Most hassle-free offline & online store with best delivery system.</h4>
-                        <p class="text wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="1s">The Woman Company main aim is to reach earliest at your Doorstep to provide all your Grocery Needs.</p>
+                        <h4 class="title wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="0.6s" style="font-family: cardo;">
+                            Hassel free Beauty service booking app, now your salon at home. It's just one click away.</h4>
+                        <p class="text wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="1s">
+                            Our aim is to provide the best beauty service at an affordable price with a "ZERO" commission from professionals.
+                        </p>
                     </div> <!-- section title -->
                 </div>
             </div> <!-- row -->
@@ -79,9 +82,10 @@
                             <img src="{{ url('public/assets/spa/images/icon/001-groceries.png') }}" alt="Icon">
                         </div>
                         <div class="about-content media-body">
-                            <h4 class="about-title">
-                                Availability of Variety Goods</h4>
-                            <p class="text">We maintain a large variety of all the goods and thus, help customers in the selection of best goods.</p>
+                            <h4 class="about-title">Max service time availability</h4>
+                            <p class="text">
+                                Our professionals are available in your area from morning 6:30 AM to 9:30 PM. Just one click away.
+                            </p>
                         </div>
                     </div> <!-- single about -->
                 </div>
@@ -91,8 +95,8 @@
                             <img src="{{ url('public/assets/spa/images/icon/002-supermarket.png') }}" alt="Icon">
                         </div>
                         <div class="about-content media-body">
-                            <h4 class="about-title">Availability of Standard Goods</h4>
-                            <p class="text">We deal only in standard goods. We believe that customers should pay the right amount for the right goods and their quantity with best quality .</p>
+                            <h4 class="about-title">Experience and verified professionals.</h4>
+                            <p class="text">We have a team of experienced professionals for your personal beauty service need, any time where.</p>
                         </div>
                     </div>
                 </div>
@@ -102,8 +106,8 @@
                             <img src="{{ url('public/assets/spa/images/icon/004-money.png') }}" alt="Icon">
                         </div>
                         <div class="about-content media-body">
-                            <h4 class="about-title"> Freedom of Selection</h4>
-                            <p class="text">Customers enjoy full freedom of selection . As we don't keep any boundaries,  customers can select goods of their own choice.</p>
+                            <h4 class="about-title"> Hassel free booking process.</h4>
+                            <p class="text">Our easy booking process allows you to book services of your choice for your doorstep in just a few clicks.</p>
                         </div>
                     </div>
                 </div>
@@ -113,8 +117,8 @@
                             <img src="{{ url('public/assets/spa/images/icon/005-discount.png') }}" alt="Icon">
                         </div>
                         <div class="about-content media-body">
-                            <h4 class="about-title">Lower Prices</h4>
-                            <p class="text"> Prices of goods are generally kept low at The Woman Company. Thus, this is suitable for all kind of consumers.</p>
+                            <h4 class="about-title">Affordable pricing.</h4>
+                            <p class="text">Our affordable and attractive pricing gives you the chance to book maximum services at a lower price.</p>
                         </div>
                     </div>
                 </div>
