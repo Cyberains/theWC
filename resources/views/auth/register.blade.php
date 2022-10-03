@@ -5,13 +5,13 @@
 <head>
 
   @include('auth.includes.header')
- <title>Online Exam | Register</title>
-      
+ <title>The Women's Company | Register</title>
+
 </head>
 <!-- HEADER END -->
 
 <style type="text/css">
-        
+
     .card {
         background-color: #ffffff;
 
@@ -40,10 +40,10 @@
       padding: 5px;
       margin-left: 10px;
       background-color:darkgreen;
-      border-radius: 20px; 
+      border-radius: 20px;
     }
 
-    
+
     .pass{
 
       display: none;
@@ -78,13 +78,13 @@
                             </div>
                         </div>
                     </div>
-                 @endif 
+                 @endif
           <div class="row">
               <div class="col-lg-12 px-5 pb-5 pt-0 ">
                 <form action="{{ route('register') }}" id="register-form" class="sform" method="POST">
 
                   @csrf
-      
+
                   <input type="text" name="mobile" id="mobile-check" value="un-verified" hidden="hidden">
                   <div class="row">
                     <div class="col-md-12 form-group">
@@ -107,17 +107,17 @@
                     </div>
 
                     <div class="col-md-12 form-group">
-                        <input type="number" class="form-control @error('mobile') is-invalid @enderror" id="mobile" name="mobile" value="{{ old('mobile') }}"  placeholder="Enter Your Mobile Number*" data-parsley-required 
+                        <input type="number" class="form-control @error('mobile') is-invalid @enderror" id="mobile" name="mobile" value="{{ old('mobile') }}"  placeholder="Enter Your Mobile Number*" data-parsley-required
                               data-parsley-required-message="Mobile Number is required."
                               data-parsley-pattern="^[6-9]\d{9}$"
                               data-parsley-pattern-message="Enter 10 digits mobile number."
                               data-parsley-maxlength="10"
-                              data-parsley-maxlength-message="Enter valid mobile number." 
+                              data-parsley-maxlength-message="Enter valid mobile number."
                               data-parsley-minlength="10"
                               data-parsley-minlength-message="Enter valid mobile number."
 
                               data-parsley-trigger="keyup" >
-                      
+
 
                               @error('mobile')
                                   <span class="invalid-feedback" role="alert">
@@ -126,10 +126,10 @@
                               @enderror
                     </div>
 
-                    
-                
+
+
                     <div class="col-md-12 form-group pass">
-                      <input type="password"  class="form-control @error('password') is-invalid @enderror" name="password" id="password" placeholder="Enter Password*" 
+                      <input type="password"  class="form-control @error('password') is-invalid @enderror" name="password" id="password" placeholder="Enter Password*"
                       data-parsley-required-message="Password is required.">
 
                       @error('password')
@@ -141,7 +141,7 @@
 
                     <div class="col-md-12 form-group pass">
                       <input type="password" class="form-control" name="confirm_password" id="password-confirm" placeholder="Enter Confirm Password*"
-                      data-parsley-equalto="#password" data-parsley-equalto-message="Confirm Password does not Match" 
+                      data-parsley-equalto="#password" data-parsley-equalto-message="Confirm Password does not Match"
                       data-parsley-required-message="Confirm Password is required." >
                     </div>
 
@@ -156,10 +156,10 @@
                 </form>
               </div>
             </div>
-          </div>    
+          </div>
         </div>
       </div>
-    
+
        <div class="modal fade" id="error-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content text-center">
@@ -184,23 +184,23 @@
                     <input type="text" name="mobile" id="mobile-modal" value="" hidden="hidden">
                       <div class="row">
                         <div class="col-md-12 form-group">
-                          <input type="text" id="otp" name="otp" class="form-control" placeholder="Enter OTP"        
+                          <input type="text" id="otp" name="otp" class="form-control" placeholder="Enter OTP"
                                   data-parsley-pattern="^[0-9]{1,6}$"
                                   data-parsley-pattern-message="Enter valid OTP number."
                                   data-parsley-maxlength="6"
-                                  data-parsley-maxlength-message="Enter valid OTP number." 
+                                  data-parsley-maxlength-message="Enter valid OTP number."
                                   data-parsley-minlength="6"
                                   data-parsley-minlength-message="Enter valid OTP number."
-                                  data-parsley-required 
+                                  data-parsley-required
                                   data-parsley-required-message="This field is required."
                                   >
-                         
+
                               <span class="invalid-feedback" role="alert">
                                   <strong id="error-otp"></strong>
                               </span>
-                      
+
                         </div>
-                      </div>                 
+                      </div>
                       <div class="row">
                         <div class="col-md-12 form-group">
                           <input type="submit" class="btn btn-primary btn-lg btn-block" value="Verify OTP">
@@ -215,7 +215,7 @@
                           <input type="text" id="mobile-modal-resend" name="mobile_no" value="" hidden="hidden">
 
                           <div class="d-flex justify-content-between mt-4">
-                              
+
                               <button type="submit" class="btn btn-success btn-sm text-right">RESEND OTP</button>
                               <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
 
@@ -310,7 +310,7 @@
                         $('#mobile-check').val('verified');
                         $('#password').attr('data-parsley-required',true);
                         $('#password-confirm').attr('data-parsley-required',true);
-                         
+
                       }
                       else{
 
@@ -364,7 +364,7 @@
                       setTimeout(function(){
                           $("#mobile-resend span").remove();
                       }, 3000 );
-                      
+
                     }
                     else{
 
@@ -388,16 +388,16 @@
 
           </script>
 
-    
-        
+
+
         <!-- SCRIPT ENDS -->
       </body>
 <!-- BODY ENDS -->
-</html>		
-	
-	
-	
+</html>
 
-	
-  
+
+
+
+
+
 

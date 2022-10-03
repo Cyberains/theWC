@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Lead;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class LeadController extends Controller
 {
@@ -31,20 +32,13 @@ class LeadController extends Controller
         }
         $lead = Lead::create($form_data);
         if(!empty($lead)){
-            return redirect()->route('get-lead');
+            return view('lead.thank');
         }
     }
 
     public function getMailsPage(){
-        return view('lead.mail_index');
-    }
-
-    public function getMails(): JsonResponse
-    {
-        $mail = Lead::where('created_at', '>=', date('Y-m-d').' 00:00:00');
-        return response()->json([
-            'status' => 200,
-            'data' => $mail
-        ]);
+        $mails['today'] = Lead::whereDate('created_at', DB::raw('CURDATE()'))->orderBy('created_at', 'desc')->get();
+        $mails['past'] = Lead::whereDate('created_at','!=' ,DB::raw('CURDATE()'))->orderBy('created_at', 'desc')->get();
+        return view('lead.mail_index',['mails' => $mails]);
     }
 }

@@ -28,8 +28,6 @@ Auth::routes();
 
 Route::get('/lead',[LeadController::class,'index'])->name('get-lead');
 Route::post('/lead',[LeadController::class,'store'])->name('post-lead');
-Route::get('/lead-mail-page',[LeadController::class,'getMailsPage'])->name('lead-mail-page');
-Route::get('/lead-mail',[LeadController::class,'getMails'])->name('lead-mail');
 
 Route::get('events', function () {
 
@@ -50,6 +48,8 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
 	Route::get('/', function () {return redirect('admin/login');})->name('login');
 	Route::middleware(['auth', 'admin'])->group(function () {
 
+        // Lead
+        Route::get('/lead-mail-page',[LeadController::class,'getMailsPage'])->name('lead-mail-page');
 		// Dashboard
 		Route::get('dashboard', 'DashboardController@index')->name('dashboard');
 

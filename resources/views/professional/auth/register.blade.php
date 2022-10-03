@@ -58,33 +58,16 @@
 <!-- BODY STARTS -->
 <body style="background:#e6e6e6">
 <div class="container">
+    @include('sweetalert::alert')
     <div class="row d-flex justify-content-center align-items-center" style="height: 100vh;">
         <div class="col-md-5">
-            @if(Session::has('message'))
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="alert alert-success text-center" role="alert">
-                            {{ Session::get('message') }}
-                        </div>
-                    </div>
-                </div>
-            @endif
-            @if(Session::has('successpass'))
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="alert alert-success text-center" role="alert">
-                            {{ Session::get('successpass') }}
-                        </div>
-                    </div>
-                </div>
-            @endif
             <div class="card card-container">
                 <h5 class="text-center my-4">The Woman Company</h5>
                 <form class="sform form-signin" method="POST" action="{{ route('professional.professional-register') }}">
                     @csrf
                     <input type="text" name="name" class="form-control" placeholder="Name">
                     <div class="row">
-                        <div class="col-md-12 form-group">
+                        <div class="col-md-12">
                             <input type="text" id="mobile" name="mobile"
                                    class="form-control @error('mobile') is-invalid @enderror"
                                    placeholder="Enter Mobile No."

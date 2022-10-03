@@ -240,7 +240,7 @@ class UserController extends Controller
                 'code' => 200,
                 'status' => 1,
                 'data' => $user,
-                'message' => 'Vendor Registered Successfully.Please Verify Mobile Number.',
+                'message' => 'Professional Registered Successfully.Please Verify Mobile Number.',
             ]);
 //            $mobileotp = generateOtp();
 //            $text = "Dear valuable customer!!! Your OTP for verification to your EarlyBasket account is " . $mobileotp . ". This OTP is valid for 5 minutes. ";

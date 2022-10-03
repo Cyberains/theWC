@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Professional;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Intervention\Image\Facades\Image;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -71,15 +72,17 @@ class ProfileController extends Controller
 
     function getProfLatLong(Request $request)
     {
-        \App\Models\ProfGeoLocation::updateOrCreate(
-            [
-            'user_id' => $request->user_id,
-            ],
-            [
-                'lat' => $request->lat,
-                'long' => $request->long
-            ]
-        );
+        if (Auth::check() && $request->has(['latitude','longitude'])) {
+            \App\Models\ProfGeoLocation::updateOrCreate(
+                [
+                    'user_id' => $request->user()->id,
+                ],
+                [
+                    'latitude' => $request->latitude,
+                    'longitude' => $request->longitude
+                ]
+            );
+        }
         echo '';
     }
 }

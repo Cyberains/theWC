@@ -25,21 +25,18 @@ class RegisterController extends Controller
             'email' => 'required',
             'qualification' => 'required',
             'experience' => 'required',
-            'working_location' => 'required',
             'password' => 'required'
         ]);
 
         $user = User::where(['mobile' => $request->mobile])->first();
-
-        if($user != null){
-            Alert::success('Mobile Number Already Used.', '');
+        if($user){
+            Alert::warning('Mobile Number Already Used.', '');
             return view('professional.auth.register');
         }else{
             User::create([
                 'name' => $request->name,
                 'email' => $request->email,
                 'mobile' => $request->mobile,
-                'working_location' => $request->working_location,
                 'role' => 'Professional',
                 'experience' => $request->experience,
                 'qualification' => $request->qualification,

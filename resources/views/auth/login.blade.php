@@ -6,7 +6,7 @@
 <head>
 
   @include('auth.includes.header')
-  <title>Early Basket | Login</title>
+  <title>The Women's Company | Login</title>
 
 </head>
 <!-- HEADER END -->

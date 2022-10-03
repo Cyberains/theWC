@@ -88,9 +88,8 @@
             method:'POST',
             data:{
                 _token:token,
-                user_id:<?= auth()->user()->id ?>,
-                lat : lat,
-                long : long
+                latitude : lat,
+                longitude : long
             },
             success:function(data){
                 console.log('done')
