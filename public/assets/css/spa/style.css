@@ -1100,7 +1100,7 @@ p {
   .slider-area .bd-example .carousel .carousel-inner {
     background-color: #38f9d7; }
     .slider-area .bd-example .carousel .carousel-inner .carousel-item {
-      height: 700px; }
+      height: 347px;margin: 76px 0 0 0!important; }
       @media only screen and (min-width: 992px) and (max-width: 1199px) {
         .slider-area .bd-example .carousel .carousel-inner .carousel-item {
           height: 600px; } }
@@ -2772,3 +2772,11 @@ li:hover {
   transform: translateY(-4px);
   transition: 0.5s;
 }
+/*.img-slider{
+  margin-top: 64px!important;
+}
+@media (min-width: 768px){
+.img-slider {
+  margin-top:64px;
+    margin-left: 0px !important;
+}*/
