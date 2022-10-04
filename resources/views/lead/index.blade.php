@@ -24,6 +24,11 @@
     <link href="public/assets/lead/css/style.css" rel="stylesheet">
     <style>
         .select_option option:hover{background-color:yellow!important;}
+        .fill_border{
+            border: 1px solid #904795;
+            padding: 10px;
+            border-radius: 7px;
+        }
     </style>
 </head>
 <!-- ======= Header ======= -->
@@ -80,17 +85,15 @@
                             <form method="post" action="{{ route('post-lead') }}">
                                 @csrf
                                 <div class="input_field"> <span><i aria-hidden="true" class="fa fa-user"></i></span>
-                                    <input type="text" name="name" placeholder="Name" required />
+                                    <input type="text" name="name" placeholder="Name" required>
                                 </div>
                                 <div class="input_field"> <span><i aria-hidden="true" class="fa fa-phone"></i></span>
-                                    <input type="text" name="phone" placeholder="Phone Number" required />
+                                    <input type="text" name="phone" placeholder="Phone Number" required>
                                 </div>
                                 <div class="input_field"> <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
-                                    <input type="email" name="email" placeholder="Email" required />
+                                    <input type="email" name="email" placeholder="Email" required>
                                 </div>
-                                <div class="input_field"> <span><i aria-hidden="true" class="fa fa-home"></i></span>
-                                    <textarea class="form-control" name="work_location"  placeholder="Work Location" rows="1"></textarea>
-                                </div>
+                               
 
                                 <div class="input_field radio_option">
                                     <input type="radio" name="male" id="rd1">
@@ -119,6 +122,31 @@
                                         <option>8+ Years</option>
                                     </select>
                                     <div class="select_arrow"></div>
+                                </div>
+                                <div class="input_field fill_border">
+                                <label for="adr">Address:</label>
+                                <div class="input_field"> <span><i aria-hidden="true" class="fa fa-home"></i></span>
+                                <input type="text" name="area" placeholder="Area" required>
+                                </div>
+                                    <div class="row">
+                                       <div class="col-7">
+                                        <div class="input_field select_option">
+                                                <select name="city" id="select" required>
+                                                    <option>Select City</option>
+                                                    <option>Gurugram</option>
+                                                    <option>Delhi</option>
+                                                    <option>Noida</option>
+                                        
+                                                </select>
+                                                <div class="select_arrow"></div>
+                                            </div>
+                                       </div>
+                                       <div class="col-5">
+                                            <div class="input_field"> <span><i aria-hidden="true" class="fa fa-map-marker"></i></span>
+                                            <input type="text" name="pin_code" placeholder="Pin Code" required>
+                                            </div>
+    </div>
+                                    </div>
                                 </div>
                                 <div class="input_field checkbox_option">
                                     <input type="checkbox" id="cb1" name="terms_condition">
