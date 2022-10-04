@@ -23,11 +23,8 @@
         <p class="main-content__body" data-lead-id="main-content-body">Thanks a bunch for filling that out. It means a lot to us, just like you do! We really appreciate you giving us a moment of your time today. Thanks for being you.</p>
         <a href="https://thewomenscompany.in/" class="btn fourth">For More Information Click Here</a>
     </div>
-
-
-
     <footer class="site-footer" id="footer">
-        <p class="site-footer__fineprint" id="fineprint">Copyright ©2022 The Woman Company | All Rights Reserved By Epic Corporations</p>
+        <p class="site-footer__fineprint" id="fineprint">Copyright ©2022 The Woman Company | All Rights Reserved By  <a href="https://epiccorporations.com/" target="_blank">Epic Corporations</a></p>
     </footer>
     <style>
         .btn {
@@ -63,10 +60,22 @@
             background-position: 100%;
             background-size: 400%;
             transition: background 300ms ease-in-out;
+            margin:12px;
+            padding: 10px 10px;
+            display: inline-block;
         }
         .fourth:hover {
             background-position: 0;
         }
+        a:link, a:visited {
+    color: #904795!important;
+    text-decoration: none;
+}
+        @media only screen and (min-width: 40em){
+        .site-footer {
+        padding: 20px 0 25px!important;
+        }
+    }
     </style>
 </body>
 </html>
