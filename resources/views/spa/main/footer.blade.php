@@ -69,7 +69,6 @@
                             <li><a href="https://www.linkedin.com/company/the-womens-company" target="_blank"><i class="lni-linkedin-original"></i></a></li>
                             <li><a href="https://api.whatsapp.com/send?phone=918860014004" target="_blank"><i class="lni lni-whatsapp"></i></a></li>
                         </ul>
-
                 </div>
             </div>
         </div>
