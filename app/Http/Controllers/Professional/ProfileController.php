@@ -55,18 +55,16 @@ class ProfileController extends Controller
         $request->validate([
             'name' => 'required',
             'experience' => 'required',
-            'working_location' => 'required',
             'qualification' => 'required'
         ]);
         $user = User::where(['id'=> $request->user()->id])->first();
         $user->name = $request->name;
         $user->email = $request->email;
         $user->experience = $request->experience;
-        $user->working_location = $request->working_location;
         $user->qualification = $request->qualification;
         if($user->save()){
             Alert::success('', 'Successfully Updated');
-            return redirect()->back();
+            return redirect()->route('professional.profile');
         }
     }
 

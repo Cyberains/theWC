@@ -128,7 +128,7 @@
             padding: 0.2em;
             height: 2em;
         }
- 
+
     .emp-profile{
         padding: 3%;
         border-radius: 0.5rem;
@@ -219,9 +219,9 @@
         font-weight: 600;
         color: #0062cc;
     }
- 
+
     </style>
- 
+
 @endsection
 
 @section('body')
@@ -238,12 +238,16 @@
                                             <span class="glyphicon glyphicon-camera"></span>
                                             <span>Change Image</span>
                                         </label>
-                                        <input id="file" type="file" onchange="loadFile(event)"/>
-                                        <img class="profile-user-img img-fluid img-circle" src="../dist/img/user4-128x128.jpg" alt="User profile picture" id="output" width="200" />
+                                        <input id="file" type="file" name="image"/>
+                                        @if($user->upload_photo)
+                                            <img class="profile-user-img img-fluid img-circle" src="{{ $user->upload_photo }}" alt="User profile picture" id="output" width="200" />
+                                        @else
+                                            <img class="profile-user-img img-fluid img-circle" src="{{ url('public/assets/spa/images/img/favicon_twc.png') }}" alt="User profile picture" id="output" width="200" />
+                                        @endif
                                     </div>
                                 </div>
-                                <h3 class="profile-username text-center">Vishnu Sharma</h3>
-                                <p class="text-muted text-center">Software Engineer</p>
+                                <h3 class="profile-username text-center">{{ $user->name }}</h3>
+                                <p class="text-muted text-center">{{ $user->role }}</p>
                             </div>
                         </div>
 
@@ -252,11 +256,8 @@
                                 <h3 class="card-title">About Me</h3>
                             </div>
                             <div class="card-body">
-                                <strong><i class="fas fa-book mr-1"></i> Education</strong>
-                                <p class="text-muted">B.S. in Computer Science from the University of Tennessee at Knoxville</p>
-                                <hr>
                                 <strong><i class="fas fa-map-marker-alt mr-1"></i> Location</strong>
-                                <p class="text-muted">Malibu, California</p>
+                                <p class="text-muted">{{ bookingAddressFormatting($user->getDefaultAddress) }}</p>
                                 <hr>
                                 <strong><i class="fas fa-pencil-alt mr-1"></i> Skills</strong>
                                 <p class="text-muted">
@@ -266,7 +267,6 @@
                                     <span class="tag tag-warning">PHP</span>
                                     <span class="tag tag-primary">Node.js</span>
                                 </p>
-                               
                             </div>
                         </div>
                     </div>
@@ -274,23 +274,38 @@
                         <div class="card">
                             <div class="card-header p-2">
                                 <ul class="nav nav-pills float-right">
-                                    <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="modal" data-target="#edit_profile">Edit Profile</a></li>
+                                    <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target=".bd-example-modal-lg">Update</button>
                                 </ul>
                             </div>
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col-4 pt-2">Vishnu kumar</div>
-                                    <div class="col-4 pt-2">test@gmail.com</div>
-                                    <div class="col-4 pt-2">Personal Address</div>
-                                    <div class="col-4 pt-2">Experience</div>
-                                    <div class="col-4 pt-2">Qualification</div>
-                                    <div class="col-4 pt-2">Phone</div>
-                                    <div class="col-4 pt-2">Date of Birth</div>
+                                    <div class="col-4 pt-2">{{ $user->name }}</div>
+                                    <div class="col-4 pt-2">{{ $user->email }}</div>
+{{--                                    <div class="col-4 pt-2">Personal Address</div>--}}
+                                    <div class="col-4 pt-2">{{ $user->experience }}</div>
+                                    <div class="col-4 pt-2">{{ $user->qualification }}</div>
+                                    <div class="col-4 pt-2">{{ $user->mobile }}</div>
+                                    <div class="col-4 pt-2">{{ $user->dob }}</div>
+                                    <div class="col-4 pt-2">
+                                        <span>
+                                            @foreach(range(1,5) as $i)
+                                                @if($user->rating >0)
+                                                    @if($user->rating >0.5)
+                                                        <span class="fa fa-star" style="color: orange;font-size: 15px;"></span>
+                                                    @else
+                                                        <span class="fa fa-star-half-o" style="color: orange;font-size: 15px;"></span>
+                                                    @endif
+                                                @else
+                                                    <span class="fa  fa-star-o" style="color: orange;font-size: 15px;"></span>
+                                                @endif
+                                                    <?php $user->rating--; ?>
+                                            @endforeach
+                                        </span>
+                                    </div>
                               </div>
-                               
+
                             </div>
                         </div>
-                        <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target=".bd-example-modal-lg">update</button>
                     </div>
 
                     <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
@@ -307,7 +322,7 @@
                 <div class="card">
                   <div class="card-header p-2">
                     <ul class="nav nav-pills">
-                      <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Personal</a></li>
+                      <li class="nav-item"><a class="nav-link active" href="#profile" data-toggle="tab">Personal</a></li>
                       <li class="nav-item"><a class="nav-link pinks" href="#timeline" data-toggle="tab">Address</a></li>
                       <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Skills</a></li>
                        <li class="nav-item"><a class="nav-link" href="#settings2" data-toggle="tab">Upload Document</a></li>
@@ -315,60 +330,52 @@
                   </div>
                   <div class="card-body">
                     <div class="tab-content">
-                      <div class="tab-pane active" id="activity">
-
-                        <form class="form-horizontal">
-                          <div class="form-group row">
+                      <div class="tab-pane active" id="profile">
+                        <form class="form-horizontal" method="post" action="{{ route('professional.profile-update') }}" >
+                            @csrf
+                            <input type="text" name="id" value="{{ auth()->user()->id }}" id="id" hidden="hidden">
+                            <div class="form-group row">
                             <label for="inputName" class="col-sm-2 col-form-label disabled">Name</label>
                             <div class="col-sm-10">
-                              <input type="text" class="form-control" id="inputName" name="name" placeholder="Name" required>
+                              <input type="text" class="form-control" id="inputName" name="name" value="{{ auth()->user()->name }}" placeholder="Name" required>
                             </div>
                           </div>
-                          <div class="form-group row">
+                            <div class="form-group row">
                             <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
                             <div class="col-sm-10">
-                              <input type="email" class="form-control" id="inputEmail" name="email" placeholder="Email" required>
+                              <input type="email" class="form-control" id="inputEmail" name="email" value="{{ auth()->user()->email }}" placeholder="Email" required>
                             </div>
                           </div>
-
-                          <div class="form-group row">
-                            <label for="inputExperience" class="col-sm-2 col-form-label">Personal Address</label>
-                            <div class="col-sm-10">
-                              <textarea class="form-control" id="inputExperience" placeholder="Personal Address"></textarea>
-                            </div>
-                          </div>
-                          <div class="form-group row">
+                            <div class="form-group row">
                             <label for="inputExperience" class="col-sm-2 col-form-label">Experience</label>
                             <div class="col-sm-10">
-                               <input type="text" class="form-control" id="inputExperience" name="exp" placeholder="Experience" required>
+                               <input type="text" class="form-control" id="experience" name="experience" value="{{ auth()->user()->experience }}" placeholder="Experience" required>
                             </div>
                           </div>
-                          <div class="form-group row">
+                            <div class="form-group row">
                             <label for="inputQuli" class="col-sm-2 col-form-label">Qualification</label>
                             <div class="col-sm-10">
-                              <input type="text" class="form-control" id="inputquli" name="quali" placeholder="Qualification" required>
+                              <input type="text" class="form-control" id="qualification" name="qualification" value="{{ auth()->user()->qualification }}" placeholder="Qualification" required>
                             </div>
                           </div>
                             <div class="form-group row">
                             <label for="inputPhone" class="col-sm-2 col-form-label">Phone</label>
                             <div class="col-sm-10">
-                              <input type="text" class="form-control" id="phone" name="name" placeholder="Phone" required>
+                              <input type="text" class="form-control" id="mobile" name="mobile" placeholder="Mobile" value="{{ auth()->user()->mobile }}" required>
                             </div>
                           </div>
-                             <div class="form-group row">
+                            <div class="form-group row">
                             <label for="inputPhone" class="col-sm-2 col-form-label">Date of Birth </label>
                             <div class="col-sm-10">
-                              <input type="date" id="birthday" name="birthday" required>
+                              <input type="date" id="dob" name="dob" value="{{ auth()->user()->dob }}" required>
                             </div>
                           </div>
-                        
-                          <div class="form-group row">
-                            <div class="offset-sm-2 col-sm-10">
-                              <button type="submit" class="btn btn-primary badge-pill" style="width:80px">Submit</button>
+                            <div class="form-group row">
+                                <div class="offset-sm-2 col-sm-10">
+                                    <button type="submit" class="btn btn-primary badge-pill" style="width:80px">Submit</button>
+                                </div>
                             </div>
-                          </div>
                         </form>
-
                       </div>
 
                       <div class="tab-pane" id="timeline">
@@ -476,11 +483,8 @@
                                             </select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="16" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--multiple" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="-1" aria-disabled="false"><ul class="select2-selection__rendered"><li class="select2-search select2-search--inline"><input class="select2-search__field" type="search" tabindex="0" autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false" role="searchbox" aria-autocomplete="list" placeholder="Select a State" style="width: 492.5px;"></li></ul></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
                                         </div>
                                     </div>
-
                                 </div>
-
                             </div>
-
                         </div>
                       </div>
 
@@ -507,41 +511,6 @@
 @endsection
 
 @section('modal')
-    <div class="modal fade" id="edit-photo-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
-        <div class="modal-dialog modal-lg" role="document" style="max-width: 600px;">
-            <div class="modal-content">
-                <div class="modal-header py-3">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <h3 class="text-center">Update Image</h3>
-                    <form class="sform form" method="post" action="{{ route('professional.avatar-update') }}" enctype="multipart/form-data">
-                        @csrf
-                        <input type="text" name="id" value="" id="id" hidden="hidden">
-                        <div class="row " style="padding: 30px;">
-                            <div class="col-md-12">
-                                <div class="form-group ">
-                                    <label for="image">Image<span>*</span>( Enter 1:1 ratio Image Above 400px )</label>
-                                    <div class="d-flex">
-                                        <input class="form-control ml-4 photo" type="file" name="image" id="image" value="{{ old('image') }}">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <button  type="submit" name="student-submit" class="btn btn-primary" style="float: right;">Save</button>
-                                    <button type="button" class="btn btn-danger" style="float: right;margin-right: 10px;" data-dismiss="modal">Close</button>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <div class="modal fade" id="edit-profile-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
         <div class="modal-dialog modal-lg" role="document" style="max-width: 600px;">
             <div class="modal-content">
@@ -609,7 +578,14 @@
 
 @section('script')
 <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
- 
+
+<script>
+    function submit_form(){
+        var form = document.getElementById("my_form");
+        form.submit();
+        alert("Your Message Sent");
+    }
+</script>
 
 <script>
      $(function () {
@@ -630,7 +606,7 @@
         function EditProfile(){
             $('#edit-profile-modal').modal('show')
         }
- 
+
         var loadFile = function (event) {
             var image = document.getElementById("output");
             image.src = URL.createObjectURL(event.target.files[0]);
