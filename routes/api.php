@@ -45,12 +45,6 @@ Route::namespace('Api')->name('api.')->group(function(){
 		Route::post('verify_mobile_otp','UserController@verifyUpdateMobile');
 		Route::post('resend/mobile_otp','UserController@resendMobileOTP');
 
-		//Address
-//		Route::post('address','UserController@Address');
-//		Route::post('address/store','UserController@AddressStore');
-//		Route::post('address-update','UserController@AddressUpdate');
-//		Route::post('address-delete','UserController@AddressDelete');
-
 		//change password
 		Route::post('update-password','UserController@UpdatePassword');
 
