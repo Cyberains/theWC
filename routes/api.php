@@ -32,9 +32,6 @@ Route::namespace('Api')->name('api.')->group(function(){
 	Route::post('forget/password/update','UserController@PasswordResetUpdate');
 
 	Route::middleware('auth:api')->group(function(){
-
-		Route::post('logout/','UserController@logout');
-
 		//update name and dob
 		Route::post('update-account','UserController@UpdateAccount');
 

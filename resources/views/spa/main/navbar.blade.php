@@ -32,7 +32,16 @@
                                     <a class="page-scroll" href="#contact">CONTACT</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="page-scroll" href="#">Login</a>
+                                    @if(Auth()->check())
+                                        @if(Auth::user()->role=='Professional')
+                                            <a class="page-scroll" href="{{ route('professional.dashboard') }}">Dashboard</a>
+                                        @elseif(Auth::user()->role=='admin')
+                                            <a class="page-scroll" href="{{ route('admin.dashboard') }}">Dashboard</a>
+                                        @endif
+                                    @else
+                                        <a class="page-scroll" href="{{ route('login') }}">Login</a>
+                                    @endif
+
                                 </li>
                             </ul>
                         </div>
@@ -55,18 +64,18 @@
                     <div class="carousel-inner">
                         <div class="carousel-item  active">
                            <img class="d-block w-100" width="1349px;" height="347px;" src="{{ url('public/assets/spa/images/slider/slide-01.jpeg') }}">
-                        </div> 
+                        </div>
 
-                      
+
                        <div class="carousel-item">
                          <img class="d-block w-100" height="347px;" src="{{ url('public/assets/spa/images/slider/slide-02.jpeg') }}">
-                       </div> 
-                       
+                       </div>
+
 
                        <div class="carousel-item">
                           <img class="d-block w-100" height="347px;" src="{{ url('public/assets/spa/images/slider/slide-03.jpeg') }}">
-                       </div> 
-                    </div> 
+                       </div>
+                    </div>
 
                     <a class="carousel-control-prev" href="#carouselOne" role="button" data-slide="prev">
                         <i class="lni-arrow-left-circle"></i>
