@@ -268,7 +268,7 @@
                     </div>
                     <div class="col-lg-6">
                         <div class="contact-form form-style-one mt-35 wow fadeIn" data-wow-duration="1.5s" data-wow-delay="0.5s">
-                            <form  id="contact-form" action="index.php" method="post">
+                            <form  id="contact-form" action="" method="post">
                                 <div class="form-input mt-15">
                                     <label>Name</label>
                                     <div class="input-items default">

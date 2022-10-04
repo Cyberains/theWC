@@ -29,13 +29,6 @@ Auth::routes();
 Route::get('/lead',[LeadController::class,'index'])->name('get-lead');
 Route::post('/lead',[LeadController::class,'store'])->name('post-lead');
 
-Route::get('events', function () {
-
-	event(new App\Events\TestEvent('hello tinku'));
-
-	return 'successful';
-});
-
 Route::get('pushes', function () {
 
 	return view('viewpush');
@@ -186,15 +179,6 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
 		Route::get('customer/membership/receipt/{id}', 'CustomerController@MembershipReceipt')->name('membership_receipt');
 		Route::post('customer/membership/add', 'CustomerController@addCustomerMembership')->name('add_customer_membership');
 		Route::post('ajax/user/get', 'CustomerController@GetUser')->name('user-search');
-
-		// // Address
-		// Route::get('address','AddressController@index')->name('address');
-		// Route::post('address/add','AddressController@store')->name('add_address');
-		// Route::post('address/toggle','AddressController@toggle')->name('toggle_address');
-		// Route::post('address/edit','AddressController@edit')->name('edit_address');
-		// Route::post('address/update','AddressController@update')->name('update_address');
-		// Route::get('address/delete/{id}','AddressController@destroy')->name('delete_address');
-
 
 		// Billing
 		Route::get('billing', 'BillingController@index')->name('billing');
@@ -444,13 +428,3 @@ Route::namespace('Professional')->prefix('professional')->name('professional.')-
         Route::get('professional-rating',[\App\Http\Controllers\Professional\RatingController::class,'professionalRating'])->name('professional-rating');
     });
 });
-
-
-//public function serviceHistoryDone(Request $request){
-//    $service_history_done = Booking::with(['user','service'])
-//        ->where(['professional_id'=>$request->user()->id])
-//        ->orderBy('created_at','DESC')
-//        ->paginate(15);
-//    $current_page_done = $service_history_done->currentPage();
-//    return view('professional.service.service_history',compact(['service_history_done','current_page_done']));
-//}

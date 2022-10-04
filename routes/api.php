@@ -32,9 +32,6 @@ Route::namespace('Api')->name('api.')->group(function(){
 	Route::post('forget/password/update','UserController@PasswordResetUpdate');
 
 	Route::middleware('auth:api')->group(function(){
-
-		Route::post('logout/','UserController@logout');
-
 		//update name and dob
 		Route::post('update-account','UserController@UpdateAccount');
 
@@ -47,12 +44,6 @@ Route::namespace('Api')->name('api.')->group(function(){
 		Route::post('confirm-mobile','UserController@ConfirmMobile');
 		Route::post('verify_mobile_otp','UserController@verifyUpdateMobile');
 		Route::post('resend/mobile_otp','UserController@resendMobileOTP');
-
-		//Address
-//		Route::post('address','UserController@Address');
-//		Route::post('address/store','UserController@AddressStore');
-//		Route::post('address-update','UserController@AddressUpdate');
-//		Route::post('address-delete','UserController@AddressDelete');
 
 		//change password
 		Route::post('update-password','UserController@UpdatePassword');
