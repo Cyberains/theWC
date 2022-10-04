@@ -21,6 +21,7 @@
 </head>
 
 <body>
+    @include('sweetalert::alert')
     @include("spa.main.navbar")
     <!-- body section -->
     @yield('content')

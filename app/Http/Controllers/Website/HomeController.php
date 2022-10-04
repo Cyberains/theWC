@@ -3,19 +3,11 @@
 namespace App\Http\Controllers\Website;
 
 use App\Http\Controllers\Controller;
-use App\Models\Banner;
-use App\Models\Brand;
 use App\Models\Category;
-use App\Models\Cms;
 use App\Models\Contact;
-use App\Models\Service;
-use App\Models\WhyChooseUs;
-use App\Models\WorldCity;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
-use Khsing\World\World;
 use App\Jobs\SendEmailJob;
-use App\Models\Product;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class HomeController extends Controller
 {
@@ -54,6 +46,7 @@ class HomeController extends Controller
                 SendEmailJob::dispatch(['details' => $details]);
             }
             \DB::commit();
+            Alert::success('', 'Thank you');
             return redirect('/');
         } catch (\Throwable $th) {
             \DB::rollBack();

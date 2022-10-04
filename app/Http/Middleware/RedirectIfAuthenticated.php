@@ -20,17 +20,13 @@ class RedirectIfAuthenticated
     public function handle(Request $request, Closure $next, ...$guards)
     {
         $guards = empty($guards) ? [null] : $guards;
-
         foreach ($guards as $guard) {
-
-            if (Auth::guard($guard)->check() && Auth::user()->role != 'user') {
-
+            if (Auth::guard($guard)->check() && Auth::user()->role == 'admin') {
                 return redirect('admin/dashboard');
-
+            }elseif(Auth::guard($guard)->check() && Auth::user()->role == 'Professional'){
+                return redirect('professional/dashboard');
             }
-
         }
-
         return $next($request);
     }
 }
