@@ -8,37 +8,13 @@ Route::namespace('Website')->group(function () {
 		'uses' => 'HomeController@index',
 		'as' => 'spa.home',
 	]);
-	Route::get('about/us', [
-		'uses' => 'HomeController@aboutUs',
-		'as' => 'spa.about.us',
-	]);
-	Route::get('privacy/policy', [
-		'uses' => 'HomeController@privacyPolicy',
-		'as' => 'spa.privacy.policy',
-	]);
-	Route::get('terms/conditions', [
-		'uses' => 'HomeController@termCondition',
-		'as' => 'spa.terms.conditions',
-	]);
-	Route::get('contact/us', [
-		'uses' => 'HomeController@getContact',
-		'as' => 'spa.contact',
-	]);
+    Route::get('privacy/policy', [
+        'uses' => 'HomeController@privacyPolicy',
+        'as' => 'spa.privacy.policy',
+    ]);
 	Route::post('contact/us', [
 		'uses' => 'HomeController@postContact',
 		'as' => 'spa.contact.create',
-	]);
-	Route::get('services/{id?}', [
-		'uses' => 'HomeController@getServices',
-		'as' => 'spa.services.city',
-	]);
-	Route::get('services/category/{id?}', [
-		'uses' => 'HomeController@getServiceCategory',
-		'as' => 'spa.services.category',
-	]);
-	Route::get('services/products/{category_id?}/{brand_id?}/{sub_cat_id?}', [
-		'uses' => 'HomeController@getProducts',
-		'as' => 'spa.services.products',
 	]);
 });
 
