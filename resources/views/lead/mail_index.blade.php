@@ -56,6 +56,7 @@
                             <th>Gender</th>
                             <th>Professional Qualification</th>
                             <th>Total Work Experience</th>
+                            <th>Time</th>
                         </tr>
                         </thead>
                         @if(!empty($mails))
@@ -70,6 +71,7 @@
                                     <td>{{ $mail->m_f }}</td>
                                     <td>{{ $mail->professional_qualification }}</td>
                                     <td>{{ $mail->total_work_experience }}</td>
+                                    <td>{{ $mail->created_at->diffForHumans() }}</td>
                                 </tr>
                             @endforeach
                         @endif

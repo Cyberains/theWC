@@ -26,6 +26,44 @@
             </div>
         </div>
     </div>
+<<<<<<< HEAD
+=======
+<!--
+                <div id="carouselOne" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#carouselOne" data-slide-to="0" class="active"></li>
+                        <li data-target="#carouselOne" data-slide-to="1"></li>
+                        <li data-target="#carouselOne" data-slide-to="2"></li>
+                    </ol>
+
+                    <div class="carousel-inner">
+                        <div class="carousel-item  active">
+                           <img class="d-block w-100" width="1349px;" height="347px;" src="{{ url('public/assets/spa/images/slider/slide-02.jpeg') }}">
+                        </div>
+
+
+                       <div class="carousel-item">
+                         <img class="d-block w-100" height="347px;" src="{{ url('public/assets/spa/images/slider/slide-02.jpeg') }}">
+                       </div>
+
+
+                       <div class="carousel-item">
+                          <img class="d-block w-100" height="347px;" src="{{ url('public/assets/spa/images/slider/slide-02.jpeg') }}">
+                       </div>
+                    </div>
+
+                    <a class="carousel-control-prev" href="#carouselOne" role="button" data-slide="prev">
+                        <i class="lni-arrow-left-circle"></i>
+                    </a>
+
+                    <a class="carousel-control-next" href="#carouselOne" role="button" data-slide="next">
+                        <i class="lni-arrow-right-circle"></i>
+                    </a>
+                </div>
+
+        </div> -->
+
+>>>>>>> e17c212da8693043d29b52d1678bd0cb6208893d
 
   <div class="overlay-right"></div>
     <section id="about" class="about-area">
@@ -35,7 +73,7 @@
                     <div class="about-image text-center wow fadeInUp" data-wow-duration="1.5s" data-wow-offset="100">
                         <h4 class="size">GET US ON!</h4>
                             <img style="width:15%;" src="{{ url('public/assets/spa/images/icon/google play store button 1.jpg') }}" alt="services">
-                            <img style="width:15%;" src="{{ url('public/assets/spa/images/icon/app_play_store_button1.png') }}" alt="services"><br>
+                            <img style="width:15%;" src="{{ url('public/assets/spa/images/icon/app_play_store_button1.png') }}" alt="services"><br><br>
                             <span class="text-fill blink-soft">Comming Soon...</span>
                     </div>
                     <div class="section-title text-center mt-30 pb-40">
@@ -43,6 +81,17 @@
                             Hassel free Beauty service booking app, now your salon at home. It's just one click away.</h4>
                         <p class="text wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="1s">
                             Our aim is to provide the best beauty service at an affordable price with a "ZERO" commission from professionals.
+                        </p>
+                        <p style="font-size: 20px; padding-top: 10px">
+                            The womens company (TWC) is operatd by Epic Corporations Pvt Ltd, TWC is the India's first platform at "ZERO" comissions for
+                            beauty and salon professionals. We are commited to provide the best service at affordable price range to our user.
+
+                            We charged a genuine price for beauty services with genuine products, our professions use only genuine and certified products.
+                            TWC provide a verity of beauty services of their users at daily basis. Any profession who is working for Women's beauty
+                            can join TWC and stsrt income from first day.
+
+                            We bealive in women empowerment and we love to work for women empower, our concept besed on women empowerment only and we do
+                            work for that only. Our thinking is "If a women will empower she can make the country empower".
                         </p>
                     </div> <!-- section title -->
                 </div>
@@ -112,98 +161,18 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="row testimonial-active">
+                        @foreach($categories as $category)
                         <div class="col-lg-3">
                             <div class="single-testimonial mt-30 mb-30 text-center">
                                 <div class="testimonial-image">
-                                    <img src="{{ url('public/assets/spa/images/author-3.jpg') }}" alt="Author">
+                                    <img src="{{ url('public/images/category/'.$category->image) }}" alt="Author">
                                 </div>
                                 <div class="testimonial-content">
-                                    <h6 class="author-name">Isabela Moreira</h6>
+                                    <h6 class="author-name">{{ $category->title }}</h6>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3">
-                            <div class="single-testimonial mt-30 mb-30 text-center">
-                                <div class="testimonial-image">
-                                    <img src="{{ url('public/assets/spa/images/author-1.jpg') }}" alt="Author">
-                                </div>
-                                <div class="testimonial-content">
-                                    <h6 class="author-name">Fiona</h6>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-3">
-                            <div class="single-testimonial mt-30 mb-30 text-center">
-                                <div class="testimonial-image">
-                                    <img src="{{ url('public/assets/spa/images/author-1.jpg') }}" alt="Author">
-                                </div>
-                                <div class="testimonial-content">
-                                    <h6 class="author-name">Fiona</h6>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3">
-                            <div class="single-testimonial mt-30 mb-30 text-center">
-                                <div class="testimonial-image">
-                                    <img src="{{ url('public/assets/spa/images/author-1.jpg') }}" alt="Author">
-                                </div>
-                                <div class="testimonial-content">
-                                    <h6 class="author-name">Fiona</h6>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3">
-                            <div class="single-testimonial mt-30 mb-30 text-center">
-                                <div class="testimonial-image">
-                                    <img src="{{ url('public/assets/spa/images/author-1.jpg') }}" alt="Author">
-                                </div>
-                                <div class="testimonial-content">
-                                    <h6 class="author-name">Fiona</h6>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3">
-                            <div class="single-testimonial mt-30 mb-30 text-center">
-                                <div class="testimonial-image">
-                                    <img src="{{ url('public/assets/spa/images/author-1.jpg') }}" alt="Author">
-                                </div>
-                                <div class="testimonial-content">
-                                    <h6 class="author-name">Fiona</h6>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3">
-                            <div class="single-testimonial mt-30 mb-30 text-center">
-                                <div class="testimonial-image">
-                                    <img src="{{ url('public/assets/spa/images/author-2.jpg') }}" alt="Author">
-                                </div>
-                                <div class="testimonial-content">
-                                    <h6 class="author-name">Elon Musk</h6>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-3">
-                            <div class="single-testimonial mt-30 mb-30 text-center">
-                                <div class="testimonial-image">
-                                    <img src="{{ url('public/assets/spa/images/author-2.jpg') }}" alt="Author">
-                                </div>
-                                <div class="testimonial-content">
-                                    <h6 class="author-name">Elon Musk</h6>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3">
-                            <div class="single-testimonial mt-30 mb-30 text-center">
-                                <div class="testimonial-image">
-                                    <img src="{{ url('public/assets/spa/images/author-4.jpg') }}" alt="Author">
-                                </div>
-                                <div class="testimonial-content">
-                                    <h6 class="author-name">Fajar Siddiq</h6>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -233,7 +202,7 @@
                         <span class="icon-wallet color-blue"></span>
                         <img src="{{ url('public/assets/spa/images/icon/select_icon.png') }}" alt="Girl in a jacket" width="55" height="55">
                         <h5 class="pt-13">Select it</h5>
-                        <p class="font ml-2 mr-2">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                        <p class="font ml-2 mr-2">Select your required beauty service from our wide range of services. In just one click.</p>
 
                     </div>
                 </div>
@@ -246,7 +215,7 @@
                         <img src="{{ url('public/assets/spa/images/icon/add_icon.png') }}" alt="Girl in a jacket" width="55" height="55">
 
                         <h5 class="pt-13">Add it</h5>
-                        <p class="font ml-2 mr-2">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                        <p class="font ml-2 mr-2">Add service in your cart in just one select, now you are just one step away to book your beauty service.</p>
 
                     </div>
                 </div>
@@ -261,7 +230,7 @@
                         </div>
 
                         <h5 class="pt-13">Get it</h5>
-                        <p class="font ml-2 mr-2">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                        <p class="font ml-2 mr-2">Pay with many payment options and book your service. Enjoy your personal beauty service with your personal beauty technician.</p>
 
                     </div>
                 </div>
@@ -272,26 +241,6 @@
     </div>
 
     <section id="call-action" class="call-action-area">
-{{--            <div class="container">--}}
-{{--                <div class="row align-items-center">--}}
-{{--                    <div class="col-lg-5">--}}
-{{--                        <div class="call-action-content mt-45">--}}
-{{--                            <h3 class="action-title">Get latest updates!</h3>--}}
-{{--                            <p class="text">We never spam your email</p>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                    <div class="col-lg-7">--}}
-{{--                        <div class="call-action-form mt-50">--}}
-{{--                            <form action="#">--}}
-{{--                                <input type="text" placeholder="Enter your email">--}}
-{{--                                <div class="action-btn rounded-buttons">--}}
-{{--                                    <a href="#"><button class="main-btn rounded-three">subscribe</button></a>--}}
-{{--                                </div>--}}
-{{--                            </form>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
         </section>
 
     <section id="contact" class="contact-area">
@@ -312,7 +261,7 @@
                             <ul class="contact-info">
                                 <li><i class="lni-money-location"></i> Visit : F-256 , 1st Floor , B-Block , Ansal API ,
                                     Palam Corporate Plaza, Palam Vihar Gurgaon (HR), 122017</li>
-                                <li><i class="lni-phone-handset"></i><a href="tel:9643824343" style="color: #000;"> +91 9643-82-4343</a></li>
+                                <li><i class="lni-phone-handset"></i><a href="tel:9643824343" style="color: #000;"> +91 8860014004</a></li>
                                 <!-- <li><i class="lni-envelope"></i> support@earlybasket.com</li> -->
                             </ul>
                         </div> <!-- contact two -->
