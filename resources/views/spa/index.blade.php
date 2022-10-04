@@ -1,14 +1,4 @@
-
-
 @extends("spa.main.master")
-@section('style')
-<style>
-/* .carousel {
-    padding: 76px 0px 0px 0px!important;
-} */
-
-</style>
-@endsection
 @section('content')
     <div class="preloader">
         <div class="loader">
@@ -26,9 +16,9 @@
             </div>
         </div>
     </div>
-<<<<<<< HEAD
-=======
-<!--
+    <section class="header-area bg-section">
+        <div id="home" class="slider-area">
+            <div class="bd-example">
                 <div id="carouselOne" class="carousel slide" data-ride="carousel">
                     <ol class="carousel-indicators">
                         <li data-target="#carouselOne" data-slide-to="0" class="active"></li>
@@ -38,18 +28,18 @@
 
                     <div class="carousel-inner">
                         <div class="carousel-item  active">
-                           <img class="d-block w-100" width="1349px;" height="347px;" src="{{ url('public/assets/spa/images/slider/slide-02.jpeg') }}">
+                            <img class="d-block w-100" width="1349px;" height="347px;" src="{{ url('public/assets/spa/images/slider/slide-01.jpeg') }}">
                         </div>
 
 
-                       <div class="carousel-item">
-                         <img class="d-block w-100" height="347px;" src="{{ url('public/assets/spa/images/slider/slide-02.jpeg') }}">
-                       </div>
+                        <div class="carousel-item">
+                            <img class="d-block w-100" height="347px;" src="{{ url('public/assets/spa/images/slider/slide-02.jpeg') }}">
+                        </div>
 
 
-                       <div class="carousel-item">
-                          <img class="d-block w-100" height="347px;" src="{{ url('public/assets/spa/images/slider/slide-02.jpeg') }}">
-                       </div>
+                        <div class="carousel-item">
+                            <img class="d-block w-100" height="347px;" src="{{ url('public/assets/spa/images/slider/slide-03.jpeg') }}">
+                        </div>
                     </div>
 
                     <a class="carousel-control-prev" href="#carouselOne" role="button" data-slide="prev">
@@ -60,11 +50,9 @@
                         <i class="lni-arrow-right-circle"></i>
                     </a>
                 </div>
-
-        </div> -->
-
->>>>>>> e17c212da8693043d29b52d1678bd0cb6208893d
-
+            </div>
+        </div>
+    </section>
   <div class="overlay-right"></div>
     <section id="about" class="about-area">
         <div class="container">
@@ -93,15 +81,14 @@
                             We bealive in women empowerment and we love to work for women empower, our concept besed on women empowerment only and we do
                             work for that only. Our thinking is "If a women will empower she can make the country empower".
                         </p>
-                    </div> <!-- section title -->
+                    </div>
                 </div>
-            </div> <!-- row -->
+            </div>
 
             <div class="row">
                 <div class="col-lg-6">
                     <div class="single-about d-sm-flex mt-30 wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="1.2s">
                         <div class="about-icon">
-                            <!-- <img src="images/icon-1.png" alt="Icon"> -->
                             <img src="{{ url('public/assets/spa/images/icon/availability.png') }}" alt="Icon">
                         </div>
                         <div class="about-content media-body">
@@ -110,7 +97,7 @@
                                 Our professionals are available in your area from morning 6:30 AM to 9:30 PM. Just one click away.
                             </p>
                         </div>
-                    </div> <!-- single about -->
+                    </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="single-about d-sm-flex mt-30 wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="1.4s">
@@ -183,7 +170,6 @@
         <div class="container">
             <div class="row mb-4">
 
-                <!-- title start -->
                 <div class="col-md-12 text-center mt-3">
                     <h1 class="font-size-normal">
                         <small>How it works</small><br>
@@ -191,12 +177,10 @@
                         <small class="heading heading-solid center-block"></small>
                     </h1>
                 </div>
-                <!-- title end -->
             </div>
 
             <div class="row mt50">
 
-                <!-- item one start -->
                 <div class="col-md-4 col-sm-6 col-xs-6 animated fadeInLeft visible" data-animation="fadeInLeft" data-animation-delay="100">
                     <div class="content-box content-box-icon-o-circle content-box-center">
                         <span class="icon-wallet color-blue"></span>
@@ -206,9 +190,6 @@
 
                     </div>
                 </div>
-                <!-- item one end -->
-
-                <!-- item two start -->
                 <div class="col-md-4 col-sm-6 col-xs-6 animated fadeInLeft visible" data-animation="fadeInLeft" data-animation-delay="200">
                     <div class="content-box content-box-icon-o-circle content-box-center">
                         <span class="icon-browser color-blue"></span>
@@ -219,9 +200,6 @@
 
                     </div>
                 </div>
-                <!-- item two end -->
-
-                <!-- item three start -->
                 <div class="col-md-4 col-sm-6 col-xs-6 animated fadeInRight visible" data-animation="fadeInRight" data-animation-delay="300">
                     <div class="content-box content-box-icon-o-circle content-box-center">
                         <span class="icon-bike color-blue"></span>
@@ -234,8 +212,6 @@
 
                     </div>
                 </div>
-                <!-- item three end -->
-
             </div>
         </div>
     </div>
@@ -249,63 +225,61 @@
                     <div class="col-lg-6">
                         <div class="section-title text-center pb-20">
                             <h3 class="title">Get in touch</h3>
-                            <!-- <p class="text">Stop wasting time and money designing and managing a website that doesn’t get results. Happiness guaranteed!</p> -->
-                        </div> <!-- section title -->
+                        </div>
                     </div>
-                </div> <!-- row -->
+                </div>
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="contact-two mt-50 wow fadeIn" data-wow-duration="1.5s" data-wow-delay="0.2s">
                             <h4 class="contact-title">CONTACT US</h4>
-                            <!-- <p class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam unde repellendus delectus facilis quia consequatur maxime perferendis! Sequi, modi consequatur.</p> -->
                             <ul class="contact-info">
-                                <li><i class="lni-money-location"></i> Visit : F-256 , 1st Floor , B-Block , Ansal API ,
-                                    Palam Corporate Plaza, Palam Vihar Gurgaon (HR), 122017</li>
+                                <li><i class="lni-money-location"></i> Visit : F-256 , 1st Floor , B-Block , Ansal API ,<br>
+                                    &emsp;&ensp;Palam Corporate Plaza, Palam Vihar Gurgaon (HR), 122017</li>
                                 <li><i class="lni-phone-handset"></i><a href="tel:9643824343" style="color: #000;"> +91 8860014004</a></li>
-                                <!-- <li><i class="lni-envelope"></i> support@earlybasket.com</li> -->
                             </ul>
-                        </div> <!-- contact two -->
+                        </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="contact-form form-style-one mt-35 wow fadeIn" data-wow-duration="1.5s" data-wow-delay="0.5s">
-                            <form  id="contact-form" action="" method="post">
+                            <form  id="contact-form" action="contact/us" method="post">
+                                @csrf
                                 <div class="form-input mt-15">
                                     <label>Name</label>
                                     <div class="input-items default">
                                         <input type="text" placeholder="Name" name="name">
                                         <i class="lni-user"></i>
                                     </div>
-                                </div> <!-- form input -->
+                                </div>
                                 <div class="form-input mt-15">
                                     <label>Email</label>
                                     <div class="input-items default">
                                         <input type="email" placeholder="Email" name="email">
                                         <i class="lni-envelope"></i>
                                     </div>
-                                </div> <!-- form input -->
+                                </div>
                                 <div class="form-input mt-15">
                                     <label>Phone</label>
                                     <div class="input-items default">
-                                        <input type="tel" placeholder="Phone" name="telNo">
+                                        <input type="tel" placeholder="Phone" name="phone">
                                         <i class="lni-phone-handset"></i>
                                     </div>
-                                </div> <!-- form input -->
+                                </div>
                                 <div class="form-input mt-15">
                                     <label>Message</label>
                                     <div class="input-items default">
                                         <textarea placeholder="Message" name="message"></textarea>
                                         <i class="lni-pencil-alt"></i>
                                     </div>
-                                </div> <!-- form input -->
+                                </div>
                                 <p class="form-message"></p>
                                 <div class="form-input rounded-buttons mt-20">
-                                    <button type="submit" name="btn" class="main-btn rounded-three">Submit</button>
-                                </div> <!-- form input -->
+                                    <button type="submit" class="main-btn rounded-three">Submit</button>
+                                </div>
                             </form>
-                        </div> <!-- contact form -->
+                        </div>
                     </div>
-                </div> <!-- row -->
-            </div> <!-- container -->
+                </div>
+            </div>
         </section>
 
 @endsection

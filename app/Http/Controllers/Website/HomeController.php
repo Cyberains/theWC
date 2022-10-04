@@ -24,47 +24,26 @@ class HomeController extends Controller
         return view('spa.index', compact('categories'));
     }
 
-
-
-    public function aboutUs()
-    {
-        $about_us = Cms::where('type', 'about_us')->first();
-        return view('spa.about', compact('about_us'));
-    }
-
     public function privacyPolicy()
     {
-        $privacy_policy = Cms::where('type', 'privacy_policy')->first();
-        return view('spa.privacy', compact('privacy_policy'));
+        return view('spa.privacy');
     }
-    public function termCondition()
-    {
-        $terms = Cms::where('type', 'term_condition')->first();
-        return view('spa.terms', compact('terms'));
-    }
-    public function getContact()
-    {
 
-        return view('spa.contact');
-    }
-    public function postContact(Request $request)
+    public function postContact(Request $request): \Illuminate\Http\JsonResponse
     {
         $this->validate($request, [
             'name' => 'required',
             'email' => 'required|email',
             'phone' => 'required|digits_between:6,20',
-            'subject' => 'required',
             'message' => 'required',
         ]);
-        $dataArr = arrayFromPost(['name', 'email', 'phone', 'subject', 'message']);
-
+        $dataArr = arrayFromPost(['name', 'email', 'phone', 'message']);
         try {
             \DB::beginTransaction();
             $contact = new Contact();
             $contact->name = $dataArr->name;
             $contact->email = $dataArr->email;
             $contact->phone = $dataArr->phone;
-            $contact->subject = $dataArr->subject;
             $contact->message = $dataArr->message;
             $contact->save();
             $details['email'] = $dataArr->email;
@@ -74,47 +53,8 @@ class HomeController extends Controller
             \DB::commit();
             return successMessage('request_sent');
         } catch (\Throwable $th) {
-            // Rollback Transaction
             \DB::rollBack();
             return exceptionErrorMessage($th);
         }
-    }
-
-    public function getServices(Request $request)
-    {
-        $services = Brand::select('id', 'title', 'image')
-            ->where('city_id', $request->id)->orderBy('id', 'desc')->get();
-        return $services;
-    }
-
-
-    public function getServiceCategory(Request $request)
-    {
-        $brandId = $request->id;
-        $serviceCategory = Category::where('brand_id', $request->id)->orderBy('id', 'desc')->get();
-        return view('spa.service_category', compact('serviceCategory', 'brandId'));
-    }
-
-
-    public function getProducts(Request $request)
-    {
-        $categories = Category::select('categories.id', 'categories.title', 'categories.brand_id')
-            ->leftJoin('products', 'categories.id', '=', 'products.category_id')
-            ->whereNotNull('products.category_id')
-            ->groupBy('products.category_id')
-            ->with('subCategoryName')
-            ->get();
-
-        $products = Product::select('*')
-            ->where(['category_id' => $request->category_id])->with('productFetaure')
-            ->when(!blank($request->sub_cat_id), function ($query) use ($request) {
-                $query->where('subcategory_id', $request->sub_cat_id);
-            })
-            ->when(!blank($request->brand_id), function ($query) use ($request) {
-                $query->where('brand_id', $request->brand_id);
-            })
-            ->get();
-
-        return view('spa.products', compact('categories', 'products'));
     }
 }

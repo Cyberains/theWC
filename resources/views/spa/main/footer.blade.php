@@ -13,10 +13,10 @@
                     <div class="footer-link">
                         <h6 class="footer-title">Useful Link</h6>
                         <ul>
-                            <li><a href="#">About</a></li>
-                            <li><a href="#">Services</a></li>
-                            <li><a href="#">Our Process</a></li>
-                            <li><a href="#">Contact</a></li>
+                            <li><a href="#about">About</a></li>
+                            <li><a href="#testimonial">Services</a></li>
+                            <li><a href="#how-it-works">Our Process</a></li>
+                            <li><a href="#contact">Contact</a></li>
                         </ul>
                     </div> <!-- footer link -->
                 </div>
@@ -52,19 +52,17 @@
             <div class="row align-items-center">
                 <div class="col-lg-5">
                     <div class="copyright text-center text-lg-left mt-10">
-                        <p class="text">Copyright © 2022 All Rights Reserved By <a style="color: #904795;" rel="nofollow" href="#">The Women's Company</a></p>
+                        <p class="text">Copyright © 2022 All Rights Reserved By <a style="color: #904795;" rel="nofollow" href="/">The Women's Company</a></p>
                     </div>
                 </div>
                 <div class="col-lg-2">
                     <div class="footer-logo text-center mt-10">
-                        <a href="index.html"><img src="{{ url('public/assets/spa/images/img/favicon_twc.png') }}" alt="Logo"></a>
+                        <a href="/"><img src="{{ url('public/assets/spa/images/img/favicon_twc.png') }}" alt="Logo"></a>
                     </div>
                 </div>
                 <div class="col-lg-5">
                 <ul class="social text-center text-lg-right mt-10">
                             <li><a href="https://www.facebook.com/people/The-Womens-Company/100085780710556" target="_blank"><i class="lni-facebook-filled"></i></a></li>
-                            <li><a href="#"><i class="lni-twitter-original"></i></a></li>
-
                             <li><a href="https://www.instagram.com/the_womens_company" target="_blank"><i class="lni-instagram-original"></i></a></li>
                             <li><a href="https://www.linkedin.com/company/the-womens-company" target="_blank"><i class="lni-linkedin-original"></i></a></li>
                             <li><a href="https://api.whatsapp.com/send?phone=918860014004" target="_blank"><i class="lni lni-whatsapp"></i></a></li>
