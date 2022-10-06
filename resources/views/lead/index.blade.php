@@ -93,7 +93,7 @@
                                 <div class="input_field"> <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
                                     <input type="email" name="email" placeholder="Email" required>
                                 </div>
-                               
+
 
                                 <div class="input_field radio_option">
                                     <input type="radio" name="male" id="rd1">
@@ -136,16 +136,18 @@
                                                     <option>Gurugram</option>
                                                     <option>Delhi</option>
                                                     <option>Noida</option>
-                                        
+
                                                 </select>
                                                 <div class="select_arrow"></div>
                                             </div>
                                        </div>
                                        <div class="col-5">
                                             <div class="input_field"> <span><i aria-hidden="true" class="fa fa-map-marker"></i></span>
-                                            <input type="text" name="pin_code" placeholder="Pin Code" required>
+                                                <input type="text" name="pin_code" placeholder="Pin Code" required>
                                             </div>
     </div>
+                                        <input type="text" id="latitude" name="latitude" hidden>
+                                        <input type="text" id="longitude" name="longitude" hidden>
                                     </div>
                                 </div>
                                 <div class="input_field checkbox_option">
@@ -162,7 +164,6 @@
     </div>
 </div>
 <!-- End Hero -->
-
 
 <footer id="footer">
     <div class="container">
@@ -214,6 +215,41 @@
             }
         }
     })
+</script>
+
+<script>
+    let latitude = document.getElementById("latitude");
+    let longitude = document.getElementById("longitude");
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition,showError);
+        } else {
+            console.log('Geolocation is not supported by this browser.');
+        }
+    }
+    getLocation();
+
+    function showPosition(position) {
+        latitude.value  = position.coords.latitude;
+        longitude.value  = position.coords.longitude;
+    }
+
+    function showError(error) {
+        switch(error.code) {
+            case error.PERMISSION_DENIED:
+                x.innerHTML = "User denied the request for Geolocation."
+                break;
+            case error.POSITION_UNAVAILABLE:
+                x.innerHTML = "Location information is unavailable."
+                break;
+            case error.TIMEOUT:
+                x.innerHTML = "The request to get user location timed out."
+                break;
+            case error.UNKNOWN_ERROR:
+                x.innerHTML = "An unknown error occurred."
+                break;
+        }
+    }
 </script>
 
 </html>

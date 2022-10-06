@@ -13,11 +13,15 @@ class Lead extends Model
     protected $fillable = [
         'name',
         'email',
-        'work_location',
+        'area',
+        'city',
+        'pin_code',
         'professional_qualification',
         'total_work_experience',
         'terms_condition',
         'phone',
-        'm_f'
+        'm_f',
+        'latitude',
+        'longitude'
     ];
 }
