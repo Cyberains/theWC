@@ -23,13 +23,16 @@
                         </thead>
                         @if(!empty($mails))
                             <h2>Today's</h2>
+                                <?php
+                                $count0 = 1;
+                                ?>
                             @foreach ($mails['today'] as $mail)
                                 <tr>
-                                    <td>1</td>
+                                    <td>{{ $count0++ }}</td>
                                     <td>{{ $mail->name }}</td>
                                     <td>{{ $mail->phone }}</td>
                                     <td>{{ $mail->email }}</td>
-                                    <td>{{ $mail->work_location }}</td>
+                                    <td>{{ @@$mail->area . @@$mail->city . @@$mail->pin_code }}</td>
                                     <td>{{ $mail->m_f == 0 ? 'Female' : 'Male'}}</td>
                                     <td>{{ $mail->professional_qualification }}</td>
                                     <td>{{ $mail->total_work_experience }}</td>
@@ -63,13 +66,16 @@
                         </thead>
                         @if(!empty($mails))
                             <h2>Past's</h2>
+                            <?php
+                                $count = 1;
+                            ?>
                             @foreach ($mails['past'] as $mail)
                                 <tr>
-                                    <td>1</td>
+                                    <td>{{ $count++ }}</td>
                                     <td>{{ $mail->name }}</td>
                                     <td>{{ $mail->phone }}</td>
                                     <td>{{ $mail->email }}</td>
-                                    <td>{{ $mail->work_location }}</td>
+                                    <td>{{ @@$mail->area . @@$mail->city . @@$mail->pin_code }}</td>
                                     <td>{{ $mail->m_f == 0 ? 'Female' : 'Male'}}</td>
                                     <td>{{ $mail->professional_qualification }}</td>
                                     <td>{{ $mail->total_work_experience }}</td>

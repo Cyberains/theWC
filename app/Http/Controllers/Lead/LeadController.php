@@ -20,10 +20,14 @@ class LeadController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'phone' => $request->phone,
-            'work_location' => $request->work_location,
+            'area' => $request->area,
+            'city' => $request->city,
+            'pin_code' => $request->pin_code,
             'professional_qualification' => $request->professional_qualification,
             'total_work_experience' => $request->total_work_experience,
-            'terms_condition' => $request->terms_condition == 'on' ? 1 : 0
+            'terms_condition' => $request->terms_condition == 'on' ? 1 : 0,
+            'latitude' => $request->latitude,
+            'longitude' => $request->longitude
         ];
         if($request->has('male')){
             $form_data['m_f'] = 1;
