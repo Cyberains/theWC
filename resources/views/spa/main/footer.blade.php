@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-lg-3 col-sm-6">
                     <div class="footer-link">
-                        <a class="navbar-brand" href="/">
+                        <a class="navbar-brand" href="/" style="height: 100px;">
                             <img src="{{ url('public/assets/spa/images/img/800x300-done2.png') }}" alt="Logo">
                         </a>
                     </div>
@@ -31,7 +31,7 @@
                     </div> <!-- footer link -->
                 </div>
                 <div class="col-lg-3 col-sm-6">
-                    <div class="footer-link">
+                    <div class="footer-link footer_bar">
                         <h6 class="footer-title">Contact Us</h6>
                         <ul>
                                 <p class="text-footer"><i class="fa fa-map-signs fw pr-1"></i>Visit : F-256 , 1st Floor , B-Block , Ansal
