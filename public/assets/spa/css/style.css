@@ -2951,7 +2951,7 @@ li:hover {
     }
 
     .bg-section{
-        padding-top: 8.5rem;
+        padding-top: 4.3rem;
     background-size: 100%;
     object-fit: cover;
     }
@@ -2967,7 +2967,7 @@ li:hover {
  @media only screen and (min-width: 576px) and (max-width: px) {
     .bg-section{
     width: 100%;
-    padding-top: 7rem;
+    padding-top: 3.5rem;
     object-fit: fill;
     /* margin-right: 1.3rem; */
     margin-left: -1.6rem;
