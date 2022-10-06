@@ -596,6 +596,13 @@ p {
     transition: all 0.3s ease-out 0s; }
 .navbar-area .navbar-brand img {
     max-width: 150px; }
+
+    @media only screen and (min-width: 768px) and (max-width: 991px) {
+        .navbar-area .navbar-brand img{
+            margin-left: 5px!important;  
+        }
+      
+    }    
 @media only screen and (min-width: 768px) and (max-width: 991px) {
     .navbar-area {
         padding: 10px 0; } }
@@ -636,7 +643,7 @@ p {
 @media only screen and (min-width: 768px) and (max-width: 991px) {
     .navbar-area .navbar .navbar-collapse {
         position: absolute;
-        top: 108%;
+        top: 100%;
         left: 0;
         width: 100%;
         background-color: #f4f6f7;
@@ -648,7 +655,7 @@ p {
 @media (max-width: 767px) {
     .navbar-area .navbar .navbar-collapse {
         position: absolute;
-        top: 108%;
+        top: 100%;
         left: 0;
         width: 100%;
         background-color: #f4f6f7;
@@ -2954,16 +2961,15 @@ li:hover {
  @media (max-width: 767px) {
     .bg-section{
     width: 100%;
-    padding-top: 7rem;
+    padding-top: 3.5rem;
     object-fit: fill;
-    /* margin-right: 1.3rem; */
     margin-left: -1.6rem;
         }
  }
- @media only screen and (min-width: 576px) and (max-width: px) {
+ @media only screen and (min-width: 576px) and (max-width:768 px) {
     .bg-section{
     width: 100%;
-    padding-top: 3.5rem;
+    padding-top: 3.5rem!important;
     object-fit: fill;
     /* margin-right: 1.3rem; */
     margin-left: -1.6rem;
@@ -2971,4 +2977,21 @@ li:hover {
  }
  @media (max-width: 767px) {
     .footer_bar {
-        margin-left: 45px; } }
+        margin-left: 45px;
+     }
+}
+@media (max-width: 576px) and (max-width:768px){
+.app_img{
+    width: 25%!important;
+ }
+}
+.app_img{
+    width: 15%;
+}
+ @media screen and (max-width: 767px) {
+     .logo_img{
+       margin-left: auto!important;
+       margin-right: 50px;
+ }
+}
+

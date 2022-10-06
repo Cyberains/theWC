@@ -10,12 +10,12 @@
     <!-- overlayScrollbars -->
     <link rel="stylesheet" href="{{ URL::asset('public/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
     <!-- Theme style -->
-    <!-- <link rel="stylesheet" href="{{ URL::asset('public/dist/css/adminlte.min.css') }}"> -->
+    <link rel="stylesheet" href="{{ URL::asset('public/dist/css/adminlte.min.css') }}">
     <style>
         [class*=sidebar-dark-] {
             background-color: #924795!important;
         }
-        .navbar-brand {
+        .navbar-brand {    
             text-align: center;
         }
         .nav-link .active{
