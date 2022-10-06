@@ -28,17 +28,17 @@
 
                     <div class="carousel-inner">
                         <div class="carousel-item  active">
-                            <img class="d-block w-100" width="1349px;" height="347px;" src="{{ url('public/assets/spa/images/slider/slide-01.jpg') }}">
+                            <img class="d-block w-100" width="1349px;" height="auto;" src="{{ url('public/assets/spa/images/slider/slide-01.jpg') }}">
                         </div>
 
 
                         <div class="carousel-item">
-                            <img class="d-block w-100" height="347px;" src="{{ url('public/assets/spa/images/slider/slide-02.jpeg') }}">
+                            <img class="d-block w-100" height="auto;" src="{{ url('public/assets/spa/images/slider/slide-02.jpg') }}">
                         </div>
 
 
                         <div class="carousel-item">
-                            <img class="d-block w-100" height="347px;" src="{{ url('public/assets/spa/images/slider/slide-03.jpeg') }}">
+                            <img class="d-block w-100" height="auto;" src="{{ url('public/assets/spa/images/slider/slide-03.jpg') }}">
                         </div>
                     </div>
 
