@@ -19,7 +19,8 @@ class ProfessionalMiddleware
     {
         if (Auth::check() && Auth::user()->role =='Professional') {
             return $next($request);
+        }else{
+            return abort(403,'access denied');
         }
-        return abort(403,'access denied');
     }
 }

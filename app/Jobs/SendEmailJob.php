@@ -33,11 +33,8 @@ class SendEmailJob implements ShouldQueue
     public function handle()
     {
         try {
-            ['details' => $details] = $this->details;
-            $request  = \App\Models\Contact::where('email', $details['email'])->first();
-            if (!blank($request)) {
-                $email = new NotifyMail();
-                Mail::to($details['email'])->send($email);
+            if (!blank($this->details)) {
+                Mail::to($this->details['details']['email'])->send(new NotifyMail($this->details['details']));
             }
         } catch (\Throwable $th) {
             \Log::error('Error while sending email to admin');

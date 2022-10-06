@@ -3,18 +3,11 @@
 namespace App\Http\Controllers\Website;
 
 use App\Http\Controllers\Controller;
-use App\Models\Banner;
-use App\Models\Brand;
 use App\Models\Category;
-use App\Models\Cms;
 use App\Models\Contact;
-use App\Models\Service;
-use App\Models\WhyChooseUs;
-use App\Models\WorldCity;
 use Illuminate\Http\Request;
-use Khsing\World\World;
 use App\Jobs\SendEmailJob;
-use App\Models\Product;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class HomeController extends Controller
 {
@@ -29,7 +22,7 @@ class HomeController extends Controller
         return view('spa.privacy');
     }
 
-    public function postContact(Request $request): \Illuminate\Http\JsonResponse
+    public function postContact(Request $request)
     {
         $this->validate($request, [
             'name' => 'required',
@@ -46,12 +39,15 @@ class HomeController extends Controller
             $contact->phone = $dataArr->phone;
             $contact->message = $dataArr->message;
             $contact->save();
+
             $details['email'] = $dataArr->email;
+            $details['data'] = $contact;
             if ($contact) {
                 SendEmailJob::dispatch(['details' => $details]);
             }
             \DB::commit();
-            return successMessage('request_sent');
+            Alert::success('', 'Thank you');
+            return redirect('/');
         } catch (\Throwable $th) {
             \DB::rollBack();
             return exceptionErrorMessage($th);

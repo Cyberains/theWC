@@ -28,6 +28,6 @@ class NotifyMail extends Mailable
      */
     public function build()
     {
-        return $this->view('spa.email');
+        return $this->view('spa.email',['data' => $this->details])->subject("The Women's Company");
     }
 }
