@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Professional;
 
 use App\Http\Controllers\Controller;
+use App\Models\Address;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -64,6 +65,48 @@ class ProfileController extends Controller
         $user->qualification = $request->qualification;
         if($user->save()){
             Alert::success('', 'Successfully Updated');
+            return redirect()->route('professional.profile');
+        }
+    }
+
+    public function add_prof_address(Request $request){
+        $request->validate([
+            'house_no' => 'required',
+            'area' => 'required',
+            'zipcode' => 'required',
+            'city' => 'required',
+            'state' => 'required',
+            'address_type' => 'nullable',
+            'mobile' => 'required',
+            'is_default' => 'nullable'
+        ]);
+
+        $form_data = [
+            'user_id' => $request->user()->id,
+            'house_no' => $request->house_no,
+            'area' => $request->area,
+            'zipcode' => $request->zipcode,
+            'city' => $request->city,
+            'state' => $request->state,
+            'address_type' => $request->address_type,
+            'mobile' => $request->mobile,
+            'landmark' => $request->landmark,
+            'latitude' => $request->latitude,
+            'longitude' => $request->longitude,
+            'is_default' => $request->is_default == 'on' ? 1 : 0
+        ];
+
+        $address = Address::create($form_data);
+        if($address->save()){
+            if($request->is_default == 'on'){
+                $addresses  = Address::where(['user_id'=>$request->user()->id])->where('id','!=',$address->id)->get();
+                foreach ($addresses as $addr){
+                    $addre = Address::where(['id' => $addr->id])->first();
+                    $addre->is_default = 0;
+                    $addre->save();
+                }
+            }
+            Alert::success('', 'Address Successfully Added');
             return redirect()->route('professional.profile');
         }
     }

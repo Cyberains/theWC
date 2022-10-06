@@ -307,285 +307,166 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
+                      <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h5 class="modal-title ml-auto" id="exampleModalLabel" style="color:#904795;">Update Your Details</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                            <div class="col-md-12">
+                                    <div class="card">
+                                      <div class="card-header p-2">
+                                        <ul class="nav nav-pills">
+                                          <li class="nav-item"><a class="nav-link active" href="#profile" data-toggle="tab">Personal</a></li>
+                                          <li class="nav-item"><a class="nav-link pinks" href="#prof-address" data-toggle="tab">Address</a></li>
+                                          <li class="nav-item"><a class="nav-link" href="#add-skill" data-toggle="tab">Skills</a></li>
+                                           <li class="nav-item"><a class="nav-link" href="#add-document" data-toggle="tab">Upload Document</a></li>
+                                        </ul>
+                                      </div>
+                                      <div class="card-body">
+                                        <div class="tab-content">
+                                          <div class="tab-pane active" id="profile">
+                                            <form class="form-horizontal" method="post" action="{{ route('professional.profile-update') }}" >
+                                                @csrf
+                                                <input type="text" name="id" value="{{ auth()->user()->id }}" id="id" hidden="hidden">
+                                                <div class="form-group row">
+                                                <label for="inputName" class="col-sm-2 col-form-label disabled">Name</label>
+                                                <div class="col-sm-10">
+                                                  <input type="text" class="form-control" id="inputName" name="name" value="{{ auth()->user()->name }}" placeholder="Name" required>
+                                                </div>
+                                              </div>
+                                                <div class="form-group row">
+                                                <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
+                                                <div class="col-sm-10">
+                                                  <input type="email" class="form-control" id="inputEmail" name="email" value="{{ auth()->user()->email }}" placeholder="Email" required>
+                                                </div>
+                                              </div>
+                                                <div class="form-group row">
+                                                <label for="inputExperience" class="col-sm-2 col-form-label">Experience</label>
+                                                <div class="col-sm-10">
+                                                   <input type="text" class="form-control" id="experience" name="experience" value="{{ auth()->user()->experience }}" placeholder="Experience" required>
+                                                </div>
+                                              </div>
+                                                <div class="form-group row">
+                                                <label for="inputQuli" class="col-sm-2 col-form-label">Qualification</label>
+                                                <div class="col-sm-10">
+                                                  <input type="text" class="form-control" id="qualification" name="qualification" value="{{ auth()->user()->qualification }}" placeholder="Qualification" required>
+                                                </div>
+                                              </div>
+                                                <div class="form-group row">
+                                                <label for="inputPhone" class="col-sm-2 col-form-label">Phone</label>
+                                                <div class="col-sm-10">
+                                                  <input type="text" class="form-control" id="mobile" name="mobile" placeholder="Mobile" value="{{ auth()->user()->mobile }}" required>
+                                                </div>
+                                              </div>
+                                                <div class="form-group row">
+                                                <label for="inputPhone" class="col-sm-2 col-form-label">Date of Birth </label>
+                                                <div class="col-sm-10">
+                                                  <input type="date" id="dob" name="dob" value="{{ auth()->user()->dob }}" required>
+                                                </div>
+                                              </div>
+                                                <div class="form-group row">
+                                                    <div class="offset-sm-2 col-sm-10">
+                                                        <button type="submit" class="btn btn-primary badge-pill" style="width:80px">Submit</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                          </div>
 
-    <div class="modal-content">
-        <div class="modal-header">
-        <h5 class="modal-title ml-auto" id="exampleModalLabel" style="color:#904795;">Update Your Details</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="col-md-12">
-                <div class="card">
-                  <div class="card-header p-2">
-                    <ul class="nav nav-pills">
-                      <li class="nav-item"><a class="nav-link active" href="#profile" data-toggle="tab">Personal</a></li>
-                      <li class="nav-item"><a class="nav-link pinks" href="#timeline" data-toggle="tab">Address</a></li>
-                      <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Skills</a></li>
-                       <li class="nav-item"><a class="nav-link" href="#settings2" data-toggle="tab">Upload Document</a></li>
-                    </ul>
-                  </div>
-                  <div class="card-body">
-                    <div class="tab-content">
-                      <div class="tab-pane active" id="profile">
-                        <form class="form-horizontal" method="post" action="{{ route('professional.profile-update') }}" >
-                            @csrf
-                            <input type="text" name="id" value="{{ auth()->user()->id }}" id="id" hidden="hidden">
-                            <div class="form-group row">
-                            <label for="inputName" class="col-sm-2 col-form-label disabled">Name</label>
-                            <div class="col-sm-10">
-                              <input type="text" class="form-control" id="inputName" name="name" value="{{ auth()->user()->name }}" placeholder="Name" required>
-                            </div>
-                          </div>
-                            <div class="form-group row">
-                            <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
-                            <div class="col-sm-10">
-                              <input type="email" class="form-control" id="inputEmail" name="email" value="{{ auth()->user()->email }}" placeholder="Email" required>
-                            </div>
-                          </div>
-                            <div class="form-group row">
-                            <label for="inputExperience" class="col-sm-2 col-form-label">Experience</label>
-                            <div class="col-sm-10">
-                               <input type="text" class="form-control" id="experience" name="experience" value="{{ auth()->user()->experience }}" placeholder="Experience" required>
-                            </div>
-                          </div>
-                            <div class="form-group row">
-                            <label for="inputQuli" class="col-sm-2 col-form-label">Qualification</label>
-                            <div class="col-sm-10">
-                              <input type="text" class="form-control" id="qualification" name="qualification" value="{{ auth()->user()->qualification }}" placeholder="Qualification" required>
-                            </div>
-                          </div>
-                            <div class="form-group row">
-                            <label for="inputPhone" class="col-sm-2 col-form-label">Phone</label>
-                            <div class="col-sm-10">
-                              <input type="text" class="form-control" id="mobile" name="mobile" placeholder="Mobile" value="{{ auth()->user()->mobile }}" required>
-                            </div>
-                          </div>
-                            <div class="form-group row">
-                            <label for="inputPhone" class="col-sm-2 col-form-label">Date of Birth </label>
-                            <div class="col-sm-10">
-                              <input type="date" id="dob" name="dob" value="{{ auth()->user()->dob }}" required>
-                            </div>
-                          </div>
-                            <div class="form-group row">
-                                <div class="offset-sm-2 col-sm-10">
-                                    <button type="submit" class="btn btn-primary badge-pill" style="width:80px">Submit</button>
-                                </div>
-                            </div>
-                        </form>
-                      </div>
+                                          <div class="tab-pane" id="prof-address">
+                                            <form class="form-horizontal" method="post" action="{{ route('professional.add-prof-address') }}">
+                                                @csrf
+                                              <div class="form-group row">
+                                                <label for="house_no" class="col-sm-2 col-form-label">House No</label>
+                                                <div class="col-sm-10">
+                                                  <input type="text" class="form-control" id="house_no" name="house_no" placeholder="House number" required>
+                                                </div>
+                                              </div>
+                                              <div class="form-group row">
+                                                <label for="area" class="col-sm-2 col-form-label">Area</label>
+                                                <div class="col-sm-10">
+                                                  <input type="text" class="form-control" id="area" name="area" placeholder="Area" required>
+                                                </div>
+                                              </div>
+                                              <div class="form-group row">
+                                                <label for="landmark" class="col-sm-2 col-form-label">Landmark</label>
+                                                <div class="col-sm-10">
+                                                  <input type="text" class="form-control" id="landmark" name="landmark" placeholder="Landmark" required>
+                                                </div>
+                                              </div>
+                                              <div class="form-group row">
+                                                <label for="mobile" class="col-sm-2 col-form-label">Mobile No</label>
+                                                <div class="col-sm-10">
+                                                   <input type="text" class="form-control" id="mobile" name="mobile" placeholder="Phone" required>
+                                                </div>
+                                              </div>
+                                               <div class="form-group row">
+                                                <label for="city" class="col-sm-2 col-form-label">City</label>
+                                                <div class="col-sm-10">
+                                                   <input type="text" class="form-control" id="city" name="city" placeholder="City" required>
+                                                </div>
+                                              </div>
+                                                <div class="form-group row">
+                                                <label for="inputExperience" class="col-sm-2 col-form-label">Pin Code</label>
+                                                <div class="col-sm-10">
+                                                   <input type="text" class="form-control" id="zipcode" name="zipcode" placeholder="Pin code" required>
+                                                </div>
+                                              </div>
+                                                <div class="form-group row">
+                                                    <label for="state" class="col-sm-2 col-form-label">State</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" class="form-control" id="state" name="state" placeholder="State" required>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="address_type" class="col-sm-2 col-form-label">Address Type</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" class="form-control" id="address_type" name="address_type" placeholder="Address Type" required>
+                                                    </div>
+                                                </div>
 
-                      <div class="tab-pane" id="timeline">
+                                                <label class="container">Is Default
+                                                    <input type="checkbox" checked="checked" name="is_default">
+                                                    <span class="checkmark"></span>
+                                                </label>
 
-                        <form class="form-horizontal">
-                          <div class="form-group row">
-                            <label for="inputName" class="col-sm-2 col-form-label">House No</label>
-                            <div class="col-sm-10">
-                              <input type="text" class="form-control" id="inputName" name="house_no" placeholder="House number" required>
-                            </div>
-                          </div>
-                          <div class="form-group row">
-                            <label for="inputArea" class="col-sm-2 col-form-label">Area</label>
-                            <div class="col-sm-10">
-                              <input type="text" class="form-control" id="inputEmail" name="area" placeholder="Area" required>
-                            </div>
-                          </div>
-                          <div class="form-group row">
-                            <label for="inputName2" class="col-sm-2 col-form-label">Landmark</label>
-                            <div class="col-sm-10">
-                              <input type="text" class="form-control" id="inputName2" name="land_mark" placeholder="Landmark" required>
-                            </div>
-                          </div>
-                          <div class="form-group row">
-                            <label for="inputExperience" class="col-sm-2 col-form-label">Phone</label>
-                            <div class="col-sm-10">
-                               <input type="text" class="form-control" id="phone" name="name" placeholder="Phone" required>
-                            </div>
-                          </div>
-                           <div class="form-group row">
-                            <label for="inputExperience" class="col-sm-2 col-form-label">City</label>
-                            <div class="col-sm-10">
-                               <input type="text" class="form-control" id="city" name="city" placeholder="City" required>
-                            </div>
-                          </div>
-                            <div class="form-group row">
-                            <label for="inputExperience" class="col-sm-2 col-form-label">Pin Code</label>
-                            <div class="col-sm-10">
-                               <input type="text" class="form-control" id="pincode" name="pin_code" placeholder="Pin code" required>
-                            </div>
-                          </div>
-                           <div class="form-group row">
-                            <label for="exampleFormControlSelect1" class="col-sm-2 col-form-label">State*</label>
-                             <div class="col-sm-10">
-                            <select class="form-control" id="exampleFormControlSelect1">
-                              <option>Up</option>
-                              <option>Delhi</option>
-                              <option>Haryana</option>
-                            </select>
-                          </div>
-                          </div>
-                          <div class="form-group row">
-                            <label for="inputSkills" class="col-sm-2 col-form-label">Address Type</label>
-                            <div class="col-sm-10 pt-2">
-                              <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input" required>
-                                <label class="custom-control-label" for="customRadioInline1">Home</label>
-                              </div>
-                              <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input" required>
-                                <label class="custom-control-label" for="customRadioInline2">Work</label>
-                              </div>
-                            </div>
+                                              <div class="form-group row">
+                                                <div class="offset-sm-2 col-sm-10">
+                                                  <button type="submit" class="btn btn-primary badge-pill" style="width:80px">Submit</button>
+                                                </div>
+                                              </div>
+                                            </form>
+                                          </div>
 
-                          </div>
-                          <div class="form-group row">
-                            <div class="offset-sm-2 col-sm-10">
-                              <button type="submit" class="btn btn-primary badge-pill" style="width:80px">Submit</button>
-                            </div>
-                          </div>
-                        </form>
-                      </div>
+                                          <div class="tab-pane" id="add-skill">
+                                            <div class="card-body">
 
-                      <div class="tab-pane" id="settings">
-                        <div class="card-body">
-                            <h5>Custom Color Variants</h5>
-                            <div class="row">
-                                <div class="col-12 col-sm-6">
-                                    <div class="form-group">
-                                        <label>Minimal </label>
-                                        <select class="form-control select2 select2-danger select2-hidden-accessible" data-dropdown-css-class="select2-danger" style="width: 100%;" data-select2-id="12" tabindex="-1" aria-hidden="true">
-                                            <option selected="selected" data-select2-id="14">Alabama</option>
-                                            <option>Alaska</option>
-                                            <option>California</option>
-                                            <option>Delaware</option>
-                                            <option>Tennessee</option>
-                                            <option>Texas</option>
-                                            <option>Washington</option>
-                                        </select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="13" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-f8dk-container"><span class="select2-selection__rendered" id="select2-f8dk-container" role="textbox" aria-readonly="true" title="Alabama">Alabama</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
-                                    </div>
-                                </div>
+                                            </div>
+                                          </div>
 
-                                <div class="col-12 col-sm-6">
-                                    <div class="form-group">
-                                        <label>Multiple </label>
-                                        <div class="select2-purple">
-                                            <select class="select2 select2-hidden-accessible" multiple="" data-placeholder="Select a State" data-dropdown-css-class="select2-purple" style="width: 100%;" data-select2-id="15" tabindex="-1" aria-hidden="true">
-                                                <option>Alabama</option>
-                                                <option>Alaska</option>
-                                                <option>California</option>
-                                                <option>Delaware</option>
-                                                <option>Tennessee</option>
-                                                <option>Texas</option>
-                                                <option>Washington</option>
-                                            </select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="16" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--multiple" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="-1" aria-disabled="false"><ul class="select2-selection__rendered"><li class="select2-search select2-search--inline"><input class="select2-search__field" type="search" tabindex="0" autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false" role="searchbox" aria-autocomplete="list" placeholder="Select a State" style="width: 492.5px;"></li></ul></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                                          <div class="tab-pane" id="add-document">
+                                              <div class="card-body">
+
+                                              </div>
+                                          </div>
                                         </div>
+                                      </div>
                                     </div>
-                                </div>
-                            </div>
+                                  </div>
                         </div>
                       </div>
-
-                      <!-- upload section -->
-                      <div class="tab-pane" id="settings2">
-                        <div class="card-body">
-
-                        </div>
                     </div>
-
-                    </div>
-
-                  </div>
-                </div>
-
-              </div>
-            </div>
-          </div>
-        </div>
             </div>
         </div>
     </section>
 </div>
 @endsection
 
-@section('modal')
-    <div class="modal fade" id="edit-profile-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
-        <div class="modal-dialog modal-lg" role="document" style="max-width: 600px;">
-            <div class="modal-content">
-                <div class="modal-header py-3">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <h3 class="text-center">Update Profile</h3>
-                    <form class="sform form" method="post" action="{{ route('professional.profile-update') }}" enctype="multipart/form-data">
-                        @csrf
-                        <input type="text" name="id" value="" id="id" hidden="hidden">
-                        <div class="row " style="padding: 30px;">
-                            <div class="col-md-12">
-                                <div class="form-group ">
-                                    <label for="name">Name<span>*</span></label>
-                                    <div class="d-flex">
-                                        <input class="form-control" type="text" name="name" id="name" value="{{ auth()->user()->name }}">
-                                    </div>
-                                </div>
-
-                                <div class="form-group ">
-                                    <label for="email">Email<span>*</span></label>
-                                    <div class="d-flex">
-                                        <input class="form-control" type="text" name="email" id="name" value="{{ auth()->user()->email }}">
-                                    </div>
-                                </div>
-
-                                <div class="form-group ">
-                                    <label for="experience">Experience<span>*</span></label>
-                                    <div class="d-flex">
-                                        <input class="form-control" type="text" name="experience" id="experience" value="{{ auth()->user()->experience }}">
-                                    </div>
-                                </div>
-
-                                <div class="form-group ">
-                                    <label for="working_location">Working Location<span>*</span></label>
-                                    <div class="d-flex">
-                                        <input class="form-control" type="text" name="working_location" id="working_location" value="{{ auth()->user()->working_location }}">
-                                    </div>
-                                </div>
-
-                                <div class="form-group ">
-                                    <label for="qualification">Qualification<span>*</span></label>
-                                    <div class="d-flex">
-                                        <input class="form-control" type="text" name="qualification" id="qualification" value="{{ auth()->user()->qualification }}">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <button  type="submit" name="student-submit" class="btn btn-primary" style="float: right;">Save</button>
-                                    <button type="button" class="btn btn-danger" style="float: right;margin-right: 10px;" data-dismiss="modal">Close</button>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-@endsection
-
-
 @section('script')
 <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
-
-<script>
-    function submit_form(){
-        var form = document.getElementById("my_form");
-        form.submit();
-        alert("Your Message Sent");
-    }
-</script>
 
 <script>
      $(function () {
