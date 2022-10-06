@@ -9798,7 +9798,8 @@ html:not([dir="rtl"]) .nav-tabs-boxed.nav-tabs-boxed-right .nav-item {
 .nav-pills .nav-link.active,
 .nav-pills .show > .nav-link {
   color: #fff;
-  background-color: #321fdb;
+  /* background-color: #321fdb; */
+  background-color: #904795;
 }
 
 .nav-underline {
@@ -9930,6 +9931,13 @@ html:not([dir="rtl"]) .nav-tabs-boxed.nav-tabs-boxed-right .nav-item {
   -ms-flex-pack: justify;
       justify-content: space-between;
 }
+/* a.nav-link.active.ml-auto:hover {
+  background: #e9579b ;
+} */
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+  color: #fff;
+  background-color: #904795!important;
+}
 
 .navbar-brand {
   display: inline-block;
@@ -9939,6 +9947,7 @@ html:not([dir="rtl"]) .nav-tabs-boxed.nav-tabs-boxed-right .nav-item {
   font-size: 1.09375rem;
   line-height: inherit;
   white-space: nowrap;
+  text-align: center;
 }
 
 .navbar-brand:hover,
@@ -12568,7 +12577,8 @@ html:not([dir="rtl"])
   .c-sidebar .c-sidebar-nav-link:hover,
   .c-sidebar .c-sidebar-nav-dropdown-toggle:hover {
     color: #fff !important;
-    background: #321fdb;
+    /* background: #321fdb; */
+    background: #e9579b ;
   }
 
   .c-sidebar .c-sidebar-nav-link:hover .c-sidebar-nav-icon,
