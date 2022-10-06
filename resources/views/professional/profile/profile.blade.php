@@ -257,7 +257,7 @@
                             </div>
                             <div class="card-body">
                                 <strong><i class="fas fa-map-marker-alt mr-1"></i> Location</strong>
-                                <p class="text-muted">{{ bookingAddressFormatting($user->getDefaultAddress) }}</p>
+                                <p class="text-muted">{{ $user->def_address }}</p>
                                 <hr>
                                 <strong><i class="fas fa-pencil-alt mr-1"></i> Skills</strong>
                                 <p class="text-muted">

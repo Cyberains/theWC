@@ -2924,7 +2924,7 @@ li:hover {
 .navbar-area{
     padding: 0 0px!important;
   }
-  
+
   @media (max-width: 767px){
     .navbar-area .navbar .navbar-nav .nav-item a {
         color: #000;
@@ -2954,13 +2954,13 @@ li:hover {
  @media (max-width: 767px) {
     .bg-section{
     width: 100%;
-    padding-top: 7rem;
+    padding-top: 3.5rem;
     object-fit: fill;
     /* margin-right: 1.3rem; */
     margin-left: -1.6rem;
         }
  }
- @media only screen and (min-width: 576px) and (max-width: px) {
+ @media only screen and (min-width: 576px) and (max-width: 768px) {
     .bg-section{
     width: 100%;
     padding-top: 3.5rem;

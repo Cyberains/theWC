@@ -1,32 +1,11 @@
 <!DOCTYPE html>
-
-<html
-    lang="en"
-    xmlns:o="urn:schemas-microsoft-com:office:office"
-    xmlns:v="urn:schemas-microsoft-com:vml"
->
+<html lang="en" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:v="urn:schemas-microsoft-com:vml">
 <head>
     <title></title>
     <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <!--[if mso
-      ]><xml
-    ><o:OfficeDocumentSettings
-    ><o:PixelsPerInch>96</o:PixelsPerInch
-    ><o:AllowPNG /></o:OfficeDocumentSettings></xml
-    ><![endif]-->
-    <!--[if !mso]><!-->
-    <link
-        href="https://fonts.googleapis.com/css?family=Permanent+Marker"
-        rel="stylesheet"
-        type="text/css"
-    />
-    <link
-        href="https://fonts.googleapis.com/css?family=Cabin"
-        rel="stylesheet"
-        type="text/css"
-    />
-    <!--<![endif]-->
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css?family=Cabin" rel="stylesheet" type="text/css"/>
     <style>
         * {
             box-sizing: border-box;
@@ -350,7 +329,7 @@
                                                     style="line-height: 10px"
                                                 >
                                                     <img
-                                                        alt="Logo Yoga"
+                                                        alt="The Women's Company"
                                                         src="https://thewomenscompany.in/public/assets/spa/images/img/800x300-done2.png"
                                                         style="
                                         display: block;
@@ -359,7 +338,7 @@
                                         width: 135px;
                                         max-width: 100%;
                                       "
-                                                        title="Logo Yoga"
+                                                        title="The Women's Company"
                                                         width="135"
                                                     />
                                                 </div>
@@ -710,7 +689,7 @@
                         mso-table-rspace: 0pt;
                         background-color: #d0e4e4;
                         color: #000000;
-                        background-image: url('images/bg-white1.png');
+                        background-image: url('public/assets/spa/email/images/bg-white1.png');
                         background-repeat: no-repeat;
                         width: 600px;
                       "
@@ -836,7 +815,7 @@
                                                 >
                                                     <img
                                                         alt="I'm an Image :) "
-                                                        src="images/green-logo-01.png"
+                                                        src="public/assets/spa/email/images/green-logo-01.png"
                                                         style="
                                         display: block;
                                         height: auto;
@@ -999,7 +978,7 @@
                         mso-table-lspace: 0pt;
                         mso-table-rspace: 0pt;
                         background-color: #e9dbd3;
-                        background-image: url('images/top-bg.png');
+                        background-image: url('public/assets/spa/email/images/top-bg.png');
                         background-position: center top;
                         background-repeat: repeat;
                         color: #000000;
@@ -2125,7 +2104,7 @@
                                                                 alt="Default"
                                                                 class="icon"
                                                                 height="32"
-                                                                src="images/6e19dcb9-728d-4eda-acdb-21ec83469b68.png"
+                                                                src="public/assets/spa/email/images/6e19dcb9-728d-4eda-acdb-21ec83469b68.png"
                                                                 style="
                                             display: block;
                                             height: auto;
@@ -2223,7 +2202,7 @@
                         mso-table-rspace: 0pt;
                         background-color: #ffffff;
                         color: #000000;
-                        background-image: url('images/footer3_1.png');
+                        background-image: url('public/assets/spa/email/images/footer3_1.png');
                         background-position: center top;
                         background-repeat: no-repeat;
                         width: 600px;
@@ -2366,7 +2345,7 @@
                                                                 ><img
                                                                         alt="Facebook"
                                                                         height="32"
-                                                                        src="images/facebook2x.png"
+                                                                        src="public/assets/spa/email/images/facebook2x.png"
                                                                         style="
                                                 display: block;
                                                 height: auto;
@@ -2383,7 +2362,7 @@
                                                                 ><img
                                                                         alt="Instagram"
                                                                         height="32"
-                                                                        src="images/instagram2x.png"
+                                                                        src="public/assets/spa/email/images/instagram2x.png"
                                                                         style="
                                                 display: block;
                                                 height: auto;
@@ -2400,7 +2379,7 @@
                                                                 ><img
                                                                         alt="LinkedIn"
                                                                         height="32"
-                                                                        src="images/linkedin2x.png"
+                                                                        src="public/assets/spa/email/images/linkedin2x.png"
                                                                         style="
                                                 display: block;
                                                 height: auto;
@@ -2417,7 +2396,7 @@
                                                                 ><img
                                                                         alt="WhatsApp"
                                                                         height="32"
-                                                                        src="images/whatsapp2x.png"
+                                                                        src="public/assets/spa/email/images/whatsapp2x.png"
                                                                         style="
                                                 display: block;
                                                 height: auto;
