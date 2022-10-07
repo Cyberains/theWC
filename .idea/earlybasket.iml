@@ -193,5 +193,6 @@
     <orderEntry type="library" name="boxicons" level="application" />
     <orderEntry type="library" name="default_thank_you" level="application" />
     <orderEntry type="library" name="axios" level="application" />
+    <orderEntry type="library" name="select2" level="application" />
   </component>
 </module>

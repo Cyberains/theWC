@@ -537,7 +537,7 @@ function sendSms($mobile, $message, $tempid)
 	$data = array(
 		'uname' => 'epiccorporations',
 		'password' => 'Epic@123',
-		'sender' => 'EYBSKT',
+		'sender' => 'THEWCM',
 		'tempid' => $tempid,
 		'receiver' => $mobile,
 		'route' => 'TA',
@@ -573,6 +573,16 @@ function generateOtp()
 	$otp_string = '123456789';
 	$otp = substr(str_shuffle($otp_string), 0, 6);
 	return $otp;
+}
+
+function check_mobile_registered_or_not($mobile_number): bool
+{
+    $user = User::where('mobile', $mobile_number)->first();
+    if($user){
+        return true;
+    }else{
+        return false;
+    }
 }
 
 function generateReferCode()

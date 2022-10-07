@@ -444,6 +444,26 @@
                                           <div class="tab-pane" id="add-skill">
                                             <div class="card-body">
 
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                        <div class="col-12 col-sm-6">
+                                                            <div class="form-group">
+                                                                <label>Multiple (.select2-purple)</label>
+                                                                <div class="select2-purple">
+                                                                    <select class="select2" multiple="multiple" data-placeholder="Select a State" data-dropdown-css-class="select2-purple" style="width: 100%;">
+                                                                        <option>Alabama</option>
+                                                                        <option>Alaska</option>
+                                                                        <option>California</option>
+                                                                        <option>Delaware</option>
+                                                                        <option>Tennessee</option>
+                                                                        <option>Texas</option>
+                                                                        <option>Washington</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                           </div>
 
@@ -466,20 +486,15 @@
 @endsection
 
 @section('script')
-<script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.full.min.js"></script>
+<script>
+    $(function () {
+        $('.select2').select2()
+    })
+</script>
 
 <script>
-     $(function () {
-    //Initialize Select2 Elements
-    $('.Select2').select2({
-        dropdownParent: $('#edit-profile-modal')
-    });
-
-    //Initialize Select2 Elements
-    $('.select2bs4').select2({
-      theme: 'bootstrap4'
-    })
-});
         function Edit(){
             $('#edit-photo-modal').modal('show')
         }

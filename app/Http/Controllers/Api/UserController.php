@@ -3,12 +3,14 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use App\Models\User;
 use DateTime;
 use Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 use Intervention\Image\Facades\Image;
 use Mail;
 use App\Mail\ConfirmMail;
@@ -16,75 +18,57 @@ use App\Models\Address;
 
 class UserController extends Controller
 {
-
+//    -----------------
     public function verifyMobile(Request $request)
     {
+        $validator = Validator::make($request->all(),[
+            'mobile' => 'required|integer',
+            'otp' => 'required|integer'
+        ]);
+        if($validator->fails()){
+            return response()->json([
+                'code' => 428,
+                'status' => 0,
+                'message' => $validator->errors()
+            ]);
+        }
 
         date_default_timezone_set('Asia/Kolkata');
-
         $user = User::where('mobile', $request->mobile)->first();
-
         $currentdatetime = new DateTime();
-
         $date = strtotime($user->mobile_otp_expire);
-
         $interval = date_diff($currentdatetime, new DateTime(date('Y-m-d H:i:s', $date)));
-
         if ($interval->y == 0 && $interval->m == 0 && $interval->d == 0 && $interval->h == 0 && $interval->i <= 5) {
-
-
             if (intval($user->mobile_otp) == intval($request->otp)) {
-
                 User::where('id', $user->id)->update(['mobile_status' => 1]);
-
                 $userlogin = User::find($user->id);
-
-                //dd(Auth::login($userlogin));
-
-                //dd(Auth::user()->mobile);
-
                 if (Auth::login($userlogin) == null) {
-
                     $user = Auth::user();
-
                     $tokenResult = $user->createToken($user->mobile . '-' . now())->accessToken;
-
                     return response()->json([
-
                         'access_token' => $tokenResult,
                         'token_type' => 'Bearer',
                         'code' => 200,
                         'status' => 1,
                         'data' => $user,
                         'message' => 'Your mobile number have been verified and logged in successfully.',
-
                     ]);
                 }
             } else {
-
                 return response()->json([
-
                     'code' => 422,
                     'status' => 0,
                     'message' => 'Your OTP does not match.Please Enter Correct OTP'
-
-
                 ]);
             }
         } else {
-
             return response()->json([
-
                 'code' => 422,
                 'status' => 0,
                 'message' => 'Your OTP has been expired.Please Resend Your OTP.'
-
-
             ]);
         }
     }
-
-//    -----------------
 
     public function Register(Request $request)
     {
@@ -290,45 +274,48 @@ class UserController extends Controller
 
     public function resendOTP(Request $request)
     {
-        $mobile = $request->mobile_no;
-        $mobileotp = 1234;
-        $mobiledata = User::where('mobile', $mobile)->get();
-        $update = User::where('mobile', $mobile)->update(['mobile_otp' => $mobileotp, 'mobile_otp_expire' => date("Y-m-d H:i:s")]);
-        if ($update) {
+        $validator = Validator::make($request->all(),[
+            'mobile_no' => 'required|integer'
+        ]);
+        if($validator->fails()){
             return response()->json([
-                'code' => 200,
-                'status' => 1,
-                'message' => 'OTP has been resent successfully: '. $mobileotp
-            ]);
-        } else {
-            return response()->json([
-                'code' => 422,
+                'code' => 428,
                 'status' => 0,
-                'message' => 'Message could not be sent.Something went wrong.'
+                'message' => $validator->errors()
             ]);
         }
-//        $mobile = $request->mobile_no;
-//        $mobileotp = generateOtp();
-//        $text = "Dear valuable customer!!! Your OTP for verification to your EarlyBasket account is " . $mobileotp . ". This OTP is valid for 5 minutes. ";
-//        $tempid = 1207162701871076797;
-//        $response = sendsms(intval($mobile), $text, $tempid);
-//        if ($response) {
-//            $mobiledata = User::where('mobile', $mobile)->get();
-//            $update = User::where('mobile', $mobile)->update(['mobile_otp' => $mobileotp, 'mobile_otp_expire' => date("Y-m-d H:i:s")]);
-//            if ($update) {
-//                return response()->json([
-//                    'code' => 200,
-//                    'status' => 1,
-//                    'message' => 'OTP has been resent successfully.'
-//                ]);
-//            }
-//        } else {
-//            return response()->json([
-//                'code' => 422,
-//                'status' => 0,
-//                'message' => 'Message could not be sent.Something went wrong.'
-//            ]);
-//        }
+
+        if(check_mobile_registered_or_not($request->mobile_no)){
+            try {
+                $mobileotp = generateOtp();
+                $text = "Your login otp for TWC account is ". $mobileotp.'.';
+                $tempid = 1207166434787251472;
+                $response = sendsms(intval($request->mobile_no), $text, $tempid);
+                if($response){
+                    $mobiledata = User::where('mobile', $request->mobile_no)->first();
+                    $update = User::where('mobile', $mobiledata->mobile)->update(['mobile_otp' => $mobileotp, 'mobile_otp_expire' => date("Y-m-d H:i:s")]);
+                    if ($update) {
+                        return response()->json([
+                            'code' => 200,
+                            'status' => 1,
+                            'message' => 'OTP has been resent successfully: '. $mobileotp
+                        ]);
+                    }
+                }
+            } catch (\Exception $e) {
+                return response()->json([
+                    'code' => 500,
+                    'status' => 0,
+                    'message' => $e->getMessage()
+                ]);
+            }
+        }else{
+            return response()->json([
+                'code' => 404,
+                'status' => 0,
+                'message' => 'Your Mobile Number is not Registered. Please Registered Mobile Number.'
+            ]);
+        }
     }
 
 
