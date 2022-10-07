@@ -34,6 +34,7 @@ class ServiceController extends Controller
             'title' => 'required',
             'service_image' => 'nullable|mimes:jpeg,png,jpg,gif|max:2048|dimensions:min_width=400,min_height=400',
             'service_product_image' => 'nullable|mimes:jpeg,png,jpg,gif|max:2048|dimensions:min_width=400,min_height=400',
+            'service_banner_image' => 'nullable|mimes:jpeg,png,jpg,gif|max:2048|dimensions:min_width=400,min_height=400',
             'service_time' => 'required',
             'price' => 'required',
             'discount' => 'required',
@@ -69,10 +70,23 @@ class ServiceController extends Controller
             $imageName2 = null;
         }
 
+        if ($request->service_banner_image != null) {
+            $save_path = public_path('images/services/banners');
+            if (!file_exists($save_path)) {
+                mkdir($save_path, 0777, true);
+            }
+            $imageName3 = time().'.'.$request->service_banner_image->extension();
+            $image = $request->file('service_banner_image');
+            $img = Image::make($image->path());
+            $img->fit(1024,400)->save(public_path('images/services/banners').'/'.$imageName3);
+        }
+        else{
+            $imageName3 = null;
+        }
+
         $service =new Service();
         $service->category_id = $request->category_id;
         $service->sub_category_id = $request->sub_category_id;
-//        $service->product_id = $request->product_id;
         $service->price = $request->price;
         $service->discount = $request->discount;
         $service->title = $request->title;
@@ -81,6 +95,7 @@ class ServiceController extends Controller
         $service->base_path = url('public/images/services/');
         $service->service_image = $imageName1;
         $service->service_product_image = 'products/'.$imageName2;
+        $service->service_banner_image = 'banners/'.$imageName3;
         $service->service_demo_video = $request->service_demo_video;
         $service->description = $request->description;
         $service->recommended_for = $request->recommended_for;
@@ -101,9 +116,6 @@ class ServiceController extends Controller
     public function edit(Request $request)
     {
         $cityrow = Service::find($request->id);
-//        if(!blank($cityrow)) {
-//            $cityrow->name=WorldCity::where('id',$cityrow->id)->value('name');
-//        }
         echo $cityrow;
     }
 
@@ -113,11 +125,10 @@ class ServiceController extends Controller
             'title' => 'required|unique:world_cities,name',
             'service_image' => 'nullable|mimes:jpeg,png,jpg,gif|max:2048|dimensions:min_width=400,min_height=400',
             'service_product_image' => 'nullable|mimes:jpeg,png,jpg,gif|max:2048|dimensions:min_width=400,min_height=400',
+            'service_banner_image' => 'nullable|mimes:jpeg,png,jpg,gif|max:2048|dimensions:min_width=400,min_height=400',
             'service_time' => 'required',
             'price' => 'required',
-            'discount' => 'required',
-//            'category_id' => 'required',
-//            'sub_category_id' => 'required'
+            'discount' => 'required'
         ]);
 
 
@@ -149,10 +160,21 @@ class ServiceController extends Controller
             $imageName2 = null;
         }
 
+        if ($request->service_banner_image != null) {
+            $save_path = public_path('images/services/banners');
+            if (!file_exists($save_path)) {
+                mkdir($save_path, 0777, true);
+            }
+            $imageName3 = time().'.'.$request->service_banner_image->extension();
+            $image = $request->file('service_banner_image');
+            $img = Image::make($image->path());
+            $img->fit(1024,400)->save(public_path('images/services/banners').'/'.$imageName3);
+        }
+        else{
+            $imageName3 = null;
+        }
+
         $service = Service::find($request->id);
-//        $service->category_id = $request->category_id;
-//        $service->sub_category_id = $request->sub_category_id;
-//        $service->product_id = $request->product_id;
         $service->price = $request->price;
         $service->discount = $request->discount;
         $service->discounted_price = $request->price- $request->discount;
@@ -163,6 +185,9 @@ class ServiceController extends Controller
         $service->service_image = $imageName1 ?? $service->service_image;
         if($imageName2 != null){
             $service->service_product_image = 'products/'.$imageName2;
+        }
+        if($imageName3 != null){
+            $service->service_banner_image = 'banners/'.$imageName3;
         }
         $service->service_demo_video = $request->service_demo_video;
         $service->description = $request->description;

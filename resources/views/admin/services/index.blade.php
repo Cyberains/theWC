@@ -119,19 +119,23 @@
 
                             <div class="col-md-12">
                                 <div class="form-group ">
-                                    <label for="service_product_image">Service Product Image<span>*</span>( Enter 1:1 ratio Image Above 400px )</label>
+                                    <label for="service_image">Service Banner Image<span>*</span>( Enter 1:1 ratio Image Above 400px )</label>
+                                    <input class="form-control photo" type="file" name="service_banner_image" value="{{ old('service_banner_image') }}" data-parsley-required data-parsley-required-message="This field is required.">
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="form-group ">
+                                    <label for="service_product_image">Service Product Image( Enter 1:1 ratio Image Above 400px )</label>
                                     <input class="form-control photo" type="file" name="service_product_image"
-                                           value="{{ old('service_product_image') }}" data-parsley-required
-                                           data-parsley-required-message="This field is required.">
+                                           value="{{ old('service_product_image') }}">
                                 </div>
                             </div>
 
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="service_time">Service Time<span>*</span></label>
-                                    <input class="form-control" type="text" name="service_time" id="service_time"
-                                           value="{{ old('service_time') }}" placeholder="Enter Service Time"  data-parsley-required
-                                           data-parsley-required-message="Service Time is required.">
+                                    <input class="form-control" type="text" name="service_time" id="service_time" value="{{ old('service_time') }}" placeholder="Enter Service Time"  data-parsley-required data-parsley-required-message="Service Time is required.">
                                 </div>
                             </div>
 
@@ -240,6 +244,16 @@
                                     <div class="d-flex">
                                         <div id="upload_service_image"><img width="50" height="50"></div>
                                         <input class="form-control ml-4 photo" type="file" name="service_image" id="service_image" value="{{ old('service_image') }}">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="form-group ">
+                                    <label for="service_banner_image">Service Banner Image<span>*</span>( Enter 1:1 ratio Image Above 400px )</label>
+                                    <div class="d-flex">
+                                        <div id="service_banner_image"><img width="50" height="50"></div>
+                                        <input class="form-control ml-4 photo" type="file" name="service_banner_image" id="service_banner_image" value="{{ old('service_banner_image') }}">
                                     </div>
                                 </div>
                             </div>
