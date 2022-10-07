@@ -28,17 +28,17 @@
 
                     <div class="carousel-inner">
                         <div class="carousel-item  active">
-                            <img class="d-block w-100" width="1349px;" height="347px;" src="{{ url('public/assets/spa/images/slider/slide-01.jpeg') }}">
+                            <img class="d-block w-100" width="1349px;" height="auto;" src="{{ url('public/assets/spa/images/slider/slide-01.jpg') }}">
                         </div>
 
 
                         <div class="carousel-item">
-                            <img class="d-block w-100" height="347px;" src="{{ url('public/assets/spa/images/slider/slide-02.jpeg') }}">
+                            <img class="d-block w-100" height="auto;" src="{{ url('public/assets/spa/images/slider/slide-02.jpg') }}">
                         </div>
 
 
                         <div class="carousel-item">
-                            <img class="d-block w-100" height="347px;" src="{{ url('public/assets/spa/images/slider/slide-03.jpeg') }}">
+                            <img class="d-block w-100" height="auto;" src="{{ url('public/assets/spa/images/slider/slide-03.jpg') }}">
                         </div>
                     </div>
 
@@ -60,8 +60,8 @@
                 <div class="col-xl-12 col-lg-8">
                     <div class="about-image text-center wow fadeInUp" data-wow-duration="1.5s" data-wow-offset="100">
                         <h4 class="size">GET US ON!</h4>
-                            <img style="width:15%;" src="{{ url('public/assets/spa/images/icon/google play store button 1.jpg') }}" alt="services">
-                            <img style="width:15%;" src="{{ url('public/assets/spa/images/icon/app_play_store_button1.png') }}" alt="services"><br><br>
+                            <img class="app_img" src="{{ url('public/assets/spa/images/icon/google play store button 1.jpg') }}" alt="services">
+                            <img class="app_img" src="{{ url('public/assets/spa/images/icon/app_play_store_button1.png') }}" alt="services"><br><br>
                             <span class="text-fill blink-soft">Comming Soon...</span>
                     </div>
                     <div class="section-title text-center mt-30 pb-40">

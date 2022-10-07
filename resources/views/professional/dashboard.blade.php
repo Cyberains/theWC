@@ -15,7 +15,7 @@
         [class*=sidebar-dark-] {
             background-color: #924795!important;
         }
-        .navbar-brand {
+        .navbar-brand {    
             text-align: center;
         }
         .nav-link .active{

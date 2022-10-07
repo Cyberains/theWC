@@ -2,11 +2,16 @@
     <div class="footer-widget bb-solid-1">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3 col-sm-6">
+                <div class="col-lg-3 col-sm-6 align-items-center">
                     <div class="footer-link">
-                        <a class="navbar-brand" href="/" style="height: 100px;">
+                        <h6 class="footer-title text-center">Download the App Now!</h6>
+                        <!-- <a class="navbar-brand" href="/" style="height: 100px;">
                             <img src="{{ url('public/assets/spa/images/img/800x300-done2.png') }}" alt="Logo">
-                        </a>
+                        </a> -->
+                        <div class="text-center qr_img" href="/">
+                            <img src="{{ url('public/assets/spa/images/img/qr_twc.png') }}" alt="Logo" style="max-width: 50%;height: auto;text-align: center;
+box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;border-radius: 5px;">
+</div>
                     </div>
                 </div>
                 <div class="col-lg-3 col-sm-6 margin-left">
