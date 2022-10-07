@@ -252,7 +252,7 @@
                                 <div class="form-group ">
                                     <label for="service_banner_image">Service Banner Image<span>*</span>( Enter 1:1 ratio Image Above 400px )</label>
                                     <div class="d-flex">
-                                        <div id="service_banner_image"><img width="50" height="50"></div>
+                                        <div id="upload_service_banner_image"><img width="50" height="50"></div>
                                         <input class="form-control ml-4 photo" type="file" name="service_banner_image" id="service_banner_image" value="{{ old('service_banner_image') }}">
                                     </div>
                                 </div>
@@ -437,6 +437,14 @@
                             $("#upload_service_product_image img").attr('src', "{{ asset('public/images/services/') }}"+'/'+datas.service_product_image);
                         }else{
                             $("#upload_service_product_image").hide();
+                        }
+
+                        // service product image
+                        if (datas.service_banner_image != null) {
+                            $("#upload_service_banner_image").show();
+                            $("#upload_service_banner_image img").attr('src', "{{ asset('public/images/banners/') }}"+'/'+datas.service_banner_image);
+                        }else{
+                            $("#upload_service_banner_image").hide();
                         }
 
                         $('#up-service_time').val(datas.service_time);
