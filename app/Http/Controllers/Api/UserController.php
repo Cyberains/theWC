@@ -298,7 +298,7 @@ class UserController extends Controller
                         return response()->json([
                             'code' => 200,
                             'status' => 1,
-                            'message' => 'OTP has been resent successfully: '. $mobileotp
+                            'message' => 'OTP has been sent successfully'
                         ]);
                     }
                 }
