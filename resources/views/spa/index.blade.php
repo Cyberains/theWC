@@ -1,6 +1,6 @@
 @extends("spa.main.master")
 @section('content')
-    <div class="preloader">
+<!--     <div class="preloader">
         <div class="loader">
             <div class="ytp-spinner">
                 <div class="ytp-spinner-container">
@@ -16,7 +16,7 @@
             </div>
         </div>
     </div>
-
+ -->
 
     <section class="header-area bg-section">
         <div id="home" class="slider-area">
@@ -57,7 +57,7 @@
     </section>
   <div class="overlay-right"></div>
     <section id="about" class="about-area">
-        <div class="container">
+        <div class="container-fluid">
             <div class="row justify-content-center">
                 <div class="col-xl-12 col-lg-8">
                     <div class="about-image text-center wow fadeInUp" data-wow-duration="1.5s" data-wow-offset="100">
@@ -66,8 +66,12 @@
                             <img class="app_img" src="{{ url('public/assets/spa/images/icon/app_play_store_button1.png') }}" alt="services" style="background: #fff;border: none;border-radius: 9px;"><br><br>
                             <span class="text-fill blink-soft text-_com">Comming Soon...</span>
                     </div>
+                    <div class="mx-auto">
+                    <img src="{{ url('public/assets/spa/images/img/animation_banner.png') }}" class="img-fluid mx-auto" alt="Responsive image">
+                </div>
                     
-                    <div class="row">
+                    <div class="container">
+                        <div class="row">
                         <div class="col-md-7 pt-2">
                             <div class="section-title text-center mt-30 pb-40">
                                 <h4 class="title wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="0.6s" style="font-family: cardo; visibility: visible; animation-duration: 1.5s; animation-delay: 0.6s; animation-name: fadeInUp;">
@@ -94,10 +98,12 @@
                              <img src="{{ url('public/assets/spa/images/img/about.png') }}" alt="about">
                         </div>
                     </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="row">
+           <div class="container">
+                <div class="row">
                 <div class="col-lg-6">
                     <div class="single-about d-sm-flex mt-30 wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="1.2s">
                         <div class="about-icon">
@@ -146,8 +152,15 @@
                     </div>
                 </div>
             </div>
+           </div>
         </div>
     </section>
+    <!-- SERVICES -->
+           <!--  <section>
+                <div>
+                    <img src="{{ url('public/assets/spa/images/img/animation_banner.png') }}" class="img-fluid" alt="Responsive image">
+                </div>
+            </section> -->
 
     <section id="testimonial" class="testimonial-area">
         <div class="container">
@@ -231,9 +244,9 @@
 
 <!-- slider modal -->
 
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#slider1">
+<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#slider1">
   Launch demo modal
-</button>
+</button> -->
 
 <div class="modal fade" id="slider1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -256,8 +269,8 @@
 </div>
 
 <!-- end -->
-    <section id="call-action" class="call-action-area">
-        </section>
+   <!--  <section id="call-action" class="call-action-area">
+        </section> -->
 
     <section id="contact" class="contact-area">
             <div class="container">
@@ -335,4 +348,44 @@
             </div>
         </section>
 
+@endsection
+@section('script')
+ 
+<!-- <script>
+    $(document).ready(function () {
+setTimeout(function () {
+
+popupform();
+
+$('#contact-form').modal('show');
+
+ }, 3000);
+}, 3000);
+
+
+function popupform(){
+
+      var form='';
+
+      form += '<style>.modal-header{ border-bottom: none;}.modal-body{ border-bottom: none;padding-left:30px;.modal-body h3{margin:0px;}.modal-header{padding-bottom: 0px !important;}.modal .close:focus{border:none;outline: none; }.modal span{ color: maroon;}</style>';
+
+      form += '<div class="modal fade" id="contact-form" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="top:10%;">';
+
+      form +='<div class="modal-dialog modal-lg" role="document" style="max-width:1100px">';
+
+      form +='<div class="modal-content">';
+     
+      form +='<div style="position:relative" class="modal-body px-0 py-0">';
+form +='<i class="fa fa-times" style="position:absolute;top:-5px;right:-5px;color:white;font-size:20px;cursor:pointer" data-dismiss="modal"></i><img class="img-responsive" src="{{ asset('public/assets/spa/images/img/animation_banner.png') }}">';      
+
+      form +='</div>';            
+      form +='</div>';
+      form +='</div>';
+      form +='</div>';
+
+      $('body').append(form);
+
+
+   }
+</script>  -->
 @endsection

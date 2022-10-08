@@ -1084,6 +1084,11 @@ p {
 /*===== SLIDER ONE =====*/
 .slider-area {
     padding-top: 0px; }
+    @media (max-width: 767px) {
+        .slider-area .bd-example .carousel .carousel-inner{
+            height: auto;
+        }  
+    }
 .slider-area .bd-example .carousel .carousel-inner {
     background-color: #38f9d7; }
 .slider-area .bd-example .carousel .carousel-inner .carousel-item {
@@ -1096,9 +1101,15 @@ p {
         height: 600px; } }
 @media (max-width: 767px) {
     .slider-area .bd-example .carousel .carousel-inner .carousel-item {
-        height: 102px;
+        height: 120px!important;
         left: -15px;
     } }
+    @media (max-width: 767px) {
+        .slider-area .bd-example .carousel .carousel-inner .carousel-item img {
+            height: 120px!important;
+            left: -15px;
+            padding-top: 1;
+        } }
 .slider-area .bd-example .carousel .carousel-inner .carousel-item .carousel-caption {
     top: 50%;
     bottom: auto;
@@ -1296,6 +1307,12 @@ p {
     background-color: #f4f6f7;
     /*padding-top: 100px;
     padding-bottom: 100px;*/ }
+    @media (max-width: 767px) {
+        .about-area{
+            background-image: url('../images/img/about_mobile_update.png')!important;
+            color: #000;
+        }  
+    }   
 @media (max-width: 767px) {
     .about-area .section-title .title {
         font-size: 22px;
@@ -1325,7 +1342,7 @@ p {
 @media (max-width: 767px) {
     .single-about .about-content {
         padding-left: 0;
-        padding-top: 30px; } }
+        padding-top: 0px; } }
 @media only screen and (min-width: 576px) and (max-width: 767px) {
     .single-about .about-content {
         padding-left: 30px;
@@ -2512,7 +2529,7 @@ img {
 .size{
     font-size: 38px;
     font-weight: 500px;
-    font-family: cardo;
+   font-family: sans-serif;
 }
 .about-area {
     position: relative;
@@ -2538,8 +2555,8 @@ img {
     padding-bottom: 60px;
 }
 .contact-area {
-    padding-top: 43px;
-    padding-bottom: 47px;
+    padding-top: 4px;
+    padding-bottom: 18px;
     background-color: #f4f6f7;
 }
 .footer-area .footer-widget {
@@ -2673,17 +2690,17 @@ i, span, a {
     top: 1px!important;
 }
 .single-about .about-content .about-title {
-    font-family: cardo;
+   font-family: sans-serif;
     font-weight: 600!important;
     font-size: 27px!important;
 }
 .single-about .about-content .text {
     margin-top: 12px!important;
-    font-family: cardo!important;
+    font-family: sans-serif!important;
 }
 .text-justify {
     text-align: justify!important;
-    font-family: cardo!important;
+    font-family: sans-serif!important;
     font-size: 16px;
 }
 ::placeholder{
@@ -2691,44 +2708,44 @@ i, span, a {
 }
 .h1 .small, .h1 small, .h2 .small, .h2 small, .h3 .small, .h3 small, .h4 .small, .h4 small, .h5 .small, .h5 small, .h6 .small, .h6 small, h1 .small, h1 small, h2 .small, h2 small, h3 .small, h3 small, h4 .small, h4 small, h5 .small, h5 small, h6 .small, h6 small {
 
-    font-family: cardo;
+   font-family: sans-serif;
 }
 .h4, .h5, .h6, h4, h5, h6 {
     font-weight: bold;
-    font-family: cardo;
+   font-family: sans-serif;
     font-size: 20px;
 }
 p {
     font-size: 16px;
-    font-family: cardo!important;
+    font-family: sans-serif!important;
     /* margin-left: 10px!important;
      margin-right: 10px!important;*/
 }
 .footer-area .footer-widget .footer-link ul li a {
     font-weight: 300;
-    font-family: cardo;
+   font-family: sans-serif;
 }
 h1, h2, h3, h4, h5, h6 {
-    font-family: cardo;
+   font-family: sans-serif;
     padding-top: 13px!important;
 }
 .pricing-style-one .pricing-header .sub-title {
-    font-family: cardo;
+   font-family: sans-serif;
 }
 .navbar-area .navbar .navbar-nav .nav-item a {
-    font-family: cardo;
+    font-family: sans-serif;
 }
 .rounded-buttons .rounded-three {
-    font-family: cardo;
+   font-family: sans-serif;
 }
 .form-input .input-items input, .form-input .input-items textarea {
-    font-family: cardo;
+   font-family: sans-serif;
 }
 ul, ol {
-    font-family: cardo;
+   font-family: sans-serif;
 }
 * {
-    font-family: cardo;
+   font-family: sans-serif;
 }
 .form-input label {
     font-size: 18px;
@@ -3012,4 +3029,12 @@ li:hover {
         margin-left: 11rem;
         width: 100px;
   }
+}
+#how-it-works{
+    background-image: url('../images/img/services_img_bg1.png');
+}
+@media screen and (max-width: 768px) {
+   #how-it-works{
+    background-image: url('../images/img/services_mobile.png');
+   } 
 }
