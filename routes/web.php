@@ -409,6 +409,7 @@ Route::namespace('Professional')->prefix('professional')->name('professional.')-
         // User
         Route::post('avatar-update',[ProfileController::class,'updateAvatar'])->name('avatar-update');
         Route::post('profile-update',[ProfileController::class,'updateProfile'])->name('profile-update');
+        Route::post('add-prof-address',[ProfileController::class,'add_prof_address'])->name('add-prof-address');
         // Dashboard
         Route::get('dashboard', [DashboardController::class,'index'])->name('dashboard');
         Route::get('bookings-info', [DashboardController::class,'getBookingEarning'])->name('bookings-info');

@@ -34,6 +34,7 @@ class ServiceController extends Controller
             'title' => 'required',
             'service_image' => 'nullable|mimes:jpeg,png,jpg,gif|max:2048|dimensions:min_width=400,min_height=400',
             'service_product_image' => 'nullable|mimes:jpeg,png,jpg,gif|max:2048|dimensions:min_width=400,min_height=400',
+            'service_banner_image' => 'nullable|mimes:jpeg,png,jpg,gif|max:2048|dimensions:min_width=400,min_height=400',
             'service_time' => 'required',
             'price' => 'required',
             'discount' => 'required',
@@ -69,10 +70,23 @@ class ServiceController extends Controller
             $imageName2 = null;
         }
 
+        if ($request->service_banner_image != null) {
+            $save_path = public_path('images/services/banners');
+            if (!file_exists($save_path)) {
+                mkdir($save_path, 0777, true);
+            }
+            $imageName3 = time().'.'.$request->service_banner_image->extension();
+            $image = $request->file('service_banner_image');
+            $img = Image::make($image->path());
+            $img->fit(1024,400)->save(public_path('images/services/banners').'/'.$imageName3);
+        }
+        else{
+            $imageName3 = null;
+        }
+
         $service =new Service();
         $service->category_id = $request->category_id;
         $service->sub_category_id = $request->sub_category_id;
-//        $service->product_id = $request->product_id;
         $service->price = $request->price;
         $service->discount = $request->discount;
         $service->title = $request->title;
@@ -81,6 +95,7 @@ class ServiceController extends Controller
         $service->base_path = url('public/images/services/');
         $service->service_image = $imageName1;
         $service->service_product_image = 'products/'.$imageName2;
+        $service->service_banner_image = 'banners/'.$imageName3;
         $service->service_demo_video = $request->service_demo_video;
         $service->description = $request->description;
         $service->recommended_for = $request->recommended_for;
@@ -101,9 +116,6 @@ class ServiceController extends Controller
     public function edit(Request $request)
     {
         $cityrow = Service::find($request->id);
-//        if(!blank($cityrow)) {
-//            $cityrow->name=WorldCity::where('id',$cityrow->id)->value('name');
-//        }
         echo $cityrow;
     }
 
@@ -111,13 +123,12 @@ class ServiceController extends Controller
     {
         $request->validate([
             'title' => 'required|unique:world_cities,name',
-            'service_image' => 'nullable|mimes:jpeg,png,jpg,gif|max:2048|dimensions:min_width=400,min_height=400',
-            'service_product_image' => 'nullable|mimes:jpeg,png,jpg,gif|max:2048|dimensions:min_width=400,min_height=400',
+            'service_image' => 'nullable|mimes:jpeg,png,jpg,gif|max:2048|dimensions:min_width=300,min_height=300',
+            'service_product_image' => 'nullable|mimes:jpeg,png,jpg,gif|max:2048|dimensions:min_width=300,min_height=300',
+            'service_banner_image' => 'nullable|mimes:jpeg,png,jpg,gif|max:2048|dimensions:min_width=400,min_height=400',
             'service_time' => 'required',
             'price' => 'required',
-            'discount' => 'required',
-//            'category_id' => 'required',
-//            'sub_category_id' => 'required'
+            'discount' => 'required'
         ]);
 
 
@@ -129,7 +140,7 @@ class ServiceController extends Controller
             $imageName1 = time().'.'.$request->service_image->extension();
             $image = $request->file('service_image');
             $img = Image::make($image->path());
-            $img->fit(400,400)->save(public_path('images/services').'/'.$imageName1);
+            $img->fit(300,300)->save(public_path('images/services').'/'.$imageName1);
         }
         else{
             $imageName1 = null;
@@ -143,16 +154,27 @@ class ServiceController extends Controller
             $imageName2 = time().'.'.$request->service_product_image->extension();
             $image = $request->file('service_product_image');
             $img = Image::make($image->path());
-            $img->fit(400,400)->save(public_path('images/services/products').'/'.$imageName2);
+            $img->fit(300,300)->save(public_path('images/services/products').'/'.$imageName2);
         }
         else{
             $imageName2 = null;
         }
 
+        if ($request->service_banner_image != null) {
+            $save_path = public_path('images/services/banners');
+            if (!file_exists($save_path)) {
+                mkdir($save_path, 0777, true);
+            }
+            $imageName3 = time().'.'.$request->service_banner_image->extension();
+            $image = $request->file('service_banner_image');
+            $img = Image::make($image->path());
+            $img->fit(1024,400)->save(public_path('images/services/banners').'/'.$imageName3);
+        }
+        else{
+            $imageName3 = null;
+        }
+
         $service = Service::find($request->id);
-//        $service->category_id = $request->category_id;
-//        $service->sub_category_id = $request->sub_category_id;
-//        $service->product_id = $request->product_id;
         $service->price = $request->price;
         $service->discount = $request->discount;
         $service->discounted_price = $request->price- $request->discount;
@@ -163,6 +185,9 @@ class ServiceController extends Controller
         $service->service_image = $imageName1 ?? $service->service_image;
         if($imageName2 != null){
             $service->service_product_image = 'products/'.$imageName2;
+        }
+        if($imageName3 != null){
+            $service->service_banner_image = 'banners/'.$imageName3;
         }
         $service->service_demo_video = $request->service_demo_video;
         $service->description = $request->description;
@@ -188,19 +213,58 @@ class ServiceController extends Controller
 
     function itemSearch(Request $request)
     {
-        if($request->ajax())
-        {
+        if ($request->ajax()) {
             $datas = $request->all();
-            $services=Service::where('title','LIKE','%'.$datas['query']."%")->paginate(25);
-            $categorycount=Service::where('title','LIKE','%'.$datas['query']."%")->count();
-            if($categorycount){
+            $categories = Category::where('title', 'LIKE', '%' . $datas['query'] . '%')->get();
+            $subcategories = SubCategory::where('title', 'LIKE', '%' . $datas['query'] . '%')->get();
+
+            $cate = array();
+            $subcate = array();
+
+            if ($categories) {
+                foreach ($categories as $select) {
+                    $cate[] = $select->id;
+                }
+            }
+
+            if ($subcategories) {
+                foreach ($subcategories as $select) {
+                    $subcate[] = $select->id;
+                }
+            }
+
+
+            if ($cate) {
+                $services = Service::whereIn('category_id', $cate)
+                    ->paginate(25);
+                $servicescount = Service::whereIn('category_id', $cate)
+                    ->count();
+            } elseif ($subcate) {
+                $services = Service::whereIn('sub_category_id', $subcate)
+                    ->paginate(25);
+                $servicescount = Service::whereIn('sub_category_id', $subcate)
+                    ->count();
+            }
+            else {
+                $services = Service::with(['getCategory','getSubCategory'])->where('title', 'LIKE', '%' . $datas['query'] . "%")
+                    ->orWhere('tag', 'LIKE', '%' . $datas['query'] . "%")
+                    ->orWhere('discounted_price', 'LIKE', '%' . $datas['query'] . "%")
+                    ->paginate(25);
+                $servicescount = Service::with(['getCategory','getSubCategory'])->where('title', 'LIKE', '%' . $datas['query'] . "%")
+                    ->orWhere('tag', 'LIKE', '%' . $datas['query'] . "%")
+                    ->orWhere('discounted_price', 'LIKE', '%' . $datas['query'] . "%")
+                    ->count();
+            }
+
+            if ($servicescount) {
                 $currentpage = $services->currentPage();
-                return view('admin.services.paggination_services', compact(['services','currentpage']))->render();
-            }else{?>
+                return view('admin.services.paggination_services', compact(['services', 'currentpage']))->render();
+            } else { ?>
                 <tr>
-                    <td colspan="4">No matching records found</td>
+                    <td colspan="8">No matching records found</td>
                 </tr>
-            <?php }
+                <?php
+            }
         }
     }
 }

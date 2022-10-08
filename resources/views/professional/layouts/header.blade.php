@@ -63,6 +63,7 @@
 <!-- Font Awesome -->
 <link href="{{ URL::asset('public/assets/plugins/fontawesome-free/css/all.min.css') }}"/>
 <!-- Theme style -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css"/>
 <link href="{{ URL::asset('public/dist/css/adminlte.min.css') }}"/>
 
 <script>
