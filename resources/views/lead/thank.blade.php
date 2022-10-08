@@ -24,7 +24,7 @@
         <a href="https://thewomenscompany.in/" class="btn fourth">For More Information Click Here</a>
     </div>
     <div>
-        <a class="text-fill blink-soft" href="https://play.google.com/store/apps/details?id=com.epic.woman_company_professional" target="_blank">Download The App Now!</a>
+        <a class="text-red blink-soft" href="https://play.google.com/store/apps/details?id=com.epic.woman_company_professional" target="_blank">Download The App Now!</a>
     </div>
     <footer class="site-footer" id="footer">
         <p class="site-footer__fineprint" id="fineprint">Copyright ©2022 The Woman Company | All Rights Reserved By  <a href="https://epiccorporations.com/" target="_blank">Epic Corporations</a></p>
@@ -79,6 +79,14 @@
         padding: 20px 0 25px!important;
         }
     }
+    .blink-soft {
+  animation: blinker 1.5s linear infinite;
+}
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
     </style>
 </body>
 </html>

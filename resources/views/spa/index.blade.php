@@ -16,6 +16,8 @@
             </div>
         </div>
     </div>
+
+
     <section class="header-area bg-section">
         <div id="home" class="slider-area">
             <div class="bd-example">
@@ -60,27 +62,37 @@
                 <div class="col-xl-12 col-lg-8">
                     <div class="about-image text-center wow fadeInUp" data-wow-duration="1.5s" data-wow-offset="100">
                         <h4 class="size">GET US ON!</h4>
-                            <img class="app_img" src="{{ url('public/assets/spa/images/icon/google play store button 1.jpg') }}" alt="services">
-                            <img class="app_img" src="{{ url('public/assets/spa/images/icon/app_play_store_button1.png') }}" alt="services"><br><br>
-                            <span class="text-fill blink-soft">Comming Soon...</span>
+                            <img  onclick="window.open('https://play.google.com/store/apps/details?id=com.epic.woman_company_professional', '_blank');"  class="app_img" src="http://localhost/project/the_wc/public/assets/spa/images/icon/google play store button 1.jpg" alt="services">
+                            <img class="app_img" src="{{ url('public/assets/spa/images/icon/app_play_store_button1.png') }}" alt="services" style="background: #fff;border: none;border-radius: 9px;"><br><br>
+                            <span class="text-fill blink-soft text-_com">Comming Soon...</span>
                     </div>
-                    <div class="section-title text-center mt-30 pb-40">
-                        <h4 class="title wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="0.6s" style="font-family: cardo;">
-                            Hassel free Beauty service booking app, now your salon at home. It's just one click away.</h4>
-                        <p class="text wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="1s">
-                            Our aim is to provide the best beauty service at an affordable price with a "ZERO" commission from professionals.
-                        </p>
-                        <p style="font-size: 20px; padding-top: 10px">
-                            The womens company (TWC) is operatd by Epic Corporations Pvt Ltd, TWC is the India's first platform at "ZERO" comissions for
-                            beauty and salon professionals. We are commited to provide the best service at affordable price range to our user.
+                    
+                    <div class="row">
+                        <div class="col-md-7 pt-2">
+                            <div class="section-title text-center mt-30 pb-40">
+                                <h4 class="title wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="0.6s" style="font-family: cardo; visibility: visible; animation-duration: 1.5s; animation-delay: 0.6s; animation-name: fadeInUp;">
+                                Hassel free Beauty service booking app, now your salon at home. It's just one click away.</h4>
+                                <p class="text text-justify wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="1s" style="visibility: visible; animation-duration: 1.5s; animation-delay: 1s; animation-name: fadeInUp;">
+                                    Our aim is to provide the best beauty service at an affordable price with a "ZERO" commission from professionals.
+                                </p>
+                                <p class="text-justify" style="font-size: 16px; padding-top: 10px">
+                                    The womens company (TWC) is operatd by Epic Corporations Pvt Ltd, TWC is the India's first platform at "ZERO" comissions for
+                                    beauty and salon professionals. We are commited to provide the best service at affordable price range to our user.
 
-                            We charged a genuine price for beauty services with genuine products, our professions use only genuine and certified products.
-                            TWC provide a verity of beauty services of their users at daily basis. Any profession who is working for Women's beauty
-                            can join TWC and stsrt income from first day.
+                                    We charged a genuine price for beauty services with genuine products, our professions use only genuine and certified products.
+                                    TWC provide a verity of beauty services of their users at daily basis. Any profession who is working for Women's beauty
+                                    can join TWC and stsrt income from first day.
 
-                            We bealive in women empowerment and we love to work for women empower, our concept besed on women empowerment only and we do
-                            work for that only. Our thinking is "If a women will empower she can make the country empower".
-                        </p>
+                                    We bealive in women empowerment and we love to work for women empower, our concept besed on women empowerment only and we do
+                                    work for that only. Our thinking is "If a women will empower she can make the country empower".
+                                </p>
+                            </div>
+                            <div>
+                            </div>
+                        </div>
+                        <div class="col-md-5 pt-2">
+                             <img src="{{ url('public/assets/spa/images/img/about.png') }}" alt="about">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -216,6 +228,33 @@
         </div>
     </div>
 
+<!-- slider modal -->
+
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#slider1">
+  Launch demo modal
+</button>
+
+<div class="modal fade" id="slider1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- end -->
     <section id="call-action" class="call-action-area">
         </section>
 
@@ -238,7 +277,20 @@
                                 <li><i class="lni-phone-handset"></i><a href="tel:9643824343" style="color: #000;"> +91 8860014004</a></li>
                             </ul>
                         </div>
+                      <div class="row">
+                            <div class="col-xl-12 col-lg-8">
+                    <div class="about-image text-left wow fadeInUp" data-wow-duration="1.5s" data-wow-offset="100" style="visibility: visible; animation-duration: 1.5s; animation-name: fadeInUp;">
+                        <h4 class="size">GET US ON!</h4>
+                            <img  onclick="window.open('https://play.google.com/store/apps/details?id=com.epic.woman_company_professional', '_blank');"  class="app_img" src="http://localhost/project/the_wc/public/assets/spa/images/icon/google play store button 1.jpg" alt="services">
+                            <img class="app_img" src="http://localhost/project/the_wc/public/assets/spa/images/icon/app_play_store_button1.png" alt="services" style="background: #fff;border: none;border-radius: 9px;"><br><br>
+                            <span class="text-fill blink-soft">Comming Soon...</span>
                     </div>
+                    
+              
+                </div>
+                      </div>
+                    </div>
+
                     <div class="col-lg-6">
                         <div class="contact-form form-style-one mt-35 wow fadeIn" data-wow-duration="1.5s" data-wow-delay="0.5s">
                             <form  id="contact-form" action="contact/us" method="post">

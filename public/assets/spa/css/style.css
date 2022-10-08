@@ -1305,8 +1305,8 @@ p {
         font-size: 28px;
         line-height: 38px; } }
 .about-area .section-title .text {
-    font-size: 20px;
-    line-height: 25px;
+    font-size: 16px;
+    line-height: 1.5;
     color: #121212;
     margin-top: 8px; }
 @media (max-width: 767px) {
@@ -2324,9 +2324,9 @@ p {
 
 /*==== ABOUT SECTION START ===*/
 .about-area .section-title .title {
-    font-size: 30px;
+    font-size: 20px;
     font-weight: inherit;
-    line-height: 55px;
+    line-height: 30px;
     color: #121212;
 }
 /*==== ABOUT SECTION END ====*/
@@ -2516,9 +2516,14 @@ img {
 }
 .about-area {
     position: relative;
-    background-color: #fff;
+    /* background-color: #fff; */
     padding-top: 60px;
     padding-bottom: 60px;
+    background-image: url('../images/img/about_img1.png');
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background-repeat: no-repeat;
 }
 /*=== ABOUT SECTION END ===*/
 .footer-area .footer-copyright {
@@ -2989,6 +2994,7 @@ li:hover {
 }
 .app_img{
     width: 15%;
+    cursor: pointer;
 }
  @media screen and (max-width: 767px) {
      .logo_img{
@@ -2997,3 +3003,13 @@ li:hover {
  }
 }
 
+.text-_com{
+    margin-left:18rem;
+}
+@media screen and (max-width: 768px) {
+    .text-_com {
+        line-height: 16px;
+        margin-left: 11rem;
+        width: 100px;
+  }
+}
