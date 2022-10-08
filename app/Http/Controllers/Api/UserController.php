@@ -122,49 +122,6 @@ class UserController extends Controller
                 'data' => $user,
                 'message' => 'User Registered Successfully.Please Verify Mobile Number.',
             ]);
-//            $mobileotp = generateOtp();
-//            $text = "Dear valuable customer!!! Your OTP for verification to your EarlyBasket account is " . $mobileotp . ". This OTP is valid for 5 minutes. ";
-//            $tempid = 1207162701871076797;
-//            $response = sendsms(intval($request->mobile), $text, $tempid);
-//            if ($response) {
-//                $mobileexists = User::where('mobile', $mobile)->where('mobile_status', 0)->get();
-//                if ($mobileexists->count() == 1) {
-//                    $form_data = [
-//                        'name' => $request->name,
-//                        'email' => $request->email,
-//                        'mobile_otp' => $mobileotp,
-//                        'mobile_otp_expire' => date("Y-m-d H:i:s"),
-//                        'role' => 'user',
-//                        'password' => bcrypt($request->password)
-//                    ];
-//                    User::where('mobile', $mobile)->update($form_data);
-//                    //Alert::success('', 'Category added successfully.');
-//                    $user = User::where('mobile', $mobile)->first();
-//                } else {
-//                    $form_data = [
-//                        'name' => $request->name,
-//                        'mobile' => $request->mobile,
-//                        'email' => $request->email,
-//                        'mobile_otp' => $mobileotp,
-//                        'mobile_otp_expire' => date("Y-m-d H:i:s"),
-//                        'role' => 'user',
-//                        'password' => bcrypt($request->password)
-//                    ];
-//                    $user = User::create($form_data);
-//                }
-//                return response()->json([
-//                    'code' => 200,
-//                    'status' => 1,
-//                    'data' => $user,
-//                    'message' => 'User Registered Successfully.Please Verify Mobile Number.',
-//                ]);
-//            } else {
-//                return response()->json([
-//                    'code' => 422,
-//                    'status' => 0,
-//                    'message' => 'Message Could Not be Sent.',
-//                ]);
-//            }
         }
     }
 
@@ -226,49 +183,6 @@ class UserController extends Controller
                 'data' => $user,
                 'message' => 'Professional Registered Successfully.Please Verify Mobile Number.',
             ]);
-//            $mobileotp = generateOtp();
-//            $text = "Dear valuable customer!!! Your OTP for verification to your EarlyBasket account is " . $mobileotp . ". This OTP is valid for 5 minutes. ";
-//            $tempid = 1207162701871076797;
-//            $response = sendsms(intval($request->mobile), $text, $tempid);
-//            if ($response) {
-//                $mobileexists = User::where('mobile', $mobile)->where('mobile_status', 0)->get();
-//                if ($mobileexists->count() == 1) {
-//                    $form_data = [
-//                        'name' => $request->name,
-//                        'email' => $request->email,
-//                        'mobile_otp' => $mobileotp,
-//                        'mobile_otp_expire' => date("Y-m-d H:i:s"),
-//                        'role' => 'user',
-//                        'password' => bcrypt($request->password)
-//                    ];
-//                    User::where('mobile', $mobile)->update($form_data);
-//                    //Alert::success('', 'Category added successfully.');
-//                    $user = User::where('mobile', $mobile)->first();
-//                } else {
-//                    $form_data = [
-//                        'name' => $request->name,
-//                        'mobile' => $request->mobile,
-//                        'email' => $request->email,
-//                        'mobile_otp' => $mobileotp,
-//                        'mobile_otp_expire' => date("Y-m-d H:i:s"),
-//                        'role' => 'user',
-//                        'password' => bcrypt($request->password)
-//                    ];
-//                    $user = User::create($form_data);
-//                }
-//                return response()->json([
-//                    'code' => 200,
-//                    'status' => 1,
-//                    'data' => $user,
-//                    'message' => 'User Registered Successfully.Please Verify Mobile Number.',
-//                ]);
-//            } else {
-//                return response()->json([
-//                    'code' => 422,
-//                    'status' => 0,
-//                    'message' => 'Message Could Not be Sent.',
-//                ]);
-//            }
         }
     }
 
@@ -287,21 +201,31 @@ class UserController extends Controller
 
         if(check_mobile_registered_or_not($request->mobile_no)){
             try {
-                $mobileotp = generateOtp();
-                $text = "Your login otp for TWC account is ". $mobileotp.'.';
-                $tempid = 1207166434787251472;
-                $response = sendsms(intval($request->mobile_no), $text, $tempid);
-                if($response){
-                    $mobiledata = User::where('mobile', $request->mobile_no)->first();
-                    $update = User::where('mobile', $mobiledata->mobile)->update(['mobile_otp' => $mobileotp, 'mobile_otp_expire' => date("Y-m-d H:i:s")]);
-                    if ($update) {
-                        return response()->json([
-                            'code' => 200,
-                            'status' => 1,
-                            'message' => 'OTP has been sent successfully'
-                        ]);
-                    }
+                $mobileotp = 123456;
+                $mobiledata = User::where('mobile', $request->mobile_no)->first();
+                $update = User::where('mobile', $mobiledata->mobile)->update(['mobile_otp' => $mobileotp, 'mobile_otp_expire' => date("Y-m-d H:i:s")]);
+                if ($update) {
+                    return response()->json([
+                        'code' => 200,
+                        'status' => 1,
+                        'message' => 'OTP has been sent successfully'
+                    ]);
                 }
+//                $mobileotp = generateOtp();
+//                $text = "Your login otp for TWC account is ". $mobileotp.'.';
+//                $tempid = 1207166434787251472;
+//                $response = sendsms(intval($request->mobile_no), $text, $tempid);
+//                if($response){
+//                    $mobiledata = User::where('mobile', $request->mobile_no)->first();
+//                    $update = User::where('mobile', $mobiledata->mobile)->update(['mobile_otp' => $mobileotp, 'mobile_otp_expire' => date("Y-m-d H:i:s")]);
+//                    if ($update) {
+//                        return response()->json([
+//                            'code' => 200,
+//                            'status' => 1,
+//                            'message' => 'OTP has been sent successfully'
+//                        ]);
+//                    }
+//                }
             } catch (\Exception $e) {
                 return response()->json([
                     'code' => 500,
@@ -317,7 +241,6 @@ class UserController extends Controller
             ]);
         }
     }
-
 
     public function Login(Request $request)
     {
@@ -439,134 +362,141 @@ class UserController extends Controller
             'message' => 'Profile Updated Successfully.',
         ]);
     }
-//select(['name','email','mobile','refer_code','dob','upload_photo'])->
-//    public function professionalProfile(Request $request): JsonResponse
-//    {
-//        $user = User::select([
-//            'name','email','mobile','dob',
-//            'working_location','experience','qualification','upload_photo'
-//        ])->where('id',$request->user()->id)->first();
-//        return response()->json([
-//            'code' => 200,
-//            'status' => 1,
-//            'data' => $user,
-//            'message' => 'Professional Profile Details.'
-//        ]);
-//    }
-//    ------------------
-
 
     public function PasswordRequest(Request $request)
     {
-
-        $mobile = intval($request->mobile);
-
-        date_default_timezone_set('Asia/Kolkata');
-
-        if (!User::where('mobile', $mobile)->where('mobile_status', 1)->exists()) {
-
+        $validator = Validator::make($request->all(),[
+            'mobile' => 'required|integer',
+        ]);
+        if($validator->fails()){
             return response()->json([
-
+                'code' => 428,
+                'status' => 0,
+                'message' => $validator->errors()
+            ]);
+        }
+        $mobile = intval($request->mobile);
+        date_default_timezone_set('Asia/Kolkata');
+        if (!User::where('mobile', $mobile)->where('mobile_status', 1)->exists()) {
+            return response()->json([
                 'code' => 422,
                 'status' => 0,
                 'message' => 'This mobile Number does not exists.'
-
             ]);
         }
-
-        $mobileotp = generateOtp();
-
-        $text = "Dear valuable customer!!! Your OTP for verification to your EarlyBasket account is " . $mobileotp . ". This OTP is valid for 5 minutes. ";
-        $tempid = 1207162701871076797;
-
-        $response = sendsms($mobile, $text, $tempid);
-
-        if ($response) {
-
-            $update = User::where('mobile', $mobile)->update(['mobile_otp' => $mobileotp, 'mobile_otp_expire' => date("Y-m-d H:i:s")]);
-
-            if ($update) {
-
-                return response()->json([
-
-                    'code' => 200,
-                    'status' => 1,
-                    'message' => 'OTP has been send on your mobile Number.'
-
-                ]);
-            }
-        } else {
-
+        $mobileotp = 123456;
+        $update = User::where('mobile', $mobile)->update(['mobile_otp' => $mobileotp, 'mobile_otp_expire' => date("Y-m-d H:i:s")]);
+        if ($update) {
             return response()->json([
-
+                'code' => 200,
+                'status' => 1,
+                'message' => 'OTP has been send on your mobile Number.: '.$mobileotp
+            ]);
+        }else {
+            return response()->json([
                 'code' => 422,
                 'status' => 0,
                 'message' => 'Technical problem occurs.Please try again later.'
-
             ]);
         }
     }
 
     public function PasswordResetUpdate(Request $request)
     {
-
-        if ($request->password != $request->password_confirmation) {
-
+        $validator = Validator::make($request->all(),[
+            'password' => 'required|integer',
+            'password_confirmation' => 'required|integer',
+            'otp' => 'required|integer',
+            'mobile' => 'required|integer'
+        ]);
+        if($validator->fails()){
             return response()->json([
-
+                'code' => 428,
+                'status' => 0,
+                'message' => $validator->errors()
+            ]);
+        }
+        if ($request->password != $request->password_confirmation) {
+            return response()->json([
                 'code' => 422,
                 'status' => 0,
                 'message' => 'Password does not match.'
             ]);
         }
-
         date_default_timezone_set('Asia/Kolkata');
-
         $user = User::where('mobile', $request->mobile)->first();
-
         $currentdatetime = new DateTime();
-
         $date = strtotime($user->mobile_otp_expire);
-
         $interval = date_diff($currentdatetime, new DateTime(date('Y-m-d H:i:s', $date)));
-
-
         if ($interval->y == 0 && $interval->m == 0 && $interval->d == 0 && $interval->h == 0 && $interval->i <= 5) {
-
-
             if (intval($user->mobile_otp) == intval($request->otp)) {
-
                 $password = Hash::make($request->password);
                 User::where('mobile', $request->mobile)->update(['password' => $password]);
-
                 return response()->json([
-
                     'code' => 200,
                     'status' => 1,
                     'message' => 'Your Password Changed Successfully.'
-
                 ]);
             } else {
-
                 return response()->json([
-
                     'code' => 422,
                     'status' => 0,
                     'message' => 'Your OTP does not match.Please Enter Correct OTP.'
-
                 ]);
             }
         } else {
-
             return response()->json([
-
                 'code' => 422,
                 'status' => 0,
                 'message' => 'Your OTP has been expired.Please Resend Your OTP.'
-
             ]);
         }
     }
+
+    public function UpdatePassword(Request $request)
+    {
+        $validator = Validator::make($request->all(),[
+            'password' => 'required|integer',
+            'password_confirmation' => 'required|integer',
+            'old_password' => 'required|integer'
+        ]);
+        if($validator->fails()){
+            return response()->json([
+                'code' => 428,
+                'status' => 0,
+                'message' => $validator->errors()
+            ]);
+        }
+
+        $hashedpasswords = $request->user()->password;
+        if (Hash::check($request->old_password, $hashedpasswords)) {
+            if ($request->password != $request->password_confirmation) {
+                return response()->json([
+                    'code' => 422,
+                    'status' => 0,
+                    'message' => 'Password does not match.'
+                ]);
+            } else {
+                $user = User::find($request->user()->id);
+                $user->password = Hash::make($request->password);
+                $user->save();
+                return response()->json([
+                    'code' => 200,
+                    'status' => 1,
+                    'message' => 'Password is changed Successfully'
+                ]);
+            }
+        } else {
+            return response()->json([
+                'code' => 422,
+                'status' => 0,
+                'message' => 'Current Password is invalid'
+            ]);
+        }
+    }
+
+//    ------------------
+
 
     public function UpdateAccount(Request $request)
     {
@@ -597,38 +527,26 @@ class UserController extends Controller
 
     public function ConfirmEmail(Request $request)
     {
-
         $emailotp = generateOtp();
-
         $data = [
-
             'email' => $request->email,
             'client_name' => User::find($request->user()->id)->name,
             'otp' => $emailotp,
             'subject' => 'Verify Email'
         ];
-
         Mail::to($data["email"], $data["client_name"])->send(new ConfirmMail($data));
-
         if (Mail::failures()) {
-
             return response()->json([
-
                 'code' => 422,
                 'status' => 0,
                 'message' => 'Mail can not be sent.'
-
             ]);
         } else {
-
             $update = User::where('id', $request->user()->id)->update(['email_otp' => $emailotp, 'email_otp_expire' => date("Y-m-d H:i:s")]);
-
             return response()->json([
-
                 'code' => 200,
                 'status' => 1,
                 'message' => 'Mail has been sent successfully.'
-
             ]);
         }
     }
@@ -994,47 +912,6 @@ class UserController extends Controller
         ]);
     }
 
-    public function UpdatePassword(Request $request)
-    {
-
-        $hashedpasswords = $request->user()->password;
-
-
-        if (Hash::check($request->old_password, $hashedpasswords)) {
-
-            if ($request->password != $request->password_confirmation) {
-
-                return response()->json([
-
-                    'code' => 422,
-                    'status' => 0,
-                    'message' => 'Password does not match.'
-
-                ]);
-            } else {
-                $user = User::find($request->user()->id);
-                $user->password = Hash::make($request->password);
-                $user->save();
-
-                return response()->json([
-
-                    'code' => 200,
-                    'status' => 1,
-                    'message' => 'Password is changed Successfully'
-
-                ]);
-            }
-        } else {
-
-            return response()->json([
-
-                'code' => 422,
-                'status' => 0,
-                'message' => 'Current Password is invalid'
-            ]);
-        }
-    }
-
     public function UpdateAvatar(Request $request)
     {
         $request->validate([
@@ -1067,7 +944,6 @@ class UserController extends Controller
             ]);
         }
     }
-
 
     public function getUser(Request $request)
     {
