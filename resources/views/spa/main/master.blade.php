@@ -48,6 +48,7 @@
     <script src="{{ url('public/assets/spa/js/wow.min.js') }}"></script>
     <!--====== Main js ======-->
     <script src="{{ url('public/assets/spa/js/main.js') }}"></script>
+    @yield('script')
 </body>
 
 </html>
