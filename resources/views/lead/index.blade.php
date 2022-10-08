@@ -40,7 +40,7 @@
         <nav id="navbar" class="navbar">
             <ul>
                 <li><a class="nav-link scrollto active" href="mailto:partner@thewomenscompany.in"><i aria-hidden="true" class="fa fa-envelope p-1"></i>partner@thewomenscompany.in</a></li>
-                <li><a href="tel:+9643824343"><i aria-hidden="true" class="fa fa-phone p-1"></i>+91 9643-82-4343</a></li>
+                <li><a href="tel:+9643824343"><i aria-hidden="true" class="fa fa-phone p-1"></i>+91 8860014004</a></li>
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>
         </nav>

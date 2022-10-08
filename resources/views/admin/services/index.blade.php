@@ -57,6 +57,7 @@
                             <th>Name</th>
                             <th>Service Image</th>
                             <th>Service Product Image</th>
+                            <th>Service Banner Image</th>
                             <th>Service Time</th>
                             <th>Price</th>
                             <th>Discount</th>
@@ -119,7 +120,7 @@
 
                             <div class="col-md-12">
                                 <div class="form-group ">
-                                    <label for="service_image">Service Banner Image<span>*</span>( Enter 1:1 ratio Image Above 400px )</label>
+                                    <label for="service_image">Service Banner Image<span>*</span>( Enter 1:1 ratio Image Above 1024x400px )</label>
                                     <input class="form-control photo" type="file" name="service_banner_image" value="{{ old('service_banner_image') }}" data-parsley-required data-parsley-required-message="This field is required.">
                                 </div>
                             </div>
@@ -250,7 +251,7 @@
 
                             <div class="col-md-12">
                                 <div class="form-group ">
-                                    <label for="service_banner_image">Service Banner Image<span>*</span>( Enter 1:1 ratio Image Above 400px )</label>
+                                    <label for="service_banner_image">Service Banner Image<span>*</span>( Enter 1:1 ratio Image Above 1024x400px )</label>
                                     <div class="d-flex">
                                         <div id="upload_service_banner_image"><img width="50" height="50"></div>
                                         <input class="form-control ml-4 photo" type="file" name="service_banner_image" id="service_banner_image" value="{{ old('service_banner_image') }}">
@@ -289,11 +290,11 @@
                                 </div>
                             </div>
 
-
-                            <div class="col-md-12">
-                                <div class="form-group ">
+                            <div class="col-md-6">
+                                <div class="form-group">
                                     <label for="up-tag">Tag<span>*</span></label>
                                     <select class="form-control" type="text" name="tag" id="up-tag" value="" data-parsley-required data-parsley-required-message="Tag is required.">
+                                        <option value="">Select Tag</option>
                                         <option value="NoTag">NoTag</option>
                                         <option value="New">New</option>
                                         <option value="Exclusive">Exclusive</option>
@@ -301,10 +302,36 @@
                                 </div>
                             </div>
 
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="up_category_id">Select Category<span>*</span></label>
+                                    <select class="form-control" type="text" name="category_id" id="up_category_id" value="" data-parsley-required data-parsley-required-message="Category is required.">
+                                        <option value="">Select Tag</option>
+                                        <option value="3">Category Title</option>
+                                        @foreach($categories as $category)
+                                            <option id="selected-category-id" onclick="getSubCategory({{ $category->id }})" value="{{ $category->id }}">{{ $category->title }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="up_sub_category_id">Select Category<span>*</span></label>
+                                    <select class="form-control" type="text" name="sub_category_id" id="up_sub_category_id" value="" data-parsley-required data-parsley-required-message="Sub-Category is required.">
+                                        <option value="">Select Sub-Category</option>
+                                        @foreach($sub_category as $sub_cat)
+                                            <option id="selected-sub-category-id" value="{{ $sub_cat->id }}">{{ $sub_cat->title }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label for="price">Description</label>
-                                    <textarea class="form-control" type="text" name="description" placeholder="Enter Description" id="editor up-service-description"></textarea>
+                                    <label for="edit_service_description">Description</label>
+                                    <textarea class="form-control" type="text" value="" name="description" placeholder="Enter Description" id="edit_service_description"></textarea>
                                 </div>
                             </div>
 
@@ -326,6 +353,9 @@
 @endsection
 
 @section('script')
+    <script>
+        CKEDITOR.replace( 'edit_service_description' );
+    </script>
     <script type="text/javascript">
         $(document).ready(function(){
             initSample();
@@ -442,7 +472,7 @@
                         // service product image
                         if (datas.service_banner_image != null) {
                             $("#upload_service_banner_image").show();
-                            $("#upload_service_banner_image img").attr('src', "{{ asset('public/images/banners/') }}"+'/'+datas.service_banner_image);
+                            $("#upload_service_banner_image img").attr('src', "{{ asset('public/images/services/') }}"+'/'+datas.service_banner_image);
                         }else{
                             $("#upload_service_banner_image").hide();
                         }
@@ -451,7 +481,14 @@
                         $('#up-price').val(datas.price);
                         $('#up-discount').val(datas.discount);
                         $('#up-tag').val(datas.tag);
-                        $('#up-service-description').val(datas.description);
+                        $('#up_sub_category_id').val(datas.sub_category_id);
+                        $('#up_category_id').val(datas.category_id);
+
+                        CKEDITOR.instances.edit_service_description.setData( datas.description,
+                            function(){
+                                this.checkDirty();
+                            });
+
                         $('#edit-service-modal').modal('show');
                     }
                 }

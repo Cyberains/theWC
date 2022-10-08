@@ -32,9 +32,9 @@ class ServiceController extends Controller
     {
         $request->validate([
             'title' => 'required',
-            'service_image' => 'nullable|mimes:jpeg,png,jpg,gif|max:2048|dimensions:min_width=400,min_height=400',
-            'service_product_image' => 'nullable|mimes:jpeg,png,jpg,gif|max:2048|dimensions:min_width=400,min_height=400',
-            'service_banner_image' => 'nullable|mimes:jpeg,png,jpg,gif|max:2048|dimensions:min_width=400,min_height=400',
+            'service_image' => 'nullable|mimes:jpeg,png,jpg,gif,webp|max:2048|dimensions:min_width=400,min_height=400',
+            'service_product_image' => 'nullable|mimes:jpeg,png,jpg,gif,webp|max:2048|dimensions:min_width=400,min_height=400',
+            'service_banner_image' => 'nullable|mimes:jpeg,png,jpg,gif,webp|max:2048|dimensions:min_width=1024,min_height=400',
             'service_time' => 'required',
             'price' => 'required',
             'discount' => 'required',
@@ -123,9 +123,9 @@ class ServiceController extends Controller
     {
         $request->validate([
             'title' => 'required|unique:world_cities,name',
-            'service_image' => 'nullable|mimes:jpeg,png,jpg,gif|max:2048|dimensions:min_width=300,min_height=300',
-            'service_product_image' => 'nullable|mimes:jpeg,png,jpg,gif|max:2048|dimensions:min_width=300,min_height=300',
-            'service_banner_image' => 'nullable|mimes:jpeg,png,jpg,gif|max:2048|dimensions:min_width=400,min_height=400',
+            'service_image' => 'nullable|mimes:jpeg,png,jpg,gif,webp|max:2048|dimensions:min_width=300,min_height=300',
+            'service_product_image' => 'nullable|mimes:jpeg,png,jpg,gif,webp|max:2048|dimensions:min_width=300,min_height=300',
+            'service_banner_image' => 'nullable|mimes:jpeg,png,jpg,gif,webp|max:2048|dimensions:min_width=1024,min_height=400',
             'service_time' => 'required',
             'price' => 'required',
             'discount' => 'required'

@@ -5,8 +5,23 @@
         <tr>
             <td>{{ (($currentpage-1)*25)+$loop->iteration }}</td>
             <td>{{ $service->title }}</td>
-            <td><img src="{{ asset('public/images/services/'.$service->service_image) }}" height="30px"></td>
-            <td><img src="{{ asset('public/images/services/'.$service->service_product_image) }}" height="30px"></td>
+            @if($service->service_image != null)
+                <td><img src="{{ asset('public/images/services/'.$service->service_image) }}" height="30px"></td>
+            @elseif($service->service_image == null)
+                <td><img src="{{ url('public/assets/spa/images/img/favicon_twc.png') }}" alt="Logo" height="30px"></td>
+            @endif
+
+            @if(preg_split ("/\//", $service->service_product_image)['1'] != null)
+                <td><img src="{{ asset('public/images/services/'.$service->service_product_image) }}" height="30px"></td>
+            @elseif(preg_split ("/\//", $service->service_product_image)['1'] == '')
+                <td><img src="{{ url('public/assets/spa/images/img/favicon_twc.png') }}" alt="Logo" height="30px"></td>
+            @endif
+
+            @if($service->service_banner_image != null)
+                <td><img src="{{ asset('public/images/services/'.$service->service_banner_image) }}" height="30px"></td>
+            @elseif($service->service_banner_image == null)
+                <td><img src="{{ url('public/assets/spa/images/img/favicon_twc.png') }}" alt="Logo" height="30px"></td>
+            @endif
             <td>{{ $service->service_time }}</td>
             <td>{{ $service->price }} ₹</td>
             <td>{{ $service->discount }} ₹</td>
