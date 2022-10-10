@@ -471,7 +471,26 @@
 
                                           <div class="tab-pane" id="add-document">
                                               <div class="card-body">
-
+                                                    <form method="post" action="{{ route('professional.add_documents') }}" enctype="multipart/form-data">
+                                                        @csrf
+                                                        <div class="form-group row">
+                                                            <label for="state" class="col-sm-3 col-form-label">Aadhar Card Front</label>
+                                                            <div class="col-sm-9">
+                                                                <input type="file" class="form-control" id="Aadhar_card1" name="aadhar_card1" placeholder="Aadhar Card Front" required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label for="state" class="col-sm-3 col-form-label">Aadhar Card Back</label>
+                                                            <div class="col-sm-9">
+                                                                <input type="file" class="form-control" id="Aadhar_card2" name="aadhar_card2" placeholder="Aadhar Card Back" required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <div class="offset-sm-2 col-sm-10">
+                                                                <button type="submit" class="btn btn-primary badge-pill" style="width:80px">Submit</button>
+                                                            </div>
+                                                        </div>
+                                                    </form>
                                               </div>
                                           </div>
                                         </div>

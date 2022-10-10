@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Professional;
 
 use App\Http\Controllers\Controller;
 use App\Models\Address;
+use App\Models\ProfessionalDocument;
 use App\Models\ProfessionalSkills;
 use App\Models\Service;
 use App\Models\SubCategory;
@@ -132,6 +133,66 @@ class ProfileController extends Controller
             Alert::success('', 'Skill Successfully Added');
             return redirect()->route('professional.profile');
         }
+    }
+
+    public function add_documents(Request $request){
+        $request->validate([
+            'aadhar_card1' => 'nullable|mimes:jpeg,png,jpg,gif|max:2048|dimensions:min_width=400,min_height=400',
+            'aadhar_card2' => 'nullable|mimes:jpeg,png,jpg,gif|max:2048|dimensions:min_width=400,min_height=400',
+        ]);
+        if ($request->aadhar_card1 != null) {
+            $save_path = public_path('images/professional_documents');
+            if (!file_exists($save_path)) {
+                mkdir($save_path, 0777, true);
+            }
+            $imageName1 = time().'.'.$request->aadhar_card1->extension();
+            $image = $request->file('aadhar_card1');
+            $img = Image::make($image->path());
+            $img->fit(400,400)->save(public_path('images/professional_documents').'/'.$imageName1);
+        }
+        else{
+            $imageName1 = null;
+        }
+
+        if ($request->aadhar_card2 != null) {
+            $save_path = public_path('images/professional_documents');
+            if (!file_exists($save_path)) {
+                mkdir($save_path, 0777, true);
+            }
+            $imageName2 = time().'.'.$request->aadhar_card2->extension();
+            $image = $request->file('aadhar_card2');
+            $img = Image::make($image->path());
+            $img->fit(400,400)->save(public_path('images/professional_documents').'/'.$imageName2);
+        }
+        else{
+            $imageName2 = null;
+        }
+
+        $professional = ProfessionalDocument::updateOrCreate([
+            'professional_id' => $request->user()->id
+        ], [
+            'base_path' => url('public/images/professional_documents/'),
+            'aadhar_front' => $imageName1,
+            'aadhar_back' => $imageName2
+        ]);
+
+        if($professional){
+            Alert::success('', 'Documents Successfully Added');
+            return redirect()->route('professional.profile');
+        }
+
+
+//        $professional = new ProfessionalDocument();
+//        $professional->professional_id = $request->user()->id;
+//        $professional->base_path = url('public/images/professional_documents/');
+//        $professional->aadhar_front = $imageName1;
+//        $professional->aadhar_back = $imageName2;
+//
+//        if($professional->save()){
+//            Alert::success('', 'Documents Successfully Added');
+//            return redirect()->route('professional.profile');
+//        }
+
     }
 
     function getProfLatLong(Request $request)

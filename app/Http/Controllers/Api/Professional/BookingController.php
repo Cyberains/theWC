@@ -135,7 +135,7 @@ class BookingController extends Controller
     {
         $bookingsIds = Booking::where(['user_id'=>$request->user()->id])->pluck('bookingId');
         $paymentDoneBookingIds = BookingServicePayment::whereIn('booking_id',$bookingsIds)->where('payment_status','done')->pluck('booking_id');
-        $bookings['completed'] = Booking::with(['professional','bookingAddress','getAllBookedServicesList','getAllBookedServicesPayment'])->whereIn('bookingId',$paymentDoneBookingIds)->get();
+        $bookings['completed'] = Booking::with(['professional','bookingAddress','getAllBookedServicesList.bookingServiceBelongToService','getAllBookedServicesPayment'])->whereIn('bookingId',$paymentDoneBookingIds)->get();
         if($bookings['completed']->count() > 0){
             return response()->json([
                 'code' => 200,

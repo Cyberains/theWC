@@ -2,6 +2,7 @@
 
 namespace App\Models\Booking;
 
+use App\Models\Service;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -17,4 +18,8 @@ class BookingService extends Model
         'discount',
         'price'
     ];
+
+    public function bookingServiceBelongToService(){
+        return $this->belongsTo(Service::class,'service_id','',Booking::class);
+    }
 }
