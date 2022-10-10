@@ -1,4 +1,5 @@
-<footer id="footer" class="footer-area">
+<footer id="footer" class="footer-area" style="background-image:linear-gradient(#89499a,rgba(0,0,0,0.5)),url(https://i0.wp.com/www.thelodhi.com/wp-content/uploads/sites/3/2020/10/spa-slider1.jpg?resize=1300%2C730&ssl=1);object-fit: cover;background-size: 100% 100%;">
+    <div class="bg_mx"></div>
     <div class="footer-widget bb-solid-1">
         <div class="container">
             <div class="row">
@@ -57,7 +58,7 @@ box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;border-radius: 5px;">
             <div class="row align-items-center">
                 <div class="col-lg-5">
                     <div class="copyright text-center text-lg-left mt-10">
-                        <p class="text">Copyright © 2022 All Rights Reserved By <a style="color: #904795;" rel="nofollow" href="/">The Women's Company</a></p>
+                        <p class="text" style="font-size:1.5rem;">Copyright © 2022 All Rights Reserved By <a style="color: #904795;" rel="nofollow" href="/">The Women's Company</a></p>
                     </div>
                 </div>
                 <div class="col-lg-2">

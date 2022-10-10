@@ -1,6 +1,7 @@
 @extends("spa.main.master")
+
 @section('content')
-<!--     <div class="preloader">
+    <div class="preloader">
         <div class="loader">
             <div class="ytp-spinner">
                 <div class="ytp-spinner-container">
@@ -16,7 +17,6 @@
             </div>
         </div>
     </div>
- -->
 
     <section class="header-area bg-section">
         <div id="home" class="slider-area">
@@ -33,11 +33,9 @@
                             <img class="d-block w-100" width="1349px;" height="auto;" src="{{ url('public/assets/spa/images/slider/slide-01.jpg') }}">
                         </div>
 
-
                         <div class="carousel-item">
                             <img class="d-block w-100" height="auto;" src="{{ url('public/assets/spa/images/slider/slide-02.jpg') }}">
                         </div>
-
 
                         <div class="carousel-item">
                             <img class="d-block w-100" height="auto;" src="{{ url('public/assets/spa/images/slider/slide-03.jpg') }}">
@@ -64,22 +62,22 @@
                         <h4 class="size">GET US ON!</h4>
                             <img  onclick="window.open('https://play.google.com/store/apps/details?id=com.epic.woman_company_professional', '_blank');"  class="app_img" src="{{ url('public/assets/spa/images/icon/google_play_store_button_1.jpg') }}" alt="services">
                             <img class="app_img" src="{{ url('public/assets/spa/images/icon/app_play_store_button1.png') }}" alt="services" style="background: #fff;border: none;border-radius: 9px;"><br><br>
-                            <span class="text-fill blink-soft text-_com">Comming Soon...</span>
+                            <span class="text-fill blink-soft text-_com pb-2">Comming Soon...</span>
                     </div>
                     <div class="mx-auto">
-                    <img src="{{ url('public/assets/spa/images/img/animation_banner.png') }}" class="img-fluid mx-auto" alt="Responsive image">
+                    <img src="{{ url('public/assets/spa/images/img/animation_banner.jpg') }}" class="img-fluid mx-auto" alt="Responsive image">
                 </div>
 
                     <div class="container">
                         <div class="row">
-                        <div class="col-md-7 pt-2">
+                        <div class="col-md-7 align-items-center pt-2">
                             <div class="section-title text-center mt-30 pb-40">
                                 <h4 class="title wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="0.6s" style="font-family: cardo; visibility: visible; animation-duration: 1.5s; animation-delay: 0.6s; animation-name: fadeInUp;">
                                 Hassel free Beauty service booking app, now your salon at home. It's just one click away.</h4>
                                 <p class="text text-justify wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="1s" style="visibility: visible; animation-duration: 1.5s; animation-delay: 1s; animation-name: fadeInUp;">
                                     Our aim is to provide the best beauty service at an affordable price with a "ZERO" commission from professionals.
                                 </p>
-                                <p class="text-justify" style="font-size: 16px; padding-top: 10px">
+                                <p class="text-justify" style="font-size: 16px; padding-top: 10px; color: #121212;">
                                 The women's Company (TWC) is operated by Epic Corporations Pvt Ltd, TWC is India's first platform with "ZERO" commissions for beauty and salon professionals. We are committed to providing the best service at an affordable price range to our users. We charged a genuine price for beauty services with genuine products, our professionals use only genuine and certified products. TWC provides a variety of beauty services to its users on a daily basis. Any professional who is working for Women's beauty can join TWC and start income from the first day. We believe in women's empowerment and we love to work for women empower, our concept is based on women's empowerment only and we do work for that only. Our thinking is "If a woman will empower she can make the country empower".
                                 </p>
                             </div>
@@ -147,12 +145,7 @@
            </div>
         </div>
     </section>
-    <!-- SERVICES -->
-           <!--  <section>
-                <div>
-                    <img src="{{ url('public/assets/spa/images/img/animation_banner.png') }}" class="img-fluid" alt="Responsive image">
-                </div>
-            </section> -->
+   
 
     <section id="testimonial" class="testimonial-area">
         <div class="container">
@@ -234,36 +227,6 @@
         </div>
     </div>
 
-<!-- slider modal -->
-
-<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#slider1">
-  Launch demo modal
-</button> -->
-
-<div class="modal fade" id="slider1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- end -->
-   <!--  <section id="call-action" class="call-action-area">
-        </section> -->
-
     <section id="contact" class="contact-area">
             <div class="container">
                 <div class="row justify-content-center">
@@ -342,45 +305,4 @@
                 </div>
             </div>
         </section>
-
-@endsection
-@section('script')
-
-<!-- <script>
-    $(document).ready(function () {
-setTimeout(function () {
-
-popupform();
-
-$('#contact-form').modal('show');
-
- }, 3000);
-}, 3000);
-
-
-function popupform(){
-
-      var form='';
-
-      form += '<style>.modal-header{ border-bottom: none;}.modal-body{ border-bottom: none;padding-left:30px;.modal-body h3{margin:0px;}.modal-header{padding-bottom: 0px !important;}.modal .close:focus{border:none;outline: none; }.modal span{ color: maroon;}</style>';
-
-      form += '<div class="modal fade" id="contact-form" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="top:10%;">';
-
-      form +='<div class="modal-dialog modal-lg" role="document" style="max-width:1100px">';
-
-      form +='<div class="modal-content">';
-
-      form +='<div style="position:relative" class="modal-body px-0 py-0">';
-form +='<i class="fa fa-times" style="position:absolute;top:-5px;right:-5px;color:white;font-size:20px;cursor:pointer" data-dismiss="modal"></i><img class="img-responsive" src="{{ asset('public/assets/spa/images/img/animation_banner.png') }}">';
-
-      form +='</div>';
-      form +='</div>';
-      form +='</div>';
-      form +='</div>';
-
-      $('body').append(form);
-
-
-   }
-</script>  -->
 @endsection

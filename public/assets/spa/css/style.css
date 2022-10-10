@@ -649,6 +649,7 @@ p {
         background-color: #f4f6f7;
         z-index: 8;
         padding: 10px 16px;
+        margin-top: 2rem;
         -webkit-box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
         -moz-box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
         box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16); } }
@@ -661,6 +662,7 @@ p {
         background-color: #f4f6f7;
         z-index: 8;
         padding: 10px 16px;
+        margin-top: 2rem;
         -webkit-box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
         -moz-box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
         box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16); } }
@@ -1098,6 +1100,7 @@ p {
         height: 600px; } }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
     .slider-area .bd-example .carousel .carousel-inner .carousel-item {
+        margin-left: -1.5rem;
         height: 600px; } }
 @media (max-width: 767px) {
     .slider-area .bd-example .carousel .carousel-inner .carousel-item {
@@ -2594,7 +2597,7 @@ p {
     margin: 0 0 3px 0!important;
     font-size: 13px;
     line-height: 1.5;
-    color: #747474;
+    color: #fff;
 }
 .back-to-top {
     font-size: 20px;
@@ -2620,7 +2623,7 @@ p {
 .footer-area .footer-widget .footer-link ul li a {
     font-size: 14px!important;
     line-height: 24px;
-    color: #121212;
+    color: #fff;
     margin-top: 16px;
     font-weight: 300;
     -webkit-transition: all 0.3s ease-out 0s;
@@ -2684,7 +2687,7 @@ i, span, a {
 .footer-area .footer-widget .footer-title {
     font-size: 16px;
     font-weight: 700!important;
-    color: #000;
+    color: #fff;
 }
 .form-input .input-items i {
     top: 1px!important;
@@ -2716,7 +2719,7 @@ i, span, a {
     font-size: 20px;
 }
 p {
-    font-size: 16px;
+    font-size: 0.9rem;
     font-family: sans-serif!important;
     /* margin-left: 10px!important;
      margin-right: 10px!important;*/
@@ -2980,6 +2983,8 @@ li:hover {
         padding-top: 4.3rem;
     background-size: 100%;
     object-fit: cover;
+    position: relative;
+}
     }
  @media (max-width: 767px) {
     .bg-section{
@@ -2993,7 +2998,7 @@ li:hover {
  @media only screen and (min-width: 576px) and (max-width:768 px) {
     .bg-section{
     width: 100%;
-    padding-top: 3.5rem!important;
+    padding-top: 3.6rem!important;
     object-fit: fill;
     margin-left: -1.6rem;
     background-size: 100%;
@@ -3036,5 +3041,107 @@ li:hover {
 @media screen and (max-width: 768px) {
    #how-it-works{
     background-image: url('../images/img/services_mobile.png');
+<<<<<<< HEAD
+   } 
+}
+/* top header */
+.topbar {
+    background: #6c0c73;
+    height: 40px;
+    font-size: 14px;
+    transition: all 0.5s;
+    color: #fff;
+    padding: 0;
+  }
+  
+  .topbar .contact-info i {
+    font-style: normal;
+    color: #fff;
+    line-height: 0;
+  }
+  
+  .topbar .contact-info i a,
+  .topbar .contact-info i span {
+    padding-left: 5px;
+    color: #fff;
+  }
+  
+  @media (max-width: 575px) {
+    .topbar .contact-info i a,
+    .topbar .contact-info i span {
+      font-size: 13px;
+      width: 100%;
+    }
+  }
+  @media (max-width: 768px) {
+    .topbar .contact-info i a,
+    .topbar .contact-info i span {
+      font-size: 13px;
+      width: 100%;
+    }
+  }
+  
+  @media (min-width: 425px) {
+    .topbar .contact-info i a,
+    .topbar .contact-info i span {
+      font-size: 13px;
+      width: 100%;
+    }
+  }
+
+  #popUpMain{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 1001;
+    font-family: 'Slabo 27px', serif;
+}
+#popup{
+    width: 800px;
+    height: 350px;
+    background-image: url('../images/img/karwa_chauth.jpg');
+    background-size: cover;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    box-shadow: 2px 2px 5px 3px white;
+    text-align: center;
+    font-family: 'Slabo 27px', serif;
+}
+#newsHeading{
+    transform: translateY(50px);
+    color: #fff;
+    font-family: 'Slabo 27px', serif;
+}
+#emailId{
+    width: 60%;
+    padding: 5px;
+    margin-top: 80px;
+    margin-bottom: 20px;
+    font-family: 'Slabo 27px', serif;
+}
+#submitId{
+    background-color: #0fc0fa;
+    border: none;
+    font-size: 1rem;
+    padding: 0.6rem 1rem;
+    color: #fff;
+    font-family: 'Slabo 27px', serif;
+}
+@media (max-width: 768px) {
+    #popUpMain{
+        width: 200px;
+        height: 150px;
+        background-image: url('../images/img/karwa_chauth.jpg');
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        box-shadow: 2px 2px 5px 3px white;
+        text-align: center;
+    }
+}
+=======
    }
 }
+>>>>>>> 57cdccc3e034db80d5fe854837dfc80e1eaa00ac
