@@ -2994,7 +2994,7 @@ li:hover {
   background-size: 100%;
         }
  }
- @media only screen and (min-width: 576px) and (max-width:768 px) {
+ @media only screen and (min-width: 576px) and (max-width:768px) {
     .bg-section{
     width: 100%;
     padding-top: 3.6rem!important;
@@ -3040,7 +3040,6 @@ li:hover {
 @media screen and (max-width: 768px) {
    #how-it-works{
     background-image: url('../images/img/services_mobile.png');
-<<<<<<< HEAD
    }
 }
 /* top header */
@@ -3140,7 +3139,3 @@ li:hover {
         text-align: center;
     }
 }
-=======
-   }
-}
->>>>>>> 57cdccc3e034db80d5fe854837dfc80e1eaa00ac
