@@ -80,15 +80,7 @@
                                     Our aim is to provide the best beauty service at an affordable price with a "ZERO" commission from professionals.
                                 </p>
                                 <p class="text-justify" style="font-size: 16px; padding-top: 10px">
-                                    The womens company (TWC) is operatd by Epic Corporations Pvt Ltd, TWC is the India's first platform at "ZERO" comissions for
-                                    beauty and salon professionals. We are commited to provide the best service at affordable price range to our user.
-
-                                    We charged a genuine price for beauty services with genuine products, our professions use only genuine and certified products.
-                                    TWC provide a verity of beauty services of their users at daily basis. Any profession who is working for Women's beauty
-                                    can join TWC and stsrt income from first day.
-
-                                    We bealive in women empowerment and we love to work for women empower, our concept besed on women empowerment only and we do
-                                    work for that only. Our thinking is "If a women will empower she can make the country empower".
+                                The women's Company (TWC) is operated by Epic Corporations Pvt Ltd, TWC is India's first platform with "ZERO" commissions for beauty and salon professionals. We are committed to providing the best service at an affordable price range to our users. We charged a genuine price for beauty services with genuine products, our professionals use only genuine and certified products. TWC provides a variety of beauty services to its users on a daily basis. Any professional who is working for Women's beauty can join TWC and start income from the first day. We believe in women's empowerment and we love to work for women empower, our concept is based on women's empowerment only and we do work for that only. Our thinking is "If a woman will empower she can make the country empower".
                                 </p>
                             </div>
                             <div>
@@ -125,7 +117,7 @@
                         </div>
                         <div class="about-content media-body">
                             <h4 class="about-title">Experience and verified professionals.</h4>
-                            <p class="text">We have a team of experienced professionals for your personal beauty service need, any time where.</p>
+                            <p class="text">We have a team of experienced professionals for your personal beauty service need. Any time anywhere.</p>
                         </div>
                     </div>
                 </div>
