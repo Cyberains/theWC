@@ -62,14 +62,14 @@
                 <div class="col-xl-12 col-lg-8">
                     <div class="about-image text-center wow fadeInUp" data-wow-duration="1.5s" data-wow-offset="100">
                         <h4 class="size">GET US ON!</h4>
-                            <img  onclick="window.open('https://play.google.com/store/apps/details?id=com.epic.woman_company_professional', '_blank');"  class="app_img" src="http://localhost/project/the_wc/public/assets/spa/images/icon/google play store button 1.jpg" alt="services">
+                            <img  onclick="window.open('https://play.google.com/store/apps/details?id=com.epic.woman_company_professional', '_blank');"  class="app_img" src="{{ url('public/assets/spa/images/icon/google_play_store_button_1.jpg') }}" alt="services">
                             <img class="app_img" src="{{ url('public/assets/spa/images/icon/app_play_store_button1.png') }}" alt="services" style="background: #fff;border: none;border-radius: 9px;"><br><br>
                             <span class="text-fill blink-soft text-_com">Comming Soon...</span>
                     </div>
                     <div class="mx-auto">
                     <img src="{{ url('public/assets/spa/images/img/animation_banner.png') }}" class="img-fluid mx-auto" alt="Responsive image">
                 </div>
-                    
+
                     <div class="container">
                         <div class="row">
                         <div class="col-md-7 pt-2">
@@ -287,12 +287,15 @@
                             <div class="col-xl-12 col-lg-8">
                     <div class="about-image text-left wow fadeInUp" data-wow-duration="1.5s" data-wow-offset="100" style="visibility: visible; animation-duration: 1.5s; animation-name: fadeInUp;">
                         <h4 class="size">GET US ON!</h4>
-                            <img  onclick="window.open('https://play.google.com/store/apps/details?id=com.epic.woman_company_professional', '_blank');"  class="app_img" src="http://localhost/project/the_wc/public/assets/spa/images/icon/google play store button 1.jpg" alt="services">
-                            <img class="app_img" src="http://localhost/project/the_wc/public/assets/spa/images/icon/app_play_store_button1.png" alt="services" style="background: #fff;border: none;border-radius: 9px;"><br><br>
+                            <img  onclick="window.open('https://play.google.com/store/apps/details?id=com.epic.woman_company_professional', '_blank');"
+                                  class="app_img"
+                                  src="{{ url('public/assets/spa/images/icon/google_play_store_button_1.jpg') }}"
+                                  alt="services">
+                            <img class="app_img" src="{{ url('public/assets/spa/images/icon/app_play_store_button1.png') }}" alt="services" style="background: #fff;border: none;border-radius: 9px;"><br><br>
                             <span class="text-fill blink-soft">Comming Soon...</span>
                     </div>
-                    
-              
+
+
                 </div>
                       </div>
                     </div>
@@ -342,7 +345,7 @@
 
 @endsection
 @section('script')
- 
+
 <!-- <script>
     $(document).ready(function () {
 setTimeout(function () {
@@ -366,11 +369,11 @@ function popupform(){
       form +='<div class="modal-dialog modal-lg" role="document" style="max-width:1100px">';
 
       form +='<div class="modal-content">';
-     
-      form +='<div style="position:relative" class="modal-body px-0 py-0">';
-form +='<i class="fa fa-times" style="position:absolute;top:-5px;right:-5px;color:white;font-size:20px;cursor:pointer" data-dismiss="modal"></i><img class="img-responsive" src="{{ asset('public/assets/spa/images/img/animation_banner.png') }}">';      
 
-      form +='</div>';            
+      form +='<div style="position:relative" class="modal-body px-0 py-0">';
+form +='<i class="fa fa-times" style="position:absolute;top:-5px;right:-5px;color:white;font-size:20px;cursor:pointer" data-dismiss="modal"></i><img class="img-responsive" src="{{ asset('public/assets/spa/images/img/animation_banner.png') }}">';
+
+      form +='</div>';
       form +='</div>';
       form +='</div>';
       form +='</div>';
