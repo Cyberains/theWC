@@ -1,13 +1,3 @@
-@section('styles')
-<style>
-
-
-</style>
-@endsection
-
-
-
-
 <section id="topbar" class="topbar d-flex align-items-center">
         <div class="container-fluid d-flex justify-content-center justify-content-md-between">
             <div class="contact-info d-none d-md-flex align-items-center float-left mr-auto">
@@ -26,9 +16,12 @@
                         <a class="twitter p-2" href="{{ route('admin.dashboard') }}" style="color:#fff;">Dashboard</a>
                     @endif
                 @else
-                    <a class="twitter p-2" href="{{ route('login') }}" style="color:#fff;"><i class="bi bi-person"></i>>Login</a>
+                    <a class="twitter p-2" href="{{ route('login') }}" style="color:#fff;"><i class="bi bi-person"></i>Login</a>
                 @endif
-                <a href="#" class="facebook" style="color:#fff;"><i class="bi bi-arrow-right-short"></i>Become a Professional</a>
+                <a href="{{ route('professional.professional-register') }}" class="facebook" style="color:#fff;">
+                    <i class="bi bi-arrow-right-short"></i>
+                    Become a Professional
+                </a>
             </div>
         </div>
     </section>
@@ -68,6 +61,7 @@
                             </ul>
                         </div>
                     </nav>
+                </div>
             </div>
         </div>
     </div>
