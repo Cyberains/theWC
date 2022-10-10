@@ -404,8 +404,8 @@ class UserController extends Controller
     public function PasswordResetUpdate(Request $request)
     {
         $validator = Validator::make($request->all(),[
-            'password' => 'required|integer',
-            'password_confirmation' => 'required|integer',
+            'password' => 'required',
+            'password_confirmation' => 'required',
             'otp' => 'required|integer',
             'mobile' => 'required|integer'
         ]);
@@ -456,9 +456,9 @@ class UserController extends Controller
     public function UpdatePassword(Request $request)
     {
         $validator = Validator::make($request->all(),[
-            'password' => 'required|integer',
-            'password_confirmation' => 'required|integer',
-            'old_password' => 'required|integer'
+            'password' => 'required',
+            'password_confirmation' => 'required',
+            'old_password' => 'required'
         ]);
         if($validator->fails()){
             return response()->json([

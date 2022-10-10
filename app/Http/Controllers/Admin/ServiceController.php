@@ -32,8 +32,8 @@ class ServiceController extends Controller
     {
         $request->validate([
             'title' => 'required',
-            'service_image' => 'nullable|mimes:jpeg,png,jpg,gif,webp|max:2048|dimensions:min_width=400,min_height=400',
-            'service_product_image' => 'nullable|mimes:jpeg,png,jpg,gif,webp|max:2048|dimensions:min_width=400,min_height=400',
+            'service_image' => 'nullable|mimes:jpeg,png,jpg,gif,webp|max:2048|dimensions:min_width=300,min_height=300',
+            'service_product_image' => 'nullable|mimes:jpeg,png,jpg,gif,webp|max:2048|dimensions:min_width=300,min_height=300',
             'service_banner_image' => 'nullable|mimes:jpeg,png,jpg,gif,webp|max:2048|dimensions:min_width=1024,min_height=400',
             'service_time' => 'required',
             'price' => 'required',
@@ -50,7 +50,7 @@ class ServiceController extends Controller
             $imageName1 = time().'.'.$request->service_image->extension();
             $image = $request->file('service_image');
             $img = Image::make($image->path());
-            $img->fit(400,400)->save(public_path('images/services').'/'.$imageName1);
+            $img->fit(300,300)->save(public_path('images/services').'/'.$imageName1);
         }
         else{
             $imageName1 = null;
@@ -64,7 +64,7 @@ class ServiceController extends Controller
             $imageName2 = time().'.'.$request->service_product_image->extension();
             $image = $request->file('service_product_image');
             $img = Image::make($image->path());
-            $img->fit(400,400)->save(public_path('images/services/products').'/'.$imageName2);
+            $img->fit(300,300)->save(public_path('images/services/products').'/'.$imageName2);
         }
         else{
             $imageName2 = null;

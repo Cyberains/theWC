@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Professional;
 use App\Http\Controllers\Controller;
 use App\Models\Booking\Booking;
 use App\Models\Booking\BookingService;
+use App\Models\ProfessionalActiveStatus;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
@@ -38,5 +40,16 @@ class DashboardController extends Controller
         $labels = $bookings->keys();
         $data = $bookings->values();
         return compact(['labels','data']);
+    }
+
+    public function active(Request $request){
+        $activate = ProfessionalActiveStatus::updateOrCreate([
+            'professional_id' => $request->user()->id,
+            'login_time' => $request->login_time,
+        ]);
+
+        if($activate){
+            return redirect()->route('professional.dashboard');
+        }
     }
 }
