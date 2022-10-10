@@ -145,7 +145,7 @@
            </div>
         </div>
     </section>
-   
+
 
     <section id="testimonial" class="testimonial-area">
         <div class="container">
@@ -270,21 +270,21 @@
                                 <div class="form-input mt-15">
                                     <label>Name</label>
                                     <div class="input-items default">
-                                        <input type="text" placeholder="Name" name="name">
+                                        <input type="text" placeholder="Name" name="name" required>
                                         <i class="lni-user"></i>
                                     </div>
                                 </div>
                                 <div class="form-input mt-15">
                                     <label>Email</label>
                                     <div class="input-items default">
-                                        <input type="email" placeholder="Email" name="email">
+                                        <input type="email" placeholder="Email" name="email" required>
                                         <i class="lni-envelope"></i>
                                     </div>
                                 </div>
                                 <div class="form-input mt-15">
                                     <label>Phone</label>
                                     <div class="input-items default">
-                                        <input type="tel" placeholder="Phone" name="phone">
+                                        <input type="tel" placeholder="Phone" name="phone" required>
                                         <i class="lni-phone-handset"></i>
                                     </div>
                                 </div>
