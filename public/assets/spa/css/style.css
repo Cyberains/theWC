@@ -599,10 +599,10 @@ p {
 
     @media only screen and (min-width: 768px) and (max-width: 991px) {
         .navbar-area .navbar-brand img{
-            margin-left: 5px!important;  
+            margin-left: 5px!important;
         }
-      
-    }    
+
+    }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
     .navbar-area {
         padding: 10px 0; } }
@@ -1089,7 +1089,7 @@ p {
     @media (max-width: 767px) {
         .slider-area .bd-example .carousel .carousel-inner{
             height: auto;
-        }  
+        }
     }
 .slider-area .bd-example .carousel .carousel-inner {
     background-color: #38f9d7; }
@@ -1314,8 +1314,8 @@ p {
         .about-area{
             background-image: url('../images/img/about_mobile_update.png')!important;
             color: #000;
-        }  
-    }   
+        }
+    }
 @media (max-width: 767px) {
     .about-area .section-title .title {
         font-size: 22px;
@@ -2325,7 +2325,7 @@ p {
 /*===== carousel section =====*/
 .slider-area .bd-example .carousel .carousel-inner .carousel-item {
     height: auto;
-   
+
 }
 .slider-area .bd-example .carousel .carousel-inner .carousel-item .carousel-caption .carousel-title {
     font-size: 44px;
@@ -3041,6 +3041,7 @@ li:hover {
 @media screen and (max-width: 768px) {
    #how-it-works{
     background-image: url('../images/img/services_mobile.png');
+<<<<<<< HEAD
    } 
 }
 /* top header */
@@ -3140,3 +3141,7 @@ li:hover {
         text-align: center;
     }
 }
+=======
+   }
+}
+>>>>>>> 57cdccc3e034db80d5fe854837dfc80e1eaa00ac

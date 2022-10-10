@@ -60,14 +60,14 @@
                 <div class="col-xl-12 col-lg-8">
                     <div class="about-image text-center wow fadeInUp" data-wow-duration="1.5s" data-wow-offset="100">
                         <h4 class="size">GET US ON!</h4>
-                            <img  onclick="window.open('https://play.google.com/store/apps/details?id=com.epic.woman_company_professional', '_blank');"  class="app_img" src="http://localhost/project/the_wc/public/assets/spa/images/icon/google play store button 1.jpg" alt="services">
+                            <img  onclick="window.open('https://play.google.com/store/apps/details?id=com.epic.woman_company_professional', '_blank');"  class="app_img" src="{{ url('public/assets/spa/images/icon/google_play_store_button_1.jpg') }}" alt="services">
                             <img class="app_img" src="{{ url('public/assets/spa/images/icon/app_play_store_button1.png') }}" alt="services" style="background: #fff;border: none;border-radius: 9px;"><br><br>
                             <span class="text-fill blink-soft text-_com pb-2">Comming Soon...</span>
                     </div>
                     <div class="mx-auto">
                     <img src="{{ url('public/assets/spa/images/img/animation_banner.jpg') }}" class="img-fluid mx-auto" alt="Responsive image">
                 </div>
-                    
+
                     <div class="container">
                         <div class="row">
                         <div class="col-md-7 align-items-center pt-2">
@@ -77,7 +77,7 @@
                                 <p class="text text-justify wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="1s" style="visibility: visible; animation-duration: 1.5s; animation-delay: 1s; animation-name: fadeInUp;">
                                     Our aim is to provide the best beauty service at an affordable price with a "ZERO" commission from professionals.
                                 </p>
-                                <p class="text-justify" style="font-size: 16px; padding-top: 10px">
+                                <p class="text-justify" style="font-size: 16px; padding-top: 10px; color: #121212;">
                                 The women's Company (TWC) is operated by Epic Corporations Pvt Ltd, TWC is India's first platform with "ZERO" commissions for beauty and salon professionals. We are committed to providing the best service at an affordable price range to our users. We charged a genuine price for beauty services with genuine products, our professionals use only genuine and certified products. TWC provides a variety of beauty services to its users on a daily basis. Any professional who is working for Women's beauty can join TWC and start income from the first day. We believe in women's empowerment and we love to work for women empower, our concept is based on women's empowerment only and we do work for that only. Our thinking is "If a woman will empower she can make the country empower".
                                 </p>
                             </div>
@@ -250,12 +250,15 @@
                             <div class="col-xl-12 col-lg-8">
                     <div class="about-image text-left wow fadeInUp" data-wow-duration="1.5s" data-wow-offset="100" style="visibility: visible; animation-duration: 1.5s; animation-name: fadeInUp;">
                         <h4 class="size">GET US ON!</h4>
-                            <img  onclick="window.open('https://play.google.com/store/apps/details?id=com.epic.woman_company_professional', '_blank');"  class="app_img" src="http://localhost/project/the_wc/public/assets/spa/images/icon/google play store button 1.jpg" alt="services">
-                            <img class="app_img" src="{{ url('public/assets/spa/images/icon/app_play_store_button1.png')}}" alt="services" style="background: #fff;border: none;border-radius: 9px;"><br><br>
+                            <img  onclick="window.open('https://play.google.com/store/apps/details?id=com.epic.woman_company_professional', '_blank');"
+                                  class="app_img"
+                                  src="{{ url('public/assets/spa/images/icon/google_play_store_button_1.jpg') }}"
+                                  alt="services">
+                            <img class="app_img" src="{{ url('public/assets/spa/images/icon/app_play_store_button1.png') }}" alt="services" style="background: #fff;border: none;border-radius: 9px;"><br><br>
                             <span class="text-fill blink-soft">Comming Soon...</span>
                     </div>
-                    
-              
+
+
                 </div>
                       </div>
                     </div>
