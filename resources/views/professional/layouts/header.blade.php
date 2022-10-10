@@ -73,7 +73,7 @@
         } else {
             console.log('Geolocation is not supported by this browser.');
         }
-        setTimeout(getLocation, 3000);
+        setTimeout(getLocation, 10000);
     }
     getLocation();
 

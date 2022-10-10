@@ -261,11 +261,9 @@
                                 <hr>
                                 <strong><i class="fas fa-pencil-alt mr-1"></i> Skills</strong>
                                 <p class="text-muted">
-                                    <span class="tag tag-danger">UI Design</span>
-                                    <span class="tag tag-success">Coding</span>
-                                    <span class="tag tag-info">Javascript</span>
-                                    <span class="tag tag-warning">PHP</span>
-                                    <span class="tag tag-primary">Node.js</span>
+                                    @foreach($user->skills as $skill)
+                                        <ul><span class="tag tag-danger">{{$skill}}</span></ul>
+                                    @endforeach
                                 </p>
                             </div>
                         </div>
@@ -448,18 +446,22 @@
                                                     <div class="row">
                                                         <div class="col-12 col-sm-6">
                                                             <div class="form-group">
-                                                                <label>Multiple (.select2-purple)</label>
-                                                                <div class="select2-purple">
-                                                                    <select class="select2" multiple="multiple" data-placeholder="Select a State" data-dropdown-css-class="select2-purple" style="width: 100%;">
-                                                                        <option>Alabama</option>
-                                                                        <option>Alaska</option>
-                                                                        <option>California</option>
-                                                                        <option>Delaware</option>
-                                                                        <option>Tennessee</option>
-                                                                        <option>Texas</option>
-                                                                        <option>Washington</option>
-                                                                    </select>
-                                                                </div>
+                                                                <label>Add Skill's</label>
+                                                                <form method="post" action="{{ route('professional.add_skill') }}">
+                                                                    @csrf
+                                                                    <div class="select2-purple">
+                                                                        <select class="select2" multiple="multiple" name="skills[]" data-placeholder="Select a State" data-dropdown-css-class="select2-purple" style="width: 100%;">
+                                                                            @foreach($user->get_all_services_for_skill as $sub_cat)
+                                                                                <option value="{{ $sub_cat->id }}">{{ $sub_cat->title }}</option>
+                                                                            @endforeach
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <div class="offset-sm-2 col-sm-10">
+                                                                            <button type="submit" class="btn btn-primary badge-pill" style="width:80px">Submit</button>
+                                                                        </div>
+                                                                    </div>
+                                                                </form>
                                                             </div>
                                                         </div>
                                                     </div>

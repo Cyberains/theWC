@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Professional;
 
 use App\Http\Controllers\Controller;
 use App\Models\Address;
+use App\Models\ProfessionalSkills;
+use App\Models\Service;
+use App\Models\SubCategory;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -18,6 +21,9 @@ class ProfileController extends Controller
         $user['rating'] = getProfessionalsRating($request->user()->id);
         $addr = $user['getDefaultAddress'];
         $user['def_address'] = @@$addr['house_no'] .' '. @@$addr['area'] .' '. @@$addr['city'].' '. @@$addr['state'].' '. @@$addr['zipcode'];
+        $user['get_all_services_for_skill'] = SubCategory::select(['id','title'])->get();
+        $skill_ids = ProfessionalSkills::where(['professional_id' => $request->user()->id])->pluck('skill_id');
+        $user['skills'] = SubCategory::whereIn('id',$skill_ids)->pluck('title');
         return view('professional.profile.profile',compact(['user']));
     }
 
@@ -107,6 +113,23 @@ class ProfileController extends Controller
                 }
             }
             Alert::success('', 'Address Successfully Added');
+            return redirect()->route('professional.profile');
+        }
+    }
+
+    public function add_skill(Request $request){
+        if($request->has('skills')){
+            $pro = ProfessionalSkills::where(['professional_id' => $request->user()->id])->get('id');
+            foreach ($pro as $pr){
+                $pr->delete();
+            }
+            foreach ($request->skills as $skill){
+                $prof_skill = ProfessionalSkills::updateOrCreate([
+                    'professional_id' => $request->user()->id,
+                    'skill_id' => $skill
+                ]);
+            }
+            Alert::success('', 'Skill Successfully Added');
             return redirect()->route('professional.profile');
         }
     }
