@@ -14,20 +14,18 @@
 <style type="text/css">
 
     .card {
-
-
-        /* just in case there no content*/
         padding: 20px 25px 30px;
-        /* shadows and rounded borders */
         -moz-border-radius: 10px;
         -webkit-border-radius: 10px;
         border-radius: 10px;
-
         background: #e6e6e6;
-         box-shadow: 6px 6px 14px 0 rgba(0, 0, 0, 0.2),
-    -8px -8px 18px 0 rgba(255, 255, 255, 0.55);
+        box-shadow: #fff 0px 2px 4px 0px, rgb(14 30 37 / 32%) 0px 2px 16px 0px;
+        background-image: linear-gradient(#ffb9fc,rgba(0,0,0,0.5)), url('public/assets/spa/images/login_img/dashboard.jpg');
+        background-size: cover;
+        background-position: 100% 100%;
+        background-repeat: no-repeat;
+        object-fit: contain;
     }
-
     .profile-img-card {
 
         width: 250px;
@@ -63,12 +61,27 @@
 
       color: #000!important;
     }
+#head_title{
+  color:#904795;
+}
+.btn-link{
+font-weight: 400;
+    color: #fff;
+    text-decoration: none!important;
+    font-weight: 700;
 
-
+}
+.btn-link:hover{
+color:#904795;
+}
+#Btn_dash{
+  background:#904795;
+  border-color:#904795;
+}
   </style>
 
 <!-- BODY STARTS -->
-<body style="background:#e6e6e6">
+<body style="background-image: url('public/assets/spa/images/login_img/dashboard.jpg');background-size: cover;background-position:top;object-fit: contain;background-repeat: no-repeat;margin: 2.5rem auto;opacity:0.9">
 
  <div class="container">
 
@@ -94,7 +107,7 @@
            @endif
           <div class="card card-container">
 
-                <h5 class="text-center my-4">The Woman Company</h5>
+                <h5 class="text-center my-4" id="head_title">The Woman Company</h5>
 
                 <form class="sform form-signin" method="POST" action="{{ route('login') }}">
 
@@ -134,14 +147,14 @@
                   </div>
                   <div class="row">
                     <div class="col-md-12 form-group">
-                      <button type="submit" class="btn btn-primary btn-block">Login</button>
+                      <button type="submit" class="btn btn-primary btn-block" id="Btn_dash">Login</button>
                     </div>
                   </div>
                   <div class="form-group row mb-0">
                       <div class="col-md-12 text-center">
                           <div>
-                             <p>I don't have an account? <a class="btn btn-link pl-0" href="{{ route('professional.professional-register') }}">
-                                  {{ __('Professional Register Now') }}
+                             <p style="color:#fff;"> Don't have account? <a class="btn btn-link pl-0" href="{{ route('professional.professional-register') }}">
+                                  {{ __('Register Now') }}
                                  </a>
                              </p>
                           </div>
