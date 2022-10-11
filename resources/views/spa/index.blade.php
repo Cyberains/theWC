@@ -65,7 +65,7 @@
                             <span class="text-fill blink-soft text-_com pb-2">Comming Soon...</span>
                     </div>
                     <div class="mx-auto">
-                    <img src="{{ url('public/assets/spa/images/img/animation_banner.jpg') }}" class="img-fluid mx-auto" alt="Responsive image">
+                    <img src="{{ url('public/assets/spa/images/img/animation_banner.jpg') }}" class="img-fluid mx-auto" alt="Responsive image" style="background-size: cover;background-position: 100% 100%;object-fit: contain;">
                 </div>
 
                     <div class="container">
@@ -183,7 +183,7 @@
 
                 <div class="col-md-12 text-center mt-3">
                     <h1 class="font-size-normal">
-                        <small>How it works</small><br>
+                        <small style="color:#000;">How it works</small><br>
                         Select it &nbsp;<i class="fa fa-circle" style="font-size:6px;vertical-align: middle;"></i> &nbsp;Add it&nbsp; <i class="fa fa-circle" style="font-size:6px;vertical-align: middle;"></i> &nbsp;Get it
                         <small class="heading heading-solid center-block"></small>
                     </h1>
@@ -197,7 +197,7 @@
                         <span class="icon-wallet color-blue"></span>
                         <img src="{{ url('public/assets/spa/images/icon/select_icon.png') }}" alt="Girl in a jacket" width="55" height="55">
                         <h5 class="pt-13">Select it</h5>
-                        <p class="font ml-2 mr-2">Select your required beauty service from our wide range of services. In just one click.</p>
+                        <p class="font ml-2 mr-2" style="color:#000;">Select your required beauty service from our wide range of services. In just one click.</p>
 
                     </div>
                 </div>
@@ -207,7 +207,7 @@
                         <img src="{{ url('public/assets/spa/images/icon/add_icon.png') }}" alt="Girl in a jacket" width="55" height="55">
 
                         <h5 class="pt-13">Add it</h5>
-                        <p class="font ml-2 mr-2">Add service in your cart in just one select, now you are just one step away to book your beauty service.</p>
+                        <p class="font ml-2 mr-2" style="color:#000;">Add service in your cart in just one select, now you are just one step away to book your beauty service.</p>
 
                     </div>
                 </div>
@@ -219,7 +219,7 @@
                         </div>
 
                         <h5 class="pt-13">Get it</h5>
-                        <p class="font ml-2 mr-2">Pay with many payment options and book your service. Enjoy your personal beauty service with your personal beauty technician.</p>
+                        <p class="font ml-2 mr-2" style="color:#000;">Pay with many payment options and book your service. Enjoy your personal beauty service with your personal beauty technician.</p>
 
                     </div>
                 </div>
@@ -241,9 +241,9 @@
                         <div class="contact-two mt-50 wow fadeIn" data-wow-duration="1.5s" data-wow-delay="0.2s">
                             <h4 class="contact-title">CONTACT US</h4>
                             <ul class="contact-info">
-                                <li><i class="lni-money-location"></i> Visit : F-256 , 1st Floor , B-Block , Ansal API ,<br>
+                                <li><i class="lni-money-location iconC "></i> Visit : F-256 , 1st Floor , B-Block , Ansal API ,<br>
                                     &emsp;&ensp;Palam Corporate Plaza, Palam Vihar Gurgaon (HR), 122017</li>
-                                <li><i class="lni-phone-handset"></i><a href="tel:9643824343" style="color: #000;"> +91 8860014004</a></li>
+                                <li><i class="lni-phone-handset iconC"></i><a href="tel:9643824343" style="color: #000;"> +91 8860014004</a></li>
                             </ul>
                         </div>
                       <div class="row">
