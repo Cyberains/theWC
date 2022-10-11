@@ -201,36 +201,26 @@ class UserController extends Controller
 
         if(check_mobile_registered_or_not($request->mobile_no)){
             try {
-                $mobileotp = 123456;
-                $mobiledata = User::where('mobile', $request->mobile_no)->first();
-                $update = User::where('mobile', $mobiledata->mobile)->update(['mobile_otp' => $mobileotp, 'mobile_otp_expire' => date("Y-m-d H:i:s")]);
-                if ($update) {
-                    return response()->json([
-                        'code' => 200,
-                        'status' => 1,
-                        'message' => 'OTP has been sent successfully'
-                    ]);
+                $mobileotp = generateOtp();
+                $text = "Your login otp for TWC account is ". $mobileotp.' .';
+                $tempid = 1207166434787251472;
+                $response = sendsms(intval($request->mobile_no), $text, $tempid);
+                if($response){
+                    $mobiledata = User::where('mobile', $request->mobile_no)->first();
+                    $update = User::where('mobile', $mobiledata->mobile)->update(['mobile_otp' => $mobileotp, 'mobile_otp_expire' => date("Y-m-d H:i:s")]);
+                    if ($update) {
+                        return response()->json([
+                            'code' => 200,
+                            'status' => 1,
+                            'message' => 'OTP has been sent successfully'
+                        ]);
+                    }
                 }
-//                $mobileotp = generateOtp();
-//                $text = "Your login otp for TWC account is ". $mobileotp.'.';
-//                $tempid = 1207166434787251472;
-//                $response = sendsms(intval($request->mobile_no), $text, $tempid);
-//                if($response){
-//                    $mobiledata = User::where('mobile', $request->mobile_no)->first();
-//                    $update = User::where('mobile', $mobiledata->mobile)->update(['mobile_otp' => $mobileotp, 'mobile_otp_expire' => date("Y-m-d H:i:s")]);
-//                    if ($update) {
-//                        return response()->json([
-//                            'code' => 200,
-//                            'status' => 1,
-//                            'message' => 'OTP has been sent successfully'
-//                        ]);
-//                    }
-//                }
             } catch (\Exception $e) {
                 return response()->json([
                     'code' => 500,
                     'status' => 0,
-                    'message' => $e->getMessage()
+                    'message' => "Please Enter Valid OTP."
                 ]);
             }
         }else{

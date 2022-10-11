@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\BookingStatusController;
+use App\Http\Controllers\Admin\NewLaunchedController;
 use App\Http\Controllers\Admin\PlanController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Lead\LeadController;
@@ -76,6 +77,15 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
         Route::get('service/import', [ServiceController::class,'import'])->name('import-service');
         Route::get('service/csv/sample', [ServiceController::class,'downloadCSVSample'])->name('download_csv_sample-service');
         Route::post('service/import/csv', [ServiceController::class,'importCSV'])->name('import_csv-service');
+
+        // New Launched
+        Route::get('new/launched', [NewLaunchedController::class,'index'])->name('new-launched');
+        Route::get('new/launched/search', [NewLaunchedController::class,'itemSearch'])->name('search-new-launched');
+        Route::get('new/launched/create', [NewLaunchedController::class,'create'])->name('get-new-launched');
+        Route::post('new/launched/create', [NewLaunchedController::class,'store'])->name('add-new-launched');
+        Route::post('new/launched/edit', [NewLaunchedController::class,'edit'])->name('edit-new-launched');
+        Route::post('new/launched/update', [NewLaunchedController::class,'update'])->name('update-new-launched');
+        Route::get('new/launched/delete/{id}', [NewLaunchedController::class,'destroy'])->name('delete-new-launched');
 
         // Plans
         Route::get('plan', [PlanController::class,'index'])->name('plan');

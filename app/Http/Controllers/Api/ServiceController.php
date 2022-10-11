@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\NewLaunched;
 use App\Models\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
@@ -32,12 +33,20 @@ class ServiceController extends Controller
 
     public function newLaunched(): \Illuminate\Http\JsonResponse
     {
-        $newLaunched = Service::where(['tag'=>'New'])->get();
-        return response()->json([
-            'code' => 200,
-            'status' => 1,
-            'data' => $newLaunched,
-            'message' => 'New Launched Services.',
-        ]);
+        $newLaunched = NewLaunched::where(['is_active'=>1])->get();
+        if ($newLaunched->count() >0 ) {
+            return response()->json([
+                'code' => 200,
+                'status' => 1,
+                'data' => $newLaunched,
+                'message' => 'New Launched Services.',
+            ]);
+        } else {
+            return response()->json([
+                'code' => 422,
+                'status' => 0,
+                'message' => 'No NewLaunched Service data Exists.'
+            ]);
+        }
     }
 }
