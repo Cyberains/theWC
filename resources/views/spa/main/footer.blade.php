@@ -31,7 +31,7 @@ box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;border-radius: 5px;">
                         <h6 class="footer-title">Policy</h6>
                         <ul>
                             <li><a href="privacy/policy">Privacy Policy</a></li>
-                            <li><a href="#">Terms Conditions</a></li>
+                            <li><a href="">Refund Policy</a></li>
 
                         </ul>
                     </div> <!-- footer link -->

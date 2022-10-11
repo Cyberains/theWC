@@ -32,9 +32,11 @@
             <p class="twc_tx"><b>Interpretation:</b> The words of which the initial letter is capitalized have meanings defined under the following conditions. The following definitions shall have the same meaning regardless of whether they appear in singular or in plural. </p>
             <h3>Definitions</h3>
             <p class="twc_tx"><b>For the purposes of this Return and Refund Policy:</b> </p>
-            <p class="twc_tx"><b>Application:</b> > means the software program provided by the Company downloaded by You on any electronic device, named TWC (The Women's Company).</p>
-            <p class="twc_tx"><b>Company:</b> > (referred to as either &quot;the Company&quot;, &quot;We&quot;, &quot;Us&quot; or &quot;Our&quot; in this Agreement) refers to Epic Corporations Pvt Ltd, 736 LGF, Udyog Vihar Ph 5, GUrgaon.</p>
-            <p class="twc_tx"><b>Goods:</b> > refer to the items offered for sale on the Service.</p>
+            <p class="twc_tx"><b>Application:</b>  means the software program provided by the Company downloaded by You on any electronic device, named TWC (The Women's Company).</p>
+            <p class="twc_tx"><b>Company:</b>  (referred to as either &quot;the Company&quot;, &quot;We&quot;, &quot;Us&quot; or &quot;Our&quot; in this Agreement) refers to Epic Corporations Pvt Ltd,  F-256 , 1st Floor , B-Block , Ansal
+API , Palam Corporate Plaza, Palam Vihar
+Gurgaon (HR), 122017.</p>
+            <p class="twc_tx"><b>Goods:</b>  refer to the items offered for sale on the Service.</p>
             <p class="twc_tx"><b>Orders:</b> mean a request by You to purchase Goods from Us.</p>
             <p class="twc_tx"><b>Service:</b> refers to the Application or the Website or both.</p>
             <p class="twc_tx"><b>Website:</b> refers to The Women's Company, accessible from <a href="https://thewomenscompany.in/" rel="external nofollow noopener" target="_blank">https://thewomenscompany.in/</a></p>
@@ -55,7 +57,7 @@
             <p><b>In order for the services to be eligible for a cancellation before 30 mins, please make sure that:</b></p>
             <p class="twc_tx"><b>In order for the Goods to be eligible for a return, please make sure that:</b></p>
             <p class="twc_tx">The Goods were purchased in the last 7 days</p>
-            <p class="twc_tx">The Goods are in the original packaging</p>
+            <p class="twc_tx">The Goods are in the original packing</p>
             <p class="twc_tx"><b>The following Goods cannot be returned:</b></p>
             <p class="twc_tx">The supply of Goods made to Your specifications or clearly personalized.</p>
             <p class="twc_tx">The supply of Goods which according to their nature are not suitable to be returned, deteriorate rapidly or where the date of expiry is over.</p>
@@ -65,7 +67,8 @@
                Only regular priced Goods may be refunded. Unfortunately, Goods on sale cannot be refunded. This exclusion may not apply to You if it is not permitted by applicable law. </p>
                <h3>Returning Goods</h3>
             <p class="twc_tx"><b>You are responsible for the cost and risk of returning the Goods to Us. You should send the Goods at the following address:</b></p>
-            <p class="twc_tx">LGF 736, Udyog Vihar Ph 5, Gurgaon (HR)</p>
+            <p class="twc_tx"> F-256 , 1st Floor , B-Block , Ansal API , Palam Corporate Plaza, Palam Vihar
+Gurgaon (HR), 122017</p>
             <p class="twc_tx">We cannot be held responsible for Goods damaged or lost in return shipment. Therefore, We recommend an insured and trackable mail service. We are unable to issue a refund without actual receipt of the Goods or proof of received return delivery.</p>
             <h3>Gifts</h3>
             <p class="twc_tx">If the Goods were marked as a gift when purchased and then shipped directly to you, You'll receive a gift credit for the value of your return. Once the returned product is received, a gift certificate will be mailed to You.<br>
