@@ -410,6 +410,7 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
 
 Route::namespace('Professional')->prefix('professional')->name('professional.')->group(function () {
 
+    Route::get('notifications/bell','NotificationController@ViewNotification')->name('notifications');
     // Register Professionals
     Route::get('professional-register',[RegisterController::class,'showRegistrationForm'])->name('professional-register');
     Route::post('professional-register',[RegisterController::class,'register'])->name('professional-register');

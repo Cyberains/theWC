@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Alert;
@@ -55,6 +56,9 @@ class LoginController extends Controller
     protected function authenticated(Request $request, $user)
     {
         Alert::success('', 'Successfully Logged In');
+        $user = User::where(['id' => $user->id])->first();
+        $user->device_token = $request->token_firebase;
+        $user->save();
         if($user->role == 'Professional'){
             return redirect('professional/dashboard');
         }elseif ($user->role == 'admin'){

@@ -45,6 +45,94 @@ function two_points_on_earth($latitudeFrom, $longitudeFrom, $latitudeTo,  $longi
 }
 
 
+
+function  toSingleDevice($token=null,$title=null,$message=null,$icon=null,$type=null){
+    $url = 'https://fcm.googleapis.com/fcm/send';
+    $serverKey = 'AAAAjg09d2s:APA91bG3x3k2uZjGg0rPLQ5GQ7cJ8aGCZkSc3VPDRzhrFly5Vk0w77ZfaxRYk2CBpeG32mvEF9--SIgz3-oKKIwJXGDGvWKDlxreLVTSMM8cRg1MH79HSB50O9h2PHAhKgS2jQl79stX';
+    $msg = array
+    (
+        'body'      => $message,
+        'title'     => $title,
+        'sound'     => 'default',
+        'vibrate'   => 1,
+        'image'		=>$icon
+    );
+    $data = ['type' => $type];
+    $fields = [
+        'registration_ids'  => array($token),
+        'notification'      => $msg,
+        'data'=>$data,
+    ];
+    $encodedData = json_encode($fields);
+    $headers = [
+        'Authorization:key=' . $serverKey,
+        'Content-Type: application/json',
+    ];
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_POST, true);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+    curl_setopt($ch, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_1);
+    // Disabling SSL Certificate support temporarly
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $encodedData);
+    // Execute post
+    $result = curl_exec($ch);
+    if ($result === FALSE) {
+        die('Curl failed: ' . curl_error($ch));
+    }
+    // Close connection
+    curl_close($ch);
+    // FCM response
+    return $result;
+}
+
+
+function  toMultipleDevice($token=null,$title=null,$message=null,$icon=null,$type=null){
+    $url = 'https://fcm.googleapis.com/fcm/send';
+    $serverKey = 'AAAAjg09d2s:APA91bG3x3k2uZjGg0rPLQ5GQ7cJ8aGCZkSc3VPDRzhrFly5Vk0w77ZfaxRYk2CBpeG32mvEF9--SIgz3-oKKIwJXGDGvWKDlxreLVTSMM8cRg1MH79HSB50O9h2PHAhKgS2jQl79stX';
+    $msg = array
+    (
+        'body'      => $message,
+        'title'     => $title,
+        'sound'     => 'default',
+        'vibrate'   => 1,
+        'image'		=>$icon,
+    );
+    $data = ['type' => $type];
+    $fields = [
+        'registration_ids'=> $token,
+        'notification' => $msg,
+        'data'=>$data,
+    ];
+    $encodedData = json_encode($fields);
+    $headers = [
+        'Authorization:key=' . $serverKey,
+        'Content-Type: application/json',
+    ];
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_POST, true);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+    curl_setopt($ch, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_1);
+    // Disabling SSL Certificate support temporarly
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $encodedData);
+    // Execute post
+    $result = curl_exec($ch);
+    if ($result === FALSE) {
+        die('Curl failed: ' . curl_error($ch));
+    }
+    // Close connection
+    curl_close($ch);
+    // FCM response
+    return $result;
+}
+
 function getAllPaidProfessionals(){
      return User::where(['role'=>'Professional','paid_role' => 1])->get();
 }
