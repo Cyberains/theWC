@@ -1085,6 +1085,7 @@ p {
 
 /*===== SLIDER ONE =====*/
 .slider-area {
+    margin-top: -1.5rem!important;
     padding-top: 0px; }
     @media (max-width: 767px) {
         .slider-area .bd-example .carousel .carousel-inner{
@@ -1101,7 +1102,7 @@ p {
         height: 600px; } }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
     .slider-area .bd-example .carousel .carousel-inner .carousel-item {
-        margin-left: -1.5rem;
+        /* margin-left: -1.5rem; */
         height: 600px; } }
 @media (max-width: 767px) {
     .slider-area .bd-example .carousel .carousel-inner .carousel-item {
@@ -2546,6 +2547,8 @@ img {
     object-fit: contain;
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: 100;
+    /* background-attachment: fixed; */
 }
 /*=== ABOUT SECTION END ===*/
 .footer-area .footer-copyright {
@@ -3001,8 +3004,9 @@ li:hover {
     width: 100%;
     padding-top: 3.6rem!important;
     object-fit: fill;
-    margin-left: -1.6rem;
-    background-size: 100%;
+    /* margin-left: -1.6rem; */
+    background-size: cover;
+    background-position: 100% 100%;
         }
  }
  @media (max-width: 767px) {
@@ -3018,6 +3022,8 @@ li:hover {
 .app_img{
     width: 15%;
     cursor: pointer;
+    padding-bottom: 3rem;
+    padding-top: 0.5rem;
 }
  @media screen and (max-width: 767px) {
      .logo_img{
@@ -3151,4 +3157,12 @@ li:hover {
 }
 .pr-1{
     color: #fff!important;
+}
+.collapse:not(.show) {
+    display: none!important;
+}
+.twc_tx{
+color:#000;
+font-size: 1.5rem;
+text-align: justify;
 }

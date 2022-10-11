@@ -60,12 +60,11 @@
                 <div class="col-xl-12 col-lg-8">
                     <div class="about-image text-center wow fadeInUp" data-wow-duration="1.5s" data-wow-offset="100">
                         <h4 class="size">GET US ON!</h4>
-                            <img  onclick="window.open('https://play.google.com/store/apps/details?id=com.epic.woman_company_professional', '_blank');"  class="app_img" src="{{ url('public/assets/spa/images/icon/google_play_store_button_1.jpg') }}" alt="services">
-                            <img class="app_img" src="{{ url('public/assets/spa/images/icon/app_play_store_button1.png') }}" alt="services" style="background: #fff;border: none;border-radius: 9px;"><br><br>
-                            <span class="text-fill blink-soft text-_com pb-2">Comming Soon...</span>
+                            <img  onclick="window.open('https://play.google.com/store/apps/details?id=com.epic.woman_company_professional', '_blank');"  class="app_img" src="{{ url('public/assets/spa/images/icon/google_play_store_button_1.png') }}" alt="services">
+                            <img class="app_img" data-toggle="tooltip" data-placement="bottom" title="Comming Soon.." src="{{ url('public/assets/spa/images/icon/app_play_store_button1.png') }}" alt="services">
                     </div>
                     <div class="mx-auto">
-                    <img src="{{ url('public/assets/spa/images/img/animation_banner.jpg') }}" class="img-fluid mx-auto" alt="Responsive image" style="background-size: cover;background-position: 100% 100%;object-fit: contain;">
+                    <img src="{{ url('public/assets/spa/images/img/animation_banner.jpg') }}" class="img-fluid mx-auto" alt="Responsive image" style="background-size: cover;background-position: 100% 100%;object-fit: contain;width: 100%;border: 5px solid #fff;border-radius: 1.5rem;box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;">
                 </div>
 
                     <div class="container">
@@ -250,12 +249,8 @@
                             <div class="col-xl-12 col-lg-8">
                     <div class="about-image text-left wow fadeInUp" data-wow-duration="1.5s" data-wow-offset="100" style="visibility: visible; animation-duration: 1.5s; animation-name: fadeInUp;">
                         <h4 class="size">GET US ON!</h4>
-                            <img  onclick="window.open('https://play.google.com/store/apps/details?id=com.epic.woman_company_professional', '_blank');"
-                                  class="app_img"
-                                  src="{{ url('public/assets/spa/images/icon/google_play_store_button_1.jpg') }}"
-                                  alt="services">
-                            <img class="app_img" src="{{ url('public/assets/spa/images/icon/app_play_store_button1.png') }}" alt="services" style="background: #fff;border: none;border-radius: 9px;"><br><br>
-                            <span class="text-fill blink-soft">Comming Soon...</span>
+                            <img  onclick="window.open('https://play.google.com/store/apps/details?id=com.epic.woman_company_professional', '_blank');"  class="app_img" src="{{ url('public/assets/spa/images/icon/google_play_store_button_1.png') }}" alt="services">
+                            <img class="app_img" data-toggle="tooltip" data-placement="bottom" title="Comming Soon.." src="{{ url('public/assets/spa/images/icon/app_play_store_button1.png') }}" alt="services">
                     </div>
 
 
@@ -306,3 +301,13 @@
             </div>
         </section>
 @endsection
+
+
+@section('script')
+    <script>
+        $(function () {
+          $('[data-toggle="tooltip"]').tooltip()
+      })
+    </script>
+@endsection
+
