@@ -19,7 +19,7 @@
 
      <section class="py-4">
         <div class="container">
-            <div class="text-center pt-120">
+            <div class="text-center pt-50">
                 <h1>Return and Refund Policy</h1>
             </div>
 

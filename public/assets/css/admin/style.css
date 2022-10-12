@@ -7865,7 +7865,7 @@ html:not([dir="rtl"]) .custom-select.is-invalid {
 }
 
 .c-header.c-header-fixed {
-  position: fixed;
+  position: fixed!important;
   right: 0;
   left: 0;
   z-index: 1029;

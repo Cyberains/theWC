@@ -77,6 +77,7 @@ color:#96149f;
     background:#96149f;
     border-color:#96149f;
     font-weight: 600;
+    border-radius:1.5rem;
 }
     
   </style>
@@ -145,7 +146,7 @@ color:#96149f;
                     </div>
                   </div>
                   <div class="row">
-                    <div class="col-md-12 form-group">
+                    <div class="col-md-8 form-group mx-auto">
                       <button type="submit" class="btn btn-primary btn-block" id="Btn_dash">Login</button>
                     </div>
                   </div>
