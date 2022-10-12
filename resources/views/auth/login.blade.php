@@ -12,7 +12,6 @@
 <!-- HEADER END -->
 
 <style type="text/css">
-
     .card {
         padding: 20px 25px 30px;
         -moz-border-radius: 10px;
@@ -25,6 +24,7 @@
         background-position: 100% 100%;
         background-repeat: no-repeat;
         object-fit: contain;
+        mix-blend-mode: overlay;
     }
     .profile-img-card {
 
@@ -65,26 +65,25 @@
   color:#904795;
 }
 .btn-link{
-font-weight: 400;
+    font-weight: 400;
     color: #fff;
     text-decoration: none!important;
     font-weight: 700;
-
 }
 .btn-link:hover{
-color:#904795;
+color:#96149f;
 }
-#Btn_dash{
-  background:#904795;
-  border-color:#904795;
+    #Btn_dash{
+    background:#96149f;
+    border-color:#96149f;
+    font-weight: 600;
 }
+    
   </style>
 
 <!-- BODY STARTS -->
 <body style="background-image: url('public/assets/spa/images/login_img/dashboard.jpg');background-size: cover;background-position:top;object-fit: contain;background-repeat: no-repeat;margin: 2.5rem auto;opacity:0.9">
-
  <div class="container">
-
     <div class="row d-flex justify-content-center align-items-center" style="height: 100vh;">
       <div class="col-md-5">
         @if(Session::has('message'))
@@ -142,7 +141,7 @@ color:#904795;
                         </span>
                       @enderror
 
-                      <i class="eye-checkedpass fa fa-eye"></i>
+                      <i class="eye-checkedpass fa fa-eye mr-auto"></i>
                     </div>
                   </div>
                   <div class="row">

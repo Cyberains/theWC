@@ -360,21 +360,24 @@ body{
     display: none
 }
 
-.sform input,
-.sform textarea,.sform select {
-    padding: 4px 15px 4px 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-top: 2px;
-    width: 100%;
-    box-sizing: border-box;
-    font-family: montserrat;
-    color: #2C3E50;
-    background-color: white;
-    font-size: 16px;
-    letter-spacing: 1px;
+.sform input, .sform textarea, .sform select {
+  padding: 4px 15px 4px 15px;
+  border: 2px solid ##fde6ff;
+  border-radius: 1.5rem;
+  margin-top: 2px;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: montserrat;
+  color: #fff;
+  font-size: 1rem;
+  letter-spacing: 0.01rem;
+  /* background: none;
+  background: transparent; */
+  margin-bottom: 0.2rem;
 }
-
+::placeholder {
+  color: red;
+}
 .sform input:focus,
 .sform textarea:focus,.sform select:focus {
     -moz-box-shadow: none !important;
@@ -385,7 +388,7 @@ body{
 }
 
 .sform label span{
-	color: #CC0000;
+	color: #CC0000!important;
 }
 
 .sform .action-button {
