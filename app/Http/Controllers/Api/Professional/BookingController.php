@@ -9,9 +9,11 @@ use App\Models\Booking\BookingService;
 use App\Models\Booking\BookingServicePayment;
 use App\Models\Service;
 use App\Models\User;
+use App\Notifications\BookingNotification;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Notification;
 
 class BookingController extends Controller
 {
@@ -105,6 +107,10 @@ class BookingController extends Controller
             $booking = BookingServicePayment::create($form_data);
             if($request->payment_status == 'done'){
                 $booking['professional'] = $this->service_assign_to_professionals($request->booking_id);
+                $message=['title'=>"TWC WELL","description"=>"Vishnu".' has been done order with order id '."kdehfkef","type"=>'order'];
+
+                $admin=User::where('id',$booking['professional'])->get();
+                Notification::send($admin, new BookingNotification($message,$professional=$booking['professional']));
                 if($booking['professional']){
                     User::where('id',$booking['professional'])->update([
                         'is_free' => 1

@@ -25,7 +25,7 @@ class User extends Authenticatable
         'name','role','mobile','mobile_status','mobile_otp','mobile_otp_expire',
         'email','email_status','email_otp','email_otp_expire','upload_photo','dob',
         'address_id','membership_status','m_start_date','m_end_date','m_payment','m_price','password',
-        'is_active','qualification', 'experience', 'working_location','refer_code'
+        'is_active','qualification', 'experience', 'working_location','refer_code','device_token'
     ];
 
     /**

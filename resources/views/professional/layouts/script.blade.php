@@ -1,7 +1,7 @@
-<script src="{{ URL::asset('public/assets/js/admin/jquery-3.4.1.min.js') }}" type="text/javascript"></script>
+{{--<script src="{{ URL::asset('public/assets/js/admin/jquery-3.4.1.min.js') }}" type="text/javascript"></script>--}}
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" ></script>
 
-<!-- <script src="{{URL::asset('public/assets/js/admin/modernizr-custom.js') }}"></script> -->
+{{--<!-- <script src="{{URL::asset('public/assets/js/admin/modernizr-custom.js') }}"></script> -->--}}
 
 <script src="{{ URL::asset('public/assets/js/admin/popper.min.js') }}"></script>
 <script src="{{ URL::asset('public/assets/js/admin/bootstrap.min.js') }}"></script>
@@ -9,8 +9,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js' type='text/javascript'></script>
 
- 
-    
+
+
 <script type="text/javascript" src="{{ URL::asset('public/assets/js/admin/main1.js') }}"></script>
 <script type="text/javascript" src="{{ URL::asset('public/assets/js/admin/parsley.min.js') }}"></script>
 <script type="text/javascript" src="{{ URL::asset('public/plugins/ckeditor/ckeditor.js') }}"></script>
@@ -50,7 +50,7 @@
 
 <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.7/js/dataTables.responsive.min.js"></script>
 
-  
+
 <script src="{{ URL::asset('public/assets/js/main/main.js') }}"></script>
        <!-- fancybox -->
 <script src="{{URL::asset('public/assets/plugins/fancybox/fancybox.js') }}"></script>
@@ -58,17 +58,17 @@
 <script src="{{URL::asset('public/assets/plugins/ckeditor/ckeditor.js') }}"></script>
 <script src="{{URL::asset('public/assets/plugins/ckeditor/sample.js') }}"></script>
 
- 
- 
-	
+
+
+
 <script type="text/javascript">
 
- 
-	
+
+
 	document.getElementById("year").innerHTML = new Date().getFullYear();
 
-	 
-     
+
+
 	 	const ajax_errors = {
                 http_not_connected: "{{ transLang('http_not_connected') }}",
                 request_forbidden: "{{ transLang('request_forbidden') }}",
@@ -88,7 +88,7 @@
      	$('#table-id').DataTable({
 
 	    	"pageLength": 50,
-	  
+
 	    });
      	$('.tables').DataTable({
 
@@ -99,7 +99,7 @@
 
 	    	"pageLength": 50
 	    });
-	    
+
        });
 
 	@if(Session::has('message'))
@@ -163,36 +163,53 @@
             toastr.error("{{ $error }}");
         @endforeach
     @endif
-	
 	$('.sform').parsley();
-
 	$.ajax({
-
 		url:"{{ route('admin.check_expire_purchase') }}",
 		data:{ },
 		type:"get",
-		success:function(data){ 
-
-
+		success:function(data){
 		}
-
 	});
-
-		// Pusher.logToConsole = true;
-
-    // var pusher = new Pusher('4b2b8961ef458e880f0d', {
-    //   cluster: 'ap2'
-    // });
-
-    // var channel = pusher.subscribe('payment-channel');
-    // channel.bind('payment-event', function(data) {
-    //   alert(JSON.stringify(data));
-    // });
-	
-
 </script>
 
 
+<script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+<script src="{{ URL::asset('public/assets/js/admin/playSound.js') }}"></script>
+
+<script type="text/javascript">
+    Pusher.logToConsole = true;
+    var pusher = new Pusher('fa7bc70a9618f0dee2b5', {
+        cluster: 'ap2'
+    });
+    var channel = pusher.subscribe('new-cr-from-part');
+    channel.bind( 'Illuminate\\Notifications\\Events\\BroadcastNotificationCreated', function(data) {
+        if (document.getElementsByClassName('w3-red').length==0) {
+            document.getElementById("w3-badge").classList.add("w3-red");
+        }
+        var varcount = JSON.stringify(data.count);
+        if (varcount.length<10) {
+            varcount = '0'+varcount;
+        }
+        document.getElementById("w3-badge").innerHTML =varcount ;
+        document.getElementById("badge").innerHTML = varcount+' '+'New';
+        getmessage();
+        $.playSound('{{ asset('public/assets/audio/audio_reminder.mp3') }}');
+    });
+
+
+    function getmessage(){
+        $.ajax({
+            url:"{{ route('professional.notifications') }}",
+            data:{ },
+            type:"get",
+            success:function(data){
+                $(".notification").html(' ');
+                $('.notification').html(data);
+            }
+        });
+    }
+</script>
 
 
 
