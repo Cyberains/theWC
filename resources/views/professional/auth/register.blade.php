@@ -18,10 +18,15 @@
         -moz-border-radius: 10px;
         -webkit-border-radius: 10px;
         border-radius: 10px;
-
         background: #e6e6e6;
         box-shadow: 6px 6px 14px 0 rgba(0, 0, 0, 0.2),
         -8px -8px 18px 0 rgba(255, 255, 255, 0.55);
+        background-image: linear-gradient(#ffb9fc,rgba(0,0,0,0.5)), url('public/assets/spa/images/login_img/dashboard.jpg');
+        background-size: cover;
+        background-position: 100% 100%;
+        background-repeat: no-repeat;
+        object-fit: contain;
+        mix-blend-mode: overlay;
     }
 
     .profile-img-card {
@@ -53,16 +58,34 @@
     .nav-link{
         color: #000!important;
     }
+    #head_title{
+  color:#904795;
+}
+    .btn-link{
+    font-weight: 400;
+    color: #fff;
+    text-decoration: none!important;
+    font-weight: 700;
+}
+.btn-link:hover{
+color:#96149f;
+}
+    #Btn_dash{
+    background:#96149f;
+    border-color:#96149f;
+    font-weight: 600;
+    border-radius:1.5rem;
+}
 </style>
 
 <!-- BODY STARTS -->
-<body style="background:#e6e6e6">
+<body style="background-image: url('../public/assets/spa/images/login_img/dashboard.jpg');background-size: cover;background-position:100% 100%;object-fit: contain;background-repeat: no-repeat;margin: 2.5rem auto;opacity:0.9;min-height: 32rem;">
 <div class="container">
     @include('sweetalert::alert')
     <div class="row d-flex justify-content-center align-items-center" style="height: 100vh;">
         <div class="col-md-5">
             <div class="card card-container">
-                <h5 class="text-center my-4">The Woman Company</h5>
+                <h5 class="text-center my-4" id="head_title">The Woman Company</h5>
                 <form class="sform form-signin" method="POST" action="{{ route('professional.professional-register') }}">
                     @csrf
                     <input type="text" name="name" class="form-control" placeholder="Name">
@@ -112,14 +135,14 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-12 form-group">
-                            <button type="submit" class="btn btn-primary btn-block">Professional Register</button>
+                        <div class="col-md-8 form-group mx-auto">
+                            <button type="submit" class="btn btn-primary btn-block" id="Btn_dash">Professional Register</button>
                         </div>
                     </div>
                     <div class="form-group row mb-0">
                         <div class="col-md-12 text-center">
                             <div>
-                                <p>I you have an account? <a class="btn btn-link pl-0" href="{{ route('login') }}">
+                                <p style="color:#fff;">Already have an account? <a class="btn btn-link pl-0" href="{{ route('login') }}">
                                         {{ __('Login') }}
                                     </a>
                                 </p>
