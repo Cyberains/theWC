@@ -193,8 +193,8 @@
         }
         document.getElementById("w3-badge").innerHTML =varcount ;
         document.getElementById("badge").innerHTML = varcount+' '+'New';
-        getmessage();
         $.playSound('{{ asset('public/assets/audio/audio_reminder.mp3') }}');
+        getmessage();
     });
 
 

@@ -34,10 +34,10 @@
                 </div>
             </td>
             <td> {{ $service->created_at->diffForHumans() }}</td>
-            <td>
-                <a title="Location" href="javascript:void(0)" onclick="viewMap()" id="view-user-location"><i class="fa fa-map-marker" style="color: #075680;"></i></a>&nbsp&nbsp
-                <a title="View" href="javascript:void(0)" onclick="viewBooking({{ $service->id }})" id="view-booking"><i class="fa fa-eye" style="color: #29b6f6;"></i></a>
-            </td>
+{{--            <td>--}}
+{{--                <a title="Location" href="javascript:void(0)" onclick="viewMap()" id="view-user-location"><i class="fa fa-map-marker" style="color: #075680;"></i></a>&nbsp&nbsp--}}
+{{--                <a title="View" href="javascript:void(0)" onclick="viewBooking({{ $service->id }})" id="view-booking"><i class="fa fa-eye" style="color: #29b6f6;"></i></a>--}}
+{{--            </td>--}}
         </tr>
     @endforeach
 @endif

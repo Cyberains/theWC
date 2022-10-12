@@ -1,3 +1,75 @@
+
+    <style type="text/css">
+
+        .notification{
+            width: 24rem;
+            top: 36px;
+        }
+
+        .notification .dropdown-menu-header {
+            border-bottom: 1px solid #E4E5EC;
+        }
+        .w3-red{
+            position: relative;
+            border-radius: 50%;
+            color: #fff;
+            background-color: #e55353;
+            padding: 2px 5px;
+            line-height: 19px;
+            font-size: 13px;
+            top: -10px;
+            left: -10px;
+        }
+        .notification .notification-tag{
+
+            position: absolute;
+            top: 14px;
+            right: 20px;
+        }
+        .notification h6 span{
+
+
+            text-transform: uppercase;
+
+        }
+        .ps a:hover {
+            cursor: pointer;
+            text-decoration: none;
+            background-color: #ebedef;
+        }
+        .notification .ps{
+            position: relative;
+            margin-top: 0;
+            top: -4px;
+
+        }
+        .notification .media{
+            padding: 3px 22px;
+            border: none;
+            border-bottom: 1px solid #E4E5EC;
+            padding-bottom: 10px;
+            padding-top: 10px;
+        }
+        .notification .media-body > p{
+            margin-top: 5px;
+            font-size: 12px;
+            margin-bottom: 1px;
+        }
+        .notification .media-body > p{
+            margin-top: 0;
+            margin-bottom: 0rem;
+        }
+        .notification .media-body .media-heading{
+            margin-top: 0;
+            margin-bottom: 2px;
+        }
+        .notification .ps, .notification .dropdown-menu-footer {
+            position: relative;
+            margin-top: 0;
+            top: 0px;
+        }
+    </style>
+
 <header class="c-header c-header-light c-header-fixed c-header-with-subheader">
     <button class="c-header-toggler c-class-toggler d-lg-none mfe-auto" type="button" data-target="#sidebar" data-class="c-sidebar-show">
       <i class="fa fa-bars"></i>
@@ -7,18 +79,19 @@
       <i class="fa fa-bars"></i>
     </button>
     @php
-        $notifycount = auth()->user()->unreadNotifications->count();
-        if ($notifycount<10) {
+        $notifycount = DB::table('notifications')->where('notifiable_id',auth()->user()->id)->whereNull('read_at')->count();
+
+       if ($notifycount<10) {
             $notifycount = '0'.$notifycount;
         }
         if($notifycount>0){
-          $notificationdata = auth()->user()->unreadNotifications->take(4);
+          $notificationdata = DB::table('notifications')->where('notifiable_id',auth()->user()->id)->whereNull('read_at')->orderBy('id','desc')->limit(25)->get();
         }
     @endphp
 
 
-    <ul class="c-header-nav ml-auto mr-4">
-        <li class="c-header-nav-item d-md-down-none mx-2"><a class="c-header-nav-link" href="#" data-toggle="dropdown">
+    <ul class="c-header-nav ml-auto mr-2">
+        <li class="c-header-nav-item mx-2"><a class="c-header-nav-link" href="#" data-toggle="dropdown">
                 <i class="c-icon fa fa-bell"></i>
                 @if($notifycount>0)
                     <span class="w3-badge w3-red badgebadge-pill badge-danger" id="w3-badge">{{ $notifycount }}</span>

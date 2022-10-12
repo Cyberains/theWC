@@ -50,7 +50,7 @@
                             <th>Amount</th>
                             <th>Status</th>
                             <th>Time</th>
-                            <th>Action</th>
+{{--                            <th>Action</th>--}}
                         </tr>
                         </thead>
                         <tbody id="searchresult">

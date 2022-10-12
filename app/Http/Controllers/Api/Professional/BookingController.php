@@ -107,16 +107,18 @@ class BookingController extends Controller
             $booking = BookingServicePayment::create($form_data);
             if($request->payment_status == 'done'){
                 $booking['professional'] = $this->service_assign_to_professionals($request->booking_id);
-                $message=['title'=>"TWC WELL","description"=>"Vishnu".' has been done order with order id '."kdehfkef","type"=>'order'];
-
-                $admin=User::where('id',$booking['professional'])->get();
-                Notification::send($admin, new BookingNotification($message,$professional=$booking['professional']));
                 if($booking['professional']){
-                    User::where('id',$booking['professional'])->update([
-                        'is_free' => 1
-                    ]);
+                    $admin=User::where('id',$booking['professional'])->get();
+                    $message=['title'=>"You Got a New Job Form 'The Women's Company'",
+                        'description'=>'Hi '. $admin[0]->name .' .Now You Got a New Client with Booking id '. $request->booking_id ,"type"=>'order'];
+                    Notification::send($admin, new BookingNotification($message,$professional=$booking['professional']));
+                    if($booking['professional']){
+                        User::where('id',$booking['professional'])->update([
+                            'is_free' => 1
+                        ]);
+                    }
+                    $this->cartController->RemoveCartListAfterPayment($request->service_id);
                 }
-                $this->cartController->RemoveCartListAfterPayment($request->service_id);
             }
             DB::commit();
             if($booking){
