@@ -57,8 +57,7 @@ class LoginController extends Controller
     {
         Alert::success('', 'Successfully Logged In');
         $user = User::where(['id' => $user->id])->first();
-        $user->device_token = $request->token_firebase;
-        $user->save();
+         
         if($user->role == 'Professional'){
             return redirect('professional/dashboard');
         }elseif ($user->role == 'admin'){

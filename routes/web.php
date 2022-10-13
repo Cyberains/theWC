@@ -41,7 +41,7 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
 	Route::get('login', function () {return view('auth.login');});
 	Route::get('/', function () {return redirect('admin/login');})->name('login');
 	Route::middleware(['auth', 'admin'])->group(function () {
-
+         Route::get('notifications/bell','NotificationController@ViewNotification')->name('notifications');
         // Lead
         Route::get('/lead-mail-page',[LeadController::class,'getMailsPage'])->name('lead-mail-page');
 		// Dashboard

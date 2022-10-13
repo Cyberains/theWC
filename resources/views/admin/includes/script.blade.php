@@ -57,19 +57,44 @@
 
 <script src="{{URL::asset('public/assets/plugins/ckeditor/ckeditor.js') }}"></script>
 <script src="{{URL::asset('public/assets/plugins/ckeditor/sample.js') }}"></script>
+<script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+<script src="{{ URL::asset('public/assets/js/admin/playSound.js') }}"></script>
+ <script type="text/javascript">
+    Pusher.logToConsole = true;
+    var pusher = new Pusher('fa7bc70a9618f0dee2b5', {
+        cluster: 'ap2'
+    });
+    var channel = pusher.subscribe('new-cr-from-part');
+    channel.bind( 'Illuminate\\Notifications\\Events\\BroadcastNotificationCreated', function(data) {
+        if (document.getElementsByClassName('w3-red').length==0) {
+            document.getElementById("w3-badge").classList.add("w3-red");
+        }
+        var varcount = JSON.stringify(data.count);
+        if (varcount.length<10) {
+            varcount = '0'+varcount;
+        }
+        document.getElementById("w3-badge").innerHTML =varcount ;
+        document.getElementById("badge").innerHTML = varcount+' '+'New';
+        getmessage();
+        $.playSound('{{ asset('public/assets/audio/audio_reminder.mp3') }}');
+    });
 
- 
- 
-	
+
+    function getmessage(){
+        $.ajax({
+            url:"{{ route('admin.notifications') }}",
+            data:{ },
+            type:"get",
+            success:function(data){
+                $(".notification").html(' ');
+                $('.notification').html(data);
+            }
+        });
+    }
+</script>
 <script type="text/javascript">
-
- 
-	
 	document.getElementById("year").innerHTML = new Date().getFullYear();
-
-	 
-     
-	 	const ajax_errors = {
+	const ajax_errors = {
                 http_not_connected: "{{ transLang('http_not_connected') }}",
                 request_forbidden: "{{ transLang('request_forbidden') }}",
                 not_found_request: "{{ transLang('not_found_request') }}",

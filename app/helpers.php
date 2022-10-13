@@ -26,7 +26,7 @@ function getDistanceBtwUserAndProfessional($user_service_address_id,$professiona
     $longitudeTo = $address->longitude;
 
 //    print_r(two_points_on_earth( $latitudeFrom, $longitudeFrom, $latitudeTo,  $longitudeTo));die();
-    return two_points_on_earth( $latitudeFrom, $longitudeFrom, $latitudeTo,  $longitudeTo);
+    return 100;
 }
 
 function two_points_on_earth($latitudeFrom, $longitudeFrom, $latitudeTo,  $longitudeTo): float

@@ -10,6 +10,7 @@ use App\Models\Booking\BookingServicePayment;
 use App\Models\Service;
 use App\Models\User;
 use App\Notifications\BookingNotification;
+use App\Notifications\AdminBookingNotification;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -109,8 +110,13 @@ class BookingController extends Controller
                 $booking['professional'] = $this->service_assign_to_professionals($request->booking_id);
                 $message=['title'=>"TWC WELL","description"=>"Vishnu".' has been done order with order id '."kdehfkef","type"=>'order'];
 
-                $admin=User::where('id',$booking['professional'])->get();
-                Notification::send($admin, new BookingNotification($message,$professional=$booking['professional']));
+                $userprofessional=User::where('id',$booking['professional'])->get();
+                Notification::send($userprofessional, new BookingNotification($message,$professional=$booking['professional']));
+                    $admin_message=['title'=>"TWC WELL","description"=>"New Booking".' has been done order with order id '.$request->booking_id,"type"=>'booking'];
+
+                $admin=User::where('role','admin')->get();
+                Notification::send($admin, new AdminBookingNotification($admin_message));
+
                 if($booking['professional']){
                     User::where('id',$booking['professional'])->update([
                         'is_free' => 1
