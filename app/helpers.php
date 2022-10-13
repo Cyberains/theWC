@@ -159,7 +159,7 @@ function getServiceAmountByBookingId($booking_id){
 
 function bookingAddressFormatting($address): string
 {
-    return $address->house_no . ' ' . $address->area .' '. $address->landmark . ' ' . $address->mobile . ' ' . $address->zipcode . ' ' . $address->city . ' ' . $address->state ;
+    return $address->house_no . ' ' . $address->area .' '. $address->landmark . ' ' . $address->zipcode . ' ' . $address->city . ' ' . $address->state ;
 }
 
 function getUserNumber($user_id){

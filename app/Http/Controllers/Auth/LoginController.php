@@ -56,8 +56,7 @@ class LoginController extends Controller
     protected function authenticated(Request $request, $user)
     {
         Alert::success('', 'Successfully Logged In');
-        $user = User::where(['id' => $user->id])->first();
-         
+
         if($user->role == 'Professional'){
             return redirect('professional/dashboard');
         }elseif ($user->role == 'admin'){

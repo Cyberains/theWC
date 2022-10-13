@@ -48,6 +48,8 @@ class BookingController extends Controller
             ];
             $booking = Booking::create($form_booking);
             $services =  Service::whereIn('id',$service_id)->get();
+            $convenience_charge = 84;
+            $tax = $convenience_charge * ( 18 / 100);
 
             foreach ($services as $service){
                 BookingService::create([
@@ -64,7 +66,10 @@ class BookingController extends Controller
                     'code' => 200,
                     'status' => 1,
                     'data' => $booking,
-                    'totalAmount' => $servicesAmount,
+                    'convenience_charge' => $convenience_charge,
+                    'tax' => $tax,
+                    'totalServiceAmount' => $servicesAmount,
+                    'totalPayableAmount' => $servicesAmount + $convenience_charge + $tax,
                     'message' => 'Now go on Payment Page.',
                 ]);
             }
@@ -108,6 +113,7 @@ class BookingController extends Controller
             $booking = BookingServicePayment::create($form_data);
             if($request->payment_status == 'done'){
                 $booking['professional'] = $this->service_assign_to_professionals($request->booking_id);
+
                 $message=['title'=>"TWC WELL","description"=>"Vishnu".' has been done order with order id '."kdehfkef","type"=>'order'];
 
                 $userprofessional=User::where('id',$booking['professional'])->get();
@@ -117,12 +123,9 @@ class BookingController extends Controller
                 $admin=User::where('role','admin')->get();
                 Notification::send($admin, new AdminBookingNotification($admin_message));
 
-                if($booking['professional']){
-                    User::where('id',$booking['professional'])->update([
-                        'is_free' => 1
-                    ]);
-                }
-                $this->cartController->RemoveCartListAfterPayment($request->service_id);
+
+                    $this->cartController->RemoveCartListAfterPayment($request->service_id);
+               
             }
             DB::commit();
             if($booking){

@@ -122,6 +122,10 @@ class CartController extends Controller
         $service_discount_sum = 0 ;
         $product_final_sum = 0 ;
         $service_final_sum = 0 ;
+
+        $convenience_charge = 84;
+        $tax = $convenience_charge * ( 18 / 100);
+
         foreach ($cart as $item){
             if($item->product_id != null){
                 $p = Product::where('id',$item->product_id)->first();
@@ -142,9 +146,12 @@ class CartController extends Controller
             return response()->json([
                 'code'=>200,
                 'status'=>1,
+                'convenience_charge' => $convenience_charge,
+                'tax' => $tax,
                 'Total Amount' => $service_sum + $product_sum,
                 'Total Discount' => $service_discount_sum + $product_discount_sum,
                 'Total Final Amount' => $service_final_sum + $product_final_sum,
+                'totalPayableAmount' => $service_final_sum + $product_final_sum + $convenience_charge + $tax,
                 'data'=>$cart,
                 'message'=>'Cart Product Get Successfully.'
             ]);

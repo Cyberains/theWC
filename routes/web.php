@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\NewLaunchedController;
 use App\Http\Controllers\Admin\PlanController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Lead\LeadController;
+use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\Professional\Auth\RegisterController;
 use App\Http\Controllers\Professional\DashboardController;
 use App\Http\Controllers\Professional\ProfileController;
@@ -410,7 +411,7 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
 
 Route::namespace('Professional')->prefix('professional')->name('professional.')->group(function () {
 
-    Route::get('notifications/bell','NotificationController@ViewNotification')->name('notifications');
+    Route::get('notifications/bell',[NotificationController::class,'ViewNotification'])->name('notifications');
     // Register Professionals
     Route::get('professional-register',[RegisterController::class,'showRegistrationForm'])->name('professional-register');
     Route::post('professional-register',[RegisterController::class,'register'])->name('professional-register');

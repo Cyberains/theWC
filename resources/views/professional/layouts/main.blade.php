@@ -69,7 +69,6 @@
 </div>
 
 @yield('modal')
-@include('professional.layouts.script')
 <script  type="text/javascript">
     $(document).on('click', 'a[data-toggle="modal"]', function (e) {
         e.preventDefault();
@@ -207,6 +206,6 @@
 
 
 </script>
-@yield('script')
+@include('professional.layouts.script')
 </body>
 </html>
