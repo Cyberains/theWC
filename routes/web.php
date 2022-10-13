@@ -44,12 +44,8 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
 	Route::get('login', function () {return view('auth.login');});
 	Route::get('/', function () {return redirect('admin/login');})->name('login');
 	Route::middleware(['auth', 'admin'])->group(function () {
-<<<<<<< HEAD
     Route::get('/usermangement','ServiceController@userManagement')->name('usermanagement');
 	Route::get('/addbooking','ServiceController@addBooking')->name('addbooking');
-=======
-         Route::get('notifications/bell','NotificationController@ViewNotification')->name('notifications');
->>>>>>> 6656ee760433ea93ee0f9ec37e3801efcfc9c430
         // Lead
         Route::get('/lead-mail-page',[LeadController::class,'getMailsPage'])->name('lead-mail-page');
 		// Dashboard
