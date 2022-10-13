@@ -26,7 +26,7 @@ function getDistanceBtwUserAndProfessional($user_service_address_id,$professiona
     $longitudeTo = $address->longitude;
 
 //    print_r(two_points_on_earth( $latitudeFrom, $longitudeFrom, $latitudeTo,  $longitudeTo));die();
-    return two_points_on_earth( $latitudeFrom, $longitudeFrom, $latitudeTo,  $longitudeTo);
+    return 100;
 }
 
 function two_points_on_earth($latitudeFrom, $longitudeFrom, $latitudeTo,  $longitudeTo): float
@@ -159,7 +159,7 @@ function getServiceAmountByBookingId($booking_id){
 
 function bookingAddressFormatting($address): string
 {
-    return $address->house_no . ' ' . $address->area .' '. $address->landmark . ' ' . $address->mobile . ' ' . $address->zipcode . ' ' . $address->city . ' ' . $address->state ;
+    return $address->house_no . ' ' . $address->area .' '. $address->landmark . ' ' . $address->zipcode . ' ' . $address->city . ' ' . $address->state ;
 }
 
 function getUserNumber($user_id){

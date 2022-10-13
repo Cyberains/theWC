@@ -12,7 +12,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 class ServiceHistoryController extends Controller
 {
     public function serviceHistory(Request $request){
-        $service_history = Booking::with(['user'])->where(['professional_id'=>$request->user()->id])
+        $service_history = Booking::with(['user','bookingAddress'])->where(['professional_id'=>$request->user()->id])
 
             ->orderBy('created_at','DESC')
             ->paginate(15);
@@ -87,6 +87,11 @@ class ServiceHistoryController extends Controller
             ->orderBy('created_at','DESC')
             ->paginate(15);
         $current_page = $service_pending->currentPage();
+
+        foreach(auth()->user()->unreadNotifications as $notification) {
+            $notification->markAsRead();
+        }
+
         return view('professional.service.service_pending',compact(['service_pending','current_page']));
     }
 }

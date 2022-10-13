@@ -30,8 +30,8 @@ box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;border-radius: 5px;">
                     <div class="footer-link">
                         <h6 class="footer-title">Policy</h6>
                         <ul>
-                            <li><a href="privacy/policy">Privacy Policy</a></li>
-                            <li><a href="#">Refund Policy</a></li>
+                            <li><a href="privacy/policy" target="_blank">Privacy Policy</a></li>
+                            <li><a href="/refund" target="_blank">Refund Policy</a></li>
 
                         </ul>
                     </div> <!-- footer link -->

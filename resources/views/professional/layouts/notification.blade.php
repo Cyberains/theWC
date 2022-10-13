@@ -1,15 +1,13 @@
-<li class="dropdown-menu-header">
-    <h6 class="dropdown-header m-0"><span class="grey darken-2">Notifications</span></h6><span class="notification-tag badge badge-danger float-right m-0" id="badge">@if($notifycount>0){{ $notifycount }} New @else 0 New @endif</span>
-</li>
+<h6 class="dropdown-header m-0"><span class="grey darken-2">Notifications</span></h6><span class="notification-tag badge badge-danger float-right m-0" id="badge">@if($notifycount>0){{ $notifycount }} New @else 0 New @endif</span>
 
 @if($notifycount>0)
    @foreach ($notificationdata as $notification)
 
     <li class="scrollable-container media-list w-100 ps">
-{{--        @if($notification->data['message']['type']=='order')--}}
-{{--            {{ route('admin.online_order') }}--}}
-{{--        @endif--}}
-        <a href="#" class="">
+
+        <a href="@if($notification->data['message']['type']=='order')
+        {{ route('professional.service-pending') }}
+         @endif" class="">
             <div class="media">
               <div class="media-left align-self-center">
                   <i class="ft-plus-square icon-bg-circle bg-cyan mr-0"></i>
@@ -25,4 +23,5 @@
         </a>
     </li>
     @endforeach
+   <h6 class="text-center mb-0 py-2"><a href="{{ route('professional.service-pending') }}" style="text-decoration: none;">Read All Notification</a></h6>
 @endif

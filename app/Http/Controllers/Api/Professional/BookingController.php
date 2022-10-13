@@ -10,6 +10,7 @@ use App\Models\Booking\BookingServicePayment;
 use App\Models\Service;
 use App\Models\User;
 use App\Notifications\BookingNotification;
+use App\Notifications\AdminBookingNotification;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -47,6 +48,8 @@ class BookingController extends Controller
             ];
             $booking = Booking::create($form_booking);
             $services =  Service::whereIn('id',$service_id)->get();
+            $convenience_charge = 84;
+            $tax = $convenience_charge * ( 18 / 100);
 
             foreach ($services as $service){
                 BookingService::create([
@@ -63,7 +66,10 @@ class BookingController extends Controller
                     'code' => 200,
                     'status' => 1,
                     'data' => $booking,
-                    'totalAmount' => $servicesAmount,
+                    'convenience_charge' => $convenience_charge,
+                    'tax' => $tax,
+                    'totalServiceAmount' => $servicesAmount,
+                    'totalPayableAmount' => $servicesAmount + $convenience_charge + $tax,
                     'message' => 'Now go on Payment Page.',
                 ]);
             }
@@ -107,16 +113,19 @@ class BookingController extends Controller
             $booking = BookingServicePayment::create($form_data);
             if($request->payment_status == 'done'){
                 $booking['professional'] = $this->service_assign_to_professionals($request->booking_id);
+
                 $message=['title'=>"TWC WELL","description"=>"Vishnu".' has been done order with order id '."kdehfkef","type"=>'order'];
 
-                $admin=User::where('id',$booking['professional'])->get();
-                Notification::send($admin, new BookingNotification($message,$professional=$booking['professional']));
-                if($booking['professional']){
-                    User::where('id',$booking['professional'])->update([
-                        'is_free' => 1
-                    ]);
-                }
-                $this->cartController->RemoveCartListAfterPayment($request->service_id);
+                $userprofessional=User::where('id',$booking['professional'])->get();
+                Notification::send($userprofessional, new BookingNotification($message,$professional=$booking['professional']));
+                    $admin_message=['title'=>"TWC WELL","description"=>"New Booking".' has been done order with order id '.$request->booking_id,"type"=>'booking'];
+
+                $admin=User::where('role','admin')->get();
+                Notification::send($admin, new AdminBookingNotification($admin_message));
+
+
+                    $this->cartController->RemoveCartListAfterPayment($request->service_id);
+               
             }
             DB::commit();
             if($booking){
