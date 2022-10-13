@@ -71,7 +71,20 @@
       <i class="c-sidebar-nav-icon fa fa-inbox"></i> Manage Inquiry</a>
   </li>
   @endif
-
+  @if(Auth::user()->role=='admin')
+ <li class="c-sidebar-nav-item">
+        <a class="c-sidebar-nav-link" href="{{ route('admin.usermanagement') }}">
+        <i class="c-sidebar-nav-icon fa fa-user"></i>User Management
+        </a>
+      </li>
+ @endif
+ @if(Auth::user()->role=='admin')
+ <li class="c-sidebar-nav-item">
+        <a class="c-sidebar-nav-link" href="{{ route('admin.addbooking') }}">
+        <i class="c-sidebar-nav-icon fa fa-bookmark-o"></i>Add Booking
+        </a>
+      </li>
+ @endif
 
   @if(Auth::user()->role=='admin')
   <li class="c-sidebar-nav-item c-sidebar-nav-dropdown">
@@ -89,6 +102,7 @@
           <span class="c-sidebar-nav-icon"></span>Privacy Policy
         </a>
       </li>
+     
       <li class="c-sidebar-nav-item">
         <a class="c-sidebar-nav-link" href="{{ route('admin.cms.index','term_condition') }}">
           <span class="c-sidebar-nav-icon"></span>Terms & Conditions
