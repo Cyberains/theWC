@@ -114,18 +114,23 @@ class BookingController extends Controller
             if($request->payment_status == 'done'){
                 $booking['professional'] = $this->service_assign_to_professionals($request->booking_id);
 
-                $message=['title'=>"TWC WELL","description"=>"Vishnu".' has been done order with order id '."kdehfkef","type"=>'order'];
+                $message=['title'=>"TWC WELL","description"=>"Vishnu".' has been done order with order id '."kdehfkef","type"=>'order','user_id' => $booking['professional'] ];
 
                 $userprofessional=User::where('id',$booking['professional'])->get();
                 Notification::send($userprofessional, new BookingNotification($message,$professional=$booking['professional']));
-                    $admin_message=['title'=>"TWC WELL","description"=>"New Booking".' has been done order with order id '.$request->booking_id,"type"=>'booking'];
 
+                $admin_message=['title'=>"TWC WELL","description"=>"New Booking".' has been done order with order id '.$request->booking_id,"type"=>'booking','role' => 'admin'];
                 $admin=User::where('role','admin')->get();
                 Notification::send($admin, new AdminBookingNotification($admin_message));
 
+                if($booking['professional']){
+                    User::where('id',$booking['professional'])->update([
+                        'is_free' => 1
+                    ]);
+                }
 
-                    $this->cartController->RemoveCartListAfterPayment($request->service_id);
-               
+                $this->cartController->RemoveCartListAfterPayment($request->service_id);
+
             }
             DB::commit();
             if($booking){

@@ -184,26 +184,29 @@
     });
     var channel = pusher.subscribe('new-cr-from-part');
     channel.bind( 'Illuminate\\Notifications\\Events\\BroadcastNotificationCreated', function(data) {
-        if (document.getElementsByClassName('w3-red').length==0) {
-            document.getElementById("w3-badge").classList.add("w3-red");
+        if(JSON.stringify(data['message'].user_id) === {{ auth()->user()->id }}){
+            if (document.getElementsByClassName('w3-red').length===0) {
+                document.getElementById("w3-badge").classList.add("w3-red");
+            }
+            var varcount = JSON.stringify(data.count);
+            if (varcount.length<10) {
+                varcount = '0'+varcount;
+            }
+            document.getElementById("w3-badge").innerHTML =varcount ;
+            document.getElementById("badge").innerHTML = varcount+' '+'New';
+            $.playSound('{{ asset('public/assets/audio/audio_reminder.mp3') }}');
+            getmessage();
         }
-        var varcount = JSON.stringify(data.count);
-        if (varcount.length<10) {
-            varcount = '0'+varcount;
-        }
-        document.getElementById("w3-badge").innerHTML =varcount ;
-        document.getElementById("badge").innerHTML = varcount+' '+'New';
-        $.playSound('{{ asset('public/assets/audio/audio_reminder.mp3') }}');
-        getmessage();
     });
 
 
     function getmessage(){
         $.ajax({
-            url:"{{ route('professional.notifications') }}",
+            url:"{{ route('notifications') }}",
             data:{ },
             type:"get",
             success:function(data){
+                console.log(data);
                 $(".notification").html(' ');
                 $('.notification').html(data);
             }
