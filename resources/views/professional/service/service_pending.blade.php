@@ -40,11 +40,13 @@
                             <th>Sr.No.</th>
                             <th>BookingId</th>
                             <th>User Name</th>
-                            <th>Mobile</th>
+{{--                            <th>Mobile</th>--}}
                             <th>Email</th>
                             <th>Amount</th>
                             <th>Status</th>
+                            <th>Date</th>
                             <th>Time</th>
+                            <th>Address</th>
 {{--                            <th>Action</th>--}}
                         </tr>
                         </thead>

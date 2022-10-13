@@ -47,6 +47,8 @@ class BookingController extends Controller
             ];
             $booking = Booking::create($form_booking);
             $services =  Service::whereIn('id',$service_id)->get();
+            $convenience_charge = 84;
+            $tax = $convenience_charge * ( 18 / 100);
 
             foreach ($services as $service){
                 BookingService::create([
@@ -63,7 +65,10 @@ class BookingController extends Controller
                     'code' => 200,
                     'status' => 1,
                     'data' => $booking,
-                    'totalAmount' => $servicesAmount,
+                    'convenience_charge' => $convenience_charge,
+                    'tax' => $tax,
+                    'totalServiceAmount' => $servicesAmount,
+                    'totalPayableAmount' => $servicesAmount + $convenience_charge + $tax,
                     'message' => 'Now go on Payment Page.',
                 ]);
             }
