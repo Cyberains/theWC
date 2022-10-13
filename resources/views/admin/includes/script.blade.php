@@ -9,8 +9,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js' type='text/javascript'></script>
 
- 
-    
+
+
 <script type="text/javascript" src="{{ URL::asset('public/assets/js/admin/main1.js') }}"></script>
 <script type="text/javascript" src="{{ URL::asset('public/assets/js/admin/parsley.min.js') }}"></script>
 <script type="text/javascript" src="{{ URL::asset('public/plugins/ckeditor/ckeditor.js') }}"></script>
@@ -50,7 +50,7 @@
 
 <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.7/js/dataTables.responsive.min.js"></script>
 
-  
+
 <script src="{{ URL::asset('public/assets/js/main/main.js') }}"></script>
        <!-- fancybox -->
 <script src="{{URL::asset('public/assets/plugins/fancybox/fancybox.js') }}"></script>
@@ -66,23 +66,25 @@
     });
     var channel = pusher.subscribe('new-cr-from-part');
     channel.bind( 'Illuminate\\Notifications\\Events\\BroadcastNotificationCreated', function(data) {
-        if (document.getElementsByClassName('w3-red').length==0) {
-            document.getElementById("w3-badge").classList.add("w3-red");
+        if(JSON.stringify(data['message'].role) === 'admin'){
+            if (document.getElementsByClassName('w3-red').length === 0) {
+                document.getElementById("w3-badge").classList.add("w3-red");
+            }
+            var varcount = JSON.stringify(data.count);
+            if (varcount.length<10) {
+                varcount = '0'+varcount;
+            }
+            document.getElementById("w3-badge").innerHTML =varcount ;
+            document.getElementById("badge").innerHTML = varcount+' '+'New';
+            getmessage();
+            $.playSound('{{ asset('public/assets/audio/audio_reminder.mp3') }}');
         }
-        var varcount = JSON.stringify(data.count);
-        if (varcount.length<10) {
-            varcount = '0'+varcount;
-        }
-        document.getElementById("w3-badge").innerHTML =varcount ;
-        document.getElementById("badge").innerHTML = varcount+' '+'New';
-        getmessage();
-        $.playSound('{{ asset('public/assets/audio/audio_reminder.mp3') }}');
     });
 
 
     function getmessage(){
         $.ajax({
-            url:"{{ route('admin.notifications') }}",
+            url:"{{ route('notifications') }}",
             data:{ },
             type:"get",
             success:function(data){
@@ -113,7 +115,7 @@
      	$('#table-id').DataTable({
 
 	    	"pageLength": 50,
-	  
+
 	    });
      	$('.tables').DataTable({
 
@@ -124,7 +126,7 @@
 
 	    	"pageLength": 50
 	    });
-	    
+
        });
 
 	@if(Session::has('message'))
@@ -188,7 +190,7 @@
             toastr.error("{{ $error }}");
         @endforeach
     @endif
-	
+
 	$('.sform').parsley();
 
 	$.ajax({
@@ -196,7 +198,7 @@
 		url:"{{ route('admin.check_expire_purchase') }}",
 		data:{ },
 		type:"get",
-		success:function(data){ 
+		success:function(data){
 
 
 		}
@@ -213,7 +215,7 @@
     // channel.bind('payment-event', function(data) {
     //   alert(JSON.stringify(data));
     // });
-	
+
 
 </script>
 
