@@ -10,7 +10,7 @@
 
         @if(json_decode($notification->data,true)['message']['type']=='booking')
 
-        <a href="" class="">
+        <a href="{{ route('admin.bookings') }}" class="">
           <div class="media">
             <div class="media-left align-self-center">
                 <i class="ft-plus-square icon-bg-circle bg-cyan mr-0"></i>
@@ -35,5 +35,5 @@
     
     
  
-    <h6 class="text-center mb-0 py-2"><a href="{{ route('all-notifications') }}" style="text-decoration: none;">Read All Notification</a></h6>
+    <h6 class="text-center mb-0 py-2"><a href="{{ route('admin.bookings') }}" style="text-decoration: none;">Read All Notification</a></h6>
 @endif

@@ -16,7 +16,10 @@ class BookingStatusController extends Controller
         $paymentDoneBookingIds = BookingServicePayment::where('payment_status','done')->pluck('booking_id');
         $bookings = Booking::select(\DB::raw('bookings.*'))->with(['user','service','professional','servicePaymentStatus'])
             ->whereIn('bookingId',$paymentDoneBookingIds)
-            ->paginate(25);
+            ->paginate(25);  
+        foreach(auth()->user()->unreadNotifications as $notification) {
+            $notification->markAsRead();
+        }
         $currentpage = $bookings->currentPage();
         return view('admin.booking.index',compact(['bookings','currentpage']));
     }
