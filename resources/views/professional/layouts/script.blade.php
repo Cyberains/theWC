@@ -184,8 +184,8 @@
     });
     var channel = pusher.subscribe('new-cr-from-part');
     channel.bind( 'Illuminate\\Notifications\\Events\\BroadcastNotificationCreated', function(data) {
-        if(JSON.stringify(data['message'].user_id) === {{ auth()->user()->id }}){
-            if (document.getElementsByClassName('w3-red').length===0) {
+        if(JSON.stringify(data['message'].user_id) == {{ auth()->user()->id }}){
+            if (document.getElementsByClassName('w3-red').length==0) {
                 document.getElementById("w3-badge").classList.add("w3-red");
             }
             var varcount = JSON.stringify(data.count);
@@ -206,7 +206,6 @@
             data:{ },
             type:"get",
             success:function(data){
-
                 $(".notification").html(' ');
                 $('.notification').html(data);
             }
@@ -216,7 +215,55 @@
 
 
 
+<script>
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition,showError);
+        } else {
+            console.log('Geolocation is not supported by this browser.');
+        }
+        setTimeout(getLocation, 10000);
+    }
+    getLocation();
 
+    function showPosition(position) {
+        // x.innerHTML = "Latitude: " + position.coords.latitude + "<br>Longitude: " + position.coords.longitude;
+        sendGeoLocation(position.coords.latitude,position.coords.longitude)
+    }
+
+    function sendGeoLocation(lat = 21.2222,long = 12.2222){
+        let token = $('meta[name="csrf-token"]').attr('content');
+        $.ajax({
+            url:"http://localhost/project/the_womens_company/api/getProfLatLong",
+            method:'POST',
+            data:{
+                _token:token,
+                latitude : lat,
+                longitude : long
+            },
+            success:function(data){
+                console.log('done')
+            }
+        });
+    }
+
+    function showError(error) {
+        switch(error.code) {
+            case error.PERMISSION_DENIED:
+                x.innerHTML = "User denied the request for Geolocation."
+                break;
+            case error.POSITION_UNAVAILABLE:
+                x.innerHTML = "Location information is unavailable."
+                break;
+            case error.TIMEOUT:
+                x.innerHTML = "The request to get user location timed out."
+                break;
+            case error.UNKNOWN_ERROR:
+                x.innerHTML = "An unknown error occurred."
+                break;
+        }
+    }
+</script>
 
 
 

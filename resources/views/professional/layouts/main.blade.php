@@ -69,24 +69,12 @@
 </div>
 
 @yield('modal')
+@include('professional.layouts.script')
 <script  type="text/javascript">
-    $(document).on('click', 'a[data-toggle="modal"]', function (e) {
-        e.preventDefault();
-        e.stopPropagation();
-        var target_element = $(this).data('target');
-        $(target_element).find('.modal-content').html(`
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col-md-12 center">{!! transLang("loader_message") !!}</div>
-                        </div>
-                    </div>
-                `);
-    });
-
-    $('#remote_model,#cropper_model').on('hidden.bs.modal', function (e) {
-        $(this).removeData();
-        $(this).find('.modal-content').empty();
-    });
+    // $('#remote_model,#cropper_model').on('hidden.bs.modal', function (e) {
+    //     $(this).removeData();
+    //     $(this).find('.modal-content').empty();
+    // });
     // $('#remote_model').on('show.bs.modal', function (e) {});
 
     // For Image Cropper
@@ -206,6 +194,5 @@
 
 
 </script>
-@include('professional.layouts.script')
 </body>
 </html>

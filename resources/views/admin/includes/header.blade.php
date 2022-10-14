@@ -53,7 +53,7 @@
         <link rel="stylesheet" href="{{URL::asset('public/assets/plugins/fancybox/fancybox.css') }}">
 
         <!-- summernote -->
-        <link href="{{ URL::asset('public/assets/plugins/summernote/summernote.css') }}" rel="stylesheet">
+{{--        <link href="{{ URL::asset('public/assets/plugins/summernote/summernote.css') }}" rel="stylesheet">--}}
 
         <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/css/bootstrap.css" rel="stylesheet"> -->
 
