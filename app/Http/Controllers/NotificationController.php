@@ -14,7 +14,7 @@ class NotificationController extends Controller
               $notifycount = auth()->user()->unreadNotifications->count();
         if ($notifycount<10) {
             $notifycount = '0'.$notifycount;
-            $notificationdata = DB::table('notifications')->orderBy('id','desc')->paginate(25);
+            $notificationdata = DB::table('notifications')->whereNull('read_at')->orderBy('id','desc')->paginate(25);
             return view('admin.includes.notification',compact('notificationdata','notifycount'))->render();
         }
         if($notifycount>0){
