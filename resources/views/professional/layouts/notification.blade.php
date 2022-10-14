@@ -1,8 +1,7 @@
 <h6 class="dropdown-header m-0"><span class="grey darken-2">Notifications</span></h6><span class="notification-tag badge badge-danger float-right m-0" id="badge">@if($notifycount>0){{ $notifycount }} New @else 0 New @endif</span>
-
-@if($notifycount>0)
+ @if($notifycount>0)
    @foreach ($notificationdata as $notification)
-
+ 
     <li class="scrollable-container media-list w-100 ps">
 
         <a href="@if($notification->data['message']['type']=='order')
