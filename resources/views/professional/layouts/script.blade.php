@@ -204,6 +204,7 @@
             data:{ },
             type:"get",
             success:function(data){
+            	console.log(data);
                 $(".notification").html(' ');
                 $('.notification').html(data);
             }

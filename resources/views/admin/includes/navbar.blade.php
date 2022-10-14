@@ -6,15 +6,17 @@
     <button class="c-header-toggler c-class-toggler mfs-3 d-md-down-none" type="button" data-target="#sidebar" data-class="c-sidebar-lg-show" responsive="true">
       <i class="fa fa-bars"></i>
     </button>
-     @php
-        $notifycount = auth()->user()->unreadNotifications->count();
-        if ($notifycount<10) {
+   <?php 
+        $notifycount = DB::table('notifications')->where('notifiable_id',auth()->user()->id)->whereNull('read_at')->count();
+
+       if ($notifycount<10) {
             $notifycount = '0'.$notifycount;
+              $notificationdata = auth()->user()->unreadNotifications()->take(4)->get();
         }
         if($notifycount>0){
-          $notificationdata = auth()->user()->unreadNotifications->take(4);
+          $notificationdata = auth()->user()->unreadNotifications()->take(4)->get();
         }
-    @endphp
+?>
 
 
     <ul class="c-header-nav ml-auto mr-4">
