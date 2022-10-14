@@ -267,4 +267,12 @@ class ServiceController extends Controller
             }
         }
     }
+
+
+    function userManagement(){
+     return view('admin.user_management.user_management');
+    }
+    function addBooking(){
+        return view('admin.add_booking.add_booking');
+       }
 }

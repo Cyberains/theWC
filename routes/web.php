@@ -36,13 +36,16 @@ Route::get('pushes', function () {
 	return view('viewpush');
 });
 
+Route::get('notifications/bell',[NotificationController::class,'ViewNotification'])->name('notifications');
+
 
 Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
 
 	Route::get('login', function () {return view('auth.login');});
 	Route::get('/', function () {return redirect('admin/login');})->name('login');
 	Route::middleware(['auth', 'admin'])->group(function () {
-         Route::get('notifications/bell','NotificationController@ViewNotification')->name('notifications');
+    Route::get('/usermangement','ServiceController@userManagement')->name('usermanagement');
+	Route::get('/addbooking','ServiceController@addBooking')->name('addbooking');
         // Lead
         Route::get('/lead-mail-page',[LeadController::class,'getMailsPage'])->name('lead-mail-page');
 		// Dashboard
@@ -410,8 +413,6 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
 });
 
 Route::namespace('Professional')->prefix('professional')->name('professional.')->group(function () {
-
-    Route::get('notifications/bell',[NotificationController::class,'ViewNotification'])->name('notifications');
     // Register Professionals
     Route::get('professional-register',[RegisterController::class,'showRegistrationForm'])->name('professional-register');
     Route::post('professional-register',[RegisterController::class,'register'])->name('professional-register');

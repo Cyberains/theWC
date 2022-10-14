@@ -157,9 +157,13 @@ function getServiceAmountByBookingId($booking_id){
     return \App\Models\Booking\BookingService::where('booking_id',$booking_id)->sum('price');
 }
 
-function bookingAddressFormatting($address): string
+function bookingAddressFormatting($address = null): string
 {
-    return $address->house_no . ' ' . $address->area .' '. $address->landmark . ' ' . $address->zipcode . ' ' . $address->city . ' ' . $address->state ;
+	if($address != null){
+		return $address->house_no . ' ' . $address->area .' '. $address->landmark . ' ' . $address->zipcode . ' ' . $address->city . ' ' . $address->state ;
+	}else{
+		return "No Address";
+	}
 }
 
 function getUserNumber($user_id){

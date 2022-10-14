@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class NotificationController extends Controller
 {
@@ -15,7 +16,7 @@ class NotificationController extends Controller
         }
         $notificationdata = DB::table('notifications')->orderBy('id','desc')->paginate(25);
         return view('admin.include.notification',compact('notificationdata','notifycount'))->render();
-   
+
         }else{
             $notifycount = auth()->user()->unreadNotifications->count();
         if ($notifycount<10) {
@@ -30,5 +31,5 @@ class NotificationController extends Controller
     }
 }
 }
-        
-     
+
+
