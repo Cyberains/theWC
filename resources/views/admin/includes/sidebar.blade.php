@@ -1,6 +1,6 @@
 <div class="c-sidebar c-sidebar-dark c-sidebar-fixed c-sidebar-lg-show" id="sidebar">
-  <div class="c-sidebar-brand d-lg-down-none">
-    <div class="c-sidebar-brand-full"><img src="{{ asset('public/assets/img/admin/logo1.jpg') }}" width="118" height="46"></div>
+  <div class="c-sidebar-brand" style="background-color: #eea1c6">
+    <div class="c-sidebar-brand-full"><img src="{{ asset('public/assets/img/admin/logo1.jpg') }}" style="width:70%; height: 100%;"></div>
     <div class="c-sidebar-brand-minimized">EB</div>
   </div>
   <ul class="c-sidebar-nav">
