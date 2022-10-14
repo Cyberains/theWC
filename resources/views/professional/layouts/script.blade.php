@@ -1,12 +1,8 @@
-{{--<script src="{{ URL::asset('public/assets/js/admin/jquery-3.4.1.min.js') }}" type="text/javascript"></script>--}}
+<script src="{{ URL::asset('public/assets/js/admin/jquery-3.4.1.min.js') }}" type="text/javascript"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" ></script>
-
-{{--<!-- <script src="{{URL::asset('public/assets/js/admin/modernizr-custom.js') }}"></script> -->--}}
-
 <script src="{{ URL::asset('public/assets/js/admin/popper.min.js') }}"></script>
 <script src="{{ URL::asset('public/assets/js/admin/bootstrap.min.js') }}"></script>
    <!-- Script -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js' type='text/javascript'></script>
 
 
@@ -65,7 +61,7 @@
 
 
 
-	document.getElementById("year").innerHTML = new Date().getFullYear();
+	document.getElementById("year").innerHTML = new Date().getFullYear().toString();
 
 
 
@@ -179,16 +175,16 @@
 
 <script type="text/javascript">
     Pusher.logToConsole = true;
-    var pusher = new Pusher('fa7bc70a9618f0dee2b5', {
+    let pusher = new Pusher('fa7bc70a9618f0dee2b5', {
         cluster: 'ap2'
     });
-    var channel = pusher.subscribe('new-cr-from-part');
+    let channel = pusher.subscribe('new-cr-from-part');
     channel.bind( 'Illuminate\\Notifications\\Events\\BroadcastNotificationCreated', function(data) {
         if(JSON.stringify(data['message'].user_id) == {{ auth()->user()->id }}){
             if (document.getElementsByClassName('w3-red').length==0) {
                 document.getElementById("w3-badge").classList.add("w3-red");
             }
-            var varcount = JSON.stringify(data.count);
+            let varcount = JSON.stringify(data.count);
             if (varcount.length<10) {
                 varcount = '0'+varcount;
             }
@@ -242,7 +238,7 @@
                 longitude : long
             },
             success:function(data){
-                console.log('done')
+                console.log(data)
             }
         });
     }
