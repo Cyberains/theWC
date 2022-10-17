@@ -46,6 +46,7 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
 	Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/usermangement','ServiceController@userManagement')->name('usermanagement');
 	Route::get('/addbooking','ServiceController@addBooking')->name('addbooking');
+	Route::get('/addaddress','ServiceController@addAddress')->name('addaddress');
         // Lead
         Route::get('/lead-mail-page',[LeadController::class,'getMailsPage'])->name('lead-mail-page');
 		// Dashboard

@@ -275,4 +275,7 @@ class ServiceController extends Controller
     function addBooking(){
         return view('admin.add_booking.add_booking');
        }
+    function addAddress(){
+    return view('admin.add_address.add_address');
+    }
 }

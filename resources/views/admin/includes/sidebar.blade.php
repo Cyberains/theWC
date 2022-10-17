@@ -85,6 +85,13 @@
         </a>
       </li>
  @endif
+ @if(Auth::user()->role=='admin')
+ <li class="c-sidebar-nav-item">
+        <a class="c-sidebar-nav-link" href="{{ route('admin.addaddress') }}">
+        <i class="c-sidebar-nav-icon fa fa-address-book-o"></i>Add Address
+        </a>
+      </li>
+ @endif
 
   @if(Auth::user()->role=='admin')
   <li class="c-sidebar-nav-item c-sidebar-nav-dropdown">
