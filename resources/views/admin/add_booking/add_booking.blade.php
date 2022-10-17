@@ -34,7 +34,22 @@
     	border: 1px solid #e9579b;
    	 	color: #fff;
 		}
-        
+        /*TIME SLOT*/
+       .time_slot{
+       	margin: 0.5rem auto;
+       }
+       .select_time{
+       	background-color: #e9579b;
+    	padding: 0 0.5rem;
+    	align-items: center;
+    	color: #fff;
+    	transition-duration: 0.3s;
+    	transition-property: transform;border-radius: 1.5rem;
+    	box-shadow: 0 0 1px transparent;
+       }
+       .select_time:hover {
+    	transform: translateY(-5px);
+	   }
  	</style>
 @endsection
 
@@ -74,21 +89,6 @@
 						</div>
 
 						<div class="form-group">
-							<label id="multi_tittle">Address</label>
-							<select class="form-control select2 select2-hidden-accessible" style="width: 100%;" data-select2-id="4" tabindex="-1" aria-hidden="true">
-								<option selected="selected" data-select2-id="5">Alabama</option>
-								<option>Alaska</option>
-								<option>California</option>
-								<option>Delaware</option>
-								<option>Tennessee</option>
-								<option>Texas</option>
-								<option>Washington</option>
-							</select>
-						</div>
-					</div>
-
-					<div class="col-md-6" data-select2-id="30">
-						<div class="form-group" data-select2-id="29">
 							<label id="multi_tittle">Category Select</label>
 							<select class="select2 select2-hidden-accessible" multiple="" data-placeholder="Select a State" style="width: 100%;" data-select2-id="7" tabindex="-1" aria-hidden="true">
 								<option data-select2-id="35">Alabama</option>
@@ -98,6 +98,21 @@
 								<option data-select2-id="39">Tennessee</option>
 								<option data-select2-id="40">Texas</option>
 								<option data-select2-id="41">Washington</option>
+							</select> 
+						</div>
+					</div>
+
+					<div class="col-md-6" data-select2-id="30">
+						<div class="form-group" data-select2-id="29">
+							<label id="multi_tittle">Address</label>
+							<select class="form-control select2 select2-hidden-accessible" style="width: 100%;" data-select2-id="4" tabindex="-1" aria-hidden="true">
+								<option selected="selected" data-select2-id="5">Alabama</option>
+								<option>Alaska</option>
+								<option>California</option>
+								<option>Delaware</option>
+								<option>Tennessee</option>
+								<option>Texas</option>
+								<option>Washington</option>
 							</select> 
 						</div>
 
@@ -116,6 +131,8 @@
 					</div>
 				</div>
 
+
+
 				<!-- <h5>Custom Color Variants</h5> -->
 				<div class="row" data-select2-id="85">
 					<!-- <div class="col-12 col-sm-6" data-select2-id="84">
@@ -132,6 +149,7 @@
 							</select>
 						</div>
 					</div> -->
+					
 
 					<div class="col-12 col-sm-6" data-select2-id="71">
 						<div class="form-group" data-select2-id="70">
@@ -148,8 +166,192 @@
 								</select>
 							</div>
 						</div>
-					</div>					
-				</div>				
+					</div>	
+					 <div class="col-12 col-sm-6" data-select2-id="84">
+						<div class="form-group" data-select2-id="83">
+							<label id="multi_tittle">Select Time Slot</label>
+       						<input type="date" class="form-control" id="start" name="trip-start" placeholder="">
+						</div>
+							
+					</div> 			
+				</div>	
+				<!-- Tmie slot start -->
+				<div class="row">
+				
+					<div class="col-lg-2 col-md-3 col-sm-6 py-1">
+						<div class="text-center select_time">
+							<input type="radio" id="dewey" name="drone" value="slot-1">
+							<label class="time_slot" for="slot">09:00 - 09:15 am</label>
+						</div>
+					</div>
+					<div class="col-lg-2 col-md-3 col-sm-6 py-1">
+						<div class="text-center select_time">
+							<input type="radio" id="dewey" name="drone" value="slot-2">
+							<label class="time_slot" for="slot">09:30 - 09:45 am</label>
+						</div>
+					</div>
+					<div class="col-lg-2 col-md-3 col-sm-6 py-1">
+						<div class="text-center select_time">
+							<input type="radio" id="slot" name="drone" value="slot-3">
+							<label class="time_slot" for="slot">10:00 - 10:15 am</label>
+						</div>
+					</div>
+					<div class="col-lg-2 col-md-3 col-sm-6 py-1">
+						<div class="text-center select_time">
+							<input type="radio" id="slot" name="drone" value="slot">
+							<label class="time_slot" for="slot">10:30 - 10:45 am</label>
+						</div>
+					</div>
+					<div class="col-lg-2 col-md-3 col-sm-6 py-1">
+						<div class="text-center select_time">
+							<input type="radio" id="slot" name="drone" value="slot">
+							<label class="time_slot" for="slot">11:00 - 11:15 am</label>
+						</div>
+					</div>
+					<div class="col-lg-2 col-md-3 col-sm-6 py-1">
+						<div class="text-center select_time">
+							<input type="radio" id="slot" name="drone" value="slot">
+							<label class="time_slot" for="slot">11:30 - 11:45 am</label>
+						</div>
+					</div>
+					<div class="col-lg-2 col-md-3 col-sm-6 py-1">
+						<div class="text-center select_time">
+							<input type="radio" id="slot" name="drone" value="slot">
+							<label class="time_slot" for="slot">12:00 - 12:15 am</label>
+						</div>
+					</div>
+					<div class="col-lg-2 col-md-3 col-sm-6 py-1">
+						<div class="text-center select_time">
+							<input type="radio" id="slot" name="drone" value="slot">
+							<label class="time_slot" for="slot">12:30 - 12:45 am</label>
+						</div>
+					</div>
+					<div class="col-lg-2 col-md-3 col-sm-6 py-1">
+						<div class="text-center select_time">
+							<input type="radio" id="slot" name="drone" value="slot">
+							<label class="time_slot" for="slot">01:00 - 01:15 am</label>
+						</div>
+					</div>
+					<div class="col-lg-2 col-md-3 col-sm-6 py-1">
+						<div class="text-center select_time">
+							<input type="radio" id="slot" name="drone" value="slot">
+							<label class="time_slot" for="slot">01:30 - 01:45 am</label>
+						</div>
+					</div>
+					<div class="col-lg-2 col-md-3 col-sm-6 py-1">
+						<div class="text-center select_time">
+							<input type="radio" id="slot" name="drone" value="slot">
+							<label class="time_slot" for="slot">02:00 - 02:15 am</label>
+						</div>
+					</div>
+					<div class="col-lg-2 col-md-3 col-sm-6 py-1">
+						<div class="text-center select_time">
+							<input type="radio" id="slot" name="drone" value="slot">
+							<label class="time_slot" for="slot">02:30 - 02:45 am</label>
+						</div>
+					</div>
+					<div class="col-lg-2 col-md-3 col-sm-6 py-1">
+						<div class="text-center select_time">
+							<input type="radio" id="slot" name="drone" value="slot">
+							<label class="time_slot" for="slot">03:00 - 03:15 am</label>
+						</div>
+					</div>
+					<div class="col-lg-2 col-md-3 col-sm-6 py-1">
+						<div class="text-center select_time">
+							<input type="radio" id="slot" name="drone" value="slot">
+							<label class="time_slot" for="slot">03:30 - 03:45 am</label>
+						</div>
+					</div>
+					<div class="col-lg-2 col-md-3 col-sm-6 py-1">
+						<div class="text-center select_time">
+							<input type="radio" id="slot" name="drone" value="slot">
+							<label class="time_slot" for="slot">04:00 - 04:15 am</label>
+						</div>
+					</div>
+					<div class="col-lg-2 col-md-3 col-sm-6 py-1">
+						<div class="text-center select_time">
+							<input type="radio" id="slot" name="drone" value="slot">
+							<label class="time_slot" for="slot">04:30 - 04:45 am</label>
+						</div>
+					</div>
+					<div class="col-lg-2 col-md-3 col-sm-6 py-1">
+						<div class="text-center select_time">
+							<input type="radio" id="slot" name="drone" value="slot">
+							<label class="time_slot" for="slot">05:00 - 05:15 am</label>
+						</div>
+					</div>
+					<div class="col-lg-2 col-md-3 col-sm-6 py-1">
+						<div class="text-center select_time">
+							<input type="radio" id="slot" name="drone" value="slot">
+							<label class="time_slot" for="slot">05:30 - 05:45 am</label>
+						</div>
+					</div>
+					<div class="col-lg-2 col-md-3 col-sm-6 py-1">
+						<div class="text-center select_time">
+							<input type="radio" id="slot" name="drone" value="slot">
+							<label class="time_slot" for="slot">06:00 - 06:15 am</label>
+						</div>
+					</div>
+					<div class="col-lg-2 col-md-3 col-sm-6 py-1">
+						<div class="text-center select_time">
+							<input type="radio" id="slot" name="drone" value="slot">
+							<label class="time_slot" for="slot">06:30 - 06:45 am</label>
+						</div>
+					</div>
+					<div class="col-lg-2 col-md-3 col-sm-6 py-1">
+						<div class="text-center select_time">
+							<input type="radio" id="slot" name="drone" value="slot">
+							<label class="time_slot" for="slot">07:00 - 07:15 am</label>
+						</div>
+					</div>
+					<div class="col-lg-2 col-md-3 col-sm-6 py-1">
+						<div class="text-center select_time">
+							<input type="radio" id="slot" name="drone" value="slot">
+							<label class="time_slot" for="slot">07:30 - 07:45 am</label>
+						</div>
+					</div>
+					<div class="col-lg-2 col-md-3 col-sm-6 py-1">
+						<div class="text-center select_time">
+							<input type="radio" id="slot" name="drone" value="slot">
+							<label class="time_slot" for="slot">08:00 - 08:15 am</label>
+						</div>
+					</div>
+					<div class="col-lg-2 col-md-3 col-sm-6 py-1">
+						<div class="text-center select_time">
+							<input type="radio" id="slot" name="drone" value="slot">
+							<label class="time_slot" for="slot">08:30 - 08:45 am</label>
+						</div>
+					</div>
+					<div class="col-lg-2 col-md-3 col-sm-6 py-1">
+						<div class="text-center select_time">
+							<input type="radio" id="slot" name="drone" value="slot">
+							<label class="time_slot" for="slot">09:00 - 09:15 am</label>
+						</div>
+					</div>
+					<div class="col-lg-2 col-md-3 col-sm-6 py-1">
+						<div class="text-center select_time">
+							<input type="radio" id="slot" name="drone" value="slot">
+							<label class="time_slot" for="slot">09:30 - 09:45 am</label>
+						</div>
+					</div>
+
+				</div>
+				<!-- time slot end -->	
+				<div class="row">
+								<div class="col-lg-3 col-md-4 col-sm-6">
+								    <div>
+								      <input type="radio" id="dewey" name="drone" value="dewey">
+								      <label for="dewey">C.O.D (Pay 100 to book)</label>
+								    </div>
+								</div>
+								<div class="col-lg-3 col-md-4 col-sm-6">
+									  <div>
+									  	<input type="radio" id="huey" name="drone" value="huey"
+									  	checked>
+									  	<label for="huey">Pay full Amount</label>
+									  </div>
+								</div>
+							</div>			
 			</div>
 		</div>
 
