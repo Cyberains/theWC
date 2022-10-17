@@ -68,6 +68,50 @@
             margin-top: 0;
             top: 0px;
         }
+        .round {
+  position: relative;
+}
+
+.round label {
+  background-color: #ccc;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  cursor: pointer;
+  height: 1rem;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 1rem;
+}
+
+/* .round label:after {
+    border: 2px solid #fff;
+    border-top: none;
+    border-right: none;
+    content: "";
+    height: 6px;
+    left: 6px;
+    opacity: 0;
+    position: absolute;
+    top: 0.4rem;
+    transform: rotate(-45deg);
+    width: 0.7rem;
+} */
+
+.round input[type="checkbox"] {
+  visibility: hidden;
+}
+
+.round input[type="checkbox"]:checked + label {
+  background-color: #28a745;
+  border-color: #28a745;
+}
+
+.round input[type="checkbox"]:checked + label:after {
+  opacity: 1;
+}
+
+
     </style>
 
 <header class="c-header c-header-light c-header-fixed c-header-with-subheader">
@@ -91,8 +135,12 @@
 ?>
 
     <ul class="c-header-nav ml-auto mr-2">
-        <li>
-            <input type="checkbox" id="active-status" name="active" checked data-bootstrap-switch data-off-color="danger" data-on-color="success">
+        <li class="mx-2">
+            <div class="round">
+                <input type="checkbox" checked id="checkbox" />
+                <label for="checkbox" style="margin-top:.2rem;"></label>
+            </div>
+            <!-- <input  type="checkbox" id="active-status" name="active" checked data-bootstrap-switch data-off-color="danger" data-on-color="success"> -->
         </li>
 
         <li class="c-header-nav-item mx-2"><a class="c-header-nav-link" href="#" data-toggle="dropdown">

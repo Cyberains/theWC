@@ -35,48 +35,35 @@
         .checked {
             color: orange;
         }
-
-        /* Three column layout */
         .side {
             float: left;
             width: 15%;
             margin-top:10px;
         }
-
         .middle {
             margin-top:10px;
             float: left;
             width: 70%;
         }
-
-        /* Place text to the right */
         .right {
             text-align: right;
         }
-
-        /* Clear floats after the columns */
         .row:after {
             content: "";
             display: table;
             clear: both;
         }
-
-        /* The bar container */
         .bar-container {
             width: 100%;
             background-color: #f1f1f1;
             text-align: center;
             color: white;
         }
-
-        /* Individual bars */
         .bar-5 {width: 60%; height: 18px; background-color: #04AA6D;}
         .bar-4 {width: 30%; height: 18px; background-color: #2196F3;}
         .bar-3 {width: 10%; height: 18px; background-color: #00bcd4;}
         .bar-2 {width: 4%; height: 18px; background-color: #ff9800;}
         .bar-1 {width: 15%; height: 18px; background-color: #f44336;}
-
-        /* Responsive layout - make the columns stack on top of each other instead of next to each other */
         @media (max-width: 400px) {
             .side, .middle {
                 width: 100%;
@@ -85,7 +72,6 @@
                 display: none;
             }
         }
-
         .profile-pic {
             color: transparent;
             transition: all 0.3s ease;
@@ -128,7 +114,6 @@
             padding: 0.2em;
             height: 2em;
         }
-
     .emp-profile{
         padding: 3%;
         border-radius: 0.5rem;
@@ -219,7 +204,6 @@
         font-weight: 600;
         color: #0062cc;
     }
-
     </style>
 
 @endsection
@@ -305,6 +289,36 @@
                             </div>
                         </div>
                     </div>
+                    <!-- add address tab -->
+                  
+
+
+                    <div class="col-12 col-sm-6">
+                        <div class="card card-primary card-outline card-outline-tabs">
+                            <div class="card-header p-0 border-bottom-0">
+                                <ul class="nav nav-tabs" id="custom-tabs-four-tab" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" id="custom-tabs-four-home-tab" data-toggle="pill" href="#custom-tabs-four-home" role="tab" aria-controls="custom-tabs-four-home" aria-selected="true">Home</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="custom-tabs-four-profile-tab" data-toggle="pill" href="#custom-tabs-four-profile" role="tab" aria-controls="custom-tabs-four-profile" aria-selected="false">Profile</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="card-body">
+                                <div class="tab-content" id="custom-tabs-four-tabContent">
+                                    <div class="tab-pane fade active show" id="custom-tabs-four-home" role="tabpanel" aria-labelledby="custom-tabs-four-home-tab">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin malesuada lacus ullamcorper dui molestie, sit amet congue quam finibus. Etiam ultricies nunc non magna feugiat commodo. Etiam odio magna, mollis auctor felis vitae, ullamcorper ornare ligula. Proin pellentesque tincidunt nisi, vitae ullamcorper felis aliquam id. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin id orci eu lectus blandit suscipit. Phasellus porta, ante et varius ornare, sem enim sollicitudin eros, at commodo leo est vitae lacus. Etiam ut porta sem. Proin porttitor porta nisl, id tempor risus rhoncus quis. In in quam a nibh cursus pulvinar non consequat neque. Mauris lacus elit, condimentum ac condimentum at, semper vitae lectus. Cras lacinia erat eget sapien porta consectetur.
+                                    </div>
+                                    <div class="tab-pane fade" id="custom-tabs-four-profile" role="tabpanel" aria-labelledby="custom-tabs-four-profile-tab">
+                                        Mauris tincidunt mi at erat gravida, eget tristique urna bibendum. Mauris pharetra purus ut ligula tempor, et vulputate metus facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Maecenas sollicitudin, nisi a luctus interdum, nisl ligula placerat mi, quis posuere purus ligula eu lectus. Donec nunc tellus, elementum sit amet ultricies at, posuere nec nunc. Nunc euismod pellentesque diam.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- add address end tab -->
                     <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                       <div class="modal-dialog modal-lg">
                         <div class="modal-content">
