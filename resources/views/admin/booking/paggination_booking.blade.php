@@ -1,5 +1,5 @@
-{{--@php use Illuminate\Support\Str; @endphp--}}
-{{--@if(!empty($bookings))--}}
+@php use Illuminate\Support\Str; @endphp
+@if(!empty($bookings))
     @foreach ($bookings as $booking)
 
         <tr>
@@ -23,13 +23,19 @@
             @elseif(@@$booking->professional->name != null)
                 <td>{{ @@$booking->professional->name }}</td>
             @endif
-            <td>{{ getServiceAmountByBookingId($booking->bookingId) }} ₹</td>
+            <td>{{ getServiceAmountByBookingId($booking->bookingId) + 84 + 15.12 }} ₹</td>
+            <td>{{ getServicePayedAmountByBookingId($booking->bookingId) }} ₹</td>
+            <td>{{ getServiceDueAmountByBookingId($booking->bookingId) }} ₹</td>
+            <td>{{ $booking->date_slot }}</td>
+            <td>{{ $booking->time_slot }}</td>
+            <td>{{$booking->created_at->diffForHumans()}}</td>
             <td>{{ $booking->status }}</td>
-            <td>{{ $booking->servicePaymentStatus->payment_status }}</td>
+            <td>{{ $booking->servicePaymentStatus->payment_status ?? 'Pending' }}</td>
              <td><a href="{{route('admin.getlocation',['booking_id'=>$booking->bookingId])}}" target="_blank" class="btn btn-primary btn-sm">Track Location</a></td>
         </tr>
 
     @endforeach
+@endif
 <tr>
     <td colspan="6" align="center">
         <div class="col-md-12">

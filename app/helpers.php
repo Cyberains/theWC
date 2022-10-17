@@ -46,21 +46,21 @@ function two_points_on_earth($latitudeFrom, $longitudeFrom, $latitudeTo,  $longi
 
 
  function getDistance($latitudeFrom, $longitudeFrom, $latitudeTo,  $longitudeTo, $unit = 'K'){
-    
-    
+
+
     // Get latitude and longitude from the geodata
     $latitudeFrom    = $latitudeFrom;
     $longitudeFrom    = $longitudeFrom;
     $latitudeTo        = $latitudeTo;
     $longitudeTo    = $longitudeTo;
-    
+
     // Calculate distance between latitude and longitude
     $theta    = $longitudeFrom - $longitudeTo;
     $dist    = sin(deg2rad($latitudeFrom)) * sin(deg2rad($latitudeTo)) +  cos(deg2rad($latitudeFrom)) * cos(deg2rad($latitudeTo)) * cos(deg2rad($theta));
     $dist    = acos($dist);
     $dist    = rad2deg($dist);
     $miles    = $dist * 60 * 1.1515;
-    
+
     // Convert unit and return distance
     $unit = strtoupper($unit);
     if($unit == "K"){
@@ -184,6 +184,17 @@ function getAllBookingStatusDone($professional_id){
 
 function getServiceAmountByBookingId($booking_id){
     return \App\Models\Booking\BookingService::where('booking_id',$booking_id)->sum('price');
+}
+
+function getServicePayedAmountByBookingId($booking_id){
+    $fff =  \App\Models\Booking\BookingServicePayment::where('booking_id',$booking_id)->first();
+    return $fff == null ? 0 : $fff->payed_amount;
+
+}
+
+function getServiceDueAmountByBookingId($booking_id)
+{
+    return getServiceAmountByBookingId($booking_id) + 84 + 15.12 - getServicePayedAmountByBookingId($booking_id);
 }
 
 function bookingAddressFormatting($address = null): string

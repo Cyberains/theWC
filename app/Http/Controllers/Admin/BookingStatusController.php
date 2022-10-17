@@ -13,12 +13,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 class BookingStatusController extends Controller
 {
     public function index(Request $request){
-
-        $paymentDoneBookingIds = BookingServicePayment::where('payment_status','done')->pluck('booking_id');
-        $bookings = Booking::with(['user','bookingAddress','service','professional','servicePaymentStatus'])
-            ->whereIn('bookingId',$paymentDoneBookingIds)
-            ->paginate(25); 
-
+        $bookings = Booking::with(['user','bookingAddress','service','professional','servicePaymentStatus'])->paginate(10);
         foreach(auth()->user()->unreadNotifications as $notification) {
             $notification->markAsRead();
         }
@@ -36,7 +31,6 @@ class BookingStatusController extends Controller
                 ->orWhere('status','LIKE','%'.$datas['query']."%")->whereIn('bookingId',$paymentDoneBookingIds)->paginate(25);
             $categorycount=Booking::where('bookingId','LIKE','%'.$datas['query']."%")
                 ->orWhere('status','LIKE','%'.$datas['query']."%")->whereIn('bookingId',$paymentDoneBookingIds)->count();
-               
             if($categorycount){
                 $currentpage = $bookings->currentPage();
                 return view('admin.booking.paggination_booking', compact(['bookings','currentpage']))->render();
@@ -60,37 +54,32 @@ class BookingStatusController extends Controller
     }
 
      public function getLocation(Request $request){
-      
-        
-            $booking = Booking::where(['bookingId'=>$request->booking_id])->first();
-            $users = User::with(['getDefaultAddress'])->where('id',$booking['user_id'])->first();
-            $findProfessionals = User::with(['professionalAddress'])->where(['role' => 'Professional','is_active' => 1])->get();
-          
+        $booking = Booking::where(['bookingId'=>$request->booking_id])->first();
+        $users = User::with(['getDefaultAddress'])->where('id',$booking['user_id'])->first();
+        $findProfessionals = User::with(['professionalAddress'])->where(['role' => 'Professional','is_active' => 1])->get();
         if(!empty($users->getDefaultAddress['latitude']) && !empty($users->getDefaultAddress['longitude'])){
-                $latitude=$users->getDefaultAddress['latitude'];
-                $longitude=$users->getDefaultAddress['longitude'];
-                $matchingprofisionaldistance=[];
+            $latitude=$users->getDefaultAddress['latitude'];
+            $longitude=$users->getDefaultAddress['longitude'];
+            $matchingprofisionaldistance=[];
             foreach ($findProfessionals as $professional){
                 $data=$this->latitudelang($professional);
-              if(!empty($data['latitude']) && !empty($data['longitude'])){
-                  $distances=getDistance($latitude, $longitude, $data['latitude'], $data['longitude'],'K');
+                if(!empty($data['latitude']) && !empty($data['longitude'])){
+                    $distances=getDistance($latitude, $longitude, $data['latitude'], $data['longitude'],'K');
                     if($distances<='30'){
-                       $push=[
-                        'latitude'=>$data['latitude'],
-                        'longitude'=>$data['longitude'],
-                        'title'=>$professional['name'],
-                         'id'=>$professional['id'],
-                       ];
+                        $push=[
+                            'latitude'=>$data['latitude'],
+                            'longitude'=>$data['longitude'],
+                            'title'=>$professional['name'],
+                             'id'=>$professional['id'],
+                        ];
                         array_push($matchingprofisionaldistance,$push);
                     }
                 }
             }
-
         }
         else{
             return redirect('admin/bookings');
         }
-          
         return view('admin.booking.getlocation',compact('users','matchingprofisionaldistance'));
     }
 
@@ -99,8 +88,8 @@ class BookingStatusController extends Controller
         $data['latitude']=$details->professionalAddress->latitude;
         $data['longitude']=$details->professionalAddress->longitude;
         return $data;
-    } 
+    }
   }
- 
+
 
 }
