@@ -8,7 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Address extends Model
 {
     use HasFactory;
-
+  protected $casts = [
+        'latitude' => 'float',
+        'longitude' => 'float',
+    ];
     protected $fillable = [
         'user_id','address_type','mobile','house_no','area',
         'landmark','zipcode','city', 'state','country','is_active','is_default',

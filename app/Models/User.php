@@ -57,4 +57,8 @@ class User extends Authenticatable
     {
         return $this->hasOne('App\Models\Address','user_id','id')->where('is_default',1);
     }
+    public function professionalAddress(){
+         return $this->hasOne('App\Models\Address','user_id','id')->where('is_default',1);
+      
+    }
 }

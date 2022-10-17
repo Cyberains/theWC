@@ -24,9 +24,9 @@ function getDistanceBtwUserAndProfessional($user_service_address_id,$professiona
     $longitudeFrom = $address_prof_lat_long->longitude;
     $latitudeTo = $address->latitude;
     $longitudeTo = $address->longitude;
-
+return distance( $latitudeFrom, $longitudeFrom, $latitudeTo,  $longitudeTo,"K");
 //    print_r(two_points_on_earth( $latitudeFrom, $longitudeFrom, $latitudeTo,  $longitudeTo));die();
-    return 100;
+   // return 100;
 }
 
 function two_points_on_earth($latitudeFrom, $longitudeFrom, $latitudeTo,  $longitudeTo): float
@@ -43,6 +43,35 @@ function two_points_on_earth($latitudeFrom, $longitudeFrom, $latitudeTo,  $longi
     $radius = 3958.756;
     return number_format((float)($res * $radius), 2, '.', '');
 }
+
+
+ function getDistance($latitudeFrom, $longitudeFrom, $latitudeTo,  $longitudeTo, $unit = 'K'){
+    
+    
+    // Get latitude and longitude from the geodata
+    $latitudeFrom    = $latitudeFrom;
+    $longitudeFrom    = $longitudeFrom;
+    $latitudeTo        = $latitudeTo;
+    $longitudeTo    = $longitudeTo;
+    
+    // Calculate distance between latitude and longitude
+    $theta    = $longitudeFrom - $longitudeTo;
+    $dist    = sin(deg2rad($latitudeFrom)) * sin(deg2rad($latitudeTo)) +  cos(deg2rad($latitudeFrom)) * cos(deg2rad($latitudeTo)) * cos(deg2rad($theta));
+    $dist    = acos($dist);
+    $dist    = rad2deg($dist);
+    $miles    = $dist * 60 * 1.1515;
+    
+    // Convert unit and return distance
+    $unit = strtoupper($unit);
+    if($unit == "K"){
+        return round($miles * 1.609344, 0);
+    }elseif($unit == "M"){
+        return round($miles * 1609.344, 0).' meters';
+    }else{
+        return round($miles, 2).' miles';
+    }
+
+    }
 
 
 
@@ -160,7 +189,7 @@ function getServiceAmountByBookingId($booking_id){
 function bookingAddressFormatting($address = null): string
 {
 	if($address != null){
-		return $address->house_no . ' ' . $address->area .' '. $address->landmark . ' ' . $address->zipcode . ' ' . $address->city . ' ' . $address->state ;
+		return trim($address->house_no . ',' . $address->area .','. $address->landmark . ',' . $address->zipcode . ',' . $address->city . ',' . $address->state) ;
 	}else{
 		return "No Address";
 	}

@@ -180,6 +180,7 @@
     });
     let channel = pusher.subscribe('new-cr-from-part');
     channel.bind( 'Illuminate\\Notifications\\Events\\BroadcastNotificationCreated', function(data) {
+        @if (Auth::check())
         if(JSON.stringify(data['message'].user_id) == {{ auth()->user()->id }}){
             if (document.getElementsByClassName('w3-red').length==0) {
                 document.getElementById("w3-badge").classList.add("w3-red");
@@ -193,6 +194,7 @@
             $.playSound('{{ asset('public/assets/audio/audio_reminder.mp3') }}');
             getmessage();
         }
+        @endif
     });
 
 
