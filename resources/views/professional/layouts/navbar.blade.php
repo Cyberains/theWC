@@ -118,7 +118,7 @@
                 <a class="c-header-nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                     <div class="c-avatar">
                         @if(auth()->user()->upload_photo == null)
-                            <img class="c-avatar-img" src="{{  URL::asset('public/assets/img/admin/avatars/6.jpg') }}" alt="oops..">
+                            <img class="c-avatar-img" src="{{ url('public/assets/spa/images/img/favicon_twc.png') }}" alt="oops..">
                         @else
                             <img class="c-avatar-img" src="{{  auth()->user()->upload_photo }}" alt="oops..">
                         @endif
