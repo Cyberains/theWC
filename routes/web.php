@@ -42,6 +42,11 @@ Route::get('notifications/bell',[NotificationController::class,'ViewNotification
 Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
 
 	Route::get('login', function () {return view('auth.login');});
+
+    Route::get('add_employee/', function () {
+        return view('admin/customer/add_employee');
+    })->name('add-employee');
+
 	Route::get('/', function () {return redirect('admin/login');})->name('login');
 	Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/usermangement','ServiceController@userManagement')->name('usermanagement');
