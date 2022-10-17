@@ -78,45 +78,78 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBotIb1Vhm9kEiDWaQn5IaIg1bpy6wJTRU&callback=initMap&libraries=places&v=weekly" async ></script>
 @endsection
 @section('body')
-    <section class="contact-page-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 col-sm-6">
-                    <div class="contact-form">
-                        <div class="contact-left">
-                                <div class="input-grids">
-                                    <input type="hidden" name="sender_lat" id="txt_lat" style="width:480px;">
+        <div class="container-fluid">
+                <form class="sform form" method="post" action="{{ route('admin.add_customer_genuine') }}">
+          @csrf
+          <div class="row " style="padding: 30px;">
+          <div class="col-sm-4">
+              <div class="form-group">
+                <label for="role">Role<span>*</span></label>
+                <select class="form-control" type="text" name="role" id="role" value="{{ old('role') }}" data-parsley-required data-parsley-required-message="Role is required.">
+                  <option value="">Enter Role</option>
+                  <option value="user">User</option>
+                  <option value="Professional">Professional</option>
+                </select>
+              </div>
+            
+              <div class="form-group">
+                <label for="name">Name<span>*</span></label>
+                <input class="form-control" type="text" name="name" id="name" value="{{ old('name') }}" placeholder="Enter Name" data-parsley-required data-parsley-required-message="Name is required.">
+              </div>
+               <div class="form-group">
+                <label for="name">Address<span>*</span></label>
+                <input class="form-control" type="text" name="address" id="searchInput1" value="{{ old('name') }}" placeholder="Enter Name" data-parsley-required data-parsley-required-message="Name is required.">
+              </div>
+              <div class="form-group">
+                <label for="mobile">Mobile<span>*</span></label>
+                <input class="form-control" type="text" name="mobile" id="mobile" value="{{ old('mobile') }}" placeholder="Enter Mobile Number" data-parsley-required data-parsley-required-message="Mobile Number is required." data-parsley-pattern="^[6-9]\d{9}$" data-parsley-pattern-message="Enter valid mobile number." data-parsley-maxlength="10" data-parsley-maxlength-message="Enter valid mobile number." data-parsley-minlength="10" data-parsley-minlength-message="Enter valid mobile number.">
+
+                @error('mobile')
+                <span class="invalid-feedback" role="alert">
+                  <strong>{{ $message }}</strong>
+                </span>
+                @enderror
+              </div>
+             <input type="hidden" name="sender_lat" id="txt_lat" style="width:480px;">
                                     <input type="hidden" name="sender_lng" id="txt_lng" style="width:480px;">
-
-                                    <input type="text" name="sender_name" id="sender_name" placeholder="Sender's Name*" class="contact-input">
-                                    <input type="text" name="sender_number" id="sender_number" placeholder="Sender's Number*" class="contact-input" required="" maxlength="10">
-                                    <input type="text" name="sender_location" id="searchInput1" placeholder="Pickup Location*" class="contact-input">
-                                    <input type="text" name="sender_address" id="sender_address" placeholder="Complete Address*" class="contact-input">
-                                    <input type="text" name="sender_landmark" id="sender_landmark" placeholder="LandMark*" class="contact-input">
-                                    <input type="text" name="product_name" id="product_name" placeholder="Article Name *" class="contact-input">
-                                    <div style="display:flex;">
-                                        <input type="text" name="product_weight" id="product_weight" placeholder="Article Weight*" class="contact-input" style="width:50%!important">
-                                        <select name='kg' style="width:50%!important; margin-left:20px;height:50px !important;" class="form-control">
-                                            <option>Kgs</option>
-                                        </select>
-                                    </div>
-                                </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-sm-6">
-                    <div class="google-map" style="height:400px">
-                        <div id="map" ></div>
-                    </div>
-                </div>
-
+                                    
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input class="form-control" type="text" name="email" id="email" value="{{ old('email') }}" placeholder="Enter Email">
+              </div>
+             <div class="form-group">
+              <label>Password<span>*</span></label>
+              <input type="password" id="password" name="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password" data-parsley-required data-parsley-required-message="Password is required.">
+              @error('password')
+              <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+              </span>
+              @enderror
             </div>
-
-            <div class="col-sm-4 mm">
-                <input type="submit" name="submit" value="Next" style="width: 80%; font-family: 'montserratsemi_bold'; padding-left: 0px;color: #fff; background: #f9bf3b; font-size: 16px; font-weight: bold;" class="btn ">
+            <div class="form-group">
+             <label for="password-confirm">Confirm Password*</label>
+              <input type="password" class="form-control" name="password_confirmation" id="password-confirm" autocomplete="new-password" placeholder="Confirm Password" data-parsley-required data-parsley-required-message="This field is required." data-parsley-equalto="#password" data-parsley-equalto-message="password does not match.">
             </div>
+             </div>
+           
+             <div class="col-md-8 col-sm-8">
+                    <div class="google-map" style="height:500px">
+                        <div id="map" style="height:100%"></div>
+                    </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group">
+
+                <button type="submit" name="student-submit" class="btn btn-primary" style="float: right;">Save</button>
+
+                <button type="button" class="btn btn-danger" style="float: right;margin-right: 10px;" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </form>
         </div>
-    </section>
+     
+   
 @endsection
 
 @section('script')

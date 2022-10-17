@@ -296,7 +296,8 @@
   }
 
 
-  function categoryedit(id) {
+  function categoryedit(id)
+ {
 
     var token = $('meta[name="csrf-token"]').attr('content');
 
