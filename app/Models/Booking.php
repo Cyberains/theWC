@@ -51,6 +51,7 @@ class Booking extends Model
 
     public function bookingAddress(): HasOne
     {
+        
         return $this->hasOne(Address::class,'id','user_service_address_id');
     }
 

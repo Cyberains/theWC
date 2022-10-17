@@ -640,19 +640,6 @@ p {
     -o-transform: rotate(135deg);
     transform: rotate(135deg);
     top: -7px; }
-@media only screen and (min-width: 768px) and (max-width: 991px) {
-    .navbar-area .navbar .navbar-collapse {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background-color: #f4f6f7;
-        z-index: 8;
-        padding: 10px 16px;
-        margin-top: 2rem;
-        -webkit-box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
-        -moz-box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
-        box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16); } }
 @media (max-width: 767px) {
     .navbar-area .navbar .navbar-collapse {
         position: absolute;
@@ -692,6 +679,9 @@ p {
     transition: all 0.3s ease-out 0s;
     margin: 14px 0; }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
+.collapse:not(.show){
+display:none !important;
+}
     .navbar-area .navbar .navbar-nav .nav-item a {
         padding: 10px 0;
         display: block;
@@ -3158,14 +3148,8 @@ li:hover {
 .pr-1{
     color: #fff!important;
 }
-.collapse:not(.show) {
-    display: none!important;
-}
 .twc_tx{
 color:#000;
 font-size: 1.5rem;
 text-align: justify;
-}
-.pt-50 {
-    padding-top: 4rem;
 }

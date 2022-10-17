@@ -178,7 +178,7 @@ class BookingController extends Controller
         $booking_detail = Booking::where(['bookingId' => $booking_id])->first();
         $findProfessionals = User::where(['role' => 'Professional','is_active' => 1])->orderBy('paid_role','DESC')->get();
         foreach ($findProfessionals as $professional){
-            if(getDistanceBtwUserAndProfessional($booking_detail->user_service_address_id,$professional->id) <= 2170){
+            if(getDistanceBtwUserAndProfessional($booking_detail->user_service_address_id,$professional->id) <= 30){
                 if($professional->paid_role == 1 && getProfessionalsRating($professional->id) >= 3 && getProfessionalFreeStatus($professional->id) === true){
                     $ass = Booking::where('bookingId', $booking_id)->firstOrFail();
                     $ass->professional_id = $professional->id;

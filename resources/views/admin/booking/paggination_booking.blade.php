@@ -26,6 +26,7 @@
             <td>{{ getServiceAmountByBookingId($booking->bookingId) }} ₹</td>
             <td>{{ $booking->status }}</td>
             <td>{{ $booking->servicePaymentStatus->payment_status }}</td>
+             <td><a href="{{route('admin.getlocation',['booking_id'=>$booking->bookingId])}}" target="_blank" class="btn btn-primary btn-sm">Track Location</a></td>
         </tr>
 
     @endforeach
