@@ -83,9 +83,10 @@ class ServiceHistoryController extends Controller
     }
 
     public function servicePending(Request $request){
-        $service_pending = Booking::with(['user'])->where(['professional_id'=>$request->user()->id,'status' => 'pending'])
+        $service_pending = Booking::with(['user','bookingAddress'])->where(['professional_id'=>$request->user()->id,'status' => 'pending'])
             ->orderBy('created_at','DESC')
             ->paginate(15);
+           
         $current_page = $service_pending->currentPage();
 
         foreach(auth()->user()->unreadNotifications as $notification) {

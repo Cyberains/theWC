@@ -111,7 +111,7 @@
                 @enderror
               </div>
              <input type="hidden" name="sender_lat" id="txt_lat" style="width:480px;">
-                                    <input type="hidden" name="sender_lng" id="txt_lng" style="width:480px;">
+            <input type="hidden" name="sender_lng" id="txt_lng" style="width:480px;">
                                     
               <div class="form-group">
                 <label for="email">Email</label>
@@ -148,8 +148,7 @@
           </div>
         </form>
         </div>
-     
-   
+ 
 @endsection
 
 @section('script')
