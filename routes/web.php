@@ -419,6 +419,8 @@ Route::namespace('Professional')->prefix('professional')->name('professional.')-
 
     Route::middleware(['auth', 'professional-auth'])->group(function () {
 
+
+        Route::post('prof-active',[DashboardController::class,'active'])->name('prof-active');
         // User
         Route::post('avatar-update',[ProfileController::class,'updateAvatar'])->name('avatar-update');
         Route::post('profile-update',[ProfileController::class,'updateProfile'])->name('profile-update');
