@@ -11,7 +11,7 @@ class BookingServicePayment extends Model
     protected $table = 'booking_services_payment';
 
     protected $fillable = [
-        'booking_id','payment_id','payment_status','settlement_date','settlement_status'
+        'booking_id','payment_id','payment_status','settlement_date','settlement_status','payed_amount'
     ];
 
     protected static function boot()

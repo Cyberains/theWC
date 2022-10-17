@@ -70,6 +70,7 @@
 
 @yield('modal')
 @include('professional.layouts.script')
+@yield('script')
 <script  type="text/javascript">
     // $('#remote_model,#cropper_model').on('hidden.bs.modal', function (e) {
     //     $(this).removeData();

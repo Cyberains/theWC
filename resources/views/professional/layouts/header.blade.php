@@ -52,7 +52,7 @@
 <link rel="stylesheet" href="{{URL::asset('public/assets/plugins/fancybox/fancybox.css') }}">
 
 <!-- summernote -->
-<link href="{{ URL::asset('public/assets/plugins/summernote/summernote.css') }}" rel="stylesheet">
+{{--<link href="{{ URL::asset('public/assets/plugins/summernote/summernote.css') }}" rel="stylesheet">--}}
 <link href="{{ URL::asset('public/assets/plugins/select2/css/select2.min.css') }}"/>
 <link href="{{ URL::asset('public/assets/plugins/ckeditor/neo.css') }}"/>
 <link href="{{ URL::asset('public/assets/plugins/ckeditor/samples.css') }}"/>

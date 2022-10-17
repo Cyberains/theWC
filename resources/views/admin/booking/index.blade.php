@@ -47,7 +47,12 @@
                             <th>Booking Address</th>
                             <th>User Name</th>
                             <th>Professional Name</th>
-                            <th>Amount</th>
+                            <th>Total Amount</th>
+                            <th>Payed Amount</th>
+                            <th>Due Amount</th>
+                            <th>Service Date</th>
+                            <th>Service Time</th>
+                            <th>Booking Raised</th>
                             <th>Service Status</th>
                             <th>Payment Status</th>
                             <th>Track Location</th>

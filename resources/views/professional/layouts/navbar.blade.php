@@ -78,7 +78,7 @@
     <button class="c-header-toggler c-class-toggler mfs-3 d-md-down-none" type="button" data-target="#sidebar" data-class="c-sidebar-lg-show" responsive="true">
       <i class="fa fa-bars"></i>
     </button>
-    <?php 
+    <?php
         $notifycount = DB::table('notifications')->where('notifiable_id',auth()->user()->id)->whereNull('read_at')->count();
 
        if ($notifycount<10) {
@@ -89,8 +89,12 @@
           $notificationdata = auth()->user()->unreadNotifications()->take(4)->get();
         }
 ?>
-     
+
     <ul class="c-header-nav ml-auto mr-2">
+        <li>
+            <input type="checkbox" id="active-status" name="active" checked data-bootstrap-switch data-off-color="danger" data-on-color="success">
+        </li>
+
         <li class="c-header-nav-item mx-2"><a class="c-header-nav-link" href="#" data-toggle="dropdown">
                 <i class="c-icon fa fa-bell"></i>
                 @if($notifycount>0)
@@ -100,7 +104,7 @@
                 @endif</a>
             <ul class="dropdown-menu dropdown-menu-media dropdown-menu-right notification">
                 @if($notifycount>0)
-                 
+
                     @include('professional.layouts.notification',compact('notifycount','notificationdata'))
                 @else
                     @include('professional.layouts.notification',compact('notifycount'))
@@ -114,7 +118,7 @@
                 <a class="c-header-nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                     <div class="c-avatar">
                         @if(auth()->user()->upload_photo == null)
-                            <img class="c-avatar-img" src="{{  URL::asset('public/assets/img/admin/avatars/6.jpg') }}" alt="oops..">
+                            <img class="c-avatar-img" src="{{ url('public/assets/spa/images/img/favicon_twc.png') }}" alt="oops..">
                         @else
                             <img class="c-avatar-img" src="{{  auth()->user()->upload_photo }}" alt="oops..">
                         @endif
@@ -135,3 +139,21 @@
       @endif
     </ul>
 </header>
+
+<script>
+    document.getElementById("active-status").addEventListener("change", function () {
+        let token = $('meta[name="csrf-token"]').attr('content');
+        $.ajax({
+            url:"{{ route('professional.prof-active') }}",
+            method:'POST',
+            data: {
+                _token:token,
+                id: {{ auth()->id() }},
+                active : document.getElementById('active-status').value
+            },
+            success:function(data){
+                console.log(data);
+            }
+        });
+    });
+</script>

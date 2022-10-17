@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="JavaScriptLibraryMappings">
-    <file url="PROJECT" libraries="{all, axios, bootstrap, bootstrap-icons, boxicons, chart.js, default_thank_you, font-awesome, jquery, jquery-3.6.0, jquery-3.6.1, pusher, responsive.bootstrap4, select2, toastr.js, vue}" />
+    <file url="PROJECT" libraries="{all, axios, bootstrap, bootstrap-icons, boxicons, chart.js, default_thank_you, font-awesome, jquery, jquery-3.6.0, jquery-3.6.1, jquery-ui, pusher, responsive.bootstrap4, select2, toastr.js, vue}" />
   </component>
 </project>

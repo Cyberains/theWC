@@ -115,7 +115,7 @@
        <li class="c-header-nav-item d-md-down-none mx-2">{{ Auth::user()->name }}
       </li>
       <li class="c-header-nav-item dropdown"><a class="c-header-nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-          <div class="c-avatar"><img class="c-avatar-img" src="{{  URL::asset('public/assets/img/admin/avatars/6.jpg') }}" alt="oops.."></div>
+          <div class="c-avatar"><img class="c-avatar-img" src="{{ url('public/assets/spa/images/img/favicon_twc.png') }}" alt="oops.."></div>
         </a>
         <div class="dropdown-menu dropdown-menu-right pt-0">
           <div class="dropdown-header bg-light py-2"><strong>Settings</strong></div>
