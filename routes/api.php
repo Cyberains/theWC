@@ -157,7 +157,7 @@ Route::namespace('Api')->name('api.')->group(function(){
         Route::post('wish_remove','WishListController@RemoveWish');
 
         // User Subscription
-        Route::post('user_sub','UserSubscriptionController@purchase');
+        Route::post('membership-payment','UserSubscriptionController@membershipPayment');
         Route::get('user_sub','UserSubscriptionController@getUserSubscription');
 
         // Profile
