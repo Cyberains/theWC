@@ -8,6 +8,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use App\Models\Cart;
 use App\Models\Product;
+use App\Models\CouponCode;
 use Illuminate\Support\Facades\DB;
 
 class CartController extends Controller
@@ -112,8 +113,17 @@ class CartController extends Controller
         }
     }
 
-    function getCart(Request $request): JsonResponse
+    public function getCart(Request $request): JsonResponse
     {
+        $request->validate([
+            'coupon'=> 'nullable'
+        ]);
+
+        $coupon= 0;
+        if($request->coupon){
+            $coupon = CouponCode::where(['coupon'=>$request->coupon])->first()->amount;
+        }
+
         $cart = Cart::with(['getProduct','getService'])->where('user_id',$request->user()->id)->get();
 
         $product_sum = 0 ;
@@ -151,7 +161,8 @@ class CartController extends Controller
                 'Total Amount' => $service_sum + $product_sum,
                 'Total Discount' => $service_discount_sum + $product_discount_sum,
                 'Total Final Amount' => $service_final_sum + $product_final_sum,
-                'totalPayableAmount' => $service_final_sum + $product_final_sum + $convenience_charge + $tax,
+                'offer' => $coupon,
+                'totalPayableAmount' => $service_final_sum + $product_final_sum + $convenience_charge + $tax - $coupon,
                 'data'=>$cart,
                 'message'=>'Cart Product Get Successfully.'
             ]);

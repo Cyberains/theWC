@@ -200,7 +200,7 @@ function getServiceDueAmountByBookingId($booking_id)
 function bookingAddressFormatting($address = null): string
 {
 	if($address != null){
-		return trim($address->house_no . ',' . $address->area .','. $address->landmark . ',' . $address->zipcode . ',' . $address->city . ',' . $address->state) ;
+		return trim(@$address->house_no . ',' . @$address->area .','. @$address->landmark . ',' . @$address->zipcode . ',' . @$address->city . ',' . @$address->state) ;
 	}else{
 		return "No Address";
 	}

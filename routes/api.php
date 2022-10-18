@@ -158,7 +158,6 @@ Route::namespace('Api')->name('api.')->group(function(){
 
         // User Subscription
         Route::post('membership-payment','UserSubscriptionController@membershipPayment');
-        Route::get('user_sub','UserSubscriptionController@getUserSubscription');
 
         // Profile
         Route::get('profile',[UserController::class,'profile']);
