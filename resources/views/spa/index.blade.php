@@ -60,11 +60,21 @@
                 <div class="col-xl-12 col-lg-8">
                     <div class="about-image text-center wow fadeInUp" data-wow-duration="1.5s" data-wow-offset="100">
                         <h4 class="size">GET US ON!</h4>
-                            <img  onclick="window.open('https://play.google.com/store/apps/details?id=com.epic.woman_company_professional', '_blank');"  class="app_img" src="{{ url('public/assets/spa/images/icon/google_play_store_button_1.png') }}" alt="services">
+                            <img  onclick="window.open('https://play.google.com/store/apps/details?id=com.epic.woman_company', '_blank');"  class="app_img" src="{{ url('public/assets/spa/images/icon/google_play_store_button_1.png') }}" alt="services">
                             <img class="app_img" data-toggle="tooltip" data-placement="bottom" title="Comming Soon.." src="{{ url('public/assets/spa/images/icon/app_play_store_button1.png') }}" alt="services">
                     </div>
                     <div class="mx-auto">
-                    <img src="{{ url('public/assets/spa/images/img/animation_banner.jpg') }}" class="img-fluid mx-auto" alt="Responsive image" style="background-size: cover;background-position: 100% 100%;object-fit: contain;width: 100%;border: 5px solid #fff;border-radius: 1.5rem;box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;">
+                    <img src="{{ url('public/assets/spa/images/img/animation_banner.jpg') }}"
+                         onclick="window.open('https://play.google.com/store/apps/details?id=com.epic.woman_company', '_blank');"
+                         class="img-fluid mx-auto" alt="Responsive image"
+                         style="background-size: cover;
+                         background-position: 100% 100%;
+                         object-fit: contain;
+                         width: 100%;border: 5px solid #fff;
+                         border-radius: 1.5rem;
+                         box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+                         cursor: pointer;
+                         ">
                 </div>
 
                     <div class="container">
@@ -159,7 +169,7 @@
                 <div class="col-lg-12">
                     <div class="row testimonial-active">
                         @foreach($categories as $category)
-                        <div class="col-lg-3">
+                        <a class="col-lg-3" href="https://play.google.com/store/apps/details?id=com.epic.woman_company" target="_blank">
                             <div class="single-testimonial mt-30 mb-30 text-center">
                                 <div class="testimonial-image">
                                     <img src="{{ url('public/images/category/'.$category->image) }}" alt="Author">
@@ -168,14 +178,14 @@
                                     <h6 class="author-name">{{ $category->title }}</h6>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                         @endforeach
                     </div>
                 </div>
             </div>
         </div>
     </section>
-   
+
 
 
     <div id="how-it-works" class="pt75">
