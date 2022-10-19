@@ -132,15 +132,16 @@
         if($notifycount>0){
           $notificationdata = auth()->user()->unreadNotifications()->take(4)->get();
         }
+
+    $activeStatus = DB::table('professional_active_status')->where('professional_id' , auth()->user()->id)->first();
 ?>
 
     <ul class="c-header-nav ml-auto mr-2">
         <li class="mx-2">
-            <div class="round">
-                <input type="checkbox" checked id="checkbox" />
-                <label for="checkbox" style="margin-top:.2rem;"></label>
+            <div class="custom-control custom-switch">
+                <input type="checkbox" class="custom-control-input" id="active-status">
+                <label class="custom-control-label" for="active-status" data-on="Yes" data-off="No"></label>
             </div>
-            <!-- <input  type="checkbox" id="active-status" name="active" checked data-bootstrap-switch data-off-color="danger" data-on-color="success"> -->
         </li>
 
         <li class="c-header-nav-item mx-2"><a class="c-header-nav-link" href="#" data-toggle="dropdown">
@@ -190,6 +191,7 @@
 
 <script>
     document.getElementById("active-status").addEventListener("change", function () {
+        alert(document.getElementById('active-status').attributes)
         let token = $('meta[name="csrf-token"]').attr('content');
         $.ajax({
             url:"{{ route('professional.prof-active') }}",

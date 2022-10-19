@@ -43,10 +43,13 @@ class DashboardController extends Controller
     }
 
     public function active(Request $request){
-        $activate = ProfessionalActiveStatus::updateOrCreate([
-            'professional_id' => $request->user()->id,
-            'login_time' => $request->login_time,
-        ]);
+        $activate = ProfessionalActiveStatus::updateOrCreate(
+            [
+                'professional_id' => $request->user()->id,
+            ],[
+                'status' => $request->active == 'on'? 1: 0,
+            ]
+        );
 
         if($activate){
             return redirect()->route('professional.dashboard');
