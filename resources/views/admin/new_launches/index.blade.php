@@ -81,84 +81,26 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <h3 class="text-center">Add Service</h3>
-                    <form class="sform form" method="post" action="{{ route('admin.add-service') }}"  enctype="multipart/form-data">
+                    <h3 class="text-center">Add New-Launch</h3>
+                    <form class="sform form" method="post" action="{{ route('admin.add-new-launched') }}"  enctype="multipart/form-data">
                         @csrf
                         <div class="row " style="padding: 30px;">
                             <div class="col-md-12">
-                                <div class="form-group">
-                                    <label for="title">Service Name<span>*</span></label>
-                                    <input class="form-control"
-                                           type="text"
-                                           name="title"
-                                           id="title"
-                                           value="{{ old('title') }}"
-                                           placeholder="Enter Service Name"
-                                           data-parsley-required
-                                           data-parsley-required-message="Service Name is required."
-                                    >
-                                </div>
-                            </div>
-                            <div class="col-md-12">
                                 <div class="form-group ">
-                                    <label for="service_image">Service Image<span>*</span>( Enter 1:1 ratio Image Above 400px )</label>
-                                    <input class="form-control photo" type="file" name="service_image"
-                                           value="{{ old('service_image') }}" data-parsley-required
-                                           data-parsley-required-message="This field is required.">
+                                    <label for="banner_image">New Launch Banner Image<span>*</span>( Enter 1:1 ratio Image Above 1024px )</label>
+                                    <div class="d-flex">
+                                        <input class="form-control" type="file" name="banner_image" id="banner_image" value="{{ old('banner_image') }}">
+                                    </div>
                                 </div>
                             </div>
-
-                            <div class="col-md-12">
-                                <div class="form-group ">
-                                    <label for="service_image">Service Banner Image<span>*</span>( Enter 1:1 ratio Image Above 1024x400px )</label>
-                                    <input class="form-control photo" type="file" name="service_banner_image" value="{{ old('service_banner_image') }}" data-parsley-required data-parsley-required-message="This field is required.">
-                                </div>
-                            </div>
-
-                            <div class="col-md-12">
-                                <div class="form-group ">
-                                    <label for="service_product_image">Service Product Image( Enter 1:1 ratio Image Above 400px )</label>
-                                    <input class="form-control photo" type="file" name="service_product_image"
-                                           value="{{ old('service_product_image') }}">
-                                </div>
-                            </div>
-
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label for="service_time">Service Time<span>*</span></label>
-                                    <input class="form-control" type="text" name="service_time" id="service_time" value="{{ old('service_time') }}" placeholder="Enter Service Time"  data-parsley-required data-parsley-required-message="Service Time is required.">
-                                </div>
-                            </div>
-
-
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label for="price">Price<span>*</span></label>
-                                    <input class="form-control" type="text" name="price" id="price"
-                                           value="{{ old('price') }}" placeholder="Enter Price"  data-parsley-required
-                                           data-parsley-required-message="Price is required.">
-                                </div>
-                            </div>
-
-
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label for="name">Discount<span>*</span></label>
-                                    <input class="form-control" type="text" name="discount" id="discount"
-                                           value="{{ old('discount') }}" placeholder="Enter Discount"  data-parsley-required
-                                           data-parsley-required-message="Discount is required.">
-                                </div>
-                            </div>
-
 
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="tag">Tag<span>*</span></label>
-                                    <select class="form-control" type="text" name="tag" id="tag" value="{{ old('tag') }}" data-parsley-required data-parsley-required-message="Tag is required.">
-                                        <option value="">Select Tag</option>
-                                        <option value="NoTag">NoTag</option>
-                                        <option value="New">New</option>
-                                        <option value="Exclusive">Exclusive</option>
+                                    <label for="up-type">Type<span>*</span></label>
+                                    <select class="form-control" type="text" name="type" id="up_type" value="" data-parsley-required data-parsley-required-message="Type is required.">
+                                        <option value="">Select Type</option>
+                                        <option value="Service List">Service List</option>
+                                        <option value="Service">Service</option>
                                     </select>
                                 </div>
                             </div>
@@ -166,8 +108,8 @@
 
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="category_id">Select Category<span>*</span></label>
-                                    <select class="form-control" type="text" name="category_id" id="category_id" value="{{ old('category_id') }}" data-parsley-required data-parsley-required-message="Category is required.">
+                                    <label for="up_category_id">Select Category<span>*</span></label>
+                                    <select class="form-control" type="text" name="category_id" id="up_category_id" value="">
                                         <option value="">Select Tag</option>
                                         <option value="3">Category Title</option>
                                         @foreach($categories as $category)
@@ -179,8 +121,8 @@
 
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="sub_category_id">Select Category<span>*</span></label>
-                                    <select class="form-control" type="text" name="sub_category_id" id="sub_category_id" value="{{ old('sub_category_id') }}" data-parsley-required data-parsley-required-message="Sub-Category is required.">
+                                    <label for="up_sub_category_id">Select Sub-Category<span>*</span></label>
+                                    <select class="form-control" type="text" name="sub_category_id" id="up_sub_category_id" value="">
                                         <option value="">Select Sub-Category</option>
                                         @foreach($sub_category as $sub_cat)
                                             <option id="selected-sub-category-id" value="{{ $sub_cat->id }}">{{ $sub_cat->title }}</option>
@@ -189,10 +131,16 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-12">
+
+                            <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="price">Description</label>
-                                    <textarea class="form-control" type="text" name="description" placeholder="Enter Description" id="editor"></textarea>
+                                    <label for="up_service_id">Select Service<span>*</span></label>
+                                    <select class="form-control" type="text" name="service_id" id="service_id" value="{{ old('service_id') }}">
+                                        <option value="">Select Sub-Category</option>
+                                        @foreach($services_list as $service)
+                                            <option id="selected-sub-category-id" value="{{ $service->id }}">{{ $service->title }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
 
@@ -218,7 +166,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <h3 class="text-center">Edit Service</h3>
+                    <h3 class="text-center">Edit New-Launch</h3>
                     <form class="sform form" method="post" action="{{ route('admin.update-new-launched') }}" enctype="multipart/form-data">
                         @csrf
                         <input type="text" name="id" value="" id="id" hidden="hidden">
@@ -236,8 +184,8 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="up-type">Type<span>*</span></label>
-                                    <select class="form-control" type="text" name="type" id="up-type" value="" data-parsley-required data-parsley-required-message="Tag is required.">
-                                        <option value="">Select Tag</option>
+                                    <select class="form-control" type="text" name="type" id="up_type" value="" data-parsley-required data-parsley-required-message="Type is required.">
+                                        <option value="">Select Type</option>
                                         <option value="Service List">Service List</option>
                                         <option value="Service">Service</option>
                                     </select>
@@ -248,9 +196,8 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="up_category_id">Select Category<span>*</span></label>
-                                    <select class="form-control" type="text" name="category_id" id="up_category_id" value="" data-parsley-required data-parsley-required-message="Category is required.">
-                                        <option value="">Select Tag</option>
-                                        <option value="3">Category Title</option>
+                                    <select class="form-control" type="text" name="category_id" id="up_category_id" value="">
+                                        <option value="">Select Category</option>
                                         @foreach($categories as $category)
                                             <option id="selected-category-id" onclick="getSubCategory({{ $category->id }})" value="{{ $category->id }}">{{ $category->title }}</option>
                                         @endforeach
@@ -261,7 +208,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="up_sub_category_id">Select Category<span>*</span></label>
-                                    <select class="form-control" type="text" name="sub_category_id" id="up_sub_category_id" value="" data-parsley-required data-parsley-required-message="Sub-Category is required.">
+                                    <select class="form-control" type="text" name="sub_category_id" id="up_sub_category_id" value="">
                                         <option value="">Select Sub-Category</option>
                                         @foreach($sub_category as $sub_cat)
                                             <option id="selected-sub-category-id" value="{{ $sub_cat->id }}">{{ $sub_cat->title }}</option>
@@ -274,8 +221,8 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="up_service_id">Select Service<span>*</span></label>
-                                    <select class="form-control" type="text" name="service_id" id="up_service_id" value="" data-parsley-required data-parsley-required-message="Sub-Category is required.">
-                                        <option value="">Select Sub-Category</option>
+                                    <select class="form-control" type="text" name="service_id" id="up_service_id" value="">
+                                        <option value="">Select Service</option>
                                         @foreach($services_list as $service)
                                             <option id="selected-sub-category-id" value="{{ $service->id }}">{{ $service->title }}</option>
                                         @endforeach
@@ -398,7 +345,7 @@
                         }else{
                             $("#upload_service_image").hide();
                         }
-                        $('#up-tag').val(datas.tag);
+                        $('#up_type').val(datas.type);
                         $('#up_sub_category_id').val(datas.sub_category_id);
                         $('#up_category_id').val(datas.category_id);
                         $('#up_service_id').val(datas.service_id);

@@ -25,6 +25,7 @@
       <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="{{ route('admin.category') }}"><span class="c-sidebar-nav-icon"></span> Category</a></li>
       <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="{{ route('admin.subcategory') }}"><span class="c-sidebar-nav-icon"></span> Sub-Category</a></li>
       <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="{{ route('admin.service') }}"><span class="c-sidebar-nav-icon"></span>Services</a></li>
+        <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="{{ route('admin.new-launched') }}"><span class="c-sidebar-nav-icon"></span>New Launched</a></li>
     </ul>
   </li>
   @endif
@@ -109,7 +110,7 @@
           <span class="c-sidebar-nav-icon"></span>Privacy Policy
         </a>
       </li>
-     
+
       <li class="c-sidebar-nav-item">
         <a class="c-sidebar-nav-link" href="{{ route('admin.cms.index','term_condition') }}">
           <span class="c-sidebar-nav-icon"></span>Terms & Conditions

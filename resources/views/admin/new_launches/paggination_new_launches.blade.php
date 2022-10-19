@@ -12,9 +12,9 @@
 
             <td>{{ $new->type }}</td>
 
-            <td>{{ $new->category_id }} </td>
-            <td>{{ $new->sub_category_id }} </td>
-            <td>{{ $new->service_id }} </td>
+            <td>{{ @$new->category_id }} </td>
+            <td>{{ @$new->sub_category_id }} </td>
+            <td>{{ @$new->service_id }} </td>
 
             @if(Auth::user()->role == 'admin')
                 <td>
