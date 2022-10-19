@@ -62,6 +62,6 @@ class User extends Authenticatable
 
     public function getSubscriptionPlanDetails()
     {
-        return $this->hasMany('App\Models\UserSubscription', 'user_id','id');
+        return $this->hasOne('App\Models\UserSubscription', 'user_id','id')->latest();
     }
 }

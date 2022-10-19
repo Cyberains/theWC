@@ -120,8 +120,10 @@ class CartController extends Controller
         ]);
 
         $coupon= 0;
+        $promo = null;
         if($request->coupon){
             $coupon = CouponCode::where(['coupon'=>$request->coupon])->first()->amount;
+            $promo = CouponCode::select(['name','coupon'])->where(['coupon'=>$request->coupon])->first();
         }
 
         $cart = Cart::with(['getProduct','getService'])->where('user_id',$request->user()->id)->get();
@@ -162,6 +164,7 @@ class CartController extends Controller
                 'Total Discount' => $service_discount_sum + $product_discount_sum,
                 'Total Final Amount' => $service_final_sum + $product_final_sum,
                 'offer' => $coupon,
+                'promo'=> $promo,
                 'totalPayableAmount' => $service_final_sum + $product_final_sum + $convenience_charge + $tax - $coupon,
                 'data'=>$cart,
                 'message'=>'Cart Product Get Successfully.'
