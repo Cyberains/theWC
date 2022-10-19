@@ -13,7 +13,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 class BookingStatusController extends Controller
 {
     public function index(Request $request){
-        $bookings = Booking::with(['user','bookingAddress','service','professional','servicePaymentStatus'])->paginate(10);
+        $bookings = Booking::with(['user','bookingAddress','service','professional','servicePaymentStatus','bookingAddress'])->paginate(10);
         foreach(auth()->user()->unreadNotifications as $notification) {
             $notification->markAsRead();
         }

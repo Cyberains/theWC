@@ -3,55 +3,77 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Subscription;
 use App\Models\UserSubscription;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class UserSubscriptionController extends Controller
 {
-    public function purchase(Request $request):JsonResponse
+    public function membershipPayment(Request $request):JsonResponse
     {
-        $request->validate([
-            'subscription_id' => 'required',
+        $validator = Validator::make($request->all(),[
+            'membership_id' => 'required',
+            'membership_name' => 'required',
+            'payment_id' => 'required',
+            'payment_status' => 'required',
+            'start_date'=>'required',
+            'mrp' => 'required',
+            'discount_price' => 'required',
+            'paid_price' => 'required',
         ]);
-        if(razorpay() === 200){
-            $purchase = new UserSubscription();
-            $purchase->user_id = $request->user()->id;
-            $purchase->subscription_id = $request->subscription_id;
-            $purchase->save();
 
+        if($validator->fails()){
             return response()->json([
-                'code' => 200,
-                'status' => 1,
-                'data' => $purchase,
-                'message' => 'Subscription Successfully Done.',
-            ]);
-        }else{
-            return response()->json([
-                'code' => 500,
-                'status' => 1,
-                'message' => 'Something Went Wrong. Try Again.',
-            ]);
+                'status' =>'error',
+                'status_code' => 400,
+                'message' => $validator->errors(),
+                'data' => 'Parameters missing.',
+            ],400);
         }
 
-    }
+        $check_membership_plan = Subscription::find($request->membership_id);
 
-    public function getUserSubscription(Request $request): JsonResponse
-    {
-        $userSubscribed = UserSubscription::with(['getSubscriptionPlanDetails'])->where('user_id',$request->user()->id)->get();
-        if ($userSubscribed->count() >0 ) {
+        if(!$check_membership_plan){
             return response()->json([
-                'code'=>200,
-                'status'=>1,
-                'data'=>$userSubscribed,
-                'message'=>'User Subscribed Plans.'
+                'status' =>'error',
+                'status_code' => 404,
+                'message' => 'Membership Not Found or Invalid Membership Id.',
+                'data' => null,
+            ],404);
+        }
+
+        DB::beginTransaction();
+        try{
+            $membership = UserSubscription::create([
+                'user_id' => Auth::user()->id,
+                'membership_id' => $request->membership_id,
+                'membership_name' => $request->membership_name,
+                'payment_id' => $request->payment_id,
+                'payment_status' => $request->payment_status,
+                'start_date'=>$request->start_date,
+                'mrp' => $request->mrp,
+                'discount_price' => $request->discount_price,
+                'paid_price' => $request->paid_price,
             ]);
-        } else {
+            DB::commit();
             return response()->json([
-                'code' => 422,
-                'status' => 0,
-                'message' => 'Unsubscribed User.'
-            ]);
+                'status' =>'success',
+                'status_code' => 200,
+                'message' => 'Membership successfully punched',
+                'data' => $membership,
+            ],200);
+        }catch (\Exception $e){
+            DB::rollBack();
+            return response()->json([
+                'status' =>'error',
+                'status_code' => 500,
+                'message' => $e->getMessage(),
+                'data' => $e->getTraceAsString(),
+            ],500);
         }
     }
 }

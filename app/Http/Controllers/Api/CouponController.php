@@ -14,16 +14,18 @@ class CouponController extends Controller
         $coupons = CouponCode::whereDate('expire_date','>=' ,date('Y-m-d'))->get();
         if($coupons->count() > 0){
             return response()->json([
-                'status' => 200,
-                'data' => $coupons,
-                'message' => 'Available Coupons, For the user.'
-            ]);
+                'status' => 'success',
+                'status_code' => 200,
+                'message' => 'Available Coupons, For the user.',
+                'data' => $coupons
+            ],200);
         }else{
             return response()->json([
-                'status' => 404,
+                'status' => 'error',
+                'status_code' => 404,
                 'data' => [],
                 'message' => 'Not Available Coupon, For the user.'
-            ]);
+            ],404);
         }
     }
 }

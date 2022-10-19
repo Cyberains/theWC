@@ -137,7 +137,7 @@ Route::namespace('Api')->name('api.')->group(function(){
     Route::post('refer-generate',[ReferenceController::class,'referGenerate']);
 
     // Coupon's
-    Route::get('coupons',[CouponController::class,'getCoupon']);
+    Route::get('promo-code',[CouponController::class,'getCoupon']);
 
     // get GEO Location
     Route::post('getProfLatLong',[\App\Http\Controllers\Professional\ProfileController::class,'getProfLatLong']);
@@ -157,8 +157,7 @@ Route::namespace('Api')->name('api.')->group(function(){
         Route::post('wish_remove','WishListController@RemoveWish');
 
         // User Subscription
-        Route::post('user_sub','UserSubscriptionController@purchase');
-        Route::get('user_sub','UserSubscriptionController@getUserSubscription');
+        Route::post('membership-payment','UserSubscriptionController@membershipPayment');
 
         // Profile
         Route::get('profile',[UserController::class,'profile']);

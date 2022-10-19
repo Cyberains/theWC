@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\UserSubscription;
 use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -302,7 +303,12 @@ class UserController extends Controller
 
     public function profile(Request $request): JsonResponse
     {
-        $user = User::with(['getDefaultAddress'])->where('id',$request->user()->id)->first();
+        $user = User::with([
+            'getDefaultAddress',
+            'getSubscriptionPlanDetails:id,user_id,membership_id,membership_name,payment_id,payment_status,start_date,end_date,mrp,discount_price,paid_price',
+            'getSubscriptionPlanDetails.planDetail:id,description,months,base_path,image'
+        ])->where('id',$request->user()->id)->first();
+
         if($request->user()->role == 'Professional'){
             $user['rating'] = getProfessionalsRating($user->id);
         }

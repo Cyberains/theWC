@@ -4,13 +4,12 @@ namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
 
-/**
- * @method static select(string[] $array)
- */
+
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -59,6 +58,10 @@ class User extends Authenticatable
     }
     public function professionalAddress(){
          return $this->hasOne('App\Models\Address','user_id','id')->where('is_default',1);
-      
+    }
+
+    public function getSubscriptionPlanDetails()
+    {
+        return $this->hasMany('App\Models\UserSubscription', 'user_id','id');
     }
 }

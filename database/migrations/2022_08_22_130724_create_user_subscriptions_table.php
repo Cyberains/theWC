@@ -17,10 +17,16 @@ class CreateUserSubscriptionsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->unsignedBigInteger('subscription_id');
-            $table->foreign('subscription_id')->references('id')->on('subscriptions')->onDelete('cascade');
-            $table->float('plan_amount');
-            $table->date('plan_expiry');
+            $table->unsignedBigInteger('membership_id');
+            $table->foreign('membership_id')->references('id')->on('subscriptions')->onDelete('cascade');
+            $table->string('membership_name')->nullable();
+            $table->string('payment_id')->nullable();
+            $table->string('payment_status')->nullable();
+            $table->string('start_date')->nullable();
+            $table->string('end_date')->nullable();
+            $table->string('mrp')->nullable();
+            $table->string('discount_price')->nullable();
+            $table->float('paid_price');
             $table->timestamps();
         });
     }
