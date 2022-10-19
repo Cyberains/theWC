@@ -137,7 +137,7 @@ Route::namespace('Api')->name('api.')->group(function(){
     Route::post('refer-generate',[ReferenceController::class,'referGenerate']);
 
     // Coupon's
-    Route::get('coupons',[CouponController::class,'getCoupon']);
+    Route::get('promo-code',[CouponController::class,'getCoupon']);
 
     // get GEO Location
     Route::post('getProfLatLong',[\App\Http\Controllers\Professional\ProfileController::class,'getProfLatLong']);
