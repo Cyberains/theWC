@@ -84,20 +84,6 @@
   width: 1rem;
 }
 
-/* .round label:after {
-    border: 2px solid #fff;
-    border-top: none;
-    border-right: none;
-    content: "";
-    height: 6px;
-    left: 6px;
-    opacity: 0;
-    position: absolute;
-    top: 0.4rem;
-    transform: rotate(-45deg);
-    width: 0.7rem;
-} */
-
 .round input[type="checkbox"] {
   visibility: hidden;
 }
