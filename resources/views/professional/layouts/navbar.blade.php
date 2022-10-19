@@ -202,7 +202,7 @@
                 active : document.getElementById('active-status').value
             },
             success:function(data){
-                console.log(data);
+                console.log('data');
             }
         });
     });
