@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Professional;
 
 use App\Http\Controllers\Controller;
 use App\Models\Booking\Booking;
+use App\Models\Booking\BookingService;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -68,8 +69,50 @@ class ServiceHistoryController extends Controller
     }
 
     public function view(Request $request){
-        $booking = Booking::with(['user','bookingAddress'])->where(['id' => $request->id])->first();
-        echo $booking;
+        $booking = Booking::where(['id' => $request->id])->first();
+        $bookingServices = BookingService::with(['bookingServiceDetails'])->where('booking_id',$booking->bookingId)->get();
+        $bookingServicesFinalAmount = BookingService::where('booking_id',$booking->bookingId)->sum('price');
+        $html = '';
+        foreach ($bookingServices as $bookingser){
+            $html .= '<div class="row">
+                            <div class="col-md-12">
+                                <div class="card">
+                                    <div class="card-header border-transparent">
+                                        <div class="table-responsive">
+                                            <table class="table m-0">
+                                                <tbody>
+                                                    <tr>'.
+                                                        '<td><img height="30px" src='.asset($bookingser->bookingServiceDetails->base_path.'/'.$bookingser->bookingServiceDetails->service_image).'></td>'.
+                                                        '<td>'. $bookingser->bookingServiceDetails->title . '</td>'.
+                                                        '<td>'. $bookingser->price . '</td>'.
+                                                    '</tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>';
+        }
+        $html .= '<div class="row">
+                            <div class="col-md-12">
+                                <div class="card">
+                                    <div class="card-header border-transparent">
+                                        <div class="table-responsive">
+                                            <table class="table m-0">
+                                                <tbody>
+                                                    <tr>'.
+                                                        '<td>Total</td>'.
+                                                        '<td>'. $bookingServicesFinalAmount . '</td>'.
+                                                    '</tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>';
+        echo $html;
     }
 
 
@@ -86,7 +129,7 @@ class ServiceHistoryController extends Controller
         $service_pending = Booking::with(['user','bookingAddress'])->where(['professional_id'=>$request->user()->id,'status' => 'pending'])
             ->orderBy('created_at','DESC')
             ->paginate(15);
-           
+
         $current_page = $service_pending->currentPage();
 
         foreach(auth()->user()->unreadNotifications as $notification) {

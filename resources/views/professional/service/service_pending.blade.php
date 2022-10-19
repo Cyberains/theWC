@@ -47,7 +47,7 @@
                             <th>Date</th>
                             <th>Time</th>
                             <th>Address</th>
-{{--                            <th>Action</th>--}}
+                            <th>Action</th>
                         </tr>
                         </thead>
                         <tbody id="searchresult">
@@ -109,13 +109,7 @@
                 <div class="modal-body">
                     <h3 class="text-center">Booking Details</h3>
                     <div class="row " style="padding: 30px;">
-                        <p id="getBookingId"></p>
-
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <button type="button" class="btn btn-danger" style="float: right;margin-right: 10px;" data-dismiss="modal">X</button>
-                            </div>
-                        </div>
+                        <div id="allServices"></div>
                     </div>
                 </div>
             </div>
@@ -178,8 +172,7 @@
                 },
                 success:function(data){
                     if (data) {
-                        let datas = $.parseJSON(data);
-                        $('#getBookingId').text(datas.bookingId);
+                        $('#allServices').html(data);
                         $('#view-booking-modal').modal('show');
                     }
                 }
