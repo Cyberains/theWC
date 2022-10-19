@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Subscription;
+use App\Models\User;
 use App\Models\UserSubscription;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -59,6 +60,11 @@ class UserSubscriptionController extends Controller
                 'discount_price' => $request->discount_price,
                 'paid_price' => $request->paid_price,
             ]);
+
+            User::where(['id' => Auth::user()->id])->update([
+                'membership_status' => 1
+            ]);
+
             DB::commit();
             return response()->json([
                 'status' =>'success',
