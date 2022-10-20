@@ -1092,7 +1092,7 @@ display:none !important;
         height: 600px; } }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
     .slider-area .bd-example .carousel .carousel-inner .carousel-item {
-        /* margin-left: -1.5rem; */
+        margin-left: -1.5rem;
         height: 600px; } }
 @media (max-width: 767px) {
     .slider-area .bd-example .carousel .carousel-inner .carousel-item {

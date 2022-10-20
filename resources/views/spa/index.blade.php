@@ -28,9 +28,9 @@
                         <li data-target="#carouselOne" data-slide-to="2"></li>
                     </ol>
 
-                    <div class="carousel-inner">
-                        <div class="carousel-item  active">
-                            <img class="d-block w-100" width="1349px;" height="auto;" src="{{ url('public/assets/spa/images/slider/slide-01.jpg') }}">
+                    <div class="carousel-inner pt-4">
+                        <div class="carousel-item  active" id="img_offer">
+                            <img class="d-block w-100" width="1349px;" height="auto;" src="{{ url('public/assets/spa/images/slider/slide-01.png') }}">
                         </div>
 
                         <div class="carousel-item">
