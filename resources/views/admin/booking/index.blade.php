@@ -55,7 +55,7 @@
                             <th>Booking Raised</th>
                             <th>Service Status</th>
                             <th>Payment Status</th>
-                            <th>Track Location</th>
+                            <th>Action</th>
                         </tr>
                         </thead>
                         <tbody id="searchresult">

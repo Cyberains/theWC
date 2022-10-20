@@ -1,6 +1,6 @@
-@php use Illuminate\Support\Str; @endphp
-@if(!empty($bookings))
-    @foreach ($bookings as $booking)
+{{--@php use Illuminate\Support\Str; @endphp--}}
+{{--@if(!empty($bookings))--}}
+{{--    @foreach ($bookings as $booking)--}}
 
         <tr>
             <td>{{ (($currentpage-1)*25)+$loop->iteration }}</td>
@@ -31,7 +31,10 @@
             <td>{{$booking->created_at->diffForHumans()}}</td>
             <td>{{ $booking->status }}</td>
             <td>{{ $booking->servicePaymentStatus->payment_status ?? 'Pending' }}</td>
-             <td><a href="{{route('admin.getlocation',['booking_id'=>$booking->bookingId])}}" target="_blank" class="btn btn-primary btn-sm">Track Location</a></td>
+            <td>
+                <a href="{{route('admin.getlocation',['booking_id'=>$booking->bookingId])}}" target="_blank" class="btn btn-primary btn-sm"><i class="fa fa-map-marker" aria-hidden="true"></i></a>
+{{--                <a href="{{route('admin.getlocation',['booking_id'=>$booking->bookingId])}}" target="_blank" class="btn btn-primary btn-sm"><i class="fa fa-eye" aria-hidden="true"></i></a>--}}
+            </td>
         </tr>
 
     @endforeach

@@ -13,7 +13,6 @@ class ProfessionalActiveStatus extends Model
 
     protected $fillable = [
         'professional_id',
-        'login_time',
-        'logout_time'
+        'status'
     ];
 }

@@ -22,4 +22,9 @@ class BookingService extends Model
     public function bookingServiceBelongToService(){
         return $this->belongsTo(Service::class,'service_id','',Booking::class);
     }
+
+    public function bookingServiceDetails(): \Illuminate\Database\Eloquent\Relations\HasOne
+    {
+        return $this->hasOne(Service::class,'id','service_id');
+    }
 }

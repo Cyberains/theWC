@@ -46,7 +46,7 @@
                             <th>Status</th>
                             <th>Date</th>
                             <th>Time</th>
-{{--                            <th>Action</th>--}}
+                            <th>Address</th>
                         </tr>
                         </thead>
                         <tbody id="searchresult">
