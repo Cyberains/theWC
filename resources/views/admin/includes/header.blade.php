@@ -22,6 +22,8 @@
 
 <link rel="stylesheet" type="text/css" href="{{ URL::asset('public/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
 
+<link rel="stylesheet" type="text/css" href="{{ URL::asset('public/plugins/daterangepicker/daterangepicker.css') }}">
+
 <link rel="stylesheet" type="text/css" href="{{ URL::asset('public/assets/css/admin/style.css') }}">
 
 <link rel="stylesheet" type="text/css" href="{{ URL::asset('public/assets/css/admin/email.multiple.css') }}">

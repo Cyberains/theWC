@@ -28,14 +28,16 @@ class CouponController extends Controller
             'name' => 'required',
             'coupon' => 'required',
             'amount' => 'required',
-            'price_limit' => 'required'
+            'price_limit' => 'nullable',
+            'expire_date' => 'nullable'
         ]);
 
         $coupon = new CouponCode();
         $coupon->name = $request->name;
-        $coupon->coupon = $request->category_id;
-        $coupon->amount = $request->sub_category_id;
+        $coupon->coupon = $request->coupon;
+        $coupon->amount = $request->amount;
         $coupon->price_limit = $request->price_limit;
+        $coupon->expire_date = date_format(date_create($request->expire_date),"Y/m/d H:i:s");
         $coupon->save();
         Session::flash('message', 'Coupon Added successfully.');
         return redirect()->route('admin.promo');
