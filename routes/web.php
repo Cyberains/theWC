@@ -37,6 +37,10 @@ Route::get('pushes', function () {
 	return view('viewpush');
 });
 
+Route::get('invoice',function(){
+	return view('mail/service_invoice');
+});
+
 Route::get('notifications/bell',[NotificationController::class,'ViewNotification'])->name('notifications');
 
 

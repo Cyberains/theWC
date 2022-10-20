@@ -2304,8 +2304,9 @@ p {
    /* background: linear-gradient(to right, #d3d3d3 0%, #ebecf0 100%);*/
         background: linear-gradient(to right, #2e3094 0%, #2e3094 100%);
     padding: 10px 0;
-    position: absolute;
-    top: 0;
+    /* position: absolute; */
+    position: relative;
+    top: 0!important;
     left: 0;
     width: 100%;
     z-index: 999;
@@ -2772,6 +2773,7 @@ li:hover {
   transform: translateY(-4px);
   transition: 0.5s;
 }
+
 /*.img-slider{
   margin-top: 64px!important;
 }
