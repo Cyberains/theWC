@@ -38,9 +38,13 @@
             <td> {{ bookingAddressFormatting($service->bookingAddress) }}</td>
        <td>
         @php
-        $url="https://www.google.com/maps/place/".trim($service->bookingAddress->latitude).",".trim($service->bookingAddress->longitude);
+        if(!empty($service->bookingAddress->latitude)){
+            $url="https://www.google.com/maps/place/".trim($service->bookingAddress->latitude).",".trim($service->bookingAddress->longitude);
+            @endphp
+            <a title="Location" href="{{$url}}" target="chromeTab" id="view-user-location"><i class="fa fa-map-marker" style="color: #075680;"></i></a>&nbsp&nbsp
+        @php
+           }
         @endphp
-           <a title="Location" href="{{$url}}" target="chromeTab" id="view-user-location"><i class="fa fa-map-marker" style="color: #075680;"></i></a>&nbsp&nbsp
            <a title="View" href="javascript:void(0)" onclick="viewBooking({{ $service->id }})" id="view-booking"><i class="fa fa-eye" style="color: #29b6f6;"></i></a>
         </td>
         </tr>
