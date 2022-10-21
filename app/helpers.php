@@ -694,9 +694,25 @@ function sendSms($mobile, $message, $tempid)
 }
 
 // $userName,$amount
-function razorpay()
+function razorpay($payment_id,$amount)
 {
-    return 200;
+    $url            = 'https://api.razorpay.com/v1/payments/' . $payment_id . '/capture';
+    $key_id         = "rzp_live_B2JerGXzwGwE6p";
+    $key_secret     = "qSKMVEJjGMYDDrQBNfD5Ftqt";
+    $fields_string  = "amount=$amount";
+    //cURL Request
+    $ch = curl_init();
+    //set the url, number of POST vars, POST data
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_USERPWD, $key_id . ':' . $key_secret);
+    curl_setopt($ch, CURLOPT_TIMEOUT, 60);
+    curl_setopt($ch, CURLOPT_POST, 1);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $fields_string);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
+    curl_exec($ch);
+    $result = curl_exec($ch);
+    return $result;
 }
 
 function generateOtp()

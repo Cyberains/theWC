@@ -1,6 +1,6 @@
-{{--@php use Illuminate\Support\Str; @endphp--}}
-{{--@if(!empty($bookings))--}}
-{{--    @foreach ($bookings as $booking)--}}
+@php use Illuminate\Support\Str; @endphp
+@if(!empty($bookings))
+    @foreach ($bookings as $booking)
 
         <tr>
             <td>{{ (($currentpage-1)*25)+$loop->iteration }}</td>
@@ -33,7 +33,8 @@
             <td>{{ $booking->servicePaymentStatus->payment_status ?? 'Pending' }}</td>
             <td>
                 <a href="{{route('admin.getlocation',['booking_id'=>$booking->bookingId])}}" target="_blank" class="btn btn-primary btn-sm"><i class="fa fa-map-marker" aria-hidden="true"></i></a>
-{{--                <a href="{{route('admin.getlocation',['booking_id'=>$booking->bookingId])}}" target="_blank" class="btn btn-primary btn-sm"><i class="fa fa-eye" aria-hidden="true"></i></a>--}}
+                <a title="View" href="javascript:void(0)" onclick="viewBooking({{ $booking->id }})" id="view-booking" class="btn btn-primary mt-3 btn-sm"><i class="fa fa-eye" style="color: #ffffff;"></i></a>
+
             </td>
         </tr>
 
@@ -68,6 +69,24 @@
                     _token:token,
                     booking_id:booking_id,
                     professional_id:professional_id
+                }
+            });
+        }
+
+        function viewBooking(id) {
+            let token = $('meta[name="csrf-token"]').attr('content');
+            $.ajax({
+                url:"{{ route('admin.service-view') }}",
+                method:'GET',
+                data: {
+                    _token:token,
+                    id:id
+                },
+                success:function(data){
+                    if (data) {
+                        $('#allServices').html(data);
+                        $('#view-booking-modal').modal('show');
+                    }
                 }
             });
         }

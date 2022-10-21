@@ -116,8 +116,13 @@ class BookingController extends Controller
                 'payment_status' => $request->payment_status,
                 'settlement_date' => $request->settlement_date,
                 'settlement_status' => $request->settlement_status,
+//                'paid_amount' => $request->paid_amount,
+//                'due_amount' => $request->due_amount
             ];
             $booking = BookingServicePayment::create($form_data);
+
+//            razorpay($request->payment_id,$request->paid_amount);
+
             if($request->payment_status == 'done'){
                 $booking['professional'] = $this->service_assign_to_professionals($request->booking_id);
 

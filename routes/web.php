@@ -62,7 +62,10 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
 		// Dashboard
 		Route::get('dashboard', 'DashboardController@index')->name('dashboard');
 
-		// Category
+        // detail view services
+        Route::get('service-view',[ServiceHistoryController::class,'view'])->name('service-view');
+
+        // Category
 		Route::get('category', 'CategoryController@index')->name('category');
 		Route::get('category/create', 'CategoryController@create')->name('add_category');
 		Route::post('category/create', 'CategoryController@store')->name('add_category');
