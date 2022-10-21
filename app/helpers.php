@@ -697,8 +697,8 @@ function sendSms($mobile, $message, $tempid)
 function razorpay($payment_id,$amount)
 {
     $url            = 'https://api.razorpay.com/v1/payments/' . $payment_id . '/capture';
-    $key_id         = "rzp_live_B2JerGXzwGwE6p";
-    $key_secret     = "qSKMVEJjGMYDDrQBNfD5Ftqt";
+    $key_id         = "id";
+    $key_secret     = "secret";
     $fields_string  = "amount=$amount";
     //cURL Request
     $ch = curl_init();
