@@ -204,6 +204,7 @@
         font-weight: 600;
         color: #0062cc;
     }
+ 
     </style>
 
 @endsection
@@ -246,9 +247,11 @@
                                 <strong><i class="fas fa-pencil-alt mr-1"></i> Skills</strong>
                                 <p class="text-muted">
                                     @foreach($user->skills as $skill)
-                                        <ul><span class="tag tag-danger">{{$skill}}</span></ul>
+                                    <span class="tag tag-success mb-1" style="background: #e9579b;padding: 0.5rem 1rem;border-radius: 1.5rem;color: #fff;display: inline-block;">{{$skill}}</span>
+                                   
                                     @endforeach
                                 </p>
+                                
                             </div>
                         </div>
                     </div>
@@ -288,35 +291,58 @@
 
                             </div>
                         </div>
-                    </div>
-                    <!-- add address tab -->
-                  
+                        <div class="row">
+                            <div class="col-md-12 col-sm-6">
+                            <div class="card card-primary card-outline card-outline-tabs">
+                                <div class="card-header p-0 border-bottom-0">
+                                    <ul class="nav nav-tabs" id="custom-tabs-four-tab" role="tablist">
+                                        <li class="nav-item">
+                                            <a class="nav-link active" id="custom-tabs-four-home-tab" data-toggle="pill" href="#custom-tabs-four-home" role="tab" aria-controls="custom-tabs-four-home" aria-selected="true">Address</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" id="custom-tabs-four-profile-tab" data-toggle="pill" href="#custom-tabs-four-profile" role="tab" aria-controls="custom-tabs-four-profile" aria-selected="false">Upload Document</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="card-body">
+                                    <div class="tab-content" id="custom-tabs-four-tabContent">
+                                        <div class="tab-pane fade active show" id="custom-tabs-four-home" role="tabpanel" aria-labelledby="custom-tabs-four-home-tab">
+                                            <div class="row">
+                                        
 
+                                            
+                                                @for($x = 1; $x <= 2; $x++)
+                                                <div class="col-md-6" style="height:auto;width:100%;align-items: center;">
+                                                    <p class="py-2 px-4" style="background: #eea1c6;border-radius: 0.5rem;padding: 0.4rem;color:#904795;width: 100%;">
+                                                        Address: 567, sector 5, near om sweet, Gurugram, haryana, India 122017,<br>
+                                                        Address Type: Home<br>
+                                                        Phone Number: 8866775522
+                                                    </p>
+                                                </div>
 
-                    <div class="col-12 col-sm-6">
-                        <div class="card card-primary card-outline card-outline-tabs">
-                            <div class="card-header p-0 border-bottom-0">
-                                <ul class="nav nav-tabs" id="custom-tabs-four-tab" role="tablist">
-                                    <li class="nav-item">
-                                        <a class="nav-link active" id="custom-tabs-four-home-tab" data-toggle="pill" href="#custom-tabs-four-home" role="tab" aria-controls="custom-tabs-four-home" aria-selected="true">Home</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" id="custom-tabs-four-profile-tab" data-toggle="pill" href="#custom-tabs-four-profile" role="tab" aria-controls="custom-tabs-four-profile" aria-selected="false">Profile</a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="card-body">
-                                <div class="tab-content" id="custom-tabs-four-tabContent">
-                                    <div class="tab-pane fade active show" id="custom-tabs-four-home" role="tabpanel" aria-labelledby="custom-tabs-four-home-tab">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin malesuada lacus ullamcorper dui molestie, sit amet congue quam finibus. Etiam ultricies nunc non magna feugiat commodo. Etiam odio magna, mollis auctor felis vitae, ullamcorper ornare ligula. Proin pellentesque tincidunt nisi, vitae ullamcorper felis aliquam id. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin id orci eu lectus blandit suscipit. Phasellus porta, ante et varius ornare, sem enim sollicitudin eros, at commodo leo est vitae lacus. Etiam ut porta sem. Proin porttitor porta nisl, id tempor risus rhoncus quis. In in quam a nibh cursus pulvinar non consequat neque. Mauris lacus elit, condimentum ac condimentum at, semper vitae lectus. Cras lacinia erat eget sapien porta consectetur.
-                                    </div>
-                                    <div class="tab-pane fade" id="custom-tabs-four-profile" role="tabpanel" aria-labelledby="custom-tabs-four-profile-tab">
-                                        Mauris tincidunt mi at erat gravida, eget tristique urna bibendum. Mauris pharetra purus ut ligula tempor, et vulputate metus facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Maecenas sollicitudin, nisi a luctus interdum, nisl ligula placerat mi, quis posuere purus ligula eu lectus. Donec nunc tellus, elementum sit amet ultricies at, posuere nec nunc. Nunc euismod pellentesque diam.
+                                                  @endfor
+
+                                            
+                                                 
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="custom-tabs-four-profile" role="tabpanel" aria-labelledby="custom-tabs-four-profile-tab">
+                                            <div class="row">
+                                                @for($x = 1; $x <= 2; $x++)
+                                                   <div class="col-md-6 col-sm-6 pb-2">
+                                                       <img class="d-block w-100" id="profile_skill" height="250px" src="{{ url('public/assets/spa/images/doc_img.png') }}" alt="img" style="background-size: contain;background-position: 100% 100%;background-attachment: fixed;background-repeat: no-repeat;"> 
+                                                   </div>
+                                                  @endfor
+                                           </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        </div>
                     </div>
+                    <!-- add address tab -->
+                  
 
                     <!-- add address end tab -->
                     <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">

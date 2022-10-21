@@ -33,11 +33,7 @@
       <form action="" method="">
         <div class="row">
             <div class="col-12 my-5">
-              <!--   <div class="callout callout-info">
-                    <h5><i class="fas fa-info"></i> Note:</h5>
-                    This page has been enhanced for printing. Click the print button at the bottom of the invoice to test.
-                </div>
- -->
+             
                 <div class="invoice p-3 mb-3">
 
                     <div class="row">
