@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\BookingStatusController;
+use App\Http\Controllers\Admin\CouponController;
 use App\Http\Controllers\Admin\NewLaunchedController;
 use App\Http\Controllers\Admin\PlanController;
 use App\Http\Controllers\Admin\ServiceController;
@@ -100,6 +101,15 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
         Route::post('new/launched/edit', [NewLaunchedController::class,'edit'])->name('edit-new-launched');
         Route::post('new/launched/update', [NewLaunchedController::class,'update'])->name('update-new-launched');
         Route::get('new/launched/delete/{id}', [NewLaunchedController::class,'destroy'])->name('delete-new-launched');
+
+        // promo-code
+        Route::get('promo', [CouponController::class,'index'])->name('promo');
+        Route::get('promo/search', [CouponController::class,'itemSearch'])->name('search-promo');
+        Route::get('promo/create', [CouponController::class,'create'])->name('get-promo');
+        Route::post('promo/create', [CouponController::class,'store'])->name('add-promo');
+        Route::post('promo/edit', [CouponController::class,'edit'])->name('edit-promo');
+        Route::post('promo/update', [CouponController::class,'update'])->name('update-promo');
+        Route::get('promo/delete/{id}', [CouponController::class,'destroy'])->name('delete-promo');
 
         // Plans
         Route::get('plan', [PlanController::class,'index'])->name('plan');

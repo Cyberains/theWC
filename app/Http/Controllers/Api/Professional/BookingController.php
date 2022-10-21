@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Booking\Booking;
 use App\Models\Booking\BookingService;
 use App\Models\Booking\BookingServicePayment;
+use App\Models\CouponCode;
 use App\Models\Service;
 use App\Models\User;
 use App\Notifications\BookingNotification;
@@ -39,6 +40,11 @@ class BookingController extends Controller
                 ]);
             }
 
+            $coupon= 0;
+            if($request->coupon){
+                $coupon = CouponCode::where(['coupon'=>$request->coupon])->first()->amount;
+            }
+
             $form_booking = [
                 'user_id' => $request->user()->id,
                 'status' => 'pending',
@@ -65,11 +71,12 @@ class BookingController extends Controller
                 return response()->json([
                     'code' => 200,
                     'status' => 1,
-                    'data' => $booking,
                     'convenience_charge' => $convenience_charge,
                     'tax' => $tax,
                     'totalServiceAmount' => $servicesAmount,
-                    'totalPayableAmount' => $servicesAmount + $convenience_charge + $tax,
+                    'offer' => $coupon,
+                    'totalPayableAmount' => $servicesAmount + $convenience_charge + $tax - $coupon,
+                    'data' => $booking,
                     'message' => 'Now go on Payment Page.',
                 ]);
             }

@@ -709,7 +709,7 @@ function generateOtp()
 
 function check_mobile_registered_or_not($mobile_number): bool
 {
-    $user = User::where('mobile', $mobile_number)->first();
+    $user = User::where(['mobile'=> $mobile_number,'role'=>'user'])->first();
     if($user){
         return true;
     }else{

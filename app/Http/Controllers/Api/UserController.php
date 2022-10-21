@@ -242,7 +242,8 @@ class UserController extends Controller
         if (auth()->attempt([
             'mobile' => $request->mobile,
             'password' => $request->password,
-            'mobile_status' => 1
+            'mobile_status' => 1,
+            'role' => 'user'
         ])) {
             $user = Auth::user();
             $tokenResult = $user->createToken($user->mobile . '-' . now())->accessToken;
@@ -269,22 +270,32 @@ class UserController extends Controller
             'mobile' => 'required',
             'mobile_otp' => 'required',
         ]);
-        if (User::where(['mobile' => $request->mobile,'mobile_otp'=>$request->mobile_otp])->first() != null) {
-            $user = User::where(['mobile' => $request->mobile,'mobile_otp'=>$request->mobile_otp])->first();
-            $tokenResult = $user->createToken($user->mobile . '-' . now())->accessToken;
-            return response()->json([
-                'access_token' => $tokenResult,
-                'token_type' => 'Bearer',
-                'code' => 200,
-                'status' => 1,
-                'data' => $user,
-                'message' => 'You have been logged in successfully.',
-            ]);
-        } else {
+
+        $check_user_mobile = User::where(['mobile' => $request->mobile,'role' => 'user'])->first();
+        if($check_user_mobile){
+            if (User::where(['mobile' => $request->mobile,'mobile_otp'=>$request->mobile_otp,'role' => 'user'])->first() != null) {
+                $user = User::where(['mobile' => $request->mobile,'mobile_otp'=>$request->mobile_otp])->first();
+                $tokenResult = $user->createToken($user->mobile . '-' . now())->accessToken;
+                return response()->json([
+                    'access_token' => $tokenResult,
+                    'token_type' => 'Bearer',
+                    'code' => 200,
+                    'status' => 1,
+                    'data' => $user,
+                    'message' => 'You have been logged in successfully.',
+                ]);
+            } else {
+                return response()->json([
+                    'code' => 422,
+                    'status' => 0,
+                    'message' => 'Enter Valid Credential.'
+                ]);
+            }
+        }else{
             return response()->json([
                 'code' => 422,
                 'status' => 0,
-                'message' => 'Enter Valid Credential.'
+                'message' => 'Invalid Mobile Number.'
             ]);
         }
     }
@@ -380,19 +391,31 @@ class UserController extends Controller
                 'message' => 'This mobile Number does not exists.'
             ]);
         }
-        $mobileotp = 123456;
-        $update = User::where('mobile', $mobile)->update(['mobile_otp' => $mobileotp, 'mobile_otp_expire' => date("Y-m-d H:i:s")]);
-        if ($update) {
+
+        $mobileotp = generateOtp();
+        $text = "Your login otp for TWC account is ". $mobileotp.' .';
+        $tempid = 1207166434787251472;
+        $response = sendsms(intval($request->mobile), $text, $tempid);
+        if($response){
+            $update = User::where('mobile', $mobile)->update(['mobile_otp' => $mobileotp, 'mobile_otp_expire' => date("Y-m-d H:i:s")]);
+            if ($update) {
+                return response()->json([
+                    'code' => 200,
+                    'status' => 1,
+                    'message' => 'OTP has been send on your mobile Number.: '.$mobileotp
+                ]);
+            }else {
+                return response()->json([
+                    'code' => 422,
+                    'status' => 0,
+                    'message' => 'Technical problem occurs. Please try again later.'
+                ]);
+            }
+        }else{
             return response()->json([
-                'code' => 200,
-                'status' => 1,
-                'message' => 'OTP has been send on your mobile Number.: '.$mobileotp
-            ]);
-        }else {
-            return response()->json([
-                'code' => 422,
+                'code' => 500,
                 'status' => 0,
-                'message' => 'Technical problem occurs.Please try again later.'
+                'message' => 'Technical problem occurs. Please try again later.'
             ]);
         }
     }

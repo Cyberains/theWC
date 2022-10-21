@@ -1,12 +1,12 @@
 @extends('admin.includes.main')
 @section('title')
-    <title>New Launches | New Launches Management</title>
+    <title>Coupon | Coupon Management</title>
 @endsection
 @section('btitle')
-    <li class="breadcrumb-item">New Launches Management</li>
+    <li class="breadcrumb-item">Coupon Management</li>
 @endsection
 @section('btitle1')
-    <li class="breadcrumb-item">New Launches</li>
+    <li class="breadcrumb-item">Coupon</li>
 @endsection
 
 @section('style')
@@ -18,6 +18,12 @@
         .table .inactive-color {
             color: maroon;
             font-weight: 600;
+        }
+        .sform .eye i {
+            position: absolute;
+            top: 41px;
+            right: 8%;
+            cursor: pointer;
         }
     </style>
 @endsection
@@ -50,18 +56,18 @@
                         <thead>
                         <tr class="table-primary">
                             <th>Sr.No.</th>
-                            <th>Banner Image</th>
-                            <th>Type</th>
-                            <th>Category Name</th>
-                            <th>SubCategory Name</th>
-                            <th>Service Name</th>
+                            <th>Name</th>
+                            <th>Promo Code</th>
+                            <th>Amount</th>
+                            <th>Price Limit</th>
+                            <th>Expiry Date</th>
                             @if(Auth::user()->role == 'admin')
                                 <th>Action</th>
                             @endif
                         </tr>
                         </thead>
                         <tbody id="searchresult">
-                        @include('admin.new_launches.paggination_new_launches')
+                        @include('admin.Coupon.paggination_coupon')
                         </tbody>
                     </table>
                     <input type="hidden" name="hidden_page" id="hidden_page" value="1" />
@@ -81,66 +87,51 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <h3 class="text-center">Add New-Launch</h3>
-                    <form class="sform form" method="post" action="{{ route('admin.add-new-launched') }}"  enctype="multipart/form-data">
+                    <h3 class="text-center">Add Promo Code</h3>
+                    <form class="sform form" method="post" action="{{ route('admin.add-promo') }}">
                         @csrf
                         <div class="row " style="padding: 30px;">
+
                             <div class="col-md-12">
-                                <div class="form-group ">
-                                    <label for="banner_image">New Launch Banner Image<span>*</span>( Enter 1:1 ratio Image Above 1024px )</label>
-                                    <div class="d-flex">
-                                        <input class="form-control" type="file" name="banner_image" id="banner_image" value="{{ old('banner_image') }}">
-                                    </div>
+                                <div class="form-group">
+                                    <label for="name">Name<span>*</span></label>
+                                    <input class="form-control" type="text" name="name" id="name"
+                                           value="{{ old('name') }}" placeholder="Enter Promo Name"  data-parsley-required
+                                           data-parsley-required-message="Promo Name is required.">
+                                </div>
+                            </div>
+                            <div class="col-md-6 eye form-group">
+                                <div class="form-group">
+                                    <label for="coupon">Coupon Code<span>*</span></label>
+                                    <input class="form-control" type="text" name="coupon" id="coupon"
+                                           value="{{ old('coupon') }}" placeholder="Enter Promo Code"  data-parsley-required
+                                           data-parsley-required-message="Promo Code is required.">
+                                    <i class="fa fa-pencil" id="generateCode"></i>
                                 </div>
                             </div>
 
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="up-type">Type<span>*</span></label>
-                                    <select class="form-control" type="text" name="type" id="up_type" value="" data-parsley-required data-parsley-required-message="Type is required.">
-                                        <option value="">Select Type</option>
-                                        <option value="Service List">Service List</option>
-                                        <option value="Service">Service</option>
-                                    </select>
-                                </div>
-                            </div>
-
-
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="up_category_id">Select Category<span>*</span></label>
-                                    <select class="form-control" type="text" name="category_id" id="up_category_id" value="">
-                                        <option value="">Select Tag</option>
-                                        <option value="3">Category Title</option>
-                                        @foreach($categories as $category)
-                                            <option id="selected-category-id" onclick="getSubCategory({{ $category->id }})" value="{{ $category->id }}">{{ $category->title }}</option>
-                                        @endforeach
-                                    </select>
+                                    <label for="amount">Coupon Amount<span>*</span></label>
+                                    <input class="form-control" type="text" name="amount" id="amount"
+                                           value="{{ old('amount') }}" placeholder="Enter Coupon Amount"  data-parsley-required
+                                           data-parsley-required-message="Coupon Amount is required.">
                                 </div>
                             </div>
 
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="up_sub_category_id">Select Sub-Category<span>*</span></label>
-                                    <select class="form-control" type="text" name="sub_category_id" id="up_sub_category_id" value="">
-                                        <option value="">Select Sub-Category</option>
-                                        @foreach($sub_category as $sub_cat)
-                                            <option id="selected-sub-category-id" value="{{ $sub_cat->id }}">{{ $sub_cat->title }}</option>
-                                        @endforeach
-                                    </select>
+                                    <label for="price_limit">Coupon Price Limit</label>
+                                    <input class="form-control" type="text" name="price_limit" id="price_limit"
+                                           value="{{ old('price_limit') }}" placeholder="Enter Coupon Price Limit">
                                 </div>
                             </div>
 
-
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="up_service_id">Select Service<span>*</span></label>
-                                    <select class="form-control" type="text" name="service_id" id="service_id" value="{{ old('service_id') }}">
-                                        <option value="">Select Sub-Category</option>
-                                        @foreach($services_list as $service)
-                                            <option id="selected-sub-category-id" value="{{ $service->id }}">{{ $service->title }}</option>
-                                        @endforeach
-                                    </select>
+                                    <label for="expire_date">Coupon Expire Date</label>
+                                    <input class="form-control" type="text" name="expire_date" id="datepicker" readonly="readonly"
+                                           value="{{ old('expire_date') }}" placeholder="Select Expire Date" style="background:white;">
                                 </div>
                             </div>
 
@@ -166,69 +157,55 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <h3 class="text-center">Edit New-Launch</h3>
-                    <form class="sform form" method="post" action="{{ route('admin.update-new-launched') }}" enctype="multipart/form-data">
+                    <h3 class="text-center">Edit Promo Code</h3>
+                    <form class="sform form" method="post" action="{{ route('admin.update-promo') }}">
                         @csrf
                         <input type="text" name="id" value="" id="id" hidden="hidden">
                         <div class="row " style="padding: 30px;">
+
                             <div class="col-md-12">
-                                <div class="form-group ">
-                                    <label for="banner_image">New Launch Banner Image<span>*</span>( Enter 1:1 ratio Image Above 1024px )</label>
-                                    <div class="d-flex">
-                                        <div id="upload_banner_image"><img width="50" height="50"></div>
-                                        <input class="form-control ml-4 photo" type="file" name="banner_image" id="banner_image" value="{{ old('banner_image') }}">
-                                    </div>
+                                <div class="form-group">
+                                    <label for="name">Name<span>*</span></label>
+                                    <input class="form-control" type="text" name="name" id="up-name"
+                                           value="{{ old('name') }}" placeholder="Enter Promo Name"  data-parsley-required
+                                           data-parsley-required-message="Promo Name is required.">
+                                </div>
+                            </div>
+                            <div class="col-md-6 eye form-group">
+                                <div class="form-group">
+                                    <label for="coupon">Coupon Code<span>*</span></label>
+                                    <input class="form-control" type="text" name="coupon" id="up-coupon"
+                                           value="{{ old('coupon') }}" placeholder="Enter Promo Code"  data-parsley-required
+                                           data-parsley-required-message="Promo Code is required.">
+                                    <i class="fa fa-pencil" id="generateCode"></i>
                                 </div>
                             </div>
 
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="up-type">Type<span>*</span></label>
-                                    <select class="form-control" type="text" name="type" id="up_type" value="" data-parsley-required data-parsley-required-message="Type is required.">
-                                        <option value="">Select Type</option>
-                                        <option value="Service List">Service List</option>
-                                        <option value="Service">Service</option>
-                                    </select>
-                                </div>
-                            </div>
-
-
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="up_category_id">Select Category<span>*</span></label>
-                                    <select class="form-control" type="text" name="category_id" id="up_category_id" value="">
-                                        <option value="">Select Category</option>
-                                        @foreach($categories as $category)
-                                            <option id="selected-category-id" onclick="getSubCategory({{ $category->id }})" value="{{ $category->id }}">{{ $category->title }}</option>
-                                        @endforeach
-                                    </select>
+                                    <label for="amount">Coupon Amount<span>*</span></label>
+                                    <input class="form-control" type="text" name="amount" id="up-amount"
+                                           value="{{ old('amount') }}" placeholder="Enter Coupon Amount"  data-parsley-required
+                                           data-parsley-required-message="Coupon Amount is required.">
                                 </div>
                             </div>
 
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="up_sub_category_id">Select Category<span>*</span></label>
-                                    <select class="form-control" type="text" name="sub_category_id" id="up_sub_category_id" value="">
-                                        <option value="">Select Sub-Category</option>
-                                        @foreach($sub_category as $sub_cat)
-                                            <option id="selected-sub-category-id" value="{{ $sub_cat->id }}">{{ $sub_cat->title }}</option>
-                                        @endforeach
-                                    </select>
+                                    <label for="price_limit">Coupon Price Limit</label>
+                                    <input class="form-control" type="text" name="price_limit" id="up-price_limit"
+                                           value="{{ old('price_limit') }}" placeholder="Enter Coupon Price Limit">
                                 </div>
                             </div>
-
 
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="up_service_id">Select Service<span>*</span></label>
-                                    <select class="form-control" type="text" name="service_id" id="up_service_id" value="">
-                                        <option value="">Select Service</option>
-                                        @foreach($services_list as $service)
-                                            <option id="selected-sub-category-id" value="{{ $service->id }}">{{ $service->title }}</option>
-                                        @endforeach
-                                    </select>
+                                    <label for="expire_date">Coupon Expire Date</label>
+                                    <input class="form-control" type="text" name="expire_date" id="up-datepicker" readonly="readonly"
+                                           value="{{ old('expire_date') }}" placeholder="Select Expire Date" style="background:white;">
                                 </div>
                             </div>
+
 
                             <div class="col-md-12">
                                 <div class="form-group">
@@ -246,6 +223,34 @@
 @endsection
 
 @section('script')
+
+    <script>
+        $( function() {
+            $( "#datepicker" ).datepicker();
+            $( "#up-datepicker" ).datepicker();
+        } );
+    </script>
+
+    <script>
+
+        const characters ='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+
+        function generateString(length) {
+            let result = ' ';
+            const charactersLength = characters.length;
+            for ( let i = 0; i < length; i++ ) {
+                result += characters.charAt(Math.floor(Math.random() * charactersLength));
+            }
+
+            return result;
+        }
+
+        document.getElementById("generateCode").addEventListener("click", function () {
+            $('#coupon').val(generateString(10));
+        });
+    </script>
+
+
     <script type="text/javascript">
         $(document).ready(function(){
             initSample();
@@ -307,7 +312,7 @@
             let token = $('meta[name="csrf-token"]').attr('content');
             let html ="";
             $.ajax({
-                url:"{{ route('admin.add-service') }}",
+                url:"{{ route('admin.get-promo') }}",
                 method:'GET',
                 data:{ _token:token },
                 success:function(data){
@@ -318,8 +323,6 @@
                         });
                         $('#add-service-modal #service').append(html);
                         $('#add-service-modal').modal('show');
-                        console.log(datas.description);
-                        console.log('1111111111111111111111111111');
                     }
                 }
             });
@@ -328,7 +331,7 @@
         function ServiceEdit(id){
             var token = $('meta[name="csrf-token"]').attr('content');
             $.ajax({
-                url:"{{ route('admin.edit-new-launched') }}",
+                url:"{{ route('admin.edit-promo') }}",
                 method:'POST',
                 data: {
                     _token:token,
@@ -338,17 +341,11 @@
                     if (data) {
                         let datas = $.parseJSON(data);
                         $('#id').val(datas.id);
-                        // New Launched image
-                        if (datas.banner_image != null) {
-                            $("#upload_banner_image").show();
-                            $("#upload_banner_image img").attr('src', datas.base_path +'/'+datas.banner_image);
-                        }else{
-                            $("#upload_service_image").hide();
-                        }
-                        $('#up_type').val(datas.type);
-                        $('#up_sub_category_id').val(datas.sub_category_id);
-                        $('#up_category_id').val(datas.category_id);
-                        $('#up_service_id').val(datas.service_id);
+                        $('#up-name').val(datas.name);
+                        $('#up-coupon').val(datas.coupon);
+                        $('#up-amount').val(datas.amount);
+                        $('#up-price_limit').val(datas.price_limit);
+                        $('#up-datepicker').val(datas.datepicker);
                         $('#edit-service-modal').modal('show');
                     }
                 }
