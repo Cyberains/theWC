@@ -47,7 +47,7 @@ class DashboardController extends Controller
             [
                 'professional_id' => $request->user()->id,
             ],[
-                'status' => $request->active == 'on'? 1: 0,
+                'status' => $request->active,
             ]
         );
 
