@@ -20,11 +20,11 @@ function getDistanceBtwUserAndProfessional($user_service_address_id,$professiona
         $address_prof_lat_long = Address::where(['user_id'=>$professional_id,'is_default' => 1])->first(['latitude', 'longitude']);
     }
     // latitude and longitude of Two Points
-    $latitudeFrom = $address_prof_lat_long->latitude ;
-    $longitudeFrom = $address_prof_lat_long->longitude;
-    $latitudeTo = $address->latitude;
-    $longitudeTo = $address->longitude;
-return distance( $latitudeFrom, $longitudeFrom, $latitudeTo,  $longitudeTo,"K");
+    $latitudeFrom = floatval($address_prof_lat_long->latitude) ;
+    $longitudeFrom = floatval($address_prof_lat_long->longitude);
+    $latitudeTo = floatval($address->latitude);
+    $longitudeTo =floatval( $address->longitude);
+return getDistance( $latitudeFrom, $longitudeFrom, $latitudeTo,  $longitudeTo,"K");
 //    print_r(two_points_on_earth( $latitudeFrom, $longitudeFrom, $latitudeTo,  $longitudeTo));die();
    // return 100;
 }
@@ -174,6 +174,15 @@ function getProfessionalsRating($professional_id){
 function getProfessionalFreeStatus($professional_id){
     $user = \App\Models\User::where('id',$professional_id)->first();
     return $user->is_free == 0 ? true : false;
+}
+
+function getProfessionalLogedStatus($professional_id){
+    $user = \App\Models\ProfessionalActiveStatus::where('professional_id',$professional_id)->first();
+	if($user){
+		return $user->status == 1 ? true : false;
+	}else{
+		return false;
+	}
 }
 
 function getAllBookingStatusDone($professional_id){

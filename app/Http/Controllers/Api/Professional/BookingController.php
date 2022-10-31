@@ -190,62 +190,64 @@ class BookingController extends Controller
         $booking_detail = Booking::where(['bookingId' => $booking_id])->first();
         $findProfessionals = User::where(['role' => 'Professional','is_active' => 1])->orderBy('paid_role','DESC')->get();
         foreach ($findProfessionals as $professional){
-            if(getDistanceBtwUserAndProfessional($booking_detail->user_service_address_id,$professional->id) <= 30){
-                if($professional->paid_role == 1 && getProfessionalsRating($professional->id) >= 3 && getProfessionalFreeStatus($professional->id) === true){
-                    $ass = Booking::where('bookingId', $booking_id)->firstOrFail();
-                    $ass->professional_id = $professional->id;
-                    if($ass->save()){
-                        return $professional->id;
+            if(getProfessionalLogedStatus($professional->id)){
+                if(getDistanceBtwUserAndProfessional($booking_detail->user_service_address_id,$professional->id) <= 30){
+                    if($professional->paid_role == 1 && getProfessionalsRating($professional->id) >= 3 && getProfessionalFreeStatus($professional->id) === true){
+                        $ass = Booking::where('bookingId', $booking_id)->firstOrFail();
+                        $ass->professional_id = $professional->id;
+                        if($ass->save()){
+                            return $professional->id;
+                        }
+                        break;
                     }
-                    break;
-                }
-                elseif ($professional->paid_role == 1 && getProfessionalsRating($professional->id) >= 2 && getProfessionalFreeStatus($professional->id) === true){
-                    $ass = Booking::where('bookingId', $booking_id)->firstOrFail();
-                    $ass->professional_id = $professional->id;
-                    if($ass->save()){
-                        return $professional->id;
+                    elseif ($professional->paid_role == 1 && getProfessionalsRating($professional->id) >= 2 && getProfessionalFreeStatus($professional->id) === true){
+                        $ass = Booking::where('bookingId', $booking_id)->firstOrFail();
+                        $ass->professional_id = $professional->id;
+                        if($ass->save()){
+                            return $professional->id;
+                        }
+                        break;
                     }
-                    break;
-                }
-                elseif ($professional->paid_role == 1 && getProfessionalFreeStatus($professional->id) === true){
-                    $ass = Booking::where('bookingId', $booking_id)->firstOrFail();
-                    $ass->professional_id = $professional->id;
-                    if($ass->save()){
-                        return $professional->id;
+                    elseif ($professional->paid_role == 1 && getProfessionalFreeStatus($professional->id) === true){
+                        $ass = Booking::where('bookingId', $booking_id)->firstOrFail();
+                        $ass->professional_id = $professional->id;
+                        if($ass->save()){
+                            return $professional->id;
+                        }
+                        break;
                     }
-                    break;
-                }
-                elseif ($professional->paid_role == 0 && getProfessionalsRating($professional->id) >= 3 && getProfessionalFreeStatus($professional->id) === true){
-                    $ass = Booking::where('bookingId', $booking_id)->firstOrFail();
-                    $ass->professional_id = $professional->id;
-                    if($ass->save()){
-                        return $professional->id;
+                    elseif ($professional->paid_role == 0 && getProfessionalsRating($professional->id) >= 3 && getProfessionalFreeStatus($professional->id) === true){
+                        $ass = Booking::where('bookingId', $booking_id)->firstOrFail();
+                        $ass->professional_id = $professional->id;
+                        if($ass->save()){
+                            return $professional->id;
+                        }
+                        break;
                     }
-                    break;
-                }
-                elseif ($professional->paid_role == 0 && getProfessionalsRating($professional->id) >= 2 && getProfessionalFreeStatus($professional->id) === true){
-                    $ass = Booking::where('bookingId', $booking_id)->firstOrFail();
-                    $ass->professional_id = $professional->id;
-                    if($ass->save()){
-                        return $professional->id;
+                    elseif ($professional->paid_role == 0 && getProfessionalsRating($professional->id) >= 2 && getProfessionalFreeStatus($professional->id) === true){
+                        $ass = Booking::where('bookingId', $booking_id)->firstOrFail();
+                        $ass->professional_id = $professional->id;
+                        if($ass->save()){
+                            return $professional->id;
+                        }
+                        break;
                     }
-                    break;
-                }
-                elseif ($professional->paid_role == 0 && getProfessionalFreeStatus($professional->id) === true){
-                    $ass = Booking::where('bookingId', $booking_id)->firstOrFail();
-                    $ass->professional_id = $professional->id;
-                    if($ass->save()){
-                        return $professional->id;
+                    elseif ($professional->paid_role == 0 && getProfessionalFreeStatus($professional->id) === true){
+                        $ass = Booking::where('bookingId', $booking_id)->firstOrFail();
+                        $ass->professional_id = $professional->id;
+                        if($ass->save()){
+                            return $professional->id;
+                        }
+                        break;
                     }
-                    break;
-                }
-                elseif (getProfessionalFreeStatus($professional->id) === false){
-                    $ass = Booking::where('bookingId', $booking_id)->firstOrFail();
-                    $ass->professional_id = null;
-                    if($ass->save()){
-                        return null;
+                    elseif (getProfessionalFreeStatus($professional->id) === false){
+                        $ass = Booking::where('bookingId', $booking_id)->firstOrFail();
+                        $ass->professional_id = null;
+                        if($ass->save()){
+                            return null;
+                        }
+                        break;
                     }
-                    break;
                 }
             }
         }
