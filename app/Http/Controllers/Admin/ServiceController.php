@@ -3,13 +3,19 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Address;
+use App\Models\Booking\Booking;
+use App\Models\Booking\BookingService;
 use App\Models\Category;
 use App\Models\Service;
 use App\Models\SubCategory;
+use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\DB;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ServiceController extends Controller
 {
@@ -272,10 +278,68 @@ class ServiceController extends Controller
     function userManagement(){
      return view('admin.user_management.user_management');
     }
-    function addBooking(){
-        return view('admin.add_booking.add_booking');
-       }
+
+    public function addBooking(){
+        $users = User::where(['role' => 'user'])->get();
+        $categories = Category::all();
+        $time_slot_list = [
+            '09:00 - 09:15 am','09:30 - 09:45 am','10:00 - 10:15 am','10:30 - 10:45 am','11:00 - 11:15 am','11:30 - 11:45 am',
+            '12:00 - 12:15 pm','12:30 - 12:45 pm','01:00 - 01:15 pm','01:30 - 01:45 pm','02:00 - 02:15 pm','02:30 - 02:45 pm',
+            '03:00 - 03:15 pm','03:30 - 03:45 pm','04:00 - 04:15 pm','04:30 - 04:45 pm','05:00 - 05:15 pm','05:30 - 05:45 pm',
+            '06:00 - 06:15 pm','06:30 - 06:45 pm','07:00 - 07:15 pm','07:30 - 07:45 pm','08:00 - 08:15 pm','08:30 - 08:45 pm',
+            '09:00 - 09:15 pm','09:30 - 09:45 pm'
+        ];
+        return view('admin.add_booking.add_booking',compact('users','categories','time_slot_list'));
+    }
+
+    public function getAddress(Request $request){
+        $address = Address::where(['user_id' => $request->user_id])->get();
+        return json_encode($address);
+    }
+
+    public function getSubCategory(Request $request){
+        $sub_category = SubCategory::whereIn('category_id' , $request->category_id)->get();
+        return json_encode($sub_category);
+    }
+
+    public function getServices(Request $request){
+        $services = Service::whereIn('sub_category_id' , $request->sub_category_id)->get();
+        return json_encode($services);
+    }
+
+    public function bookingFromAdmin(Request $request){
+        DB::beginTransaction();
+        try{
+            $form_booking = [
+                'user_id' => $request->user_id,
+                'status' => 'pending',
+                'user_service_address_id' => $request->address_id,
+                'time_slot' => $request->time_slot,
+                'date_slot' => $request->date_slot
+            ];
+            $booking = Booking::create($form_booking);
+
+            $services =  Service::whereIn('id',$request->service_id)->get();
+            foreach ($services as $service){
+                BookingService::create([
+                    'booking_id' => $booking->bookingId,
+                    'service_id' => $service->id,
+                    'mrp' => $service->price,
+                    'discount'=> $service->discount,
+                    'price' => $service->discounted_price
+                ]);
+            }
+            DB::commit();
+            if($booking){
+                Alert::success('', 'Booking Successfully Added');
+                return redirect()->route('admin.addbooking');
+            }
+        }catch(\Exception $e){
+            DB::rollback();
+        }
+    }
+
     function addAddress(){
-    return view('admin.add_address.add_address');
+        return view('admin.add_address.add_address');
     }
 }

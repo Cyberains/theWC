@@ -55,7 +55,13 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
 	Route::get('/', function () {return redirect('admin/login');})->name('login');
 	Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/usermangement','ServiceController@userManagement')->name('usermanagement');
-	Route::get('/addbooking','ServiceController@addBooking')->name('addbooking');
+	
+	Route::get('/addbooking',[ServiceController::class,'addBooking'])->name('addbooking');
+	Route::get('/getAddress',[ServiceController::class,'getAddress'])->name('getAddress');
+	Route::get('/getSubCategory',[ServiceController::class,'getSubCategory'])->name('getSubCategory');
+	Route::get('/getServices',[ServiceController::class,'getServices'])->name('getServices');
+	Route::post('/bookingFromAdmin',[ServiceController::class,'bookingFromAdmin'])->name('bookingFromAdmin');
+
 	Route::get('/addaddress','ServiceController@addAddress')->name('addaddress');
         // Lead
         Route::get('/lead-mail-page',[LeadController::class,'getMailsPage'])->name('lead-mail-page');
